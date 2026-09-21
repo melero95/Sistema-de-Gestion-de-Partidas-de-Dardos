@@ -1,4 +1,4 @@
-# Juegos de Dardos
+# Sistema de Gestión de Partidas de Dardos
 
 Aplicación Android desarrollada en Java para gestionar partidas de diferentes modalidades de juegos de dardos.
 
