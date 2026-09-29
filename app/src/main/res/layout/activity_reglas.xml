@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainReglas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    tools:context="activities.ReglasActivity">
+
+
+    <!-- TÍTULO -->
+
+    <TextView
+        android:id="@+id/txtTituloReglas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Reglas de juego"
+        android:textColor="@color/gold"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- TEXTO DEL SELECTOR -->
+
+    <TextView
+        android:id="@+id/txtSeleccionarModo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Selecciona un modo de juego"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloReglas" />
+
+
+    <!-- SPINNER -->
+
+    <Spinner
+        android:id="@+id/spinnerModoReglas"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/blue_ligth"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSeleccionarModo" />
+
+
+    <!-- BOTÓN VOLVER -->
+
+    <Button
+        android:id="@+id/btnVolverMenu"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/gold"
+        android:text="Volver al menú principal"
+        android:textAllCaps="false"
+        android:textColor="#2B41C5"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <!-- CONTENEDOR DE LAS REGLAS -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardReglas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#F2FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnVolverMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerModoReglas">
+
+
+        <ScrollView
+            android:id="@+id/scrollReglas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/blue_ligth"
+                android:padding="18dp">
+
+
+                <TextView
+                    android:id="@+id/txtReglas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    tools:text="Aquí aparecerán las reglas del modo seleccionado." />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

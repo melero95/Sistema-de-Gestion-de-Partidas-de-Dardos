@@ -150,21 +150,19 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (id == R.id.menuRecords) {
 
-                //Pendiente de crear RecordsActivity
-                //Intent intent = new Intent(
-                //        MainActivity.this,
-                //        RecordsActivity.class
-                //);
-                //startActivity(intent);
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        RecordsActivity.class
+                );
+                startActivity(intent);
 
             } else if (id == R.id.menuReglas) {
 
-                //Pendiente de crear ReglasActivity o ComoJugarActivity
-                //Intent intent = new Intent(
-                //        MainActivity.this,
-                //        ReglasActivity.class
-                //);
-                //startActivity(intent);
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        ReglasActivity.class
+                );
+                startActivity(intent);
 
             } else if (id == R.id.menuAyuda) {
 
@@ -177,12 +175,11 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (id == R.id.menuAcercaDe) {
 
-                //Pendiente de crear AcercaDeActivity
-                //Intent intent = new Intent(
-                //        MainActivity.this,
-                //        AcercaDeActivity.class
-                //);
-                //startActivity(intent);
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        AcercaDeActivity.class
+                );
+                startActivity(intent);
             }
 
             drawerMain.closeDrawers();
