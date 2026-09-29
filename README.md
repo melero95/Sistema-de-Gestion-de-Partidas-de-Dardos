@@ -47,12 +47,12 @@ En los modos de Cricket se fuerza un mínimo de dos jugadores.
 
 La aplicación incluye lógica para los siguientes modos:
 
-* 301.
-* 501.
-* Cricket.
-* Cut Throat Cricket.
-* Double Down.
-* Around the Clock.
+- 301.
+- 501.
+- Cricket.
+- Cut Throat Cricket.
+- Double Down.
+- Around the Clock.
 
 Cada modo tiene su propia pantalla o lógica específica según sus reglas.
 
