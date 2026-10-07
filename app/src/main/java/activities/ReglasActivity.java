@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.productos.juegosdedardos.R;
@@ -28,6 +29,8 @@ public class ReglasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reglas);
+
+        EdgeToEdge.enable(this);
 
         inicializarComponentes();
         configurarSpinner();
@@ -495,24 +498,28 @@ public class ReglasActivity extends AppCompatActivity {
     private String titulo(String texto) {
 
         return "<h2>"
-                + "<font color='#2B41C5'>"
+                + "<font color='#FFC107'>"
                 + texto
                 + "</font>"
                 + "</h2>";
     }
 
+
     private String subtitulo(String texto) {
 
         return "<b>"
-                + "<font color='#2B41C5'>"
+                + "<font color='#FFC107'>"
                 + texto
                 + "</font>"
                 + "</b><br>";
     }
 
+
     private String parrafo(String texto) {
 
-        return texto + "<br><br>";
+        return "<font color='#FFFFFF'>"
+                + texto
+                + "</font><br><br>";
     }
 
     private String separador() {

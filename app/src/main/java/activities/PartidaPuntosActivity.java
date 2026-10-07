@@ -10,13 +10,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
+
 import androidx.activity.OnBackPressedCallback;
-
 import androidx.appcompat.app.AlertDialog;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaPuntos;
@@ -1280,11 +1280,14 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
     private void mostrarDialogoSalirPartida() {
 
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(
+                this,
+                R.style.TemaDialogoDardos
+        )
                 .setTitle("Salir de la partida")
                 .setMessage(
                         "Puedes conservar la partida para continuarla "
-                                + "mÃ¡s adelante o abandonarla definitivamente."
+                                + "más adelante o abandonarla definitivamente."
                 )
                 .setPositiveButton(
                         "Guardar y salir",
@@ -1314,7 +1317,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                 .show();
     }
 
-    //Regreso al menÃº principal --------------------
+    //Regreso al menu principal --------------------
 
     private void volverAlMenuPrincipal() {
 
@@ -1350,7 +1353,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         return 1;
     }
 
-    //Registro de un nÃºmero -------------------------------------------------------
+    //Registro de un numero -------------------------------------------------------
 
     private void registrarDardo(
             int numeroCasilla,
@@ -2424,7 +2427,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
             }
         }
 
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
                 .setTitle("Marcador")
                 .setMessage(mensaje.toString())
                 .setPositiveButton("CERRAR", null)

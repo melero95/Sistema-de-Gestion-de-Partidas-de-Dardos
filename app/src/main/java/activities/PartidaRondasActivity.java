@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AlertDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -2765,8 +2765,11 @@ public class PartidaRondasActivity extends AppCompatActivity {
         StringBuilder mensaje =
                 new StringBuilder();
 
+        boolean mostrarPuntosJugador =
+                debeMostrarPuntosEnMarcador();
+
         ArrayList<Integer> clasificacion =
-                construirClasificacionFinal();
+                construirClasificacionMarcador();
 
         for (int posicion = 0;
              posicion < clasificacion.size();
@@ -2778,22 +2781,160 @@ public class PartidaRondasActivity extends AppCompatActivity {
             mensaje.append(posicion + 1)
                     .append(". ")
                     .append(nombresJugadores[indiceJugador])
-                    .append(": ")
-                    .append(puntuacionesJugadores[indiceJugador])
-                    .append(" puntos");
+                    .append(": ");
+
+            if (mostrarPuntosJugador) {
+
+                mensaje.append(
+                        obtenerPuntuacionMarcador(
+                                indiceJugador
+                        )
+                ).append(" puntos");
+
+            } else {
+
+                mensaje.append("Objetivo ")
+                        .append(
+                                obtenerObjetivoActualMarcador(
+                                        indiceJugador
+                                )
+                        );
+            }
 
             if (posicion < clasificacion.size() - 1) {
                 mensaje.append("\n");
             }
         }
 
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
                 .setTitle("Marcador")
                 .setMessage(mensaje.toString())
                 .setPositiveButton("CERRAR", null)
                 .show();
     }
 
+    private boolean debeMostrarPuntosEnMarcador() {
+
+        switch (modoRondas) {
+
+            case AROUND_THE_CLOCK:
+                return false;
+
+            case SHANGHAI:
+            case DOUBLE_DOWN:
+            default:
+                return true;
+        }
+    }
+
+    private String obtenerObjetivoActualMarcador(
+            int indiceJugador
+    ) {
+
+        switch (modoRondas) {
+
+            case AROUND_THE_CLOCK:
+                return obtenerTextoObjetivoJugador(
+                        indiceJugador
+                );
+
+            case SHANGHAI:
+            case DOUBLE_DOWN:
+            default:
+                return obtenerTextoObjetivoActual();
+        }
+    }
+
+    private int obtenerPuntuacionMarcador(
+            int indiceJugador
+    ) {
+
+        int puntuacion =
+                puntuacionesJugadores[indiceJugador];
+
+        /*
+         * En Shanghai, la puntuación del turno se guarda definitivamente
+         * al cambiar de turno. Para que el marcador emergente se vea
+         * actualizado durante la ronda, al jugador actual se le suma
+         * provisionalmente lo conseguido en el turno.
+         */
+        if (modoRondas == ModoRondas.SHANGHAI
+                && indiceJugador == jugadorActual) {
+
+            puntuacion += puntosValidosTurno;
+        }
+
+        return puntuacion;
+    }
+
+    private ArrayList<Integer> construirClasificacionMarcador() {
+
+        ArrayList<Integer> clasificacion =
+                new ArrayList<>();
+
+        for (int i = 0;
+             i < nombresJugadores.length;
+             i++) {
+
+            clasificacion.add(i);
+        }
+
+        if (modoRondas == ModoRondas.AROUND_THE_CLOCK) {
+
+            clasificacion.clear();
+
+            for (Integer indice :
+                    ordenFinalizacion) {
+
+                if (indice != null
+                        && indice >= 0
+                        && indice < nombresJugadores.length
+                        && !clasificacion.contains(indice)) {
+
+                    clasificacion.add(indice);
+                }
+            }
+
+            ArrayList<Integer> restantes =
+                    new ArrayList<>();
+
+            for (int i = 0;
+                 i < nombresJugadores.length;
+                 i++) {
+
+                if (!clasificacion.contains(i)) {
+                    restantes.add(i);
+                }
+            }
+
+            restantes.sort(
+                    (indice1, indice2) ->
+                            Integer.compare(
+                                    objetivosJugadores[indice2],
+                                    objetivosJugadores[indice1]
+                            )
+            );
+
+            clasificacion.addAll(restantes);
+
+        } else {
+
+            /*
+             * Para Shanghai usamos obtenerPuntuacionMarcador(),
+             * así el orden también tiene en cuenta los puntos
+             * provisionales del jugador actual.
+             */
+            clasificacion.sort(
+                    (indice1, indice2) ->
+                            Integer.compare(
+                                    obtenerPuntuacionMarcador(indice2),
+                                    obtenerPuntuacionMarcador(indice1)
+                            )
+            );
+        }
+
+        return clasificacion;
+    }
     // Finalización y ResultadoActivity ----------------------------------------
 
     private void finalizarPartida() {
@@ -3023,7 +3164,10 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
     private void mostrarDialogoSalir() {
 
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(
+                this,
+                R.style.TemaDialogoDardos
+        )
                 .setTitle("Salir de la partida")
                 .setMessage(
                         "Puedes conservar la partida para continuarla "
@@ -3043,9 +3187,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
                             partidaFinalizada = true;
 
-                            GestorPartidaEnCurso.eliminarPartida(
-                                    this
-                            );
+                            GestorPartidaEnCurso.eliminarPartida(this);
 
                             volverMainActivity();
                         }

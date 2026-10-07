@@ -1,7 +1,59 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.JuegosDeDardos" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="Base.Theme.JuegosDeDardos"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Colores principales -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorSecondary">@color/gold</item>
+
+        <!-- Fondo general de las ventanas -->
+        <item name="android:windowBackground">@color/blue</item>
+
+        <!-- Permitir colorear las barras del sistema -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+        <!-- Barra de estado superior -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@color/blue</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Barra de navegación inferior -->
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:navigationBarColor">@color/blue</item>
+        <item name="android:navigationBarDividerColor">@color/blue</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
     </style>
+
+
+    <style name="Theme.JuegosDeDardos"
+        parent="Base.Theme.JuegosDeDardos" />
+
+    <style name="TemaDialogoDardos"
+        parent="ThemeOverlay.Material3.MaterialAlertDialog">
+
+        <!-- Fondo del diálogo -->
+        <item name="backgroundTint">@color/blue</item>
+        <item name="colorSurface">@color/blue</item>
+        <item name="colorSurfaceContainerHigh">@color/blue</item>
+
+        <!-- Título y texto del diálogo -->
+        <item name="colorOnSurface">@android:color/white</item>
+        <item name="colorOnSurfaceVariant">@android:color/white</item>
+
+        <!-- Color de los botones -->
+        <item name="colorPrimary">@color/gold</item>
+
+    </style>
+
+
+    <style name="BotonPrincipal">
+        <item name="android:backgroundTint">@color/gold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

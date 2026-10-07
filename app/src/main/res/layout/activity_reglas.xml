@@ -13,13 +13,15 @@
     tools:context="activities.ReglasActivity">
 
 
+    <!-- ===================================================== -->
     <!-- TÍTULO -->
+    <!-- ===================================================== -->
 
     <TextView
         android:id="@+id/txtTituloReglas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:text="Reglas de juego"
         android:textColor="@color/gold"
         android:textSize="28sp"
@@ -29,105 +31,119 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <!-- ===================================================== -->
     <!-- TEXTO DEL SELECTOR -->
+    <!-- ===================================================== -->
 
     <TextView
         android:id="@+id/txtSeleccionarModo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
         android:text="Selecciona un modo de juego"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTituloReglas" />
+        app:layout_constraintTop_toBottomOf="@id/txtTituloReglas" />
 
 
-    <!-- SPINNER -->
+    <!-- ===================================================== -->
+    <!-- SELECTOR DE MODO -->
+    <!-- ===================================================== -->
 
-    <Spinner
-        android:id="@+id/spinnerModoReglas"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSelectorModo"
         android:layout_width="0dp"
         android:layout_height="54dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/blue_ligth"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:spinnerMode="dropdown"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSeleccionarModo" />
+        app:layout_constraintTop_toBottomOf="@id/txtSeleccionarModo"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
+
+        <Spinner
+            android:id="@+id/spinnerModoReglas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:spinnerMode="dropdown" />
+
+    </com.google.android.material.card.MaterialCardView>
 
 
-    <!-- BOTÓN VOLVER -->
-
-    <Button
-        android:id="@+id/btnVolverMenu"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="18dp"
-        android:backgroundTint="@color/gold"
-        android:text="Volver al menú principal"
-        android:textAllCaps="false"
-        android:textColor="#2B41C5"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
+    <!-- ===================================================== -->
     <!-- CONTENEDOR DE LAS REGLAS -->
+    <!-- ===================================================== -->
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardReglas"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="#F2FFFFFF"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnVolverMenu"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toTopOf="@id/btnVolverMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerModoReglas">
+        app:layout_constraintTop_toBottomOf="@id/cardSelectorModo"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
 
-
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollReglas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/blue_ligth"
                 android:padding="18dp">
-
 
                 <TextView
                     android:id="@+id/txtReglas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:lineSpacingExtra="4dp"
-                    android:textColor="#212121"
-                    android:textSize="16sp"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
                     tools:text="Aquí aparecerán las reglas del modo seleccionado." />
-
 
             </LinearLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
+
+    <!-- ===================================================== -->
+    <!-- BOTÓN VOLVER -->
+    <!-- ===================================================== -->
+
+    <Button
+        android:id="@+id/btnVolverMenu"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="47dp"
+        android:backgroundTint="@color/gold"
+        android:text="Volver al menú principal"
+        android:textAllCaps="false"
+        android:textColor="@color/blue"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -175,7 +175,7 @@
         android:id="@+id/btnVolverMenuAcercaDe"
         android:layout_width="0dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="45dp"
         android:backgroundTint="@color/gold"
         android:text="Volver al menú principal"
         android:textAllCaps="false"

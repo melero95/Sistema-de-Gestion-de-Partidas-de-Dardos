@@ -16,7 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -327,26 +327,41 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     private void aplicarConfiguracionSegunModo(String modoJuego) {
         boolean esPuntos = MODO_301.equals(modoJuego) || MODO_501.equals(modoJuego);
 
+        // Cierre con doble solo disponible en 301 y 501.
         switchCierreDoble.setVisibility(esPuntos ? View.VISIBLE : View.GONE);
 
+        // Mantener multiplicador disponible en Puntos y Cricket.
         boolean admiteMultiplicadorPersistente = esPuntos || esModoCricket(modoJuego);
         switchMantenerMultiplicador.setVisibility(
-                admiteMultiplicadorPersistente ? View.VISIBLE : View.GONE);
+                admiteMultiplicadorPersistente ? View.VISIBLE : View.GONE
+        );
 
+        // Estos ajustes están disponibles en todos los modos.
         txtTituloNumeroDardos.setVisibility(View.VISIBLE);
         spnNumeroDardos.setVisibility(View.VISIBLE);
         switchOrdenAleatorio.setVisibility(View.VISIBLE);
 
+        // Configuración de rondas según el modo.
         if (MODO_DOUBLE_DOWN.equals(modoJuego)) {
             bloquearRondas(RONDAS_DOUBLE_DOWN);
+
         } else if (MODO_AROUND_CLOCK.equals(modoJuego)) {
             bloquearRondas(RONDAS_AROUND_CLOCK);
+
         } else if (MODO_SHANGHAI.equals(modoJuego)) {
             bloquearRondas(RONDAS_SHANGHAI);
+
+        } else if (esPuntos) {
+            maxRondas = RONDAS_ESTANDAR;
+            actualizarTextoRondas();
+            desbloquearRondas();
+
         } else {
+            // Cricket y Cut Throat mantienen las rondas editables.
             desbloquearRondas();
         }
 
+        // Cricket necesita al menos dos jugadores.
         if (esModoCricket(modoJuego)) {
             asegurarMinimoDosJugadores();
             intentarEvitarJugadorRepetidoEnCricket();
@@ -475,7 +490,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     }
 
     private void configurarSelectorColor(ImageButton btnColorJugador, TextView txtNombreJugador) {
-        btnColorJugador.setOnClickListener(v -> new AlertDialog.Builder(this)
+        btnColorJugador.setOnClickListener(v -> new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
                 .setTitle("Selecciona un color")
                 .setItems(nombresColores, (dialog, which) -> {
                     int colorRecurso = coloresJugadores[which];
@@ -703,9 +718,13 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     }
 
     private void mostrarDialogoMuchasRondas() {
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
                 .setTitle("Muchas rondas")
-                .setMessage("Has seleccionado " + maxRondas + " rondas. La partida puede durar bastante tiempo.\n\n¿Deseas continuar?")
+                .setMessage(
+                        "Has seleccionado " + maxRondas +
+                                " rondas. La partida puede durar bastante tiempo.\n\n" +
+                                "¿Deseas continuar?"
+                )
                 .setPositiveButton("Continuar", (dialog, which) -> crearPartida())
                 .setNegativeButton("Cancelar", null)
                 .show();

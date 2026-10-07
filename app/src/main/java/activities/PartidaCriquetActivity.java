@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaCriquet;
@@ -2244,7 +2245,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             }
         }
 
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
                 .setTitle("Marcador")
                 .setMessage(mensaje.toString())
                 .setPositiveButton("CERRAR", null)
@@ -2609,7 +2610,10 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
     private void mostrarDialogoSalir() {
 
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(
+                this,
+                R.style.TemaDialogoDardos
+        )
                 .setTitle("Salir de la partida")
                 .setMessage(
                         "Puedes conservar la partida para continuarla "
@@ -2629,9 +2633,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
                             partidaFinalizada = true;
 
-                            GestorPartidaEnCurso.eliminarPartida(
-                                    this
-                            );
+                            GestorPartidaEnCurso.eliminarPartida(this);
 
                             volverMainActivity();
                         }
@@ -2642,6 +2644,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 )
                 .show();
     }
+
 
     private void volverMainActivity() {
 
