@@ -1,88 +1,100 @@
 package modelos;
 
-import java.util.ArrayList;
+import java.util.UUID;
 
+/**
+ * Datos generales de una partida FINALIZADA, para la tabla PARTIDAS.
+ * No representa el estado de una partida en curso (PartidaEnCurso).
+ * Los participantes y sus puntuaciones se guardarán en RESULTADOS_PARTIDA.
+ */
 public class Partida {
 
-    private int id;
+    // El ID lo asigna SQLite. Cero significa que aún no está insertada.
+    private long id;
 
-    // Datos de configuración
-    private String modoJuego;
-    private int maxRondas;
+    // Se genera una sola vez y deberá conservarse durante los reintentos de guardado.
+    private String identificadorUnico;
+
+    // Fecha de finalización en milisegundos Unix (System.currentTimeMillis()).
+    private long fecha;
+    private String modo;
+    private int rondasConfiguradas;
+    private int rondasJugadas;
     private int numeroJugadores;
 
-    // Desarrollo de la partida
-    private int rondasJugadas;
-    private boolean finalizada;
+    // Puede ser null si el modo o la regla de finalización no declara ganador.
+    private Long idGanador;
+    private String motivoFinalizacion;
 
-    // Clasificación final
-    private String ganador;
-    private String segundoPuesto;
-    private String tercerPuesto;
-
-    // Fechas
-    private String fechaInicio;
-    private String fechaFin;
-
-    // Participantes
-    private ArrayList<Jugador> jugadores;
+    // Configuración completa de la partida, en formato JSON versionado.
+    private String configuracionJson;
 
     public Partida() {
-        jugadores = new ArrayList<>();
+        identificadorUnico = UUID.randomUUID().toString();
+        fecha = System.currentTimeMillis();
     }
 
-    public Partida(int id, String modoJuego, int maxRondas) {
-
-        this.id = id;
-        this.modoJuego = modoJuego;
-        this.maxRondas = maxRondas;
-
-        this.numeroJugadores = 0;
-        this.rondasJugadas = 0;
-
-        this.finalizada = false;
-
-        this.ganador = "";
-        this.segundoPuesto = "";
-        this.tercerPuesto = "";
-
-        this.fechaInicio = "";
-        this.fechaFin = "";
-
-        this.jugadores = new ArrayList<>();
+    public Partida(String modo, int rondasConfiguradas, int rondasJugadas,
+                   int numeroJugadores, Long idGanador,
+                   String motivoFinalizacion, String configuracionJson) {
+        this();
+        setModo(modo);
+        setRondasConfiguradas(rondasConfiguradas);
+        setRondasJugadas(rondasJugadas);
+        setNumeroJugadores(numeroJugadores);
+        setIdGanador(idGanador);
+        setMotivoFinalizacion(motivoFinalizacion);
+        setConfiguracionJson(configuracionJson);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("El ID de partida no puede ser negativo");
+        }
         this.id = id;
     }
 
-
-    public String getModoJuego() {
-        return modoJuego;
+    public String getIdentificadorUnico() {
+        return identificadorUnico;
     }
 
-    public void setModoJuego(String modoJuego) {
-        this.modoJuego = modoJuego;
+    /** Solo cambiar al reconstruir una partida leída de SQLite. */
+    public void setIdentificadorUnico(String identificadorUnico) {
+        this.identificadorUnico = textoObligatorio(identificadorUnico, "identificador único");
     }
 
-    public int getMaxRondas() {
-        return maxRondas;
+    public long getFecha() {
+        return fecha;
     }
 
-    public void setMaxRondas(int maxRondas) {
-        this.maxRondas = maxRondas;
+    public void setFecha(long fecha) {
+        if (fecha <= 0) {
+            throw new IllegalArgumentException("La fecha debe ser positiva");
+        }
+        this.fecha = fecha;
     }
 
-    public int getNumeroJugadores() {
-        return numeroJugadores;
+    public String getModo() {
+        return modo;
     }
 
-    public void setNumeroJugadores(int numeroJugadores) {
-        this.numeroJugadores = numeroJugadores;
+    public void setModo(String modo) {
+        this.modo = textoObligatorio(modo, "modo de juego");
+    }
+
+    public int getRondasConfiguradas() {
+        return rondasConfiguradas;
+    }
+
+    public void setRondasConfiguradas(int rondasConfiguradas) {
+        if (rondasConfiguradas < 0) {
+            throw new IllegalArgumentException("Las rondas configuradas no pueden ser negativas");
+        }
+        this.rondasConfiguradas = rondasConfiguradas;
     }
 
     public int getRondasJugadas() {
@@ -90,62 +102,55 @@ public class Partida {
     }
 
     public void setRondasJugadas(int rondasJugadas) {
+        if (rondasJugadas < 0) {
+            throw new IllegalArgumentException("Las rondas jugadas no pueden ser negativas");
+        }
         this.rondasJugadas = rondasJugadas;
     }
 
-    public boolean isFinalizada() {
-        return finalizada;
+    public int getNumeroJugadores() {
+        return numeroJugadores;
     }
 
-    public void setFinalizada(boolean finalizada) {
-        this.finalizada = finalizada;
+    public void setNumeroJugadores(int numeroJugadores) {
+        if (numeroJugadores < 1 || numeroJugadores > 6) {
+            throw new IllegalArgumentException("La partida debe tener entre 1 y 6 jugadores");
+        }
+        this.numeroJugadores = numeroJugadores;
     }
 
-    public String getGanador() {
-        return ganador;
+    public Long getIdGanador() {
+        return idGanador;
     }
 
-    public void setGanador(String ganador) {
-        this.ganador = ganador;
+    public void setIdGanador(Long idGanador) {
+        if (idGanador != null && idGanador <= 0) {
+            throw new IllegalArgumentException("El ID del ganador debe ser positivo");
+        }
+        this.idGanador = idGanador;
     }
 
-    public String getSegundoPuesto() {
-        return segundoPuesto;
+    public String getMotivoFinalizacion() {
+        return motivoFinalizacion;
     }
 
-    public void setSegundoPuesto(String segundoPuesto) {
-        this.segundoPuesto = segundoPuesto;
+    public void setMotivoFinalizacion(String motivoFinalizacion) {
+        this.motivoFinalizacion = textoObligatorio(motivoFinalizacion, "motivo de finalización");
     }
 
-    public String getTercerPuesto() {
-        return tercerPuesto;
+    public String getConfiguracionJson() {
+        return configuracionJson;
     }
 
-    public void setTercerPuesto(String tercerPuesto) {
-        this.tercerPuesto = tercerPuesto;
+    public void setConfiguracionJson(String configuracionJson) {
+        // La estructura exacta del JSON se definirá en la fase 04.
+        this.configuracionJson = textoObligatorio(configuracionJson, "configuración JSON");
     }
 
-    public String getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public String getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
-    public ArrayList<Jugador> getJugadores() {
-        return jugadores;
-    }
-
-    public void setJugadores(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
+    private static String textoObligatorio(String valor, String campo) {
+        if (valor == null || valor.trim().isEmpty()) {
+            throw new IllegalArgumentException("Falta el campo obligatorio: " + campo);
+        }
+        return valor.trim();
     }
 }

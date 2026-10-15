@@ -1,39 +1,66 @@
 package modelos;
 
+import java.util.Locale;
+
+/**
+ * Datos propios de un jugador registrado.
+ * Las estadísticas históricas se calculan mediante consultas a SQLite.
+ */
 public class Jugador {
 
-    private int id;
+    // Id = 0: jugador nuevo, todavía no insertado en SQLite.
+    private long id;
     private String nombre;
+    private boolean activo = true;
 
-    private int partidasJugadas;
-    private int victorias;
-    private int derrotas;
-
-    private int puntuacionMaximaTirada;
-    private int puntuacionMaximaTurno;
-
-    private int totalPuntosAnotados;
-    private int totalDardosLanzados;
-
-    private String colorPreferido;
-
-    private boolean activo;
+    // Color ARGB de Android (valor real), no identificador R.color.
+    private int color;
 
     public Jugador() {
+        // Necesario para ciertas operaciones de serialización.
     }
 
-    public Jugador(int id, String nombre, String colorPreferido) {
+    public Jugador(String nombre, int color) {
+        this(0L, nombre, color, true);
+    }
+
+    public Jugador(long id, String nombre, int color, boolean activo) {
+        setId(id);
+        setNombre(nombre);
+        this.color = color;
+        this.activo = activo;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("El ID del jugador no puede ser negativo");
+        }
         this.id = id;
-        this.nombre = nombre;
-        this.colorPreferido = colorPreferido;
-        this.partidasJugadas = 0;
-        this.victorias = 0;
-        this.derrotas = 0;
-        this.puntuacionMaximaTirada = 0;
-        this.puntuacionMaximaTurno = 0;
-        this.totalPuntosAnotados = 0;
-        this.totalDardosLanzados = 0;
-        this.activo = true;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    /** Normaliza espacios y conserva el nombre en mayúsculas. */
+    public void setNombre(String nombre) {
+        if (nombre == null) {
+            throw new IllegalArgumentException("El nombre del jugador no puede ser nulo");
+        }
+
+        String nombreNormalizado = nombre.trim()
+                .replaceAll("\\s+", " ")
+                .toUpperCase(Locale.ROOT);
+
+        if (nombreNormalizado.isEmpty()) {
+            throw new IllegalArgumentException("El nombre del jugador no puede estar vacío");
+        }
+
+        this.nombre = nombreNormalizado;
     }
 
     public boolean isActivo() {
@@ -44,93 +71,16 @@ public class Jugador {
         this.activo = activo;
     }
 
-    public String getColorPreferido() {
-        return colorPreferido;
+    public int getColor() {
+        return color;
     }
 
-    public void setColorPreferido(String colorPreferido) {
-        this.colorPreferido = colorPreferido;
-    }
-
-    public int getDerrotas() {
-        return derrotas;
-    }
-
-    public void setDerrotas(int derrotas) {
-        this.derrotas = derrotas;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getPartidasJugadas() {
-        return partidasJugadas;
-    }
-
-    public void setPartidasJugadas(int partidasJugadas) {
-        this.partidasJugadas = partidasJugadas;
-    }
-
-    public int getPuntuacionMaximaTirada() {
-        return puntuacionMaximaTirada;
-    }
-
-    public void setPuntuacionMaximaTirada(int puntuacionMaximaTirada) {
-        this.puntuacionMaximaTirada = puntuacionMaximaTirada;
-    }
-
-    public int getPuntuacionMaximaTurno() {
-        return puntuacionMaximaTurno;
-    }
-
-    public void setPuntuacionMaximaTurno(int puntuacionMaximaTurno) {
-        this.puntuacionMaximaTurno = puntuacionMaximaTurno;
-    }
-
-    public int getTotalDardosLanzados() {
-        return totalDardosLanzados;
-    }
-
-    public void setTotalDardosLanzados(int totalDardosLanzados) {
-        this.totalDardosLanzados = totalDardosLanzados;
-    }
-
-    public int getTotalPuntosAnotados() {
-        return totalPuntosAnotados;
-    }
-
-    public void setTotalPuntosAnotados(int totalPuntosAnotados) {
-        this.totalPuntosAnotados = totalPuntosAnotados;
-    }
-
-    public int getVictorias() {
-        return victorias;
-    }
-
-    public void setVictorias(int victorias) {
-        this.victorias = victorias;
+    public void setColor(int color) {
+        this.color = color;
     }
 
     @Override
     public String toString() {
-        return "Jugador{" +
-                "nombre='" + nombre + '\'' +
-                ", colorPreferido='" + colorPreferido + '\'' +
-                ", victorias=" + victorias +
-                ", partidasJugadas=" + partidasJugadas +
-                '}';
+        return nombre == null ? "" : nombre;
     }
 }
