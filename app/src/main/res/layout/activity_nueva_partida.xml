@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,13 +8,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     tools:context="activities.ConfigurarNuevaPartidaActivity">
 
     <TextView
         android:id="@+id/txtTituloNuevaPartida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="36dp"
         android:text="Nueva partida"
         android:textColor="@color/gold"
         android:textSize="28sp"
@@ -22,166 +25,240 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/txtSubtituloNuevaPartida"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Elige el modo, los jugadores y las opciones de la partida"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTituloNuevaPartida" />
+
     <ScrollView
         android:id="@+id/scrollOpcionesPartida"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="14dp"
+        android:clipToPadding="false"
         android:fillViewport="true"
+        android:paddingBottom="8dp"
         app:layout_constraintBottom_toTopOf="@id/btnCrearPartida"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtTituloNuevaPartida">
+        app:layout_constraintTop_toBottomOf="@id/txtSubtituloNuevaPartida">
 
         <LinearLayout
             android:id="@+id/contenedorOpcionesPartida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Modo de juego"
-                android:textColor="@color/gold"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp">
 
-            <Spinner
-                android:id="@+id/spnModoJuego"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Máximo de rondas"
-                android:textColor="@color/gold"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/contenedorRondas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/btnRestarRonda"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="-"
-                    android:textColor="@color/gold"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtMaxRondas"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="10"
-                    android:textColor="@android:color/white"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/btnSumarRonda"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="+"
-                    android:textColor="@color/gold"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/txtTituloJugadores"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:text="Jugadores"
-                android:textColor="@color/gold"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/contenedorJugadores"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical" />
-
-            <Button
-                android:id="@+id/btnAnadirJugador"
-                style="@style/BotonPrincipal"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="+ Añadir jugador" />
-            <Button
-                android:id="@+id/btnUltimaConfiguracion"
-                style="@style/BotonPrincipal"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:textSize="15dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="12dp"
-                android:text="Usar última configuración" />
-
-            <Button
-                android:id="@+id/btnMostrarAjustesAvanzados"
-                style="@style/BotonPrincipal"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
-                android:text="Más ajustes ▼"
-                android:textSize="14sp" />
-
-            <LinearLayout
-                android:id="@+id/contenedorAjustesAvanzados"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <Switch android:id="@+id/switchCierreDoble" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:text="Cerrar la partida con un doble"
-                    android:textColor="@android:color/white" />
-                <Switch
-                    android:id="@+id/switchMantenerMultiplicador"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Mantener multiplicador tras cada dardo"
-                    android:textColor="@android:color/white" />
-                <TextView android:id="@+id/txtTituloNumeroDardos" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginTop="12dp"
-                    android:text="Dardos por turno" android:textColor="@color/gold" android:textStyle="bold" />
-                <Spinner android:id="@+id/spnNumeroDardos" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <Switch android:id="@+id/switchOrdenAleatorio" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginTop="12dp"
-                    android:text="Orden de jugadores aleatorio" android:textColor="@android:color/white" />
-            </LinearLayout>
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Configuración de partida"
+                        android:textColor="@color/gold"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/TituloSeccionAjustes"
+                        android:layout_marginTop="16dp"
+                        android:text="Modo de juego" />
+
+                    <Spinner
+                        android:id="@+id/spnModoJuego"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="3dp"
+                        android:backgroundTint="@color/gold" />
+
+                    <TextView
+                        style="@style/TituloSeccionAjustes"
+                        android:layout_marginTop="12dp"
+                        android:text="Máximo de rondas" />
+
+                    <LinearLayout
+                        android:id="@+id/contenedorRondas"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btnRestarRonda"
+                            android:layout_width="48dp"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:text="−"
+                            android:textColor="@color/gold"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtMaxRondas"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="10"
+                            android:textColor="@android:color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btnSumarRonda"
+                            android:layout_width="48dp"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:text="+"
+                            android:textColor="@color/gold"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:id="@+id/txtTituloJugadores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jugadores"
+                        android:textColor="@color/gold"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/contenedorJugadores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical" />
+
+                    <Button
+                        android:id="@+id/btnAnadirJugador"
+                        style="@style/BotonPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="12dp"
+                        android:text="+ Añadir jugador"
+                        android:textAllCaps="false"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnUltimaConfiguracion"
+                        style="@style/BotonPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Usar última configuración"
+                        android:textAllCaps="false"
+                        android:textSize="15sp" />
+
+                    <Button
+                        android:id="@+id/btnMostrarAjustesAvanzados"
+                        style="@style/BotonPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Más ajustes ▼"
+                        android:textAllCaps="false"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:id="@+id/contenedorAjustesAvanzados"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="#3310174F"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:visibility="gone">
+
+                        <Switch
+                            android:id="@+id/switchCierreDoble"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/gold"
+                            android:text="Cerrar la partida con un doble"
+                            android:textColor="@android:color/white" />
+
+                        <Switch
+                            android:id="@+id/switchMantenerMultiplicador"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@color/gold"
+                            android:text="Mantener multiplicador tras cada dardo"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/txtTituloNumeroDardos"
+                            style="@style/TituloSeccionAjustes"
+                            android:layout_marginTop="14dp"
+                            android:text="Dardos por turno" />
+
+                        <Spinner
+                            android:id="@+id/spnNumeroDardos"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/gold" />
+
+                        <Switch
+                            android:id="@+id/switchOrdenAleatorio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:buttonTint="@color/gold"
+                            android:text="Orden de jugadores aleatorio"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 
@@ -189,27 +266,28 @@
         android:id="@+id/btnCrearPartida"
         style="@style/BotonPrincipal"
         android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="50dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="45dp"
         android:text="Crear partida"
-        android:textSize="15dp"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnCancelarPartida"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <Button
         android:id="@+id/btnCancelarPartida"
         style="@style/BotonPrincipal"
         android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="50dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="45dp"
         android:text="Cancelar"
-        android:textSize="15dp"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnCrearPartida" />

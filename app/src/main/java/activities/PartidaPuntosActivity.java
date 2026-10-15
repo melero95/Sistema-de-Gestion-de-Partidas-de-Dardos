@@ -2389,45 +2389,65 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
     //Marcador emergente ----------------------------------------------------------
 
+    //Marcador emergente ----------------------------------------------------------
+
     private void mostrarDialogoMarcador() {
 
         StringBuilder mensaje =
                 new StringBuilder();
 
-        ArrayList<Integer> clasificacion =
-                construirClasificacionFinal();
+        //Mantener siempre el orden original de tirada
+        for (int i = 0; i < numeroJugadores; i++) {
 
-        for (int posicion = 0;
-             posicion < clasificacion.size();
-             posicion++) {
+            int puntuacionMostrada =
+                    puntuacionesJugadores[i];
 
-            int indiceJugador =
-                    clasificacion.get(posicion);
+            /*
+             * Si es el jugador que está tirando actualmente,
+             * mostrar también los puntos descontados durante
+             * el turno aunque todavía no haya terminado.
+             */
+            if (i == jugadorActual
+                    && !partidaFinalizada
+                    && !jugadoresFinalizados[i]) {
 
-            mensaje.append(posicion + 1)
+                puntuacionMostrada =
+                        Math.max(
+                                puntuacionesJugadores[i]
+                                        - puntosTurnoActual,
+                                0
+                        );
+            }
+
+            mensaje.append(i + 1)
                     .append(". ")
-                    .append(nombresJugadores.get(indiceJugador))
+                    .append(nombresJugadores.get(i))
                     .append(": ")
-                    .append(puntuacionesJugadores[indiceJugador])
+                    .append(puntuacionMostrada)
                     .append(" puntos");
 
-            if (jugadoresFinalizados[indiceJugador]) {
+            if (jugadoresFinalizados[i]) {
+
                 mensaje.append(" - FINALIZADO");
             }
 
-            if (indiceJugador == jugadorActual
+            if (i == jugadorActual
                     && !partidaFinalizada
-                    && !jugadoresFinalizados[indiceJugador]) {
+                    && !jugadoresFinalizados[i]) {
 
                 mensaje.append(" - TURNO ACTUAL");
             }
 
-            if (posicion < clasificacion.size() - 1) {
+            if (i < numeroJugadores - 1) {
+
                 mensaje.append("\n");
             }
         }
 
-        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+        new MaterialAlertDialogBuilder(
+                this,
+                R.style.TemaDialogoDardos
+        )
                 .setTitle("Marcador")
                 .setMessage(mensaje.toString())
                 .setPositiveButton("CERRAR", null)

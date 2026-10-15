@@ -14,7 +14,7 @@
         android:layout_height="32dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_menu_manage"
+        android:src="@drawable/ic_settings"
         app:tint="@color/gold" />
 
     <TextView
