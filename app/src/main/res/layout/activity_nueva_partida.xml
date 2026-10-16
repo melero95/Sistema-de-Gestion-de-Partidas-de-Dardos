@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,49 +7,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
     tools:context="activities.ConfigurarNuevaPartidaActivity">
 
     <TextView
         android:id="@+id/txtTituloNuevaPartida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="Nueva partida"
         android:textColor="@color/gold"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtSubtituloNuevaPartida"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:text="Elige el modo, los jugadores y las opciones de la partida"
         android:textColor="@android:color/white"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtTituloNuevaPartida" />
 
     <ScrollView
         android:id="@+id/scrollOpcionesPartida"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="9dp"
         android:clipToPadding="false"
         android:fillViewport="true"
-        android:paddingBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@id/btnCrearPartida"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="2dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtSubtituloNuevaPartida">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSubtituloNuevaPartida"
+        app:layout_constraintBottom_toTopOf="@id/btnCrearPartida">
 
         <LinearLayout
             android:id="@+id/contenedorOpcionesPartida"
@@ -58,10 +57,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- TARJETA 1: CONFIGURACION GENERAL -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardConfiguracionPartida"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="9dp"
                 app:cardBackgroundColor="#CC1A237E"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="5dp"
@@ -72,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="18dp">
+                    android:padding="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -84,25 +85,25 @@
 
                     <TextView
                         style="@style/TituloSeccionAjustes"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="9dp"
                         android:text="Modo de juego" />
 
                     <Spinner
                         android:id="@+id/spnModoJuego"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="44dp"
                         android:layout_marginTop="3dp"
                         android:backgroundTint="@color/gold" />
 
                     <TextView
                         style="@style/TituloSeccionAjustes"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="5dp"
                         android:text="Máximo de rondas" />
 
                     <LinearLayout
                         android:id="@+id/contenedorRondas"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="44dp"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -126,7 +127,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="10"
+                            android:text="15"
                             android:textColor="@android:color/white"
                             android:textSize="22sp"
                             android:textStyle="bold" />
@@ -147,10 +148,12 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- TARJETA 2: SOLO PARTICIPANTES Y GESTION DE JUGADORES -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardJugadores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="9dp"
                 app:cardBackgroundColor="#CC1A237E"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="5dp"
@@ -161,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="18dp">
+                    android:padding="12dp">
 
                     <TextView
                         android:id="@+id/txtTituloJugadores"
@@ -172,29 +175,85 @@
                         android:textSize="19sp"
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Pulsa el nombre para elegir un jugador activo."
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txtAvisoSinJugadores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="No hay jugadores activos. Pulsa Gestionar jugadores para registrar o reactivar uno."
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
                     <LinearLayout
                         android:id="@+id/contenedorJugadores"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:orientation="vertical" />
 
                     <Button
                         android:id="@+id/btnAnadirJugador"
                         style="@style/BotonPrincipal"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="12dp"
-                        android:text="+ Añadir jugador"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="5dp"
+                        android:text="+ Añadir participante"
                         android:textAllCaps="false"
                         android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnGestionarJugadores"
+                        style="@style/BotonPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="6dp"
+                        android:text="Gestionar jugadores"
+                        android:textAllCaps="false"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- TARJETA 3: ULTIMA CONFIGURACION Y AJUSTES AVANZADOS -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardOpcionesAdicionales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Opciones adicionales"
+                        android:textColor="@color/gold"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/btnUltimaConfiguracion"
                         style="@style/BotonPrincipal"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="5dp"
                         android:text="Usar última configuración"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
@@ -203,8 +262,8 @@
                         android:id="@+id/btnMostrarAjustesAvanzados"
                         style="@style/BotonPrincipal"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="6dp"
                         android:text="Más ajustes ▼"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
@@ -213,7 +272,7 @@
                         android:id="@+id/contenedorAjustesAvanzados"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="5dp"
                         android:background="#3310174F"
                         android:orientation="vertical"
                         android:padding="12dp"
@@ -231,7 +290,7 @@
                             android:id="@+id/switchMantenerMultiplicador"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="5dp"
                             android:buttonTint="@color/gold"
                             android:text="Mantener multiplicador tras cada dardo"
                             android:textColor="@android:color/white" />
@@ -239,20 +298,20 @@
                         <TextView
                             android:id="@+id/txtTituloNumeroDardos"
                             style="@style/TituloSeccionAjustes"
-                            android:layout_marginTop="14dp"
+                            android:layout_marginTop="5dp"
                             android:text="Dardos por turno" />
 
                         <Spinner
                             android:id="@+id/spnNumeroDardos"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
+                            android:layout_height="44dp"
                             android:backgroundTint="@color/gold" />
 
                         <Switch
                             android:id="@+id/switchOrdenAleatorio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="6dp"
                             android:buttonTint="@color/gold"
                             android:text="Orden de jugadores aleatorio"
                             android:textColor="@android:color/white" />
@@ -266,9 +325,9 @@
         android:id="@+id/btnCrearPartida"
         style="@style/BotonPrincipal"
         android:layout_width="0dp"
-        android:layout_height="52dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="6dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="28dp"
         android:text="Crear partida"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -281,9 +340,9 @@
         android:id="@+id/btnCancelarPartida"
         style="@style/BotonPrincipal"
         android:layout_width="0dp"
-        android:layout_height="52dp"
+        android:layout_height="48dp"
         android:layout_marginStart="6dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="28dp"
         android:text="Cancelar"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -291,5 +350,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnCrearPartida" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

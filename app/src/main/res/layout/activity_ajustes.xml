@@ -46,6 +46,15 @@
             <TextView style="@style/TituloSeccionAjustes" android:text="PARTIDA PREDETERMINADA" />
             <TextView style="@style/EtiquetaAjustes" android:text="Jugador predeterminado" />
             <Spinner android:id="@+id/spnJugadorPredeterminado" style="@style/SpinnerAjustes" />
+            <TextView
+                android:id="@+id/txtAvisoJugadoresAjustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="No hay jugadores activos. Puedes registrarlos o activarlos desde Gestionar jugadores."
+                android:textColor="@color/gold"
+                android:textSize="12sp"
+                android:visibility="gone" />
             <TextView style="@style/EtiquetaAjustes" android:text="Modo de juego preferido" />
             <Spinner android:id="@+id/spnModoPredeterminado" style="@style/SpinnerAjustes" />
             <TextView style="@style/EtiquetaAjustes" android:text="Dardos por turno" />
@@ -68,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Estas preferencias quedan guardadas. Su aplicación al resto de pantallas se realizará más adelante."
+                android:text="El jugador predeterminado se aplicará al configurar nuevas partidas. Las demás preferencias se conservarán para su aplicación progresiva."
                 android:textColor="#B3FFFFFF"
                 android:textSize="12sp" />
         </LinearLayout>

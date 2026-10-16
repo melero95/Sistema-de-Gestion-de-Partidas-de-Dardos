@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menuJugadores"
+        android:icon="@drawable/icono_jugadores"
+        android:title="Jugadores" />
+
+    <item
         android:id="@+id/menuEstadisticas"
         android:icon="@drawable/icono_estadisticas"
         android:title="Estadísticas" />

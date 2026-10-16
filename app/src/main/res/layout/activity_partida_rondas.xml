@@ -43,10 +43,10 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginTop="5dp"
-            app:cardBackgroundColor="#E6101D35"
-            app:cardCornerRadius="3dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#FF168CFF"
+            app:cardBackgroundColor="#CC1A237E"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp"
+            app:strokeColor="@color/gold"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -105,10 +105,10 @@
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_marginTop="5dp"
-            app:cardBackgroundColor="#E6101D35"
-            app:cardCornerRadius="3dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#FF168CFF"
+            app:cardBackgroundColor="#CC1A237E"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp"
+            app:strokeColor="@color/gold"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -157,7 +157,7 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toTopOf="@id/contenedorBotoneraRondas"
+        app:layout_constraintBottom_toTopOf="@id/marcoBotoneraRondas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contenedorCabecera">
@@ -176,275 +176,285 @@
             <!-- MARCADORES -->
             <!-- ================================================= -->
 
-            <LinearLayout
-                android:id="@+id/contenedorMarcadores"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/marcoMarcadoresRondas"
                 android:layout_width="match_parent"
                 android:layout_height="145dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <!-- Columna izquierda -->
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp">
                 <LinearLayout
-                    android:id="@+id/columnaJugadoresIzquierda"
-                    android:layout_width="0dp"
+                    android:id="@+id/contenedorMarcadores"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingEnd="3dp">
-
-                    <!-- Jugador 1 -->
+                    android:gravity="center"
+                    android:orientation="horizontal">
+    
+                    <!-- Columna izquierda -->
                     <LinearLayout
-                        android:id="@+id/tarjetaJugador1"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:id="@+id/columnaJugadoresIzquierda"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingEnd="3dp">
+    
+                        <!-- Jugador 1 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+    
+                            <TextView
+                                android:id="@+id/txtNombreJugador1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Marcos"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+    
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="120"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+    
+                        </LinearLayout>
+    
+                        <!-- Jugador 2 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+    
+                            <TextView
+                                android:id="@+id/txtNombreJugador2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Javier"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+    
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="95"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+    
+                        </LinearLayout>
+    
+                        <!-- Jugador adicional izquierdo -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:alpha="0.35"
+                            android:enabled="false"
+                            android:padding="1dp"
+                            android:visibility="visible">
+    
+                            <TextView
+                                android:id="@+id/txtNombreJugador5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Jugador 5"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+    
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+    
+                        </LinearLayout>
+    
+                    </LinearLayout>
+    
+                    <!-- Jugador actual -->
+                    <LinearLayout
+                        android:id="@+id/tarjetaJugadorActual"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="2.15"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="1dp">
-
+                        android:padding="4dp">
+    
                         <TextView
-                            android:id="@+id/txtNombreJugador1"
+                            android:id="@+id/txtNombreJugadorActual"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="Marcos"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
+                            android:text="Jugador actual"
+                            android:textColor="#168BFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+    
                         <TextView
-                            android:id="@+id/txtPuntuacionJugador1"
+                            android:id="@+id/txtPuntuacionJugadorActual"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:includeFontPadding="false"
                             android:text="120"
                             android:textColor="#FFFFFF"
-                            android:textSize="21sp"
+                            android:textSize="48sp"
                             android:textStyle="bold" />
-
+    
                     </LinearLayout>
-
-                    <!-- Jugador 2 -->
+    
+                    <!-- Columna derecha -->
                     <LinearLayout
-                        android:id="@+id/tarjetaJugador2"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:id="@+id/columnaJugadoresDerecha"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador2"
+                        android:paddingStart="3dp">
+    
+                        <!-- Jugador 3 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador3"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Javier"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="95"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- Jugador adicional izquierdo -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:alpha="0.35"
-                        android:enabled="false"
-                        android:padding="1dp"
-                        android:visibility="visible">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador5"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+    
+                            <TextView
+                                android:id="@+id/txtNombreJugador3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Ana"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+    
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="80"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+    
+                        </LinearLayout>
+    
+                        <!-- Jugador 4 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador4"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Jugador 5"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="0"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
+                            android:orientation="vertical"
+                            android:padding="1dp">
+    
+                            <TextView
+                                android:id="@+id/txtNombreJugador4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Sofía"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+    
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="60"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+    
+                        </LinearLayout>
+    
+                        <!-- Jugador adicional derecho -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador6"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:alpha="0.35"
+                            android:enabled="false"
+                            android:padding="1dp"
+                            android:visibility="visible">
+    
+                            <TextView
+                                android:id="@+id/txtNombreJugador6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Jugador 6"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+    
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+    
+                        </LinearLayout>
+    
                     </LinearLayout>
-
+    
                 </LinearLayout>
-
-                <!-- Jugador actual -->
-                <LinearLayout
-                    android:id="@+id/tarjetaJugadorActual"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="3dp"
-                    android:layout_weight="2.15"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:id="@+id/txtNombreJugadorActual"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:text="Jugador actual"
-                        android:textColor="#168BFF"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtPuntuacionJugadorActual"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:includeFontPadding="false"
-                        android:text="120"
-                        android:textColor="#FFFFFF"
-                        android:textSize="48sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <!-- Columna derecha -->
-                <LinearLayout
-                    android:id="@+id/columnaJugadoresDerecha"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingStart="3dp">
-
-                    <!-- Jugador 3 -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador3"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Ana"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="80"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- Jugador 4 -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador4"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Sofía"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="60"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- Jugador adicional derecho -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador6"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:alpha="0.35"
-                        android:enabled="false"
-                        android:padding="1dp"
-                        android:visibility="visible">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Jugador 6"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="0"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- ================================================= -->
             <!-- INFORMACIÓN DE LA RONDA -->
@@ -455,10 +465,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                app:cardBackgroundColor="#E6102A51"
-                app:cardCornerRadius="3dp"
-                app:cardElevation="2dp"
-                app:strokeColor="#FF168CFF"
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/gold"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -757,43 +767,53 @@
             <!-- OBJETIVO DE LA RONDA -->
             <!-- ================================================= -->
 
-            <LinearLayout
-                android:id="@+id/contenedorObjetivoRonda"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/marcoObjetivoRonda"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="18dp"
                 android:layout_marginBottom="2dp"
-                android:background="@drawable/fondo_objetivo_ronda"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp">
-
-                <TextView
-                    android:id="@+id/txtTituloObjetivo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="OBJETIVO DE LA RONDA"
-                    android:textColor="#168BFF"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtObjetivoRonda"
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:id="@+id/contenedorObjetivoRonda"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
                     android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:text="15"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp">
+    
+                    <TextView
+                        android:id="@+id/txtTituloObjetivo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OBJETIVO DE LA RONDA"
+                        android:textColor="#168BFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+    
+                    <TextView
+                        android:id="@+id/txtObjetivoRonda"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="15"
+                        android:textColor="#FFFFFF"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+    
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
@@ -803,404 +823,424 @@
     <!-- ZONA DE BOTONERAS FIJA -->
     <!-- ===================================================== -->
 
-    <FrameLayout
-        android:id="@+id/contenedorBotoneraRondas"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/marcoBotoneraRondas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="8dp"
-        android:paddingStart="0dp"
-        android:paddingTop="1dp"
-        android:paddingEnd="0dp"
-        android:paddingBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@id/contenedorBotonesInferiores"
+        app:layout_constraintBottom_toTopOf="@id/marcoBotonesInferioresRondas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <!-- ================================================= -->
-        <!-- BOTONERA REDUCIDA -->
-        <!-- Objetivos numéricos concretos y diana -->
-        <!-- ================================================= -->
-
-        <LinearLayout
-            android:id="@+id/contenedorBotoneraReducida"
-            android:layout_width="match_parent"
-            android:layout_height="104dp"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <!-- Primera fila -->
-            <LinearLayout
-                android:id="@+id/filaBotoneraReducida1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnFueraRonda"
-                    style="@style/BotonFuera"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="3dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_weight="1"
-                    android:text="FUERA / 0" />
-
-                <Button
-                    android:id="@+id/btnSimpleRonda"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:background="@drawable/fondo_boton_simple_ronda"
-                    android:backgroundTint="@null"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@null"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_weight="1"
-                    android:text="SIMPLE" />
-
-            </LinearLayout>
-
-            <!-- Segunda fila -->
-            <LinearLayout
-                android:id="@+id/filaBotoneraReducida2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnDobleRonda"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:background="@drawable/fondo_boton_doble_ronda"
-                    android:backgroundTint="@null"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@null"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="3dp"
-                    android:layout_weight="1"
-                    android:text="DOBLE" />
-
-                <Button
-                    android:id="@+id/btnTripleRonda"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:background="@drawable/fondo_boton_triple_ronda"
-                    android:backgroundTint="@null"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@null"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:layout_weight="1"
-                    android:text="TRIPLE" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- ================================================= -->
-        <!-- BOTONERA COMPLETA -->
-        <!-- Rondas de cualquier doble o cualquier triple -->
-        <!-- ================================================= -->
-
-        <LinearLayout
-            android:id="@+id/contenedorBotoneraCompleta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
+        <FrameLayout
+            android:id="@+id/contenedorBotoneraRondas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            tools:visibility="gone">
-
-            <!-- Botón para registrar un fallo -->
-            <Button
-                android:id="@+id/btnFueraNumerico"
-                style="@style/BotonFuera"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="FUERA / 0" />
-
-            <!-- Bull, 20, 19, 18, 17, 16, 15 -->
+            android:paddingStart="4dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="4dp">
+    
+            <!-- ================================================= -->
+            <!-- BOTONERA REDUCIDA -->
+            <!-- Objetivos numéricos concretos y diana -->
+            <!-- ================================================= -->
+    
             <LinearLayout
-                android:id="@+id/filaPuntuaciones1"
+                android:id="@+id/contenedorBotoneraReducida"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnBull"
-                    style="@style/BotonPuntuacionBull"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1.15"
-                    android:text="BULL" />
-
-                <Button
-                    android:id="@+id/btn20"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
+                android:layout_height="104dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+    
+                <!-- Primera fila -->
+                <LinearLayout
+                    android:id="@+id/filaBotoneraReducida1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="20" />
-
-                <Button
-                    android:id="@+id/btn19"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
+                    android:orientation="horizontal">
+    
+                    <Button
+                        android:id="@+id/btnFueraRonda"
+                        style="@style/BotonFuera"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:text="FUERA / 0" />
+    
+                    <Button
+                        android:id="@+id/btnSimpleRonda"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:background="@drawable/fondo_boton_simple_ronda"
+                        android:backgroundTint="@null"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="@null"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:text="SIMPLE" />
+    
+                </LinearLayout>
+    
+                <!-- Segunda fila -->
+                <LinearLayout
+                    android:id="@+id/filaBotoneraReducida2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="2dp"
                     android:layout_weight="1"
-                    android:text="19" />
-
-                <Button
-                    android:id="@+id/btn18"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="18" />
-
-                <Button
-                    android:id="@+id/btn17"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="17" />
-
-                <Button
-                    android:id="@+id/btn16"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="16" />
-
-                <Button
-                    android:id="@+id/btn15"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="15" />
-
+                    android:orientation="horizontal">
+    
+                    <Button
+                        android:id="@+id/btnDobleRonda"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:background="@drawable/fondo_boton_doble_ronda"
+                        android:backgroundTint="@null"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="@null"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="3dp"
+                        android:layout_weight="1"
+                        android:text="DOBLE" />
+    
+                    <Button
+                        android:id="@+id/btnTripleRonda"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:background="@drawable/fondo_boton_triple_ronda"
+                        android:backgroundTint="@null"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="@null"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="3dp"
+                        android:layout_weight="1"
+                        android:text="TRIPLE" />
+    
+                </LinearLayout>
+    
             </LinearLayout>
-
-            <!-- 14, 13, 12, 11, 10, 9, 8 -->
+    
+            <!-- ================================================= -->
+            <!-- BOTONERA COMPLETA -->
+            <!-- Rondas de cualquier doble o cualquier triple -->
+            <!-- ================================================= -->
+    
             <LinearLayout
-                android:id="@+id/filaPuntuaciones2"
+                android:id="@+id/contenedorBotoneraCompleta"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="gone">
+    
+                <!-- Botón para registrar un fallo -->
                 <Button
-                    android:id="@+id/btn14"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="14" />
-
-                <Button
-                    android:id="@+id/btn13"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="13" />
-
-                <Button
-                    android:id="@+id/btn12"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="12" />
-
-                <Button
-                    android:id="@+id/btn11"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="11" />
-
-                <Button
-                    android:id="@+id/btn10"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="10" />
-
-                <Button
-                    android:id="@+id/btn9"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="9" />
-
-                <Button
-                    android:id="@+id/btn8"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="8" />
-
+                    android:id="@+id/btnFueraNumerico"
+                    style="@style/BotonFuera"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="FUERA / 0" />
+    
+                <!-- Bull, 20, 19, 18, 17, 16, 15 -->
+                <LinearLayout
+                    android:id="@+id/filaPuntuaciones1"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+    
+                    <Button
+                        android:id="@+id/btnBull"
+                        style="@style/BotonPuntuacionBull"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1.15"
+                        android:text="BULL" />
+    
+                    <Button
+                        android:id="@+id/btn20"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="20" />
+    
+                    <Button
+                        android:id="@+id/btn19"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="19" />
+    
+                    <Button
+                        android:id="@+id/btn18"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="18" />
+    
+                    <Button
+                        android:id="@+id/btn17"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="17" />
+    
+                    <Button
+                        android:id="@+id/btn16"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="16" />
+    
+                    <Button
+                        android:id="@+id/btn15"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="15" />
+    
+                </LinearLayout>
+    
+                <!-- 14, 13, 12, 11, 10, 9, 8 -->
+                <LinearLayout
+                    android:id="@+id/filaPuntuaciones2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+    
+                    <Button
+                        android:id="@+id/btn14"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="14" />
+    
+                    <Button
+                        android:id="@+id/btn13"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="13" />
+    
+                    <Button
+                        android:id="@+id/btn12"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="12" />
+    
+                    <Button
+                        android:id="@+id/btn11"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="11" />
+    
+                    <Button
+                        android:id="@+id/btn10"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="10" />
+    
+                    <Button
+                        android:id="@+id/btn9"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="9" />
+    
+                    <Button
+                        android:id="@+id/btn8"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="8" />
+    
+                </LinearLayout>
+    
+                <!-- 7, 6, 5, 4, 3, 2, 1 -->
+                <LinearLayout
+                    android:id="@+id/filaPuntuaciones3"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+    
+                    <Button
+                        android:id="@+id/btn7"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="7" />
+    
+                    <Button
+                        android:id="@+id/btn6"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="6" />
+    
+                    <Button
+                        android:id="@+id/btn5"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="5" />
+    
+                    <Button
+                        android:id="@+id/btn4"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="4" />
+    
+                    <Button
+                        android:id="@+id/btn3"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="3" />
+    
+                    <Button
+                        android:id="@+id/btn2"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="2" />
+    
+                    <Button
+                        android:id="@+id/btn1"
+                        style="@style/BotonPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+    
+                </LinearLayout>
+    
             </LinearLayout>
-
-            <!-- 7, 6, 5, 4, 3, 2, 1 -->
-            <LinearLayout
-                android:id="@+id/filaPuntuaciones3"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn7"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="7" />
-
-                <Button
-                    android:id="@+id/btn6"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="6" />
-
-                <Button
-                    android:id="@+id/btn5"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="5" />
-
-                <Button
-                    android:id="@+id/btn4"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="4" />
-
-                <Button
-                    android:id="@+id/btn3"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="3" />
-
-                <Button
-                    android:id="@+id/btn2"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="2" />
-
-                <Button
-                    android:id="@+id/btn1"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2dp"
-                    android:layout_weight="1"
-                    android:text="1" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </FrameLayout>
+    
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- ===================================================== -->
     <!-- BOTONES INFERIORES FIJOS -->
     <!-- ===================================================== -->
 
-    <LinearLayout
-        android:id="@+id/contenedorBotonesInferiores"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/marcoBotonesInferioresRondas"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/blue"
-        android:orientation="horizontal"
-        android:padding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/btnVerMarcador"
-            style="@style/BotonAccionOscuro"
-            android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
+        <LinearLayout
+            android:id="@+id/contenedorBotonesInferiores"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="3dp"
-            android:layout_weight="1.15"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="VER MARCADOR"
-            android:textSize="11sp" />
-
-        <Button
-            android:id="@+id/btnSiguienteTurno"
-            style="@style/BotonAccionVerde"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="3dp"
-            android:layout_weight="1.25"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="SIGUIENTE TURNO"
-            android:textSize="11sp" />
-
-        <Button
-            android:id="@+id/btnSalirPartida"
-            style="@style/BotonAccionRojo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="3dp"
-            android:layout_weight="1.15"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="SALIR PARTIDA"
-            android:textSize="11sp" />
-
-    </LinearLayout>
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:padding="3dp">
+    
+            <Button
+                android:id="@+id/btnVerMarcador"
+                style="@style/BotonAccionOscuro"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1.15"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="VER MARCADOR"
+                android:textSize="11sp" />
+    
+            <Button
+                android:id="@+id/btnSiguienteTurno"
+                style="@style/BotonAccionVerde"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1.25"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="SIGUIENTE TURNO"
+                android:textSize="11sp" />
+    
+            <Button
+                android:id="@+id/btnSalirPartida"
+                style="@style/BotonAccionRojo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1.15"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="SALIR PARTIDA"
+                android:textSize="11sp" />
+    
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

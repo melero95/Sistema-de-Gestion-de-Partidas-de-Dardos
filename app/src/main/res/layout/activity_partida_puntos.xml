@@ -42,10 +42,10 @@
             android:id="@+id/cardModoJuego"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            app:cardBackgroundColor="#E6101D35"
-            app:cardCornerRadius="3dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#FF168CFF"
+            app:cardBackgroundColor="#CC1A237E"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp"
+            app:strokeColor="@color/gold"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -104,10 +104,10 @@
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_marginTop="5dp"
-            app:cardBackgroundColor="#E6101D35"
-            app:cardCornerRadius="3dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#FF168CFF"
+            app:cardBackgroundColor="#CC1A237E"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp"
+            app:strokeColor="@color/gold"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -157,7 +157,7 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toTopOf="@id/contenedorBotoneraPuntuacion"
+        app:layout_constraintBottom_toTopOf="@id/marcoBotoneraPuntuacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contenedorCabecera">
@@ -176,271 +176,283 @@
             <!-- MARCADORES -->
             <!-- ================================================= -->
 
-            <LinearLayout
-                android:id="@+id/contenedorMarcadores"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/marcoMarcadoresPuntos"
                 android:layout_width="match_parent"
                 android:layout_height="145dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/gold"
+                app:strokeWidth="1dp">
 
-                <!-- Columna izquierda -->
                 <LinearLayout
-                    android:id="@+id/columnaJugadoresIzquierda"
-                    android:layout_width="0dp"
+                    android:id="@+id/contenedorMarcadores"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingEnd="3dp">
-
-                    <!-- Jugador 1 -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador1"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Marcos"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="441"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- Jugador 2 -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador2"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Javier"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="501"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- Jugador adicional izquierdo -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador5"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Jugador 5"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="501"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <!-- Jugador actual -->
-                <LinearLayout
-                    android:id="@+id/tarjetaJugadorActual"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="3dp"
-                    android:layout_weight="2.15"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="4dp">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/txtNombreJugadorActual"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
+                    <!-- Columna izquierda -->
+                    <LinearLayout
+                        android:id="@+id/columnaJugadoresIzquierda"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingEnd="3dp">
+
+                        <!-- Jugador 1 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+
+                            <TextView
+                                android:id="@+id/txtNombreJugador1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Marcos"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="441"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <!-- Jugador 2 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+
+                            <TextView
+                                android:id="@+id/txtNombreJugador2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Javier"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="501"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <!-- Jugador adicional izquierdo -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/txtNombreJugador5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Jugador 5"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="501"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Jugador actual -->
+                    <LinearLayout
+                        android:id="@+id/tarjetaJugadorActual"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="2.15"
                         android:gravity="center"
-                        android:maxLines="1"
-                        android:text="Luis"
-                        android:textColor="#168BFF"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:orientation="vertical"
+                        android:padding="4dp">
 
-                    <TextView
-                        android:id="@+id/txtPuntuacionJugadorActual"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:includeFontPadding="false"
-                        android:text="501"
-                        android:textColor="#FFFFFF"
-                        android:textSize="48sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txtNombreJugadorActual"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="Luis"
+                            android:textColor="#168BFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtPuntuacionJugadorActual"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="501"
+                            android:textColor="#FFFFFF"
+                            android:textSize="48sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- Columna derecha -->
+                    <LinearLayout
+                        android:id="@+id/columnaJugadoresDerecha"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="3dp">
+
+                        <!-- Jugador 3 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+
+                            <TextView
+                                android:id="@+id/txtNombreJugador3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Ana"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="501"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <!-- Jugador 4 -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador4"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp">
+
+                            <TextView
+                                android:id="@+id/txtNombreJugador4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Sofía"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="501"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <!-- Jugador adicional derecho -->
+                        <LinearLayout
+                            android:id="@+id/tarjetaJugador6"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="1dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/txtNombreJugador6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="Jugador 6"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/txtPuntuacionJugador6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="501"
+                                android:textColor="#FFFFFF"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <!-- Columna derecha -->
-                <LinearLayout
-                    android:id="@+id/columnaJugadoresDerecha"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingStart="3dp">
-
-                    <!-- Jugador 3 -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador3"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Ana"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="501"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- Jugador 4 -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador4"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Sofía"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="501"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- Jugador adicional derecho -->
-                    <LinearLayout
-                        android:id="@+id/tarjetaJugador6"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="1dp"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/txtNombreJugador6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="Jugador 6"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/txtPuntuacionJugador6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="501"
-                            android:textColor="#FFFFFF"
-                            android:textSize="21sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- ================================================= -->
             <!-- INFORMACIÓN DE LA RONDA -->
@@ -451,10 +463,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:cardBackgroundColor="#E6102A51"
-                app:cardCornerRadius="3dp"
-                app:cardElevation="2dp"
-                app:strokeColor="#FF168CFF"
+                app:cardBackgroundColor="#CC1A237E"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/gold"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -743,350 +755,379 @@
     <!-- BOTONERA DE PUNTUACIÓN FIJA -->
     <!-- ===================================================== -->
 
-    <LinearLayout
-        android:id="@+id/contenedorBotoneraPuntuacion"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/marcoBotoneraPuntuacion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="8dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@id/contenedorBotonesInferiores"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/marcoBotonesInferiores"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
 
-        <!-- Multiplicadores -->
         <LinearLayout
-            android:id="@+id/filaMultiplicadores"
+            android:id="@+id/contenedorBotoneraPuntuacion"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp">
 
-            <Button
-                android:id="@+id/btnFuera"
-                style="@style/BotonFuera"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="3dp"
-                android:layout_weight="1"
-                android:text="OUT / 0" />
-
-            <RadioGroup
-                android:id="@+id/grupoMultiplicadores"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:checkedButton="@id/radioX1"
+            <!-- Multiplicadores -->
+            <LinearLayout
+                android:id="@+id/filaMultiplicadores"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioX1"
-                    style="@style/MultiplicadorPartida"
+                <Button
+                    android:id="@+id/btnFuera"
+                    style="@style/BotonFuera"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    android:text="OUT / 0" />
+
+                <RadioGroup
+                    android:id="@+id/grupoMultiplicadores"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:checkedButton="@id/radioX1"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioX1"
+                        style="@style/MultiplicadorPartida"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="x1" />
+
+                    <RadioButton
+                        android:id="@+id/radioX2"
+                        style="@style/MultiplicadorPartida"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="x2" />
+
+                    <RadioButton
+                        android:id="@+id/radioX3"
+                        style="@style/MultiplicadorPartida"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_weight="1"
+                        android:text="x3" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <!-- Bull, 20, 19, 18, 17, 16, 15 -->
+            <LinearLayout
+                android:id="@+id/filaPuntuaciones1"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnBull"
+                    style="@style/BotonPuntuacionBull"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1.15"
+                    android:text="DIANA" />
+
+                <Button
+                    android:id="@+id/btn20"
+                    style="@style/BotonPuntuacion"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:checked="true"
-                    android:text="x1" />
+                    android:text="20" />
 
-                <RadioButton
-                    android:id="@+id/radioX2"
-                    style="@style/MultiplicadorPartida"
+                <Button
+                    android:id="@+id/btn19"
+                    style="@style/BotonPuntuacion"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="x2" />
+                    android:text="19" />
 
-                <RadioButton
-                    android:id="@+id/radioX3"
-                    style="@style/MultiplicadorPartida"
+                <Button
+                    android:id="@+id/btn18"
+                    style="@style/BotonPuntuacion"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="x3" />
+                    android:text="18" />
 
-            </RadioGroup>
+                <Button
+                    android:id="@+id/btn17"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="17" />
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn16"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="16" />
 
-        <!-- Bull, 20, 19, 18, 17, 16, 15 -->
-        <LinearLayout
-            android:id="@+id/filaPuntuaciones1"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn15"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="15" />
 
-            <Button
-                android:id="@+id/btnBull"
-                style="@style/BotonPuntuacionBull"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1.15"
-                android:text="DIANA" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/btn20"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="20" />
+            <!-- 14, 13, 12, 11, 10, 9, 8 -->
+            <LinearLayout
+                android:id="@+id/filaPuntuaciones2"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn19"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="19" />
+                <Button
+                    android:id="@+id/btn14"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="14" />
 
-            <Button
-                android:id="@+id/btn18"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="18" />
+                <Button
+                    android:id="@+id/btn13"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="13" />
 
-            <Button
-                android:id="@+id/btn17"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="17" />
+                <Button
+                    android:id="@+id/btn12"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="12" />
 
-            <Button
-                android:id="@+id/btn16"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="16" />
+                <Button
+                    android:id="@+id/btn11"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="11" />
 
-            <Button
-                android:id="@+id/btn15"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="15" />
+                <Button
+                    android:id="@+id/btn10"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="10" />
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn9"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="9" />
 
-        <!-- 14, 13, 12, 11, 10, 9, 8 -->
-        <LinearLayout
-            android:id="@+id/filaPuntuaciones2"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn8"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="8" />
 
-            <Button
-                android:id="@+id/btn14"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="14" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/btn13"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="13" />
+            <!-- 7, 6, 5, 4, 3, 2, 1 -->
+            <LinearLayout
+                android:id="@+id/filaPuntuaciones3"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn12"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="12" />
+                <Button
+                    android:id="@+id/btn7"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="7" />
 
-            <Button
-                android:id="@+id/btn11"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="11" />
+                <Button
+                    android:id="@+id/btn6"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="6" />
 
-            <Button
-                android:id="@+id/btn10"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="10" />
+                <Button
+                    android:id="@+id/btn5"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="5" />
 
-            <Button
-                android:id="@+id/btn9"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="9" />
+                <Button
+                    android:id="@+id/btn4"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="4" />
 
-            <Button
-                android:id="@+id/btn8"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="8" />
+                <Button
+                    android:id="@+id/btn3"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="3" />
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn2"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="2" />
 
-        <!-- 7, 6, 5, 4, 3, 2, 1 -->
-        <LinearLayout
-            android:id="@+id/filaPuntuaciones3"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn1"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:text="1" />
 
-            <Button
-                android:id="@+id/btn7"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="7" />
-
-            <Button
-                android:id="@+id/btn6"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="6" />
-
-            <Button
-                android:id="@+id/btn5"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="5" />
-
-            <Button
-                android:id="@+id/btn4"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="4" />
-
-            <Button
-                android:id="@+id/btn3"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="3" />
-
-            <Button
-                android:id="@+id/btn2"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="2" />
-
-            <Button
-                android:id="@+id/btn1"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:text="1" />
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- ===================================================== -->
     <!-- BOTONES INFERIORES FIJOS -->
     <!-- ===================================================== -->
 
-    <LinearLayout
-        android:id="@+id/contenedorBotonesInferiores"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/marcoBotonesInferiores"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="@color/blue"
-        android:orientation="horizontal"
-        android:paddingStart="4dp"
-        android:paddingTop="3dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="3dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
 
-        <Button
-            android:id="@+id/btnVerMarcador"
-            style="@style/BotonAccionOscuro"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/contenedorBotonesInferiores"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="3dp"
-            android:layout_weight="1.15"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="VER MARCADOR"
-            android:textSize="11sp" />
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="3dp">
 
-        <Button
-            android:id="@+id/btnSiguienteTurno"
-            style="@style/BotonAccionVerde"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="3dp"
-            android:layout_weight="1.25"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="SIGUIENTE TURNO"
-            android:textSize="11sp" />
+            <Button
+                android:id="@+id/btnVerMarcador"
+                style="@style/BotonAccionOscuro"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1.15"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="VER MARCADOR"
+                android:textSize="11sp" />
 
-        <Button
-            android:id="@+id/btnSalirPartida"
-            style="@style/BotonAccionRojo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="3dp"
-            android:layout_weight="1.15"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="SALIR PARTIDA"
-            android:textSize="11sp" />
+            <Button
+                android:id="@+id/btnSiguienteTurno"
+                style="@style/BotonAccionVerde"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1.25"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="SIGUIENTE TURNO"
+                android:textSize="11sp" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnSalirPartida"
+                style="@style/BotonAccionRojo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1.15"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="SALIR PARTIDA"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

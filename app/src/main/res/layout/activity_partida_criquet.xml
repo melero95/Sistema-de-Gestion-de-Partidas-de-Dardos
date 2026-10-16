@@ -19,13 +19,13 @@
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginTop="0dp"
-        app:cardBackgroundColor="#E6101D35"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="2dp"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#FF168CFF"
+        app:strokeColor="@color/gold"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -74,13 +74,13 @@
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginTop="3dp"
-        app:cardBackgroundColor="#E6101D35"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="2dp"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardModoJuego"
-        app:strokeColor="#FF168CFF"
+        app:strokeColor="@color/gold"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -121,14 +121,14 @@
         android:id="@+id/cardMarcadorCricket"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        app:cardBackgroundColor="#EE112D57"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="2dp"
+        android:layout_marginTop="6dp"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardTurnoJugador"
-        app:strokeColor="#FF168CFF"
+        app:strokeColor="@color/gold"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -288,14 +288,14 @@
         android:id="@+id/cardInformacionTirada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        app:cardBackgroundColor="#E6102A51"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="2dp"
+        android:layout_marginTop="6dp"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardMarcadorCricket"
-        app:strokeColor="#FF168CFF"
+        app:strokeColor="@color/gold"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -535,183 +535,207 @@
 
     <!-- MULTIPLICADORES -->
 
-    <LinearLayout
-        android:id="@+id/filaMultiplicadores"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/marcoMultiplicadoresCricket"
         android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="3dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="4"
+        android:layout_height="44dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardInformacionTirada">
-
-        <Button
-            android:id="@+id/btnFuera"
-            style="@style/BotonFuera"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="2dp"
-            android:layout_weight="1"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="FUERA"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/btnX1"
-            style="@style/MultiplicadorPartida"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="2dp"
-            android:layout_weight="1"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="X1"
-            android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/btnX2"
-            style="@style/MultiplicadorPartida"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="2dp"
-            android:layout_weight="1"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="X2"
-            android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/btnX3"
-            style="@style/MultiplicadorPartida"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="2dp"
-            android:layout_weight="1"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="X3"
-            android:textSize="12sp" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/cardInformacionTirada"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
+        <LinearLayout
+            android:id="@+id/filaMultiplicadores"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="4">
+    
+            <Button
+                android:id="@+id/btnFuera"
+                style="@style/BotonFuera"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="FUERA"
+                android:textSize="10sp" />
+    
+            <Button
+                android:id="@+id/btnX1"
+                style="@style/MultiplicadorPartida"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="X1"
+                android:textSize="12sp" />
+    
+            <Button
+                android:id="@+id/btnX2"
+                style="@style/MultiplicadorPartida"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="X2"
+                android:textSize="12sp" />
+    
+            <Button
+                android:id="@+id/btnX3"
+                style="@style/MultiplicadorPartida"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="X3"
+                android:textSize="12sp" />
+    
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- BOTONERA DE OBJETIVOS CENTRADA -->
 
-    <LinearLayout
-        android:id="@+id/contenedorBotonesCricket"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/marcoBotoneraCricket"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@id/cardBotonesInferiores"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filaMultiplicadores"
-        app:layout_constraintVertical_bias="0.50">
-
+        app:layout_constraintTop_toBottomOf="@id/marcoMultiplicadoresCricket"
+        app:layout_constraintVertical_bias="0.50"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp">
         <LinearLayout
+            android:id="@+id/contenedorBotonesCricket"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <Button
-                android:id="@+id/btnNumero15"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="15" />
-
-            <Button
-                android:id="@+id/btnNumero16"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="4dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="16" />
-
-            <Button
-                android:id="@+id/btnNumero17"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="17" />
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="3dp">
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+    
+                <Button
+                    android:id="@+id/btnNumero15"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="15" />
+    
+                <Button
+                    android:id="@+id/btnNumero16"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="16" />
+    
+                <Button
+                    android:id="@+id/btnNumero17"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="17" />
+    
+            </LinearLayout>
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+    
+                <Button
+                    android:id="@+id/btnNumero18"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="18" />
+    
+                <Button
+                    android:id="@+id/btnNumero19"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="19" />
+    
+                <Button
+                    android:id="@+id/btnNumero20"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="20" />
+    
+            </LinearLayout>
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+    
+                <Button
+                    android:id="@+id/btnBull"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="145dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="DIANA" />
+    
+            </LinearLayout>
+    
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <Button
-                android:id="@+id/btnNumero18"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="18" />
-
-            <Button
-                android:id="@+id/btnNumero19"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="4dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="19" />
-
-            <Button
-                android:id="@+id/btnNumero20"
-                style="@style/BotonPuntuacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="20" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnBull"
-                style="@style/BotonPuntuacion"
-                android:layout_width="145dp"
-                android:layout_height="match_parent"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="DIANA" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- BOTONES INFERIORES -->
 
@@ -719,13 +743,13 @@
         android:id="@+id/cardBotonesInferiores"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        app:cardBackgroundColor="#DD10264A"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="2dp"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#FF698ED8"
+        app:strokeColor="@color/gold"
         app:strokeWidth="1dp">
 
         <LinearLayout

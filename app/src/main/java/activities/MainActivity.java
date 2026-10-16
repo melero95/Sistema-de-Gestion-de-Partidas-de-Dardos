@@ -139,16 +139,15 @@ public class MainActivity extends AppCompatActivity {
 
             int id = item.getItemId();
 
-            if (id == R.id.menuEstadisticas) {
+            if (id == R.id.menuJugadores) {
 
                 Intent intent = new Intent(
                         MainActivity.this,
-                        EstadisticasActivity.class
+                        JugadoresActivity.class
                 );
-
                 startActivity(intent);
 
-            } else if (id == R.id.menuRecords) {
+            } else if (id == R.id.menuEstadisticas) {
 
                 Intent intent = new Intent(
                         MainActivity.this,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="46dp"
+    android:gravity="center_vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="8dp"
+    android:drawableEnd="@drawable/ic_flecha_spinner_jugador"
+    android:drawablePadding="4dp"
+    android:ellipsize="end"
+    android:singleLine="true"
+    android:textColor="@android:color/white"
+    android:textSize="15sp"
+    android:textStyle="bold" />
