@@ -29,7 +29,9 @@ import java.util.List;
 import java.util.Set;
 
 import modelos.Jugador;
+import modelos.ConfiguracionPartida;
 import sqlite.JugadorDao;
+import utilidades.SerializadorConfiguracionPartida;
 
 /**
  * Configura una nueva partida usando los jugadores ACTIVOS registrados en SQLite.
@@ -81,6 +83,8 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     public static final String EXTRA_CIERRE_DOBLE = "cierreDoble";
     public static final String EXTRA_MANTENER_MULTIPLICADOR = "mantenerMultiplicador";
     public static final String EXTRA_ORDEN_ALEATORIO = "ordenAleatorio";
+    // Permite trasladar la fotografía histórica, sin sobreescribir SharedPreferences.
+    public static final String EXTRA_CONFIGURACION_JSON = "configuracionJson";
 
     private static final String SP_ULTIMA_PARTIDA = "configuracion_ultima_partida";
     private static final String SP_AJUSTES = "ajustes_partida";
@@ -102,6 +106,8 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     private boolean cargandoConfiguracion = false;
     private boolean pantallaInicializada = false;
     private boolean actualizandoSelectores = false;
+    // El orden histórico ya está resuelto, aunque la partida usara sorteo.
+    private boolean conservarOrdenHistorico = false;
     private String ultimoModoAplicado;
 
     private final ArrayList<View> filasJugadores = new ArrayList<>();
@@ -149,6 +155,9 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         }
         aplicarConfiguracionSegunModo(obtenerModoJuegoSeleccionado());
         actualizarDisponibilidadJugadores();
+        if (getIntent() != null && getIntent().hasExtra(EXTRA_CONFIGURACION_JSON)) {
+            cargarConfiguracionHistorica(getIntent().getStringExtra(EXTRA_CONFIGURACION_JSON));
+        }
         pantallaInicializada = true;
     }
 
@@ -275,6 +284,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String modo = obtenerModoJuegoSeleccionado();
                 if (!cargandoConfiguracion && !modo.equals(ultimoModoAplicado)) {
+                    conservarOrdenHistorico = false;
                     aplicarConfiguracionSegunModo(modo);
                 }
             }
@@ -333,6 +343,9 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, new Integer[]{1, 2, 3, 4});
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnNumeroDardos.setAdapter(adapter);
+        switchOrdenAleatorio.setOnCheckedChangeListener((buttonView, checked) -> {
+            if (!cargandoConfiguracion) conservarOrdenHistorico = false;
+        });
         btnMostrarAjustesAvanzados.setOnClickListener(v -> {
             boolean mostrar = contenedorAjustesAvanzados.getVisibility() != View.VISIBLE;
             contenedorAjustesAvanzados.setVisibility(mostrar ? View.VISIBLE : View.GONE);
@@ -568,6 +581,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
                 if (elegido == null) return;
                 Object anterior = spinner.getTag();
                 if (anterior instanceof Long && ((Long) anterior) == elegido.getId()) return;
+                conservarOrdenHistorico = false;
 
                 // El color de la partida solo se reinicia si cambia el jugador.
                 aplicarColorAFila(botonColor, etiqueta,
@@ -726,6 +740,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
             return;
         }
         cargandoConfiguracion = true;
+        conservarOrdenHistorico = false;
         String modo = spUltimaPartida.getString(EXTRA_MODO_JUEGO, MODO_501);
         int rondas = spUltimaPartida.getInt(EXTRA_MAX_RONDAS, RONDAS_ESTANDAR);
         int numero = Math.min(limiteJugadores(), Math.max(1,
@@ -839,7 +854,14 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
 
     private void crearPartida() {
         String modo = obtenerModoJuegoSeleccionado();
-        Intent intent = crearIntentSegunModo(modo);
+        Intent intent;
+        try {
+            intent = crearIntentSegunModo(modo);
+        } catch (IllegalArgumentException excepcion) {
+            Toast.makeText(this, "No se puede crear la configuración: "
+                    + excepcion.getMessage(), Toast.LENGTH_LONG).show();
+            return;
+        }
         if (intent == null) {
             Toast.makeText(this, "Modo de juego no disponible todavía", Toast.LENGTH_SHORT).show();
             return;
@@ -876,7 +898,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         ArrayList<String> nombres = obtenerNombresJugadoresSeleccionados();
         ArrayList<Integer> colores = obtenerColoresJugadoresSeleccionados();
 
-        if (switchOrdenAleatorio.isChecked()) {
+        if (switchOrdenAleatorio.isChecked() && !conservarOrdenHistorico) {
             ArrayList<Integer> orden = new ArrayList<>();
             for (int i = 0; i < ids.size(); i++) orden.add(i);
             Collections.shuffle(orden);
@@ -909,10 +931,133 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_COLOR_JUGADOR + (i + 1), colores.get(i));
         }
         intent.putExtra(EXTRA_IDS_JUGADORES, idsArray);
+        // Se serializa DESPUÉS del posible sorteo: ordenTurno es el orden real.
+        ArrayList<ConfiguracionPartida.Participante> participantes = new ArrayList<>();
+        for (int i = 0; i < ids.size(); i++) {
+            participantes.add(new ConfiguracionPartida.Participante(
+                    ids.get(i), nombres.get(i),
+                    ContextCompat.getColor(this, colores.get(i)), i + 1));
+        }
+        ConfiguracionPartida configuracion = new ConfiguracionPartida(
+                modo, maxRondas, obtenerNumeroDardosSeleccionado(),
+                switchCierreDoble.isChecked(), switchMantenerMultiplicador.isChecked(),
+                switchOrdenAleatorio.isChecked(), participantes);
+        intent.putExtra(EXTRA_CONFIGURACION_JSON,
+                SerializadorConfiguracionPartida.aJson(configuracion));
         intent.putStringArrayListExtra("nombresJugadores", nombres);
         intent.putIntegerArrayListExtra("colorJugador", colores);
         intent.putStringArrayListExtra(
                 PartidaPuntosActivity.EXTRA_NOMBRES_JUGADORES, nombres);
+    }
+
+    /**
+     * Precarga una fotografía guardada en PARTIDAS.configuracion_json.
+     * No modifica preferencias, ni reactiva jugadores antiguos, ni accede
+     * directamente a SQLite; las personas elegibles proceden del JugadorDao.
+     *
+     * Los jugadores inactivos o inexistentes necesitan una revisión manual
+     * antes de pulsar Crear partida. Nunca se les vuelve a asignar por nombre.
+     */
+    private void cargarConfiguracionHistorica(String json) {
+        final ConfiguracionPartida configuracion;
+        try {
+            configuracion = SerializadorConfiguracionPartida.desdeJson(json);
+        } catch (IllegalArgumentException ex) {
+            Toast.makeText(this, "Configuración histórica incompatible o dañada",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (jugadoresActivos.isEmpty()) {
+            Toast.makeText(this, "No hay jugadores activos para recuperar esta partida",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        ArrayList<String> jugadoresNoDisponibles = new ArrayList<>();
+        boolean colorNoDisponible = false;
+        cargandoConfiguracion = true;
+        try {
+            seleccionarModoJuegoEnSpinner(configuracion.getModo());
+            spnNumeroDardos.setSelection(configuracion.getDardosPorTurno() - 1);
+            switchCierreDoble.setChecked(configuracion.isCierreDoble());
+            switchMantenerMultiplicador.setChecked(
+                    configuracion.isMantenerMultiplicador());
+            switchOrdenAleatorio.setChecked(configuracion.isOrdenAleatorio());
+
+            filasJugadores.clear();
+            contenedorJugadores.removeAllViews();
+            Set<Long> ocupados = new HashSet<>();
+            List<ConfiguracionPartida.Participante> originales =
+                    configuracion.getParticipantes();
+            int cantidadVisible = Math.min(originales.size(), limiteJugadores());
+
+            for (int i = 0; i < cantidadVisible; i++) {
+                ConfiguracionPartida.Participante original = originales.get(i);
+                int posicion = buscarPosicionPorId(original.getIdJugador());
+                if (posicion < 0
+                        || ocupados.contains(original.getIdJugador())) {
+                    jugadoresNoDisponibles.add(original.getNombre());
+                    posicion = primeraPosicionDisponible(ocupados);
+                }
+                agregarFilaJugador();
+                View fila = filasJugadores.get(i);
+                Spinner spinner = fila.findViewById(R.id.spnJugador);
+                ImageButton botonColor = fila.findViewById(R.id.btnColorJugador);
+                TextView etiqueta = fila.findViewById(R.id.txtNombreJugador);
+                prepararSpinner(spinner, botonColor, etiqueta, posicion);
+                Jugador elegido = obtenerJugadorSeleccionado(spinner);
+                if (elegido != null) {
+                    ocupados.add(elegido.getId());
+                }
+                int recursoColor = recursoColorParaArgb(original.getColorArgb());
+                if (ContextCompat.getColor(this, recursoColor) != original.getColorArgb()) {
+                    colorNoDisponible = true;
+                }
+                aplicarColorAFila(botonColor, etiqueta, recursoColor);
+            }
+            // Si había más participantes que jugadores activos, se reducen
+            // las filas y se advierte expresamente de los que faltan.
+            for (int i = cantidadVisible; i < originales.size(); i++) {
+                jugadoresNoDisponibles.add(originales.get(i).getNombre());
+            }
+
+            aplicarConfiguracionSegunModo(configuracion.getModo());
+            if (rondasEditablesParaModo(configuracion.getModo())) {
+                maxRondas = configuracion.getRondas();
+                actualizarTextoRondas();
+            }
+            // Aunque ordenAleatorio sea true, el historial tiene un orden
+            // real que ya fue sorteado y no debemos mezclar de nuevo.
+            conservarOrdenHistorico = true;
+        } finally {
+            cargandoConfiguracion = false;
+            actualizarOpcionesSpinners();
+            actualizarTextoJugadores();
+            actualizarVisibilidadBotonesEliminar();
+            actualizarDisponibilidadJugadores();
+        }
+
+        if (!jugadoresNoDisponibles.isEmpty() || colorNoDisponible) {
+            String mensaje = "La configuración se ha recuperado parcialmente.";
+            if (!jugadoresNoDisponibles.isEmpty()) {
+                mensaje += "\n\nEstos jugadores no están activos o ya no existen: "
+                        + android.text.TextUtils.join(", ", jugadoresNoDisponibles)
+                        + ". Se han elegido otros jugadores activos cuando ha sido posible.";
+            }
+            if (colorNoDisponible) {
+                mensaje += "\n\nAlgún color histórico no está en la paleta y se ha "
+                        + "sustituido por blanco.";
+            }
+            mensaje += "\n\nRevisa los participantes antes de crear una nueva partida.";
+            new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+                    .setTitle("Revisar configuración histórica")
+                    .setMessage(mensaje)
+                    .setPositiveButton("Entendido", null)
+                    .show();
+        } else {
+            Toast.makeText(this, "Configuración histórica recuperada",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     private String obtenerModoJuegoSeleccionado() {
