@@ -23,6 +23,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaCriquet;
+import modelos.EstadisticasJugadorEnCurso;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -141,6 +142,32 @@ public class PartidaCriquetActivity extends AppCompatActivity {
      */
     private final Deque<EstadoPartida> historialEstados =
             new ArrayDeque<>();
+
+
+    // Estadísticas por jugador y en el orden REAL de participación.
+    private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores = new ArrayList<>();
+
+    private ArrayList<EstadisticasJugadorEnCurso> crearEstadisticasVacias() {
+        ArrayList<EstadisticasJugadorEnCurso> datos = new ArrayList<>();
+        for (int i = 0; i < nombresJugadores.length; i++) {
+            datos.add(new EstadisticasJugadorEnCurso(modoJuego));
+        }
+        return datos;
+    }
+
+    // Compatibilidad con partidas anteriores, cuyos JSON no tenían estadísticas.
+    private ArrayList<EstadisticasJugadorEnCurso> restaurarEstadisticas(
+            ArrayList<EstadisticasJugadorEnCurso> datos) {
+        if (datos == null || datos.size() != nombresJugadores.length) {
+            return crearEstadisticasVacias();
+        }
+        for (EstadisticasJugadorEnCurso dato : datos) {
+            if (dato == null || !modoJuego.equals(dato.getModo())) {
+                return crearEstadisticasVacias();
+            }
+        }
+        return EstadisticasJugadorEnCurso.copiarLista(datos);
+    }
 
     // Vistas generales ---------------------------------------------------------
 
@@ -631,6 +658,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         Arrays.fill(tiradasTurno, "");
         historialEstados.clear();
+        estadisticasJugadores = crearEstadisticasVacias();
 
         txtNombresJugadores =
                 new TextView[nombresJugadores.length];
@@ -730,6 +758,9 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         estado.setHistorialEstados(
                 construirHistorialGuardado()
+        );
+        estado.setEstadisticasJugadores(
+                EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores)
         );
 
         partida.setEstadoCriquet(estado);
@@ -924,6 +955,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             }
         }
 
+        estadisticasJugadores = restaurarEstadisticas(estado.getEstadisticasJugadores());
         historialEstados.clear();
         restaurarHistorialEstados(
                 estado.getHistorialEstados()
@@ -995,6 +1027,9 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                     )
             );
 
+            guardado.setEstadisticasJugadores(
+                    EstadisticasJugadorEnCurso.copiarLista(estado.estadisticasJugadores)
+            );
             resultado.add(guardado);
         }
 
@@ -1038,6 +1073,8 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                             )
                     )
             );
+            historialEstados.peekLast().estadisticasJugadores =
+                    restaurarEstadisticas(guardado.getEstadisticasJugadores());
         }
     }
 
@@ -1246,10 +1283,10 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         }
     }
 
+
     private LinearLayout crearColumnaJugador(int indiceJugador) {
 
         LinearLayout columna = new LinearLayout(this);
-
         columna.setOrientation(LinearLayout.VERTICAL);
 
         columna.setLayoutParams(
@@ -1260,34 +1297,43 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 )
         );
 
+        // NOMBRE DEL JUGADOR
         TextView txtNombre = new TextView(this);
 
-        txtNombre.setLayoutParams(
+        LinearLayout.LayoutParams parametrosNombre =
                 new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
                         convertirDp(22)
-                )
-        );
+                );
+
+        parametrosNombre.gravity = Gravity.CENTER_HORIZONTAL;
+
+        txtNombre.setLayoutParams(parametrosNombre);
+
+        txtNombre.setMaxWidth(convertirDp(
+                nombresJugadores.length >= 5 ? 55 : 110
+        ));
 
         txtNombre.setGravity(Gravity.CENTER);
         txtNombre.setIncludeFontPadding(false);
-        txtNombre.setMaxLines(1);
+        txtNombre.setSingleLine(true);
+        txtNombre.setEllipsize(
+                android.text.TextUtils.TruncateAt.END
+        );
+
         txtNombre.setTextSize(
                 nombresJugadores.length >= 5 ? 8 : 10
         );
 
         txtNombre.setTypeface(
-                txtNombre.getTypeface(),
+                null,
                 android.graphics.Typeface.BOLD
         );
 
         columna.addView(txtNombre);
         txtNombresJugadores[indiceJugador] = txtNombre;
 
-        /*
-         * El XML muestra de arriba abajo:
-         * 20, 19, 18, 17, 16, 15 y Diana.
-         */
+        // MARCAS: 20, 19, 18, 17, 16, 15 Y DIANA
         int[] ordenVisual = {5, 4, 3, 2, 1, 0, 6};
 
         for (int indiceObjetivo : ordenVisual) {
@@ -1303,8 +1349,16 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
             txtMarca.setGravity(Gravity.CENTER);
             txtMarca.setIncludeFontPadding(false);
+            txtMarca.setSingleLine(true);
+
+            // Círculos más grandes que antes
             txtMarca.setTextSize(
-                    nombresJugadores.length >= 5 ? 8 : 10
+                    nombresJugadores.length >= 5 ? 10 : 12
+            );
+
+            txtMarca.setTypeface(
+                    null,
+                    android.graphics.Typeface.BOLD
             );
 
             txtMarca.setText("○ ○ ○");
@@ -1316,6 +1370,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                     txtMarca;
         }
 
+        // PUNTOS
         TextView txtPuntos = new TextView(this);
 
         txtPuntos.setLayoutParams(
@@ -1327,12 +1382,14 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         txtPuntos.setGravity(Gravity.CENTER);
         txtPuntos.setIncludeFontPadding(false);
+        txtPuntos.setSingleLine(true);
+
         txtPuntos.setTextSize(
                 nombresJugadores.length >= 5 ? 9 : 10
         );
 
         txtPuntos.setTypeface(
-                txtPuntos.getTypeface(),
+                null,
                 android.graphics.Typeface.BOLD
         );
 
@@ -1344,6 +1401,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         return columna;
     }
+
 
     // Configuración de listeners -----------------------------------------------
 
@@ -1449,6 +1507,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         }
 
         guardarEstadoActual();
+        estadisticasJugadores.get(jugadorActual).registrarDardo(0);
 
         tiradasTurno[numeroDardo - 1] = "0";
 
@@ -1474,6 +1533,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         }
 
         guardarEstadoActual();
+        estadisticasJugadores.get(jugadorActual).registrarDardo(multiplicadorSeleccionado);
 
         aplicarImpactos(
                 jugadorActual,
@@ -1498,6 +1558,8 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         int indiceGanador = buscarGanador();
 
         if (indiceGanador != -1) {
+            // La partida termina antes del cambio de turno habitual.
+            estadisticasJugadores.get(jugadorActual).registrarTurno();
 
             partidaFinalizada = true;
 
@@ -1567,6 +1629,11 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                         MARCAS_PARA_CERRAR,
                         totalMarcas
                 );
+        int marcasNuevas = marcasJugadores[indiceJugador][indiceObjetivo] - marcasAnteriores;
+        int cierreNuevo = marcasAnteriores < MARCAS_PARA_CERRAR
+                && marcasJugadores[indiceJugador][indiceObjetivo] == MARCAS_PARA_CERRAR ? 1 : 0;
+        estadisticasJugadores.get(indiceJugador).registrarCricket(
+                marcasNuevas, cierreNuevo, 0, 0);
 
         int impactosSobrantes =
                 Math.max(
@@ -1608,9 +1675,9 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             return;
         }
 
-        puntuacionesJugadores[indiceJugador] +=
-                impactosSobrantes
-                        * OBJETIVOS[indiceObjetivo];
+        int puntosAnadidos = impactosSobrantes * OBJETIVOS[indiceObjetivo];
+        puntuacionesJugadores[indiceJugador] += puntosAnadidos;
+        estadisticasJugadores.get(indiceJugador).registrarCricket(0, 0, puntosAnadidos, 0);
     }
 
     private void aplicarPuntosCutThroat(
@@ -1634,6 +1701,9 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                     < MARCAS_PARA_CERRAR) {
 
                 puntuacionesJugadores[rival] += puntos;
+                // Total generado por el lanzador y total recibido por este rival.
+                estadisticasJugadores.get(indiceJugador).registrarCricket(0, 0, puntos, 0);
+                estadisticasJugadores.get(rival).registrarCricket(0, 0, 0, puntos);
             }
         }
     }
@@ -1681,6 +1751,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
     }
 
     private void pasarAlSiguienteJugador() {
+        estadisticasJugadores.get(jugadorActual).registrarTurno();
 
         jugadorActual++;
 
@@ -1849,6 +1920,8 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                         tiradasTurno.clone()
                 )
         );
+        historialEstados.peek().estadisticasJugadores =
+                EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores);
     }
 
     private void deshacerUltimaTirada() {
@@ -1867,6 +1940,8 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         EstadoPartida estadoAnterior =
                 historialEstados.pop();
+        estadisticasJugadores = EstadisticasJugadorEnCurso.copiarLista(
+                estadoAnterior.estadisticasJugadores);
 
         marcasJugadores =
                 copiarMatriz(
@@ -1974,54 +2049,203 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         actualizarVisibilidadDardos();
     }
 
+
     private void actualizarMarcador() {
+
+        final int colorGris = Color.rgb(150, 150, 150);
+        final int colorDorado = Color.rgb(255, 193, 7);
 
         for (int jugador = 0;
              jugador < nombresJugadores.length;
              jugador++) {
 
-            txtNombresJugadores[jugador].setText(
+            boolean esJugadorActivo =
+                    jugador == jugadorActual;
+
+            TextView txtNombre =
+                    txtNombresJugadores[jugador];
+
+            // NOMBRE DEL JUGADOR
+            txtNombre.setText(
                     abreviarNombre(
                             nombresJugadores[jugador]
                                     .toUpperCase(Locale.ROOT)
                     )
             );
 
-            txtNombresJugadores[jugador].setTextColor(
-                    coloresJugadores[jugador]
+            txtNombre.setTextColor(
+                    esJugadorActivo
+                            ? Color.WHITE
+                            : coloresJugadores[jugador]
             );
 
+            // FONDO Y BORDE DEL JUGADOR ACTIVO
+            android.graphics.drawable.GradientDrawable fondo =
+                    new android.graphics.drawable.GradientDrawable();
+
+            fondo.setCornerRadius(convertirDp(6));
+
+            if (esJugadorActivo) {
+
+                fondo.setColor(
+                        Color.rgb(30, 58, 138)
+                );
+
+                fondo.setStroke(
+                        convertirDp(2),
+                        colorDorado
+                );
+
+            } else {
+
+                fondo.setColor(Color.TRANSPARENT);
+            }
+
+            txtNombre.setBackground(fondo);
+
+            // ICONOS DE DARDOS DEL JUGADOR ACTIVO
+            txtNombre.setCompoundDrawables(
+                    null, null, null, null
+            );
+
+            if (esJugadorActivo) {
+
+                android.graphics.drawable.Drawable izquierdo =
+                        ContextCompat.getDrawable(
+                                this,
+                                R.drawable.icono_dardo
+                        );
+
+                android.graphics.drawable.Drawable derecho =
+                        ContextCompat.getDrawable(
+                                this,
+                                R.drawable.icono_dardo
+                        );
+
+                int tamano = convertirDp(
+                        nombresJugadores.length >= 5 ? 7 : 10
+                );
+
+                if (izquierdo != null && derecho != null) {
+
+                    izquierdo.setBounds(
+                            0, 0, tamano, tamano
+                    );
+
+                    derecho.setBounds(
+                            0, 0, tamano, tamano
+                    );
+
+                    txtNombre.setCompoundDrawables(
+                            izquierdo,
+                            null,
+                            derecho,
+                            null
+                    );
+
+                    txtNombre.setCompoundDrawablePadding(
+                            convertirDp(1)
+                    );
+                }
+            }
+
+            // PUNTUACIÓN
             txtPuntosJugadores[jugador].setText(
-                    puntuacionesJugadores[jugador]
-                            + " PTS"
+                    puntuacionesJugadores[jugador] + " PTS"
             );
 
             txtPuntosJugadores[jugador].setTextColor(
-                    jugador == jugadorActual
+                    esJugadorActivo
                             ? coloresJugadores[jugador]
                             : Color.WHITE
             );
 
+            // MARCAS DE CADA OBJETIVO
             for (int objetivo = 0;
                  objetivo < OBJETIVOS.length;
                  objetivo++) {
 
-                txtMarcasJugadores[jugador][objetivo]
-                        .setText(
-                                obtenerTextoMarcas(
-                                        marcasJugadores[jugador][objetivo]
-                                )
-                        );
+                TextView txtMarca =
+                        txtMarcasJugadores[jugador][objetivo];
 
-                txtMarcasJugadores[jugador][objetivo]
-                        .setTextColor(
-                                jugador == jugadorActual
-                                        ? coloresJugadores[jugador]
-                                        : Color.WHITE
-                        );
+                if (objetivoCerradoPorTodos(objetivo)) {
+
+                    txtMarca.setText("✕ ✕ ✕");
+                    txtMarca.setTextColor(colorGris);
+
+                } else {
+
+                    txtMarca.setText(
+                            obtenerTextoMarcas(
+                                    marcasJugadores[jugador][objetivo]
+                            )
+                    );
+
+                    txtMarca.setTextColor(
+                            esJugadorActivo
+                                    ? coloresJugadores[jugador]
+                                    : Color.WHITE
+                    );
+                }
+            }
+        }
+
+        // ATENUAR TAMBIÉN LOS NÚMEROS CENTRALES CERRADOS
+        LinearLayout columnaObjetivos =
+                findViewById(R.id.columnaObjetivos);
+
+        int[] ordenVisual = {5, 4, 3, 2, 1, 0, 6};
+
+        if (columnaObjetivos != null) {
+
+            for (int fila = 0;
+                 fila < ordenVisual.length;
+                 fila++) {
+
+                View vista = columnaObjetivos.getChildAt(
+                        fila + 1
+                );
+
+                if (vista instanceof TextView) {
+
+                    TextView txtObjetivo = (TextView) vista;
+
+                    txtObjetivo.setTextColor(
+                            objetivoCerradoPorTodos(
+                                    ordenVisual[fila]
+                            )
+                                    ? colorGris
+                                    : Color.WHITE
+                    );
+                }
             }
         }
     }
+
+
+    private boolean objetivoCerradoPorTodos(int indiceObjetivo) {
+
+        if (marcasJugadores == null
+                || nombresJugadores == null
+                || nombresJugadores.length == 0) {
+
+            return false;
+        }
+
+        for (int jugador = 0;
+             jugador < nombresJugadores.length;
+             jugador++) {
+
+            if (marcasJugadores[jugador][indiceObjetivo]
+                    < MARCAS_PARA_CERRAR) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     private String obtenerTextoMarcas(int numeroMarcas) {
 
@@ -2700,6 +2924,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         private final int multiplicadorSeleccionado;
         private final String[] tiradasTurno;
+        private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
         private EstadoPartida(
                 int[][] marcasJugadores,

@@ -20,6 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaPuntos;
+import modelos.EstadisticasJugadorEnCurso;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -132,6 +133,10 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
     private final Deque<EstadoPartida> historialEstados =
             new ArrayDeque<>();
+
+    // Un contador independiente por participante y en el orden real del turno.
+    private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores =
+            new ArrayList<>();
 
     //Información general ---------------------------------------------------------
 
@@ -539,6 +544,9 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         estado.setHistorialEstados(
                 construirHistorialEstadosGuardado()
         );
+        estado.setEstadisticasJugadores(
+                EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores)
+        );
 
         partida.setEstadoPuntos(estado);
 
@@ -722,6 +730,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                 textosDardos
         );
 
+        estadisticasJugadores = restaurarEstadisticas(estado.getEstadisticasJugadores());
+
         historialTiradas.clear();
         restaurarHistorialTiradas(
                 estado.getHistorialTiradas()
@@ -861,6 +871,9 @@ public class PartidaPuntosActivity extends AppCompatActivity {
             guardado.setTamanoHistorialTiradas(
                     estado.tamanoHistorialTiradas
             );
+            guardado.setEstadisticasJugadores(
+                    EstadisticasJugadorEnCurso.copiarLista(estado.estadisticasJugadores)
+            );
 
             resultado.add(guardado);
         }
@@ -947,14 +960,15 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                             guardado.getPuntosTurnoActual(),
                             convertirListaAArrayInt(
                                     guardado.getPuntosDardos(),
-                                    numeroDardosTurno,
+                                    CAPACIDAD_MAX_DARDOS,
                                     0
                             ),
                             convertirListaAArrayString(
                                     guardado.getTextosDardos(),
-                                    numeroDardosTurno
+                                    CAPACIDAD_MAX_DARDOS
                             ),
-                            guardado.getTamanoHistorialTiradas()
+                            guardado.getTamanoHistorialTiradas(),
+                            restaurarEstadisticas(guardado.getEstadisticasJugadores())
                     );
 
             historialEstados.addLast(estado);
@@ -1201,6 +1215,50 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         ordenFinalizacion.clear();
         historialEstados.clear();
+        estadisticasJugadores = crearEstadisticasVacias();
+    }
+
+    /** La lista tiene siempre exactamente un elemento por participante. */
+    private ArrayList<EstadisticasJugadorEnCurso> crearEstadisticasVacias() {
+        ArrayList<EstadisticasJugadorEnCurso> lista = new ArrayList<>();
+        for (int i = 0; i < numeroJugadores; i++) {
+            lista.add(new EstadisticasJugadorEnCurso(modoJuego));
+        }
+        return lista;
+    }
+
+    /** Compatible con estados anteriores sin contadores: empiezan en cero. */
+    private ArrayList<EstadisticasJugadorEnCurso> restaurarEstadisticas(
+            ArrayList<EstadisticasJugadorEnCurso> guardadas) {
+        if (guardadas == null || guardadas.size() != numeroJugadores) {
+            return crearEstadisticasVacias();
+        }
+        for (EstadisticasJugadorEnCurso estadistica : guardadas) {
+            if (estadistica == null || !modoJuego.equals(estadistica.getModo())) {
+                return crearEstadisticasVacias();
+            }
+        }
+        return EstadisticasJugadorEnCurso.copiarLista(guardadas);
+    }
+
+    /** Valor del lanzamiento, no el resultado neto de un turno con bust. */
+    private int tipoDardoEstadistico(int puntos, String textoDardo) {
+        if (puntos == 0 || "OUT".equals(textoDardo)) return 0;
+        if (textoDardo != null && textoDardo.startsWith("D")) return 2;
+        if (textoDardo != null && textoDardo.startsWith("T")) return 3;
+        return 1;
+    }
+
+    /** Finalizar UNA SOLA VEZ cada turno, con sus puntos realmente válidos. */
+    private void registrarEstadisticasTurno(int puntosNetos,
+                                            boolean bust, boolean cierre) {
+        EstadisticasJugadorEnCurso e = estadisticasJugadores.get(jugadorActual);
+        e.registrarTurno();
+        if (bust) e.registrarBust();
+        // 180 clásico: tres dardos y 180 puntos netos válidos.
+        e.registrarTurnoPuntos(puntosNetos,
+                puntosNetos == 180 && dardoActual == 3);
+        if (cierre) e.registrarCierre(dardoActual);
     }
 
     //Configuración de botones ----------------------------------------------------
@@ -1438,6 +1496,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
     ) {
 
         guardarEstadoActual();
+        estadisticasJugadores.get(jugadorActual).registrarDardo(
+                tipoDardoEstadistico(puntos, textoDardo));
 
         puntosDardos[dardoActual] = puntos;
         textosDardos[dardoActual] = textoDardo;
@@ -1509,7 +1569,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                         puntosTurnoActual,
                         puntosDardos.clone(),
                         textosDardos.clone(),
-                        historialTiradas.size()
+                        historialTiradas.size(),
+                        EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores)
                 )
         );
     }
@@ -1537,6 +1598,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         EstadoPartida estadoAnterior =
                 historialEstados.pop();
+        estadisticasJugadores = EstadisticasJugadorEnCurso.copiarLista(
+                estadoAnterior.estadisticasJugadores);
 
         puntuacionesJugadores =
                 estadoAnterior.puntuacionesJugadores.clone();
@@ -1620,6 +1683,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         //Permitir saltar el turno sin lanzar dardos
         if (dardoActual == 0) {
+            registrarEstadisticasTurno(0, false, false);
 
             guardarTiradaTemporal(
                     puntuacionAntes,
@@ -1666,6 +1730,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         puntuacionesJugadores[jugadorActual] =
                 puntuacionDespues;
+        registrarEstadisticasTurno(puntosTurnoActual, false, false);
 
         guardarTiradaTemporal(
                 puntuacionAntes,
@@ -1681,6 +1746,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
     private void finalizarTurnoPasado(
             int puntuacionAntes
     ) {
+        registrarEstadisticasTurno(0, true, false);
 
         guardarTiradaTemporal(
                 puntuacionAntes,
@@ -1703,6 +1769,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
     private void finalizarJugadorEnCero(
             int puntuacionAntes
     ) {
+        registrarEstadisticasTurno(puntosTurnoActual, false, true);
 
         puntuacionesJugadores[jugadorActual] = 0;
 
@@ -2069,22 +2136,39 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         for (int i = 0; i < numeroJugadores; i++) {
 
+            boolean activo = i == jugadorActual && !jugadoresFinalizados[i];
+            aplicarResaltadoJugador(panelesJugadores[i], activo);
+
             if (jugadoresFinalizados[i]) {
-
                 panelesJugadores[i].setAlpha(0.35f);
-
-            } else if (i == jugadorActual) {
-
+            } else if (activo) {
                 panelesJugadores[i].setAlpha(1.0f);
-
             } else {
-
                 panelesJugadores[i].setAlpha(0.65f);
             }
         }
     }
 
     //Actualización de ronda ------------------------------------------------------
+
+    // Resaltado visual común de los marcadores laterales.
+    private void aplicarResaltadoJugador(LinearLayout panel, boolean activo) {
+        android.graphics.drawable.GradientDrawable fondo =
+                new android.graphics.drawable.GradientDrawable();
+        fondo.setCornerRadius(dpMarcador(8));
+        fondo.setColor(activo
+                ? android.graphics.Color.rgb(30, 58, 138)
+                : android.graphics.Color.TRANSPARENT);
+        if (activo) {
+            fondo.setStroke(dpMarcador(2),
+                    android.graphics.Color.rgb(255, 193, 7));
+        }
+        panel.setBackground(fondo);
+    }
+
+    private int dpMarcador(int dp) {
+        return Math.round(dp * getResources().getDisplayMetrics().density);
+    }
 
     private void actualizarRonda() {
 
@@ -2341,6 +2425,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         private final String[] textosDardos;
 
         private final int tamanoHistorialTiradas;
+        private final ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
         private EstadoPartida(
                 int[] puntuacionesJugadores,
@@ -2352,7 +2437,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                 int puntosTurnoActual,
                 int[] puntosDardos,
                 String[] textosDardos,
-                int tamanoHistorialTiradas
+                int tamanoHistorialTiradas,
+                ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores
         ) {
 
             this.puntuacionesJugadores =
@@ -2384,6 +2470,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
             this.tamanoHistorialTiradas =
                     tamanoHistorialTiradas;
+            this.estadisticasJugadores =
+                    EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores);
         }
     }
 

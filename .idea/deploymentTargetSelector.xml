@@ -10,10 +10,6 @@
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="ConfigurarNuevaPartidaActivityTest">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DialogSelection />
-      </SelectionState>
       <SelectionState runConfigName="JugadoresActivityTest">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />

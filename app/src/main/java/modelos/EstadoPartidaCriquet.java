@@ -29,6 +29,7 @@ public class EstadoPartidaCriquet {
     //Pila completa utilizada por Deshacer ---------------------------------------
 
     private ArrayList<EstadoDeshacerCriquet> historialEstados;
+    private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
     //Constructor ----------------------------------------------------------------
 
@@ -40,6 +41,7 @@ public class EstadoPartidaCriquet {
 
         tiradasTurno = new ArrayList<>();
         historialEstados = new ArrayList<>();
+        estadisticasJugadores = new ArrayList<>();
     }
 
     //Getters y setters -----------------------------------------------------------
@@ -121,9 +123,19 @@ public class EstadoPartidaCriquet {
         this.historialEstados = historialEstados;
     }
 
+    public ArrayList<EstadisticasJugadorEnCurso> getEstadisticasJugadores() {
+        return estadisticasJugadores;
+    }
+
+    public void setEstadisticasJugadores(ArrayList<EstadisticasJugadorEnCurso> valores) {
+        this.estadisticasJugadores = valores == null
+                ? new ArrayList<>() : EstadisticasJugadorEnCurso.copiarLista(valores);
+    }
+
     //Instantánea utilizada por el botón Deshacer --------------------------------
 
     public static class EstadoDeshacerCriquet {
+        private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores = new ArrayList<>();
 
         private ArrayList<ArrayList<Integer>> marcasJugadores;
         private ArrayList<Integer> puntuacionesJugadores;
@@ -206,6 +218,15 @@ public class EstadoPartidaCriquet {
                 ArrayList<String> tiradasTurno
         ) {
             this.tiradasTurno = tiradasTurno;
+        }
+
+        public ArrayList<EstadisticasJugadorEnCurso> getEstadisticasJugadores() {
+            return estadisticasJugadores;
+        }
+
+        public void setEstadisticasJugadores(ArrayList<EstadisticasJugadorEnCurso> valores) {
+            this.estadisticasJugadores = valores == null
+                    ? new ArrayList<>() : EstadisticasJugadorEnCurso.copiarLista(valores);
         }
     }
 }

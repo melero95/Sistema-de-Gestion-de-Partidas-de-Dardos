@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaRondas;
+import modelos.EstadisticasJugadorEnCurso;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -186,6 +187,39 @@ public class PartidaRondasActivity extends AppCompatActivity {
      */
     private final Deque<EstadoPartida> historialEstados =
             new ArrayDeque<>();
+
+
+    // Estadísticas por jugador y en el orden REAL de participación.
+    private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores = new ArrayList<>();
+
+    private ArrayList<EstadisticasJugadorEnCurso> crearEstadisticasVacias() {
+        ArrayList<EstadisticasJugadorEnCurso> datos = new ArrayList<>();
+        for (int i = 0; i < nombresJugadores.length; i++) {
+            datos.add(new EstadisticasJugadorEnCurso(modoJuego));
+        }
+        return datos;
+    }
+
+    // Compatibilidad con partidas anteriores, cuyos JSON no tenían estadísticas.
+    private ArrayList<EstadisticasJugadorEnCurso> restaurarEstadisticas(
+            ArrayList<EstadisticasJugadorEnCurso> datos) {
+        if (datos == null || datos.size() != nombresJugadores.length) {
+            return crearEstadisticasVacias();
+        }
+        for (EstadisticasJugadorEnCurso dato : datos) {
+            if (dato == null || !modoJuego.equals(dato.getModo())) {
+                return crearEstadisticasVacias();
+            }
+        }
+        return EstadisticasJugadorEnCurso.copiarLista(datos);
+    }
+
+    private int tipoDardoValido(String texto) {
+        if (texto == null || texto.isEmpty() || "0".equals(texto)) return 0;
+        if (texto.startsWith("D")) return 2;
+        if (texto.startsWith("T")) return 3;
+        return 1;
+    }
 
     // Vistas generales ---------------------------------------------------------
 
@@ -683,6 +717,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         Arrays.fill(textosDardos, "");
         historialEstados.clear();
+        estadisticasJugadores = crearEstadisticasVacias();
     }
 
 
@@ -798,6 +833,9 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         estado.setHistorialEstados(
                 construirHistorialGuardado()
+        );
+        estado.setEstadisticasJugadores(
+                EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores)
         );
 
         partida.setEstadoRondas(estado);
@@ -1089,6 +1127,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
             }
         }
 
+        estadisticasJugadores = restaurarEstadisticas(estado.getEstadisticasJugadores());
         historialEstados.clear();
 
         restaurarHistorialEstados(
@@ -1167,6 +1206,9 @@ public class PartidaRondasActivity extends AppCompatActivity {
                     )
             );
 
+            guardado.setEstadisticasJugadores(
+                    EstadisticasJugadorEnCurso.copiarLista(estado.estadisticasJugadores)
+            );
             resultado.add(guardado);
         }
 
@@ -1222,6 +1264,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
                             )
                     )
             );
+            historialEstados.peekLast().estadisticasJugadores =
+                    restaurarEstadisticas(guardado.getEstadisticasJugadores());
         }
     }
 
@@ -1440,6 +1484,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
         }
 
         guardarEstadoActual();
+        estadisticasJugadores.get(jugadorActual).registrarDardo(0);
 
         textosDardos[dardoActual] = "0";
 
@@ -1499,9 +1544,13 @@ public class PartidaRondasActivity extends AppCompatActivity {
                         );
             }
 
-            avanzarObjetivoAroundClock(
-                    multiplicador
-            );
+            int objetivoAnterior = objetivosJugadores[jugadorActual];
+            avanzarObjetivoAroundClock(multiplicador);
+            int avance = objetivosJugadores[jugadorActual] - objetivoAnterior;
+            EstadisticasJugadorEnCurso estadistica = estadisticasJugadores.get(jugadorActual);
+            estadistica.registrarDardo(multiplicador);
+            if (avance > 0) estadistica.registrarAciertoClock(avance);
+            if (jugadoresFinalizados[jugadorActual]) estadistica.marcarClockCompletado();
 
             textosDardos[dardoActual] = texto;
             haAcertadoObjetivoTurno = true;
@@ -1697,6 +1746,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         puntosValidosTurno += puntos;
         haAcertadoObjetivoTurno = true;
+        estadisticasJugadores.get(jugadorActual).registrarDardo(tipoDardoValido(texto));
 
         textosDardos[dardoActual] = texto;
 
@@ -1833,6 +1883,13 @@ public class PartidaRondasActivity extends AppCompatActivity {
     }
 
     private void aplicarResultadoTurno() {
+        EstadisticasJugadorEnCurso actual = estadisticasJugadores.get(jugadorActual);
+        actual.registrarTurno();
+        if (modoRondas == ModoRondas.DOUBLE_DOWN) {
+            actual.registrarRondaDoubleDown(puntosValidosTurno, !haAcertadoObjetivoTurno);
+        } else if (modoRondas == ModoRondas.SHANGHAI) {
+            actual.registrarRondaShanghai(puntosValidosTurno);
+        }
 
         if (modoRondas == ModoRondas.DOUBLE_DOWN) {
 
@@ -2086,6 +2143,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
                         textosDardos.clone()
                 )
         );
+        historialEstados.peek().estadisticasJugadores =
+                EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores);
     }
 
     private void deshacerUltimaTirada() {
@@ -2109,6 +2168,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         EstadoPartida estadoAnterior =
                 historialEstados.pop();
+        estadisticasJugadores = EstadisticasJugadorEnCurso.copiarLista(
+                estadoAnterior.estadisticasJugadores);
 
         puntuacionesJugadores =
                 estadoAnterior
@@ -2242,18 +2303,38 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 );
             }
 
+            boolean finalizado = modoRondas == ModoRondas.AROUND_THE_CLOCK
+                    && jugadoresFinalizados[i];
+            boolean activo = i == jugadorActual && !finalizado;
+            aplicarResaltadoJugador(panelesJugadores[i], activo);
+
             panelesJugadores[i].setAlpha(
-                    i == jugadorActual
-                            ? 1.0f
-                            : 0.62f
+                    finalizado ? 0.35f : (activo ? 1.0f : 0.62f)
             );
 
             txtPuntuacionesJugadores[i].setTextColor(
-                    i == jugadorActual
-                            ? coloresJugadores[i]
-                            : Color.WHITE
+                    activo ? coloresJugadores[i] : Color.WHITE
             );
         }
+    }
+
+    // Resaltado visual común de los marcadores laterales.
+    private void aplicarResaltadoJugador(LinearLayout panel, boolean activo) {
+        android.graphics.drawable.GradientDrawable fondo =
+                new android.graphics.drawable.GradientDrawable();
+        fondo.setCornerRadius(dpMarcador(8));
+        fondo.setColor(activo
+                ? android.graphics.Color.rgb(30, 58, 138)
+                : android.graphics.Color.TRANSPARENT);
+        if (activo) {
+            fondo.setStroke(dpMarcador(2),
+                    android.graphics.Color.rgb(255, 193, 7));
+        }
+        panel.setBackground(fondo);
+    }
+
+    private int dpMarcador(int dp) {
+        return Math.round(dp * getResources().getDisplayMetrics().density);
     }
 
     private String obtenerTextoObjetivoJugador(
@@ -2528,14 +2609,16 @@ public class PartidaRondasActivity extends AppCompatActivity {
      * marcadores y panel de ronda para evitar que la pantalla quede
      * excesivamente alta en dispositivos reales.
      */
+
     private void ajustarDistribucionSegunBotonera(
             boolean usarBotoneraCompleta) {
 
         if (usarBotoneraCompleta) {
 
             /*
-             * El objetivo sigue visible para indicar claramente
-             * si la ronda actual es de DOBLES o TRIPLES.
+             * Botonera completa de Double Down.
+             * Se aumenta la altura del objetivo para que
+             * el texto no aparezca recortado.
              */
             contenedorObjetivoRonda.setVisibility(
                     View.VISIBLE
@@ -2560,7 +2643,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
             cambiarAlturaVista(
                     contenedorObjetivoRonda,
-                    dpToPx(52)
+                    dpToPx(86)
             );
 
             cambiarMargenSuperior(
@@ -2575,6 +2658,15 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         } else {
 
+            /*
+             * Botonera reducida:
+             * Around the Clock, Shanghai y rondas
+             * de Double Down con objetivo concreto.
+             *
+             * Se amplía el contenedor y se reduce
+             * su margen superior para compensar
+             * el aumento de altura.
+             */
             contenedorObjetivoRonda.setVisibility(
                     View.VISIBLE
             );
@@ -2598,12 +2690,12 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
             cambiarAlturaVista(
                     contenedorObjetivoRonda,
-                    dpToPx(64)
+                    dpToPx(90)
             );
 
             cambiarMargenSuperior(
                     contenedorObjetivoRonda,
-                    dpToPx(30)
+                    dpToPx(12)
             );
 
             cambiarMargenInferior(
@@ -2612,6 +2704,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
             );
         }
     }
+
 
     private void cambiarAlturaVista(
             View vista,
@@ -3247,6 +3340,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
         private final boolean haAcertadoObjetivoTurno;
 
         private final String[] textosDardos;
+        private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
         private EstadoPartida(
                 int[] puntuacionesJugadores,

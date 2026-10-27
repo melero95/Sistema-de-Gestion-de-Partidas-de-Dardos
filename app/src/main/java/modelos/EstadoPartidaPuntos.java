@@ -31,6 +31,7 @@ public class EstadoPartidaPuntos {
 
     private ArrayList<RegistroTiradaGuardada> historialTiradas;
     private ArrayList<EstadoDeshacerGuardado> historialEstados;
+    private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
     //Constructor ----------------------------------------------------------------
 
@@ -46,6 +47,7 @@ public class EstadoPartidaPuntos {
 
         historialTiradas = new ArrayList<>();
         historialEstados = new ArrayList<>();
+        estadisticasJugadores = new ArrayList<>();
     }
 
     //Getters y setters -----------------------------------------------------------
@@ -169,6 +171,15 @@ public class EstadoPartidaPuntos {
         this.historialEstados = historialEstados;
     }
 
+    public ArrayList<EstadisticasJugadorEnCurso> getEstadisticasJugadores() {
+        return estadisticasJugadores;
+    }
+
+    public void setEstadisticasJugadores(ArrayList<EstadisticasJugadorEnCurso> datos) {
+        estadisticasJugadores = datos == null
+                ? new ArrayList<>() : EstadisticasJugadorEnCurso.copiarLista(datos);
+    }
+
     //Registro completo de una tirada --------------------------------------------
 
     public static class RegistroTiradaGuardada {
@@ -283,6 +294,7 @@ public class EstadoPartidaPuntos {
         private ArrayList<String> textosDardos;
 
         private int tamanoHistorialTiradas;
+        private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
         public EstadoDeshacerGuardado() {
 
@@ -292,6 +304,7 @@ public class EstadoPartidaPuntos {
 
             puntosDardos = new ArrayList<>();
             textosDardos = new ArrayList<>();
+            estadisticasJugadores = new ArrayList<>();
         }
 
         public ArrayList<Integer> getPuntuacionesJugadores() {
@@ -385,6 +398,15 @@ public class EstadoPartidaPuntos {
         ) {
             this.tamanoHistorialTiradas =
                     tamanoHistorialTiradas;
+        }
+
+        public ArrayList<EstadisticasJugadorEnCurso> getEstadisticasJugadores() {
+            return estadisticasJugadores;
+        }
+
+        public void setEstadisticasJugadores(ArrayList<EstadisticasJugadorEnCurso> datos) {
+            estadisticasJugadores = datos == null
+                    ? new ArrayList<>() : EstadisticasJugadorEnCurso.copiarLista(datos);
         }
     }
 }

@@ -763,6 +763,8 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+
             <!-- ================================================= -->
             <!-- OBJETIVO DE LA RONDA -->
             <!-- ================================================= -->
@@ -770,16 +772,17 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/marcoObjetivoRonda"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="90dp"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="18dp"
                 android:layout_marginBottom="2dp"
-                app:cardBackgroundColor="#CC1A237E"
+                app:cardBackgroundColor="#CC2233A8"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="3dp"
                 app:strokeColor="@color/gold"
                 app:strokeWidth="1dp">
+
                 <LinearLayout
                     android:id="@+id/contenedorObjetivoRonda"
                     android:layout_width="match_parent"
@@ -787,33 +790,42 @@
                     android:background="@android:color/transparent"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="4dp">
-    
+                    android:paddingStart="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="14dp">
+
                     <TextView
                         android:id="@+id/txtTituloObjetivo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="OBJETIVO DE LA RONDA"
-                        android:textColor="#168BFF"
+                        android:textColor="#5FA8FF"
                         android:textSize="11sp"
                         android:textStyle="bold" />
-    
+
                     <TextView
                         android:id="@+id/txtObjetivoRonda"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:includeFontPadding="false"
+                        android:includeFontPadding="true"
                         android:maxLines="1"
+                        android:paddingTop="1dp"
+                        android:paddingBottom="4dp"
                         android:text="15"
                         android:textColor="#FFFFFF"
-                        android:textSize="25sp"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
-    
+
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
+
+
 
         </LinearLayout>
 
@@ -846,54 +858,60 @@
             android:paddingTop="4dp"
             android:paddingEnd="4dp"
             android:paddingBottom="4dp">
-    
+
+
+
             <!-- ================================================= -->
             <!-- BOTONERA REDUCIDA -->
-            <!-- Objetivos numéricos concretos y diana -->
+            <!-- Orden: TRIPLE, DOBLE, SIMPLE, FUERA -->
             <!-- ================================================= -->
-    
+
             <LinearLayout
                 android:id="@+id/contenedorBotoneraReducida"
                 android:layout_width="match_parent"
                 android:layout_height="104dp"
                 android:orientation="vertical"
                 android:visibility="visible">
-    
-                <!-- Primera fila -->
+
+                <!-- Primera fila: TRIPLE - DOBLE -->
                 <LinearLayout
                     android:id="@+id/filaBotoneraReducida1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
-    
+
                     <Button
-                        android:id="@+id/btnFueraRonda"
-                        style="@style/BotonFuera"
+                        android:id="@+id/btnTripleRonda"
+                        style="@style/BotonPuntuacion"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="3dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
-                        android:text="FUERA / 0" />
-    
+                        android:background="@drawable/fondo_boton_triple_ronda"
+                        android:backgroundTint="@null"
+                        android:text="TRIPLE"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="@null" />
+
                     <Button
-                        android:id="@+id/btnSimpleRonda"
+                        android:id="@+id/btnDobleRonda"
                         style="@style/BotonPuntuacion"
                         android:layout_width="0dp"
-                        android:background="@drawable/fondo_boton_simple_ronda"
-                        android:backgroundTint="@null"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="@null"
                         android:layout_height="match_parent"
                         android:layout_marginStart="3dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
-                        android:text="SIMPLE" />
-    
+                        android:background="@drawable/fondo_boton_doble_ronda"
+                        android:backgroundTint="@null"
+                        android:text="DOBLE"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="@null" />
+
                 </LinearLayout>
-    
-                <!-- Segunda fila -->
+
+                <!-- Segunda fila: SIMPLE - FUERA -->
                 <LinearLayout
                     android:id="@+id/filaBotoneraReducida2"
                     android:layout_width="match_parent"
@@ -901,37 +919,34 @@
                     android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
-    
+
                     <Button
-                        android:id="@+id/btnDobleRonda"
+                        android:id="@+id/btnSimpleRonda"
                         style="@style/BotonPuntuacion"
                         android:layout_width="0dp"
-                        android:background="@drawable/fondo_boton_doble_ronda"
-                        android:backgroundTint="@null"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="@null"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="3dp"
                         android:layout_weight="1"
-                        android:text="DOBLE" />
-    
-                    <Button
-                        android:id="@+id/btnTripleRonda"
-                        style="@style/BotonPuntuacion"
-                        android:layout_width="0dp"
-                        android:background="@drawable/fondo_boton_triple_ronda"
+                        android:background="@drawable/fondo_boton_simple_ronda"
                         android:backgroundTint="@null"
+                        android:text="SIMPLE"
                         android:textColor="@android:color/white"
-                        app:backgroundTint="@null"
+                        app:backgroundTint="@null" />
+
+                    <Button
+                        android:id="@+id/btnFueraRonda"
+                        style="@style/BotonFuera"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="3dp"
                         android:layout_weight="1"
-                        android:text="TRIPLE" />
-    
+                        android:text="FUERA / 0" />
+
                 </LinearLayout>
-    
+
             </LinearLayout>
-    
+
+
             <!-- ================================================= -->
             <!-- BOTONERA COMPLETA -->
             <!-- Rondas de cualquier doble o cualquier triple -->

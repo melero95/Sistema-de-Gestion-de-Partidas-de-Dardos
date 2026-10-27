@@ -608,7 +608,10 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+
+    <!-- ================================================= -->
     <!-- BOTONERA DE OBJETIVOS CENTRADA -->
+    <!-- ================================================= -->
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/marcoBotoneraCricket"
@@ -626,63 +629,43 @@
         app:cardElevation="3dp"
         app:strokeColor="@color/gold"
         app:strokeWidth="1dp">
+
         <LinearLayout
             android:id="@+id/contenedorBotonesCricket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="3dp">
-    
+
+            <!-- DIANA: BOTÓN MÁS ANCHO Y DESTACADO -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
-    
+                android:layout_height="44dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <Button
-                    android:id="@+id/btnNumero15"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
+                    android:id="@+id/btnBull"
+                    style="@style/BotonPuntuacionBull"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="1"
+                    android:layout_marginHorizontal="3dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="15" />
-    
-                <Button
-                    android:id="@+id/btnNumero16"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:text="16" />
-    
-                <Button
-                    android:id="@+id/btnNumero17"
-                    style="@style/BotonPuntuacion"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="4dp"
-                    android:layout_weight="1"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:text="17" />
-    
+                    android:text="DIANA" />
+
             </LinearLayout>
-    
+
+            <!-- PRIMERA FILA: 20, 19, 18 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:weightSum="3">
-    
+
                 <Button
-                    android:id="@+id/btnNumero18"
+                    android:id="@+id/btnNumero20"
                     style="@style/BotonPuntuacion"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -690,8 +673,8 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="18" />
-    
+                    android:text="20" />
+
                 <Button
                     android:id="@+id/btnNumero19"
                     style="@style/BotonPuntuacion"
@@ -702,9 +685,9 @@
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:text="19" />
-    
+
                 <Button
-                    android:id="@+id/btnNumero20"
+                    android:id="@+id/btnNumero18"
                     style="@style/BotonPuntuacion"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -712,30 +695,57 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="20" />
-    
+                    android:text="18" />
+
             </LinearLayout>
-    
+
+            <!-- SEGUNDA FILA: 17, 16, 15 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_height="46dp"
                 android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-    
+                android:orientation="horizontal"
+                android:weightSum="3">
+
                 <Button
-                    android:id="@+id/btnBull"
+                    android:id="@+id/btnNumero17"
                     style="@style/BotonPuntuacion"
-                    android:layout_width="145dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="DIANA" />
-    
+                    android:text="17" />
+
+                <Button
+                    android:id="@+id/btnNumero16"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="16" />
+
+                <Button
+                    android:id="@+id/btnNumero15"
+                    style="@style/BotonPuntuacion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="15" />
+
             </LinearLayout>
-    
+
         </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
+
 
     <!-- BOTONES INFERIORES -->
 

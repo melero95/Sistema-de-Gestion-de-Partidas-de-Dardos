@@ -31,6 +31,7 @@ public class EstadoPartidaRondas {
     //Pila completa utilizada por Deshacer ---------------------------------------
 
     private ArrayList<EstadoDeshacerRondas> historialEstados;
+    private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
     //Constructor ----------------------------------------------------------------
 
@@ -45,6 +46,7 @@ public class EstadoPartidaRondas {
 
         textosDardos = new ArrayList<>();
         historialEstados = new ArrayList<>();
+        estadisticasJugadores = new ArrayList<>();
     }
 
     //Getters y setters -----------------------------------------------------------
@@ -198,9 +200,19 @@ public class EstadoPartidaRondas {
         this.historialEstados = historialEstados;
     }
 
+    public ArrayList<EstadisticasJugadorEnCurso> getEstadisticasJugadores() {
+        return estadisticasJugadores;
+    }
+
+    public void setEstadisticasJugadores(ArrayList<EstadisticasJugadorEnCurso> valores) {
+        this.estadisticasJugadores = valores == null
+                ? new ArrayList<>() : EstadisticasJugadorEnCurso.copiarLista(valores);
+    }
+
     //Instantánea utilizada por Deshacer -----------------------------------------
 
     public static class EstadoDeshacerRondas {
+        private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores = new ArrayList<>();
 
         private ArrayList<Integer> puntuacionesJugadores;
         private ArrayList<Integer> objetivosJugadores;
@@ -321,6 +333,15 @@ public class EstadoPartidaRondas {
                 ArrayList<String> textosDardos
         ) {
             this.textosDardos = textosDardos;
+        }
+
+        public ArrayList<EstadisticasJugadorEnCurso> getEstadisticasJugadores() {
+            return estadisticasJugadores;
+        }
+
+        public void setEstadisticasJugadores(ArrayList<EstadisticasJugadorEnCurso> valores) {
+            this.estadisticasJugadores = valores == null
+                    ? new ArrayList<>() : EstadisticasJugadorEnCurso.copiarLista(valores);
         }
     }
 }
