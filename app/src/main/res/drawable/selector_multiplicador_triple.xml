@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- En 301/501 el RadioButton usa checked; en Cricket el Button usa selected. -->
+    <item android:state_checked="true" android:drawable="@drawable/fondo_multiplicador_triple_activo" />
+    <item android:state_selected="true" android:drawable="@drawable/fondo_multiplicador_triple_activo" />
+    <item android:drawable="@drawable/fondo_boton_triple_ronda" />
+
+</selector>

@@ -2294,29 +2294,16 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             boolean seleccionado =
                     i + 1 == multiplicadorSeleccionado;
 
+            // Restaurar el fondo definido en el XML
+            boton.setBackgroundTintList(null);
+
+            // Activar el estado visual correspondiente
             boton.setSelected(seleccionado);
 
-            if (seleccionado) {
+            // Mantener el texto blanco
+            boton.setTextColor(Color.WHITE);
 
-                boton.setBackgroundTintList(
-                        ColorStateList.valueOf(
-                                getColor(R.color.gold)
-                        )
-                );
-
-                boton.setTextColor(Color.BLACK);
-
-            } else {
-
-                boton.setBackgroundTintList(
-                        tintesOriginalesMultiplicadores[i]
-                );
-
-                boton.setTextColor(
-                        coloresTextoOriginalesMultiplicadores[i]
-                );
-            }
-
+            // Diferenciar seleccionados y no seleccionados
             boton.setAlpha(
                     seleccionado ? 1.0f : 0.82f
             );

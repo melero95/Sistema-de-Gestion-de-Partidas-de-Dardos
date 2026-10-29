@@ -1,98 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <application
-        android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/icono_diana"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/icono_diana"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.JuegosDeDardos"
-        tools:targetApi="31">
-
-        <activity
-            android:name="activities.JugadoresActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.ResultadoActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.PartidaRondasActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.PartidaCriquetActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.PartidaPuntosActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.ConfigurarNuevaPartidaActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.HistorialPartidasActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.AjustesActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.AcercaDeActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.AyudaActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.EstadisticasActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="activities.MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
-        <activity
-            android:name="activities.RecordsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name="activities.ReglasActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
-
-    </application>
-
-</manifest>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<application android:allowBackup="true" android:dataExtractionRules="@xml/data_extraction_rules"
+ android:fullBackupContent="@xml/backup_rules" android:icon="@drawable/icono_diana"
+ android:label="@string/app_name" android:roundIcon="@drawable/icono_diana"
+ android:supportsRtl="true" android:theme="@style/Theme.JuegosDeDardos" tools:targetApi="31">
+<activity android:name="activities.JugadoresActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.ResultadoActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.PartidaRondasActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.PartidaCriquetActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.PartidaPuntosActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.ConfigurarNuevaPartidaActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.HistorialPartidasActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.DetallePartidaActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.AjustesActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.AcercaDeActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.AyudaActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.EstadisticasActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="activities.MainActivity" android:exported="true" android:screenOrientation="portrait">
+<intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+</activity>
+<activity android:name="activities.RecordsActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize" />
+<activity android:name="activities.ReglasActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize" />
+</application></manifest>

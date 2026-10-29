@@ -788,26 +788,20 @@
                 android:layout_height="48dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnFuera"
-                    style="@style/BotonFuera"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="3dp"
-                    android:layout_weight="1"
-                    android:text="OUT / 0" />
-
                 <RadioGroup
                     android:id="@+id/grupoMultiplicadores"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
                     android:checkedButton="@id/radioX1"
                     android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radioX1"
                         style="@style/MultiplicadorPartida"
+                        android:button="@null"
+                        android:background="@drawable/selector_multiplicador_simple"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
@@ -818,6 +812,10 @@
                     <RadioButton
                         android:id="@+id/radioX2"
                         style="@style/MultiplicadorPartida"
+                        android:button="@null"
+                        android:background="@drawable/selector_multiplicador_doble"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
@@ -827,6 +825,10 @@
                     <RadioButton
                         android:id="@+id/radioX3"
                         style="@style/MultiplicadorPartida"
+                        android:button="@null"
+                        android:background="@drawable/selector_multiplicador_triple"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
@@ -1053,6 +1055,25 @@
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
                     android:text="1" />
+
+            </LinearLayout>
+
+            <!-- FUERA: fila completa bajo los números, como en Cricket -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnFuera"
+                    style="@style/BotonFuera"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="OUT / 0" />
 
             </LinearLayout>
 

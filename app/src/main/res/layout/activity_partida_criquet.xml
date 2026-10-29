@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version='1.0' encoding='UTF-8'?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,7 +16,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardModoJuego"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="30dp"
         android:layout_marginTop="0dp"
         app:cardBackgroundColor="#CC1A237E"
         app:cardCornerRadius="14dp"
@@ -32,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-
             android:orientation="horizontal">
 
             <ImageView
@@ -41,7 +39,7 @@
                 android:contentDescription="Dardo izquierdo"
                 android:padding="2dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/icono_dardo" />
+                android:src="@drawable/icono_dardo"/>
 
             <TextView
                 android:id="@+id/txtModoJuego"
@@ -53,8 +51,8 @@
                 android:includeFontPadding="false"
                 android:text="CRIQUET"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:layout_width="27dp"
@@ -63,7 +61,7 @@
                 android:padding="2dp"
                 android:rotation="180"
                 android:scaleType="centerInside"
-                android:src="@drawable/icono_dardo" />
+                android:src="@drawable/icono_dardo"/>
 
         </LinearLayout>
 
@@ -72,7 +70,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardTurnoJugador"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="27dp"
         android:layout_marginTop="3dp"
         app:cardBackgroundColor="#CC1A237E"
         app:cardCornerRadius="14dp"
@@ -97,7 +95,7 @@
                 android:text="TURNO DE:"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/txtJugadorActual"
@@ -109,7 +107,7 @@
                 android:text="JUGADOR 1"
                 android:textColor="#FF299FFF"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -121,7 +119,7 @@
         android:id="@+id/cardMarcadorCricket"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         app:cardBackgroundColor="#CC1A237E"
         app:cardCornerRadius="14dp"
         app:cardElevation="3dp"
@@ -148,7 +146,7 @@
                 android:text="MARCADOR"
                 android:textColor="@android:color/white"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:id="@+id/contenedorMarcadorCricket"
@@ -162,7 +160,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal"/>
 
                 <LinearLayout
                     android:id="@+id/columnaObjetivos"
@@ -181,7 +179,7 @@
                         android:text="OBJ."
                         android:textColor="#FF58A9F5"
                         android:textSize="8sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <!-- Misma altura que cada fila de marcas -->
 
@@ -193,7 +191,7 @@
                         android:text="20"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -203,7 +201,7 @@
                         android:text="19"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -213,7 +211,7 @@
                         android:text="18"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -223,7 +221,7 @@
                         android:text="17"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -233,7 +231,7 @@
                         android:text="16"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -243,7 +241,7 @@
                         android:text="15"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -253,7 +251,7 @@
                         android:text="D"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <!-- Misma altura que los puntos de los jugadores -->
 
@@ -265,7 +263,7 @@
                         android:text="PTS"
                         android:textColor="#FF58A9F5"
                         android:textSize="10sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 
@@ -274,7 +272,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal"/>
 
             </LinearLayout>
 
@@ -288,7 +286,7 @@
         android:id="@+id/cardInformacionTirada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         app:cardBackgroundColor="#CC1A237E"
         app:cardCornerRadius="14dp"
         app:cardElevation="3dp"
@@ -306,7 +304,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="54dp"
                 android:orientation="horizontal"
                 android:weightSum="10">
 
@@ -326,7 +324,7 @@
                         android:paddingHorizontal="3dp"
                         android:text="RONDA"
                         android:textColor="#FF5FA8FF"
-                        android:textSize="8sp" />
+                        android:textSize="8sp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -342,7 +340,7 @@
                             android:text="1"
                             android:textColor="@android:color/white"
                             android:textSize="23sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/txtMaxRondas"
@@ -351,7 +349,7 @@
                             android:includeFontPadding="false"
                             android:text="/15"
                             android:textColor="@android:color/white"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"/>
 
                     </LinearLayout>
 
@@ -360,7 +358,7 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="#FF5FA8FF" />
+                    android:background="#FF5FA8FF"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -378,7 +376,7 @@
                         android:paddingHorizontal="3dp"
                         android:text="DARDOS"
                         android:textColor="#FF5FA8FF"
-                        android:textSize="8sp" />
+                        android:textSize="8sp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -395,7 +393,7 @@
                             android:contentDescription="Dardo 1"
                             android:padding="4dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/icono_dardo" />
+                            android:src="@drawable/icono_dardo"/>
 
                         <ImageView
                             android:id="@+id/imgDardo2"
@@ -406,7 +404,7 @@
                             android:contentDescription="Dardo 2"
                             android:padding="4dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/icono_dardo" />
+                            android:src="@drawable/icono_dardo"/>
 
                         <ImageView
                             android:id="@+id/imgDardo3"
@@ -417,7 +415,7 @@
                             android:contentDescription="Dardo 3"
                             android:padding="4dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/icono_dardo" />
+                            android:src="@drawable/icono_dardo"/>
 
                         <ImageView
                             android:id="@+id/imgDardo4"
@@ -429,7 +427,7 @@
                             android:padding="4dp"
                             android:scaleType="centerInside"
                             android:src="@drawable/icono_dardo"
-                            android:visibility="gone" />
+                            android:visibility="gone"/>
 
                     </LinearLayout>
 
@@ -441,14 +439,14 @@
                         android:includeFontPadding="false"
                         android:text="1 / 4"
                         android:textColor="@android:color/white"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="#FF5FA8FF" />
+                    android:background="#FF5FA8FF"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -466,7 +464,7 @@
                         android:paddingHorizontal="3dp"
                         android:text="TIRADA ACTUAL"
                         android:textColor="#FF5FA8FF"
-                        android:textSize="8sp" />
+                        android:textSize="8sp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -478,26 +476,26 @@
                         <TextView
                             android:id="@+id/txtTirada1"
                             style="@style/CasillaTiradaActualCompacta"
-                            android:layout_width="27dp" />
+                            android:layout_width="27dp"/>
 
                         <TextView
                             android:id="@+id/txtTirada2"
                             style="@style/CasillaTiradaActualCompacta"
                             android:layout_width="27dp"
-                            android:layout_marginStart="2dp" />
+                            android:layout_marginStart="2dp"/>
 
                         <TextView
                             android:id="@+id/txtTirada3"
                             style="@style/CasillaTiradaActualCompacta"
                             android:layout_width="27dp"
-                            android:layout_marginStart="2dp" />
+                            android:layout_marginStart="2dp"/>
 
                         <TextView
                             android:id="@+id/txtTirada4"
                             style="@style/CasillaTiradaActualCompacta"
                             android:layout_width="27dp"
                             android:layout_marginStart="2dp"
-                            android:visibility="gone" />
+                            android:visibility="gone"/>
 
                     </LinearLayout>
 
@@ -509,8 +507,8 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDeshacerTirada"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="3dp"
                 android:backgroundTint="#B85C00"
                 android:gravity="center"
                 android:minWidth="0dp"
@@ -527,73 +525,10 @@
                 app:iconSize="20dp"
                 app:iconTint="@android:color/white"
                 app:strokeColor="#F0A14A"
-                app:strokeWidth="2dp" />
+                app:strokeWidth="2dp"/>
 
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <!-- BOTONERA DE MULTIPLICADORES -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/marcoMultiplicadoresCricket"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardInformacionTirada"
-        app:cardBackgroundColor="#CC1A237E"
-        app:cardCornerRadius="14dp"
-        app:cardElevation="3dp"
-        app:strokeColor="@color/gold"
-        app:strokeWidth="1dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:padding="4dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <Button
-                android:id="@+id/btnX1"
-                style="@style/MultiplicadorPartida"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="X1"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/btnX2"
-                style="@style/MultiplicadorPartida"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="X2"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/btnX3"
-                style="@style/MultiplicadorPartida"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_weight="1"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="X3"
-                android:textSize="12sp" />
-
-        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
 
@@ -602,12 +537,12 @@
         android:id="@+id/marcoBotoneraCricket"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@id/cardBotonesInferiores"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/marcoMultiplicadoresCricket"
+        app:layout_constraintTop_toBottomOf="@id/cardInformacionTirada"
         app:layout_constraintVertical_bias="0.50"
         app:cardBackgroundColor="#CC1A237E"
         app:cardCornerRadius="14dp"
@@ -622,10 +557,71 @@
             android:orientation="vertical"
             android:padding="3dp">
 
+            <!-- MULTIPLICADORES: INTEGRADOS EN LA BOTONERA -->
+            <LinearLayout
+                android:id="@+id/marcoMultiplicadoresCricket"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/btnX1"
+                    style="@style/MultiplicadorPartida"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="X1"
+                    android:textSize="12sp"
+                    android:background="@drawable/selector_multiplicador_simple"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"/>
+
+                <Button
+                    android:id="@+id/btnX2"
+                    style="@style/MultiplicadorPartida"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="X2"
+                    android:textSize="12sp"
+                    android:background="@drawable/selector_multiplicador_doble"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnX3"
+                    style="@style/MultiplicadorPartida"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="X3"
+                    android:textSize="12sp"
+                    android:background="@drawable/selector_multiplicador_triple"
+                    android:layout_marginEnd="2dp"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null" />
+
+
+            </LinearLayout>
+
             <!-- DIANA -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_height="40dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -637,15 +633,16 @@
                     android:layout_marginHorizontal="3dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="DIANA" />
+                    android:text="DIANA"
+                    android:textSize="13sp"/>
 
             </LinearLayout>
 
             <!-- PRIMERA FILA: 20, 19, 18 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -658,7 +655,7 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="20" />
+                    android:text="20"/>
 
                 <Button
                     android:id="@+id/btnNumero19"
@@ -669,7 +666,7 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="19" />
+                    android:text="19"/>
 
                 <Button
                     android:id="@+id/btnNumero18"
@@ -680,15 +677,15 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="18" />
+                    android:text="18"/>
 
             </LinearLayout>
 
             <!-- SEGUNDA FILA: 17, 16, 15 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -701,7 +698,7 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="17" />
+                    android:text="17"/>
 
                 <Button
                     android:id="@+id/btnNumero16"
@@ -712,7 +709,7 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="16" />
+                    android:text="16"/>
 
                 <Button
                     android:id="@+id/btnNumero15"
@@ -723,15 +720,15 @@
                     android:layout_weight="1"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="15" />
+                    android:text="15"/>
 
             </LinearLayout>
 
             <!-- FUERA: MISMO ANCHO QUE DIANA -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -743,7 +740,8 @@
                     android:layout_marginHorizontal="3dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="FUERA" />
+                    android:text="FUERA"
+                    android:textSize="13sp"/>
 
             </LinearLayout>
 
@@ -757,7 +755,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardBotonesInferiores"
         android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_height="43dp"
         app:cardBackgroundColor="#CC1A237E"
         app:cardCornerRadius="14dp"
         app:cardElevation="3dp"
@@ -785,7 +783,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:text="VER MARCADOR"
-                android:textSize="9sp" />
+                android:textSize="9sp"/>
 
             <Button
                 android:id="@+id/btnSiguienteTurno"
@@ -797,7 +795,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:text="SIGUIENTE TURNO"
-                android:textSize="9sp" />
+                android:textSize="9sp"/>
 
             <Button
                 android:id="@+id/btnSalirPartida"
@@ -809,7 +807,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:text="SALIR PARTIDA"
-                android:textSize="9sp" />
+                android:textSize="9sp"/>
 
         </LinearLayout>
 

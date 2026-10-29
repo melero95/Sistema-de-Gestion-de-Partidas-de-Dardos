@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp" android:foreground="?attr/selectableItemBackground"
+    android:clickable="true" android:focusable="true"
+    app:cardBackgroundColor="#E51A237E" app:strokeColor="@color/gold"
+    app:strokeWidth="1dp" app:cardCornerRadius="10dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="12dp">
+        <TextView android:id="@+id/txtModoItemHistorial" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="501" android:textColor="@color/gold"
+            android:textStyle="bold" android:textSize="18sp" />
+        <TextView android:id="@+id/txtGanadorItemHistorial" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="4dp"
+            android:text="Ganador" android:textColor="@android:color/white" android:textSize="14sp" />
+        <TextView android:id="@+id/txtParticipantesItemHistorial" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="2dp"
+            android:text="2 participantes" android:textColor="@android:color/white" android:textSize="13sp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

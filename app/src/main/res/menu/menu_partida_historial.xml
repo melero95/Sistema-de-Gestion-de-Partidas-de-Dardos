@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/accionDetalle" android:title="Ver detalle" />
+    <item android:id="@+id/accionRepetir" android:title="Repetir partida" />
+    <item android:id="@+id/accionEditar" android:title="Recuperar configuración" />
+    <item android:id="@+id/accionOcultar" android:title="Ocultar partida" />
+    <item android:id="@+id/accionMostrar" android:title="Volver a mostrar" />
+</menu>
