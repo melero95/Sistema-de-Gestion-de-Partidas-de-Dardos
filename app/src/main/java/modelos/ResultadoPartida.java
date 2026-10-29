@@ -53,8 +53,8 @@ public class ResultadoPartida {
     }
 
     public void setIdPartida(long idPartida) {
-        if (idPartida <= 0) {
-            throw new IllegalArgumentException("El ID de la partida debe ser positivo");
+        if (idPartida < 0) {
+            throw new IllegalArgumentException("El ID de la partida no puede ser negativo");
         }
         this.idPartida = idPartida;
     }

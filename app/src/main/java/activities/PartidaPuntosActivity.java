@@ -21,6 +21,7 @@ import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaPuntos;
 import modelos.EstadisticasJugadorEnCurso;
+import utilidades.DatosFinalizacionPartida;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -135,6 +136,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
             new ArrayDeque<>();
 
     // Un contador independiente por participante y en el orden real del turno.
+    private DatosFinalizacionPartida datosFinalizacion;
     private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores =
             new ArrayList<>();
 
@@ -391,6 +393,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
     //Recepción de datos ----------------------------------------------------------
 
     private void recibirDatosPartida() {
+        datosFinalizacion = DatosFinalizacionPartida.nueva(getIntent());
 
         modoJuego = getIntent().getStringExtra(EXTRA_MODO_JUEGO);
 
@@ -466,6 +469,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         PartidaEnCurso partida =
                 new PartidaEnCurso();
+        datosFinalizacion.guardarMetadatos(partida);
 
         partida.setTipoPartida(
                 PartidaEnCurso.TIPO_PUNTOS
@@ -581,6 +585,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
             return false;
         }
+
+        datosFinalizacion = DatosFinalizacionPartida.restaurar(partida);
 
         EstadoPartidaPuntos estado =
                 partida.getEstadoPuntos();
@@ -1789,20 +1795,6 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         String nombreJugador =
                 nombresJugadores.get(jugadorActual);
 
-        if (numeroJugadores <= 2) {
-
-            Toast.makeText(
-                    this,
-                    "¡" + nombreJugador + " ha ganado la partida!",
-                    Toast.LENGTH_LONG
-            ).show();
-
-            finalizarPartida(
-                    MOTIVO_GANADOR
-            );
-            return;
-        }
-
         jugadoresFinalizados[jugadorActual] = true;
 
         Toast.makeText(
@@ -1918,10 +1910,6 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         }
 
         partidaFinalizada = true;
-
-        GestorPartidaEnCurso.eliminarPartida(
-                this
-        );
 
         bloquearBotonesPartida();
 
@@ -2713,6 +2701,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                 ResultadoActivity.EXTRA_INDICES_ORIGINALES,
                 indicesOriginales
         );
+
+        datosFinalizacion.adjuntar(intent, estadisticasJugadores);
 
         startActivity(intent);
         finish();

@@ -24,6 +24,7 @@ import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaCriquet;
 import modelos.EstadisticasJugadorEnCurso;
+import utilidades.DatosFinalizacionPartida;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -145,6 +146,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
 
     // Estadísticas por jugador y en el orden REAL de participación.
+    private DatosFinalizacionPartida datosFinalizacion;
     private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores = new ArrayList<>();
 
     private ArrayList<EstadisticasJugadorEnCurso> crearEstadisticasVacias() {
@@ -363,6 +365,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
     // Recepción de datos -------------------------------------------------------
 
     private void recibirDatosPartida() {
+        datosFinalizacion = DatosFinalizacionPartida.nueva(getIntent());
 
         Intent intent = getIntent();
 
@@ -687,6 +690,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         PartidaEnCurso partida =
                 new PartidaEnCurso();
+        datosFinalizacion.guardarMetadatos(partida);
 
         partida.setTipoPartida(
                 PartidaEnCurso.TIPO_CRIQUET
@@ -807,6 +811,8 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
             return false;
         }
+
+        datosFinalizacion = DatosFinalizacionPartida.restaurar(partida);
 
         EstadoPartidaCriquet estado =
                 partida.getEstadoCriquet();
@@ -1563,10 +1569,6 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
             partidaFinalizada = true;
 
-            GestorPartidaEnCurso.eliminarPartida(
-                    this
-            );
-
             actualizarInterfazCompleta();
             abrirResultadoActivity(indiceGanador);
 
@@ -1772,10 +1774,6 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                     obtenerGanadorPorLimiteRondas();
 
             partidaFinalizada = true;
-
-            GestorPartidaEnCurso.eliminarPartida(
-                    this
-            );
 
             abrirResultadoActivity(indiceGanador);
 
@@ -2733,6 +2731,8 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 EXTRA_OBJETIVOS_CRIQUET,
                 OBJETIVOS.clone()
         );
+
+        datosFinalizacion.adjuntar(intent, estadisticasJugadores);
 
         startActivity(intent);
         finish();

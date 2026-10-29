@@ -127,7 +127,9 @@ public class EstadisticaPartidaTest {
     public void rechazaIdentificadoresYContadoresNegativos() {
         EstadisticaPartida e = new EstadisticaPartida();
         assertThrows(IllegalArgumentException.class, () -> e.setId(-1L));
-        assertThrows(IllegalArgumentException.class, () -> e.setIdResultado(0L));
+        // El ID 0 representa un resultado aún no insertado en SQLite.
+        e.setIdResultado(0L);
+        assertEquals(0L, e.getIdResultado());
         assertThrows(IllegalArgumentException.class, () -> e.setIdResultado(-1L));
         assertThrows(IllegalArgumentException.class, () -> e.setDardosLanzados(-1));
         assertThrows(IllegalArgumentException.class, () -> e.setTurnosJugados(-2));

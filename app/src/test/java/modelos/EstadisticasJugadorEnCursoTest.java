@@ -139,7 +139,9 @@ public class EstadisticasJugadorEnCursoTest {
         assertLanza(IllegalArgumentException.class, () -> puntos.registrarTurnoPuntos(-1, false));
         assertLanza(IllegalArgumentException.class, () -> puntos.registrarTurnoPuntos(60, true));
         assertLanza(IllegalStateException.class, () -> puntos.registrarRondaShanghai(30));
-        assertLanza(IllegalArgumentException.class, () -> puntos.convertirEnEstadisticaFinal(0));
+        // El ID 0 es provisional hasta que SQLite inserte el resultado.
+        assertEquals(0L, puntos.convertirEnEstadisticaFinal(0).getIdResultado());
+        assertLanza(IllegalArgumentException.class, () -> puntos.convertirEnEstadisticaFinal(-1));
     }
 
     private static void assertLanza(Class<? extends Throwable> esperado, Runnable accion) {

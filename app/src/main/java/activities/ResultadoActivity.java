@@ -21,6 +21,11 @@ import java.util.Collections;
 
 import adapters.ClasificacionResultadoAdapter;
 import modelos.ResultadoJugador;
+import sqlite.ServicioFinalizacionPartida;
+import modelos.ConfiguracionPartida;
+import utilidades.SerializadorConfiguracionPartida;
+import utilidades.DatosFinalizacionPartida;
+import androidx.appcompat.app.AlertDialog;
 
 import androidx.activity.OnBackPressedCallback;
 
@@ -149,6 +154,10 @@ public class ResultadoActivity extends AppCompatActivity {
             mostrarErrorDatos();
             return;
         }
+
+        // Guardar en SQLite antes de habilitar la navegación a otra partida.
+        // Si el guardado falla, se ofrecen reintentos sin eliminar SharedPreferences.
+        if (!persistirResultado()) return;
 
         prepararDatosResultado();
         prepararRecyclerView();
@@ -386,6 +395,34 @@ public class ResultadoActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private boolean persistirResultado() {
+        try {
+            ServicioFinalizacionPartida.guardar(this, getIntent(), rondasJugadas,
+                    motivoFinalizacion, posicionesJugadores, puntuacionesJugadores,
+                    indicesOriginales);
+            return true;
+        } catch (Exception error) {
+            android.util.Log.e("ResultadoActivity", "Error al guardar partida", error);
+            new AlertDialog.Builder(this)
+                    .setTitle("No se ha guardado la partida")
+                    .setMessage("No se pudo registrar la partida en SQLite. "
+                            + "Puedes reintentar el guardado. No se eliminará el estado temporal.")
+                    .setCancelable(false)
+                    .setPositiveButton("Reintentar", (dialog, which) -> {
+                        if (persistirResultado()) {
+                            prepararDatosResultado();
+                            prepararRecyclerView();
+                            configurarListeners();
+                            actualizarPantalla();
+                            mostrarAnimacionResultado();
+                        }
+                    })
+                    .setNegativeButton("Volver al menú", (dialog, which) -> volverMenuPrincipal())
+                    .show();
+            return false;
+        }
     }
 
     //Preparar objetos ResultadoJugador --------------------------------------------
@@ -789,6 +826,41 @@ public class ResultadoActivity extends AppCompatActivity {
                     PartidaCriquetActivity.EXTRA_COLOR_JUGADOR + (i + 1),
                     coloresRevancha.get(i)
             );
+        }
+
+        // Revancha con IDs reales y nueva fotografía versionada (fase 06).
+        // Se identifica cada jugador por su nombre normalizado dentro de la
+        // configuración histórica (los nombres son únicos en JUGADORES).
+        try {
+            DatosFinalizacionPartida datos = DatosFinalizacionPartida.desdeIntent(getIntent());
+            ConfiguracionPartida anterior = datos.validarConfiguracion();
+            ArrayList<ConfiguracionPartida.Participante> nuevos = new ArrayList<>();
+            for (int i = 0; i < nombresRevancha.size(); i++) {
+                String nombre = nombresRevancha.get(i);
+                ConfiguracionPartida.Participante encontrado = null;
+                for (ConfiguracionPartida.Participante participante : anterior.getParticipantes()) {
+                    if (participante.getNombre().equalsIgnoreCase(nombre)) {
+                        encontrado = participante;
+                        break;
+                    }
+                }
+                if (encontrado == null) throw new IllegalArgumentException("Jugador de revancha no encontrado");
+                nuevos.add(new ConfiguracionPartida.Participante(
+                        encontrado.getIdJugador(), nombre, encontrado.getColorArgb(), i + 1));
+            }
+            ConfiguracionPartida nueva = new ConfiguracionPartida(
+                    anterior.getModo(), anterior.getRondas(), anterior.getDardosPorTurno(),
+                    anterior.isCierreDoble(), anterior.isMantenerMultiplicador(),
+                    anterior.isOrdenAleatorio(), nuevos);
+            intentRevancha.putExtra(EXTRA_ENTRADA_MODO_JUEGO, anterior.getModo());
+            intentRevancha.putExtra(ConfigurarNuevaPartidaActivity.EXTRA_CONFIGURACION_JSON,
+                    SerializadorConfiguracionPartida.aJson(nueva));
+            intentRevancha.putExtra(ConfigurarNuevaPartidaActivity.EXTRA_MANTENER_MULTIPLICADOR,
+                    anterior.isMantenerMultiplicador());
+        } catch (Exception error) {
+            Toast.makeText(this, "No se puede reconstruir la revancha: " + error.getMessage(),
+                    Toast.LENGTH_LONG).show();
+            return;
         }
 
         startActivity(intentRevancha);

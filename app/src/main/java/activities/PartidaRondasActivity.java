@@ -21,6 +21,7 @@ import com.productos.juegosdedardos.R;
 
 import modelos.EstadoPartidaRondas;
 import modelos.EstadisticasJugadorEnCurso;
+import utilidades.DatosFinalizacionPartida;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -190,6 +191,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
 
     // Estadísticas por jugador y en el orden REAL de participación.
+    private DatosFinalizacionPartida datosFinalizacion;
     private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores = new ArrayList<>();
 
     private ArrayList<EstadisticasJugadorEnCurso> crearEstadisticasVacias() {
@@ -456,6 +458,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
     // Recepción de datos -------------------------------------------------------
 
     private void recibirDatosPartida() {
+        datosFinalizacion = DatosFinalizacionPartida.nueva(getIntent());
 
         Intent intent = getIntent();
 
@@ -735,6 +738,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         PartidaEnCurso partida =
                 new PartidaEnCurso();
+        datosFinalizacion.guardarMetadatos(partida);
 
         partida.setTipoPartida(
                 PartidaEnCurso.TIPO_RONDAS
@@ -873,6 +877,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
             return false;
         }
+
+        datosFinalizacion = DatosFinalizacionPartida.restaurar(partida);
 
         EstadoPartidaRondas estado =
                 partida.getEstadoRondas();
@@ -3038,10 +3044,6 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         partidaFinalizada = true;
 
-        GestorPartidaEnCurso.eliminarPartida(
-                this
-        );
-
         bloquearBotonesPartida();
 
         Toast.makeText(
@@ -3248,6 +3250,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 ResultadoActivity.EXTRA_INDICES_ORIGINALES,
                 indicesOriginales
         );
+
+        datosFinalizacion.adjuntar(intent, estadisticasJugadores);
 
         startActivity(intent);
         finish();

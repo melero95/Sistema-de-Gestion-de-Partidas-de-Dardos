@@ -79,8 +79,8 @@ public class EstadisticaPartida {
     }
 
     public void setIdResultado(long idResultado) {
-        if (idResultado <= 0) {
-            throw new IllegalArgumentException("El ID del resultado debe ser positivo");
+        if (idResultado < 0) {
+            throw new IllegalArgumentException("El ID del resultado no puede ser negativo");
         }
         this.idResultado = idResultado;
     }

@@ -56,7 +56,9 @@ public class ResultadoPartidaTest {
     public void rechazaIdentificadoresIncorrectos() {
         ResultadoPartida resultado = new ResultadoPartida();
         assertThrows(IllegalArgumentException.class, () -> resultado.setId(-1));
-        assertThrows(IllegalArgumentException.class, () -> resultado.setIdPartida(0));
+        // El ID 0 representa una partida pendiente de inserción en SQLite.
+        resultado.setIdPartida(0);
+        assertEquals(0L, resultado.getIdPartida());
         assertThrows(IllegalArgumentException.class, () -> resultado.setIdPartida(-5));
         assertThrows(IllegalArgumentException.class, () -> resultado.setIdJugador(0));
     }

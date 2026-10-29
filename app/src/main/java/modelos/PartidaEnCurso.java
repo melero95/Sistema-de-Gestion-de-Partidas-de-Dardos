@@ -18,6 +18,10 @@ public class PartidaEnCurso {
 
     private int versionGuardado;
 
+    // Metadatos estables de persistencia (fase 06).
+    private String identificadorUnico;
+    private String configuracionJson;
+
     private String tipoPartida;
     private String modoJuego;
 
@@ -47,6 +51,11 @@ public class PartidaEnCurso {
     }
 
     //Getters y setters -----------------------------------------------------------
+
+    public String getIdentificadorUnico() { return identificadorUnico; }
+    public void setIdentificadorUnico(String valor) { identificadorUnico = valor; }
+    public String getConfiguracionJson() { return configuracionJson; }
+    public void setConfiguracionJson(String valor) { configuracionJson = valor; }
 
     public int getVersionGuardado() {
         return versionGuardado;
