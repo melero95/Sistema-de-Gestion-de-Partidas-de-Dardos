@@ -721,12 +721,8 @@ public class ResultadoActivity extends AppCompatActivity {
     //Abrir estadísticas ------------------------------------------------------------
 
     private void abrirEstadisticas() {
-
-        Toast.makeText(
-                this,
-                "Las estadísticas se implementarán más adelante",
-                Toast.LENGTH_SHORT
-        ).show();
+        // Fase 08: consultar estadísticas históricas tras el guardado confirmado.
+        startActivity(new Intent(this, EstadisticasActivity.class));
     }
 
     //Realizar revancha -------------------------------------------------------------

@@ -151,7 +151,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(
                         MainActivity.this,
-                        RecordsActivity.class
+                        EstadisticasActivity.class
+                );
+                startActivity(intent);
+
+            } else if (id == R.id.menuHistorial) {
+
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        HistorialPartidasActivity.class
                 );
                 startActivity(intent);
 

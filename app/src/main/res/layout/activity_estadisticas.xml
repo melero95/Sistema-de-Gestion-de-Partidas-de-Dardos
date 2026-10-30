@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/contenedorEstadisticas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:orientation="vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="22dp"
+    android:paddingBottom="12dp"
     tools:context="activities.EstadisticasActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txtTituloEstadisticas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ESTADÍSTICAS"
+        android:textColor="@color/gold"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_marginBottom="18dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:id="@+id/tabEstadisticasGeneral"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/fondo_pestana_estadisticas_activa"
+            android:text="GENERAL"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="@color/blue" />
+        <TextView
+            android:id="@+id/tabEstadisticasJugadores"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/fondo_pestana_estadisticas_inactiva"
+            android:text="JUGADORES"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="@color/gold" />
+        <TextView
+            android:id="@+id/tabEstadisticasRecords"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/fondo_pestana_estadisticas_inactiva"
+            android:text="RÉCORDS"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="@color/gold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollEstadisticas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="false"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/contenidoEstadisticas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="16dp"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnVolverEstadisticas"
+        style="@style/BotonPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="6dp"
+        android:text="VOLVER"
+        android:textSize="14sp" />
+</LinearLayout>

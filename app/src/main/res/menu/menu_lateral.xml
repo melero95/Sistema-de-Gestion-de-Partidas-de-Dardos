@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item
-        android:id="@+id/menuJugadores"
-        android:icon="@drawable/icono_jugadores"
-        android:title="Jugadores" />
-
-    <item
-        android:id="@+id/menuEstadisticas"
-        android:icon="@drawable/icono_estadisticas"
-        android:title="Estadísticas" />
-
-    <item
-        android:id="@+id/menuRecords"
-        android:icon="@drawable/icono_records"
-        android:title="Récords" />
-
-    <item
-        android:id="@+id/menuReglas"
-        android:icon="@drawable/icono_reglas"
-        android:title="Reglas de juego" />
-
-    <item
-        android:id="@+id/menuAyuda"
-        android:icon="@drawable/icono_ayuda"
-        android:title="Ayuda" />
-
-    <item
-        android:id="@+id/menuAcercaDe"
-        android:icon="@drawable/icono_informacion"
-        android:title="Acerca de" />
-
+    <item android:id="@+id/menuJugadores" android:icon="@drawable/icono_jugadores" android:title="Jugadores" />
+    <item android:id="@+id/menuEstadisticas" android:icon="@drawable/icono_estadisticas" android:title="Estadísticas" />
+    <item android:id="@+id/menuHistorial" android:icon="@drawable/icono_historial" android:title="Historial" />
+    <item android:id="@+id/menuReglas" android:icon="@drawable/icono_reglas" android:title="Reglas de juego" />
+    <item android:id="@+id/menuAyuda" android:icon="@drawable/icono_ayuda" android:title="Ayuda" />
+    <item android:id="@+id/menuAcercaDe" android:icon="@drawable/icono_informacion" android:title="Acerca de" />
 </menu>
