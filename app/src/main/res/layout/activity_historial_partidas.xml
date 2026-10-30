@@ -1,58 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/fondo" android:paddingStart="16dp" android:paddingEnd="16dp">
-    <TextView android:id="@+id/txtTituloHistorial" android:layout_width="0dp"
-        android:layout_height="wrap_content" android:layout_marginTop="30dp"
-        android:gravity="center" android:text="Historial de partidas"
-        android:textColor="@color/gold" android:textSize="26sp" android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/txtTituloHistorial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Historial de partidas"
+        android:textColor="@color/gold"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-    <Spinner android:id="@+id/spnModoHistorial" android:layout_width="0dp"
-        android:layout_height="50dp" android:layout_marginTop="14dp"
-        android:backgroundTint="@color/gold" android:paddingStart="6dp" android:paddingEnd="4dp"
+
+    <!-- Filtro por modo -->
+    <Spinner
+        android:id="@+id/spnModoHistorial"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="@color/gold"
+        android:paddingStart="6dp"
+        android:paddingEnd="4dp"
+        android:contentDescription="Filtrar por modo de juego"
         app:layout_constraintTop_toBottomOf="@id/txtTituloHistorial"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/spnOrdenHistorial"
+        app:layout_constraintEnd_toStartOf="@id/spnJugadorHistorial"
         app:layout_constraintHorizontal_weight="1" />
-    <Spinner android:id="@+id/spnOrdenHistorial" android:layout_width="0dp"
-        android:layout_height="50dp" android:layout_marginTop="14dp"
-        android:layout_marginStart="8dp" android:backgroundTint="@color/gold"
-        android:paddingStart="6dp" android:paddingEnd="4dp"
-        android:contentDescription="Ordenar historial"
+
+    <!-- Filtro por jugador -->
+    <Spinner
+        android:id="@+id/spnJugadorHistorial"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/gold"
+        android:paddingStart="6dp"
+        android:paddingEnd="4dp"
+        android:contentDescription="Filtrar por jugador"
         app:layout_constraintTop_toBottomOf="@id/txtTituloHistorial"
         app:layout_constraintStart_toEndOf="@id/spnModoHistorial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1" />
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardListadoHistorial" android:layout_width="0dp" android:layout_height="0dp"
-        android:layout_marginTop="12dp" android:layout_marginBottom="12dp"
-        app:cardBackgroundColor="#CC1A237E" app:cardCornerRadius="14dp"
-        app:strokeColor="@color/gold" app:strokeWidth="1dp"
+
+    <!-- Ordenación -->
+    <Spinner
+        android:id="@+id/spnOrdenHistorial"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/gold"
+        android:paddingStart="6dp"
+        android:paddingEnd="4dp"
+        android:contentDescription="Ordenar historial"
         app:layout_constraintTop_toBottomOf="@id/spnModoHistorial"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Listado de partidas -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardListadoHistorial"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="#CC1A237E"
+        app:cardCornerRadius="14dp"
+        app:strokeColor="@color/gold"
+        app:strokeWidth="1dp"
+        app:layout_constraintTop_toBottomOf="@id/spnOrdenHistorial"
         app:layout_constraintBottom_toTopOf="@id/btnRestaurarTodas"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
-        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
-            <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerHistorial"
-                android:layout_width="match_parent" android:layout_height="match_parent"
-                android:clipToPadding="false" android:padding="8dp" />
-            <TextView android:id="@+id/txtHistorialVacio" android:layout_width="match_parent"
-                android:layout_height="match_parent" android:gravity="center"
-                android:padding="20dp" android:text="No hay partidas visibles"
-                android:textColor="@android:color/white" android:textSize="15sp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/txtHistorialVacio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="No hay partidas visibles"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
         </FrameLayout>
+
     </com.google.android.material.card.MaterialCardView>
-    <Button android:id="@+id/btnRestaurarTodas" android:layout_width="0dp" android:layout_height="48dp"
-        android:text="Restaurar todas las partidas ocultas" android:textAllCaps="false"
-        android:backgroundTint="@color/gold" android:textColor="@color/blue"
+
+    <!-- Restaurar partidas ocultas -->
+    <Button
+        android:id="@+id/btnRestaurarTodas"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Restaurar todas las partidas ocultas"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/gold"
+        android:textColor="@color/blue"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/btnVolverHistorial"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
-    <Button android:id="@+id/btnVolverHistorial" android:layout_width="0dp" android:layout_height="50dp"
-        android:layout_marginTop="8dp" android:layout_marginBottom="28dp"
-        android:text="Volver al menú principal" android:textAllCaps="false"
-        android:backgroundTint="@color/gold" android:textColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Volver -->
+    <Button
+        android:id="@+id/btnVolverHistorial"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="28dp"
+        android:text="Volver al menú principal"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/gold"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
