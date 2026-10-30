@@ -2288,6 +2288,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
         }
     }
 
+
     private void actualizarMarcadores() {
 
         for (int i = 0;
@@ -2300,6 +2301,17 @@ public class PartidaRondasActivity extends AppCompatActivity {
                         obtenerTextoObjetivoJugador(i)
                 );
 
+            } else if (modoRondas == ModoRondas.SHANGHAI
+                    && i == jugadorActual) {
+
+                // Mostrar los puntos acumulados, incluidos
+                // los lanzamientos del turno actual.
+                txtPuntuacionesJugadores[i].setText(
+                        String.valueOf(
+                                obtenerPuntuacionProvisionalTurno()
+                        )
+                );
+
             } else {
 
                 txtPuntuacionesJugadores[i].setText(
@@ -2309,10 +2321,17 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 );
             }
 
-            boolean finalizado = modoRondas == ModoRondas.AROUND_THE_CLOCK
-                    && jugadoresFinalizados[i];
-            boolean activo = i == jugadorActual && !finalizado;
-            aplicarResaltadoJugador(panelesJugadores[i], activo);
+            boolean finalizado =
+                    modoRondas == ModoRondas.AROUND_THE_CLOCK
+                            && jugadoresFinalizados[i];
+
+            boolean activo =
+                    i == jugadorActual && !finalizado;
+
+            aplicarResaltadoJugador(
+                    panelesJugadores[i],
+                    activo
+            );
 
             panelesJugadores[i].setAlpha(
                     finalizado ? 0.35f : (activo ? 1.0f : 0.62f)
@@ -2323,6 +2342,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
             );
         }
     }
+
 
     // Resaltado visual común de los marcadores laterales.
     private void aplicarResaltadoJugador(LinearLayout panel, boolean activo) {
