@@ -22,6 +22,7 @@
         android:layout_marginTop="6dp"
         android:hint="Ej. ANA"
         android:inputType="textCapWords|textPersonName"
+        android:importantForAutofill="no"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:textColorHint="#B3FFFFFF"

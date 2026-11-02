@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
+import androidx.appcompat.widget.SwitchCompat;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,9 +55,9 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     private Button btnMostrarAjustesAvanzados;
 
     private LinearLayout contenedorAjustesAvanzados;
-    private Switch switchCierreDoble;
-    private Switch switchMantenerMultiplicador;
-    private Switch switchOrdenAleatorio;
+    private SwitchCompat switchCierreDoble;
+    private SwitchCompat switchMantenerMultiplicador;
+    private SwitchCompat switchOrdenAleatorio;
     private Spinner spnNumeroDardos;
     private TextView txtTituloNumeroDardos;
 

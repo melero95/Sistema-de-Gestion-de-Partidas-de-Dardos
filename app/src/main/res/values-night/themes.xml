@@ -10,7 +10,7 @@
         <item name="colorSecondary">@color/gold</item>
 
         <!-- Fondo general de las ventanas -->
-        <item name="android:windowBackground">@color/blue</item>
+        <item name="android:windowBackground">@null</item>
 
         <!-- Permitir colorear las barras del sistema -->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>

@@ -542,7 +542,7 @@ public class ResultadoActivity extends AppCompatActivity {
 
             txtTituloResultado.setText(
                     "RESULTADO - "
-                            + modoJuego.toUpperCase()
+                            + modoJuego.toUpperCase(java.util.Locale.ROOT)
             );
         }
     }

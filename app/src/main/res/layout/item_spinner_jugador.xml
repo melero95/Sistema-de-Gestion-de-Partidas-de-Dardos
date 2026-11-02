@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@android:id/text1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,7 @@
     android:gravity="center_vertical"
     android:paddingStart="12dp"
     android:paddingEnd="8dp"
-    android:drawableEnd="@drawable/ic_flecha_spinner_jugador"
+    app:drawableEndCompat="@drawable/ic_flecha_spinner_jugador"
     android:drawablePadding="4dp"
     android:ellipsize="end"
     android:singleLine="true"

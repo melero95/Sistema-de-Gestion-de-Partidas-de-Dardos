@@ -278,7 +278,7 @@
                         android:padding="12dp"
                         android:visibility="gone">
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switchCierreDoble"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -286,7 +286,7 @@
                             android:text="Cerrar la partida con un doble"
                             android:textColor="@android:color/white" />
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switchMantenerMultiplicador"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -307,7 +307,7 @@
                             android:layout_height="44dp"
                             android:backgroundTint="@color/gold" />
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switchOrdenAleatorio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
