@@ -1,380 +1,250 @@
 # Sistema de Gestión de Partidas y Estadísticas de Dardos
 
-Aplicación Android desarrollada en Java para gestionar partidas de diferentes modalidades de juegos de dardos.
+Aplicación móvil desarrollada en **Java para Android**, destinada a la gestión de partidas de dardos en diferentes modalidades de juego.
 
-El objetivo principal del proyecto es permitir configurar partidas, registrar tiradas, controlar turnos y rondas, mostrar resultados finales y, posteriormente, almacenar un historial completo con estadísticas.
+La aplicación permite configurar partidas con varios jugadores, gestionar las puntuaciones y turnos, aplicar las reglas específicas de cada modalidad y consultar los resultados obtenidos.
 
-Este repositorio se utiliza para controlar el desarrollo de la aplicación de forma progresiva mediante Git y GitHub.
+El proyecto incorpora un sistema de persistencia local mediante **SQLite**, diseñado para almacenar jugadores, partidas finalizadas, resultados y estadísticas, complementado con `SharedPreferences` para gestionar las preferencias y las partidas en curso.
+
+### Objetivos del proyecto
+
+- Desarrollar una aplicación Android funcional e intuitiva para gestionar partidas de dardos.
+- Implementar diferentes modalidades con sus correspondientes reglas.
+- Gestionar jugadores, configuraciones, puntuaciones y resultados.
+- Aplicar persistencia de datos mediante SQLite y SharedPreferences.
+- Desarrollar una arquitectura organizada que facilite el mantenimiento y las futuras ampliaciones.
+- Documentar el proceso de desarrollo y su evolución mediante Git y GitHub.
+
+El proyecto se desarrolla como **Proyecto Final del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)**.
 
 ## Estado actual del proyecto
 
-Proyecto actualmente en desarrollo.
+**Estado: En desarrollo.**
 
-La aplicación ya cuenta con navegación principal, configuración de partidas, varios modos de juego funcionales, pantalla de resultados, revancha, guardado básico de partida en curso, ajustes predeterminados y pantallas informativas.
+La aplicación cuenta actualmente con siete modalidades de juego implementadas, un sistema de configuración de partidas, gestión de jugadores, control de puntuaciones, resultados finales y mecanismos para continuar partidas, deshacer tiradas e iniciar revanchas.
 
-Actualmente se está trabajando en la mejora de la persistencia, el historial de partidas, el detalle de partidas guardadas, las estadísticas y la futura base de datos SQLite.
+Se ha implementado una base de datos local SQLite, con acceso mediante clases DAO, que permite gestionar jugadores y almacenar las partidas finalizadas junto con sus resultados y estadísticas individuales.
 
-## Funcionalidades implementadas
+El desarrollo se realiza de manera progresiva, incorporando nuevas funcionalidades y realizando pruebas para comprobar su correcto funcionamiento y evitar regresiones.
 
-### Pantalla principal
+### Funcionalidades actualmente en desarrollo
 
-La aplicación dispone de una pantalla principal con acceso a las secciones principales:
+- Historial de partidas finalizadas y consulta de sus detalles.
+- Visualización de estadísticas individuales y generales.
+- Consultas de récords y mejores resultados.
+- Pruebas de integración, revisión de casos especiales y mejoras de la interfaz.
+- Auditoría de calidad, seguridad y preparación para su posible distribución mediante Google Play.
 
-- Continuar partida.
-- Nueva partida.
-- Historial de partidas.
-- Ajustes.
-- Reglas.
-- Ayuda.
-- Acerca de.
-- Menú lateral de navegación.
+La aplicación se encuentra en una etapa funcional avanzada, aunque todavía no se considera una versión finalizada ni preparada para su publicación.
 
-El botón de continuar partida se muestra únicamente cuando existe una partida guardada.
+## Funcionalidades principales
 
-### Configuración de nueva partida
+La aplicación incorpora distintas funcionalidades para gestionar partidas de dardos desde su configuración inicial hasta la obtención de los resultados.
 
-La pantalla de configuración permite:
+### Gestión de jugadores
 
-- Seleccionar el modo de juego.
-- Elegir el número máximo de rondas.
-- Añadir jugadores.
-- Eliminar jugadores.
-- Seleccionar el nombre de cada jugador.
-- Asignar un color a cada jugador.
-- Usar la última configuración guardada.
-- Crear una nueva partida.
-- Mostrar u ocultar ajustes avanzados.
+- Creación y edición de jugadores.
+- Asignación de colores personalizados.
+- Activación y desactivación de jugadores sin eliminar sus datos históricos.
+- Selección de participantes para nuevas partidas, evitando duplicados.
 
-En los modos de Cricket se fuerza un mínimo de dos jugadores.
+### Configuración de partidas
 
-### Ajustes avanzados de partida
+- Selección de modalidad y número de jugadores.
+- Configuración de rondas y dardos por turno.
+- Ajustes específicos, como cierre con doble y mantenimiento del multiplicador.
+- Posibilidad de establecer un orden aleatorio de participación.
+- Recuperación de la última configuración utilizada.
 
-La pantalla de nueva partida incluye una sección de ajustes adicionales que permite configurar opciones como:
+### Desarrollo de las partidas
 
-- Mantener o no el multiplicador después de cada dardo.
-- Seleccionar el número de dardos por turno.
-- Activar cierre con doble para los modos de puntuación.
-- Aplicar valores por defecto leídos desde `SharedPreferences`.
+- Registro de lanzamientos y aplicación de multiplicadores.
+- Actualización de puntuaciones y marcadores.
+- Gestión de turnos, rondas y objetivos.
+- Aplicación automática de las reglas de cada modalidad.
+- Posibilidad de deshacer lanzamientos y continuar partidas guardadas.
 
-Estos ajustes se envían a las pantallas de partida para modificar el comportamiento de la lógica de juego.
+### Resultados y persistencia
 
-### Modos de juego implementados
+- Visualización del ganador y la clasificación final.
+- Inicio de revanchas manteniendo la configuración.
+- Almacenamiento de partidas finalizadas en SQLite.
+- Registro de resultados y estadísticas individuales de los participantes.
 
-La aplicación incluye lógica para los siguientes modos:
+### Navegación y personalización
 
-- `301`
-- `501`
-- `Cricket`
-- `Cut Throat Cricket`
-- `Double Down`
-- `Around the Clock`
-- `Shanghai`
+- Menú principal y menú lateral de navegación.
+- Pantallas de ajustes, reglas, ayuda y acerca de.
+- Interfaz personalizada con colores, iconos y componentes visuales adaptados a la aplicación.
 
-Cada modo tiene su propia pantalla o lógica específica según sus reglas.
+## Modos de juego
 
-> Nota: los modos `301` y `501` se escriben entre comillas de código para evitar que algunos visores Markdown los interpreten como listas numeradas o números romanos.
+La aplicación incluye **siete modalidades de dardos**, cada una con sus propias reglas de puntuación, objetivos y condiciones de finalización.
 
-### Partidas de puntuación
-
-Los modos `301` y `501` permiten:
-
-- Controlar la puntuación de cada jugador.
-- Registrar tiradas con multiplicador.
-- Restar puntos según el valor del dardo.
-- Detectar cuándo un jugador llega a cero.
-- Controlar si un jugador se pasa de puntuación.
-- Aplicar cierre con doble cuando la opción está activada.
-- Avanzar de turno.
-- Deshacer la última tirada.
-- Finalizar la partida y mostrar el resultado.
-
-### Partidas de Cricket
-
-Los modos `Cricket` y `Cut Throat Cricket` permiten:
-
-- Registrar marcas sobre los objetivos 20, 19, 18, 17, 16, 15 y Bull.
-- Controlar cierres por jugador.
-- Mostrar el progreso de cierre de cada número.
-- Gestionar puntuaciones.
-- Detectar el final de la partida cuando un jugador ha cerrado todos los objetivos y va por delante.
-- Deshacer tiradas.
-- Avanzar turnos.
-- Iniciar revancha manteniendo la configuración necesaria.
-
-### Partidas por rondas
-
-Los modos `Double Down`, `Around the Clock` y `Shanghai` utilizan una lógica específica basada en rondas u objetivos.
-
-#### Double Down
-
-Double Down incluye:
-
-- Rondas fijas.
-- Puntuación inicial.
-- Registro de aciertos simples, dobles y triples.
-- Penalización cuando el jugador falla todos los dardos de la ronda.
-
-#### Around the Clock
-
-Around the Clock funciona como una carrera de objetivos:
-
-- Cada jugador tiene un objetivo actual.
-- Al acertar, el jugador avanza al siguiente objetivo.
-- Si acierta con doble, avanza dos posiciones.
-- El marcador muestra el objetivo actual de cada jugador.
-- El resultado final se envía según el orden de finalización.
-
-#### Shanghai
-
-Shanghai incluye:
-
-- Objetivo único por ronda.
-- Suma de puntos según aciertos simples, dobles o triples.
-- Control de rondas.
-- Clasificación final por puntuación.
-
-### Pantalla de resultados
-
-La pantalla de resultados muestra:
-
-- Ganador de la partida.
-- Clasificación final.
-- Posición de cada jugador.
-- Puntuación final.
-- Colores asociados a los jugadores.
-- Iconos personalizados de copa, plata y bronce.
-- Botón para volver al inicio.
-- Botón de revancha.
-- Acceso previsto a estadísticas.
-
-La opción de revancha permite iniciar una nueva partida usando los datos de la partida finalizada.
-
-### Guardado de partida
-
-La aplicación utiliza `SharedPreferences` para guardar información básica sobre partidas en curso.
-
-Actualmente se guarda si existe una partida activa para poder mostrar u ocultar el botón de continuar partida desde la pantalla principal.
-
-También se están utilizando clases de estado para almacenar y recuperar información de partidas según el tipo de juego.
-
-### Última configuración
-
-La aplicación permite guardar y recuperar la última configuración usada para crear una partida.
-
-Esto facilita iniciar nuevas partidas con los mismos jugadores, colores, modo de juego y ajustes avanzados.
-
-### Ajustes predeterminados
-
-La pantalla de ajustes permite preparar valores por defecto que después se aplican en la configuración de nueva partida.
-
-Entre los valores gestionados se encuentran:
-
-- Jugador por defecto.
-- Modo de juego por defecto.
-- Número de dardos por turno.
-- Mantener multiplicador.
-- Cierre con doble.
-- Orden aleatorio de turnos.
-
-### Pantallas informativas
-
-La aplicación incluye pantallas informativas para mejorar la navegación y la documentación interna de la app:
-
-- Pantalla de reglas.
-- Pantalla de ayuda.
-- Pantalla de acerca de.
-
-La pantalla de reglas incluye un selector para mostrar todas las reglas o filtrar por modo de juego.
+- **301:** modalidad de puntuación descendente en la que los jugadores comienzan con 301 puntos y deben llegar exactamente a cero, con posibilidad de exigir cierre mediante doble.
+- **501:** comparte las reglas del 301, pero comienza con 501 puntos.
+- **Cricket:** consiste en cerrar los objetivos del 20 al 15 y el Bull, acumulando puntos según los objetivos que permanezcan abiertos.
+- **Cut Throat Cricket:** variante de Cricket en la que los puntos se asignan a los rivales, buscando finalizar con la menor puntuación.
+- **Double Down:** modalidad de nueve rondas con objetivos específicos, donde los fallos completos de una ronda provocan que la puntuación se reduzca a la mitad.
+- **Around the Clock:** carrera de objetivos desde el 1 hasta el Bull, con avances adicionales al conseguir dobles o triples.
+- **Shanghai:** modalidad de puntuación por rondas, con un número objetivo diferente en cada una y puntos según los multiplicadores obtenidos.
 
 ## Tecnologías utilizadas
 
-- Java.
-- Android Studio.
-- XML.
-- Android SDK.
-- AppCompat.
-- Material Components.
-- ConstraintLayout.
-- RecyclerView.
-- SharedPreferences.
-- SQLite.
-- Git.
-- GitHub.
+El proyecto se ha desarrollado utilizando las siguientes tecnologías y herramientas:
 
-## Estructura del proyecto
+| Tecnología | Utilización |
+|---|---|
+| **Java** | Lenguaje principal de desarrollo y lógica de la aplicación. |
+| **Android SDK** | Desarrollo de funcionalidades y componentes Android. |
+| **XML** | Diseño de interfaces, recursos y estilos visuales. |
+| **SQLite** | Almacenamiento local de jugadores, partidas, resultados y estadísticas. |
+| **SharedPreferences** | Gestión de preferencias, configuraciones y partidas en curso. |
+| **AndroidX y Material Components** | Componentes de interfaz, navegación y diseño. |
+| **Gradle** | Configuración, dependencias y compilación del proyecto. |
+| **Git y GitHub** | Control de versiones y seguimiento del desarrollo. |
 
-El proyecto está organizado en varios paquetes principales:
+**Entorno de desarrollo:** Android Studio.
 
-```text
-activities/
-    Contiene las pantallas principales de la aplicación.
+## Arquitectura y persistencia de datos
 
-adapters/
-    Contiene los adaptadores usados para listas, clasificaciones y elementos dinámicos.
+La aplicación está organizada en diferentes clases y paquetes, separando la interfaz de usuario, la lógica de juego, los modelos de datos y los mecanismos de persistencia.
 
-modelos/
-    Contiene las clases de datos utilizadas por la aplicación.
+### Organización del proyecto
 
-sqlite/
-    Contendrá las clases relacionadas con la base de datos SQLite.
-```
+- **Activities:** gestionan las pantallas y la interacción del usuario.
+- **Modelos:** representan jugadores, partidas, resultados, estadísticas y estados de juego.
+- **DAO (Data Access Object):** encapsulan las operaciones de acceso a SQLite, evitando realizar consultas SQL directamente desde las Activities.
+- **Clases auxiliares:** gestionan configuraciones, serialización de datos y recuperación de estados de partida.
 
-## Pantallas principales
+### Base de datos SQLite
 
-Actualmente el proyecto cuenta con las siguientes pantallas:
+La aplicación utiliza una base de datos SQLite local compuesta por cuatro tablas relacionadas:
 
-- `MainActivity`
-- `ConfigurarNuevaPartidaActivity`
-- `PartidaPuntosActivity`
-- `PartidaCriquetActivity`
-- `PartidaRondasActivity`
-- `ResultadoActivity`
-- `AjustesActivity`
-- `ReglasActivity`
-- `AyudaActivity`
-- `AcercaDeActivity`
+| Tabla | Función |
+|---|---|
+| `JUGADORES` | Almacena los jugadores registrados, sus nombres, colores y estado activo o inactivo. |
+| `PARTIDAS` | Registra las partidas finalizadas, su modalidad, fecha, ganador y configuración. |
+| `RESULTADOS_PARTIDA` | Almacena la clasificación y puntuación de cada participante. |
+| `ESTADISTICAS_PARTIDA` | Guarda las estadísticas individuales obtenidas en cada partida. |
 
-También están previstas o en desarrollo:
+Las partidas finalizadas se almacenan mediante operaciones transaccionales para mantener la integridad de los datos.
 
-- `HistorialPartidasActivity`
-- `DetallePartidaActivity`
-- Pantallas de estadísticas.
-- Pantallas de récords.
+Las estadísticas históricas se obtienen a partir de los registros almacenados, evitando duplicar estadísticas acumuladas en la tabla de jugadores.
 
-## Modelos y clases de apoyo
+### SharedPreferences
 
-El proyecto utiliza diferentes clases para representar los datos de la aplicación.
+Se utiliza `SharedPreferences` para almacenar información que no requiere persistencia histórica en SQLite:
 
-Entre ellas se encuentran:
+- Preferencias y ajustes predeterminados.
+- Última configuración utilizada.
+- Estado de la partida en curso para permitir su reanudación.
 
-- Jugadores.
-- Resultados de jugadores.
-- Estados de partida.
-- Datos necesarios para clasificaciones.
-- Datos enviados entre actividades mediante `Intent`.
-- Clases auxiliares para partidas en curso.
+Esta separación permite mantener los datos históricos en SQLite y gestionar de forma independiente la configuración y las partidas activas.
 
-También se utilizan listas de jugadores, colores, puntuaciones, posiciones e índices originales para mantener la información correctamente al pasar de una pantalla a otra.
+## Capturas de pantalla
 
-## Navegación
+A continuación se muestran algunas de las principales pantallas de la aplicación, incluyendo la configuración de partidas, las diferentes interfaces de juego y la presentación de resultados.
 
-La navegación principal se realiza desde:
+*Las capturas corresponderán a la versión de la aplicación documentada en este repositorio.*
 
-- Botones de la pantalla principal.
-- Menú lateral.
-- Botones de acción dentro de cada pantalla.
-- Intents entre actividades.
+<!--
+Añade las imágenes a docs/capturas/ con estos nombres y elimina las marcas de comentario
+para mostrar la galería en GitHub.
 
-La aplicación permite volver al inicio desde la pantalla de resultados y confirmar la salida cuando el usuario intenta abandonar una partida en curso.
+<p align="center">
+  <img src="docs/capturas/principal.png" width="220" alt="Pantalla principal">
+  <img src="docs/capturas/configuracion.png" width="220" alt="Configuración de nueva partida">
+  <img src="docs/capturas/partida_puntos.png" width="220" alt="Partida 301/501">
+</p>
+<p align="center">
+  <img src="docs/capturas/partida_cricket.png" width="220" alt="Partida Cricket">
+  <img src="docs/capturas/resultados.png" width="220" alt="Resultados finales">
+</p>
+-->
 
-## Diseño de la interfaz
+## Instalación y ejecución
 
-La interfaz utiliza un diseño visual personalizado con:
+El proyecto puede descargarse o clonarse desde este repositorio y abrirse directamente en **Android Studio**.
 
-- Fondo propio.
-- Toolbar superior.
-- Menú lateral.
-- Botones personalizados.
-- Colores por jugador.
-- Tarjetas visuales.
-- Iconos propios.
-- Pantalla de resultados con trofeo y clasificación.
+Una vez sincronizadas las dependencias mediante Gradle, la aplicación puede ejecutarse en un emulador o dispositivo físico con **Android 9 (API 28) o superior**.
 
-Los colores principales de la aplicación son azul y dorado.
+La aplicación utiliza SQLite como base de datos local, por lo que no requiere configurar servidores ni servicios externos.
 
-## Persistencia de datos
+## Pruebas y validaciones
 
-Actualmente se utilizan `SharedPreferences` para:
+Durante el desarrollo se realizan pruebas automatizadas y manuales para verificar el correcto funcionamiento de la aplicación y detectar posibles errores tras incorporar nuevas funcionalidades.
 
-- Detectar si existe una partida guardada.
-- Guardar la última configuración utilizada.
-- Mantener información básica de partidas en curso.
-- Guardar ajustes predeterminados de la aplicación.
+Entre las principales comprobaciones se encuentran:
 
-Como mejora futura se utilizará SQLite para almacenar:
+- **Pruebas unitarias:** validación de componentes y lógica de funcionamiento.
+- **Pruebas instrumentadas:** ejecución de tests en un emulador Android para comprobar componentes y operaciones de persistencia.
+- **Pruebas funcionales:** verificación de las reglas de las distintas modalidades, puntuaciones, turnos y condiciones de finalización.
+- **Pruebas de persistencia:** comprobación del almacenamiento de jugadores, partidas, resultados y estadísticas en SQLite.
+- **Pruebas de regresión:** revisión de funcionalidades existentes, como deshacer tiradas, continuar partidas y comenzar revanchas.
 
-- Partidas finalizadas.
-- Jugadores.
-- Tiradas.
-- Resultados.
-- Estadísticas.
-- Historial completo.
-- Récords.
+Las pruebas se realizan progresivamente durante el desarrollo, utilizando las herramientas de Android Studio y Gradle.
 
-## Decisión sobre estadísticas de jugadores
+Antes de considerar finalizada la aplicación, están previstas revisiones adicionales de compatibilidad, rendimiento y seguridad.
 
-La tabla de jugadores se utilizará únicamente para datos propios del jugador, como identificador, nombre, estado activo y preferencias.
+## Metodología de desarrollo y control de versiones
 
-No se almacenarán estadísticas acumuladas directamente en la tabla de jugadores, como victorias, derrotas, partidas jugadas o porcentajes.
+El desarrollo de la aplicación se realiza de manera progresiva, incorporando nuevas funcionalidades y mejoras sobre una base funcional existente.
 
-Las estadísticas se calcularán mediante consultas sobre las partidas, resultados y tiradas almacenadas en la base de datos.
+Durante este proceso se han llevado a cabo tareas de planificación, implementación, pruebas, corrección de errores y refactorización, revisando el funcionamiento de la aplicación después de cada conjunto de cambios.
 
-## Funcionalidades pendientes
+Para gestionar la evolución del proyecto se utilizan **Git y GitHub**, registrando los cambios realizados mediante commits.
 
-Las principales tareas pendientes son:
+El historial del repositorio permite consultar la incorporación de funcionalidades, las modificaciones de la interfaz, las mejoras de la lógica de juego y la evolución del sistema de persistencia.
 
-- Completar la pantalla de ajustes.
-- Implementar el historial de partidas.
-- Implementar el detalle de una partida guardada.
-- Guardar partidas finalizadas en SQLite.
-- Crear estadísticas generales.
-- Crear estadísticas por jugador.
-- Crear récords.
-- Mejorar el sistema de guardado y recuperación de partidas.
-- Añadir sonidos y vibración.
-- Añadir más opciones de configuración.
-- Mejorar las animaciones.
-- Pulir la interfaz en distintas resoluciones.
-- Revisar y limpiar código.
-- Añadir documentación interna al código.
+Este enfoque facilita el seguimiento del desarrollo, la identificación de cambios y el mantenimiento del código.
 
-## Objetivos del proyecto
+## Escalabilidad y mejoras futuras
 
-Los objetivos principales del proyecto son:
+La aplicación se ha desarrollado con una estructura que permite incorporar nuevas funcionalidades y ampliar las capacidades existentes.
 
-- Crear una aplicación Android funcional para partidas de dardos.
-- Practicar el desarrollo de aplicaciones móviles en Java.
-- Aplicar navegación entre actividades.
-- Gestionar datos entre pantallas.
-- Usar componentes visuales personalizados.
-- Implementar lógica real de juego.
-- Guardar información de partidas.
-- Preparar una base para estadísticas e historial.
-- Mantener un repositorio organizado con control de versiones.
+Entre las posibles líneas de evolución del proyecto se contemplan:
 
-## Control de versiones
+### Ampliaciones funcionales
 
-El desarrollo se está registrando mediante Git y GitHub.
+- Incorporación de nuevos idiomas, como inglés, francés y portugués.
+- Adaptación de la interfaz a orientación horizontal.
+- Incorporación de nuevos modos de juego y variantes, incluyendo partidas por parejas y modalidades aleatorias.
+- Posibilidad de modificar determinados ajustes durante una partida.
+- Sistema de sugerencias de lanzamiento para facilitar el cierre de partidas.
+- Ampliación de los filtros del historial y herramientas para comparar estadísticas entre jugadores.
 
-La intención es realizar commits progresivos para dejar constancia de la evolución del proyecto, desde la estructura inicial hasta la implementación de cada funcionalidad.
+### Versiones y monetización
 
-Ejemplos de commits recomendados:
+- Estudio de una posible versión **Lite**, con funcionalidades básicas, y una versión **Pro**, con características adicionales.
+- Evaluación de diferentes modelos de monetización, como el desbloqueo de funcionalidades mediante una versión Pro o la inclusión de publicidad no intrusiva.
 
-```text
-Añadir pantalla principal con navegación
-Implementar configuración de nueva partida
-Añadir lógica de partidas 301 y 501
-Implementar modo Cricket
-Añadir pantalla de resultados
-Guardar estado básico de partida en SharedPreferences
-Preparar pantalla de ajustes
-Añadir pantalla de reglas
-Actualizar README con el estado actual del proyecto
-```
+### Validación y distribución
 
-## Próximos pasos
+- Preparación de la aplicación para su evaluación mediante **Google Play Console**, utilizando herramientas de pruebas e informes previos al lanzamiento para detectar posibles problemas de estabilidad, compatibilidad y rendimiento.
+- Revisión de los requisitos de calidad, seguridad y privacidad necesarios para una posible distribución.
+- Posible publicación de la aplicación en **Google Play Store**, inicialmente como versión gratuita, con la posibilidad de incorporar posteriormente otros modelos de distribución o monetización.
 
-Las siguientes mejoras previstas son:
+Las comprobaciones de Google Play no equivalen a una certificación integral de seguridad. Estas propuestas representan posibles ampliaciones futuras y no constituyen funcionalidades implementadas ni compromisos de desarrollo.
 
-1. Terminar el sistema de guardado de partidas en curso.
-2. Implementar SQLite para historial y estadísticas.
-3. Crear la pantalla de historial de partidas.
-4. Crear la pantalla de detalle de partida.
-5. Añadir estadísticas por jugador.
-6. Añadir récords.
-7. Revisar el diseño visual final.
-8. Preparar documentación final del proyecto.
+## Uso de inteligencia artificial
+
+La utilización de herramientas de inteligencia artificial ha evolucionado progresivamente durante el desarrollo del proyecto, adaptándose a sus necesidades y a su creciente complejidad.
+
+En las primeras etapas, la IA se utilizó principalmente como herramienta de consulta, generación de ideas, planteamiento de alternativas y apoyo en la resolución de dudas técnicas.
+
+A medida que el proyecto fue creciendo, su participación aumentó, incorporándose a tareas de generación y modificación de código, integración de funcionalidades, revisión del flujo de la aplicación, detección y corrección de errores, elaboración de pruebas y documentación.
+
+Durante este proceso, el desarrollador ha intervenido en la definición de requisitos, la elección de alternativas, las decisiones de diseño y arquitectura, la propuesta de modificaciones y la comprobación del funcionamiento de las soluciones implementadas.
+
+De esta manera, el proyecto refleja una colaboración progresiva entre el desarrollador y las herramientas de IA, combinando la toma de decisiones y supervisión humana con el apoyo de la inteligencia artificial en tareas cada vez más complejas.
 
 ## Autor
 
-Proyecto desarrollado por Luis como aplicación Android de gestión de partidas y estadísticas de dardos.
+**Luis Melero**
+
+Proyecto desarrollado como parte del **Proyecto Final del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)**.
+
+La aplicación forma parte de mi formación y portfolio personal como desarrollador de software, con el objetivo de aplicar y ampliar conocimientos en desarrollo Android, programación Java, bases de datos y diseño de aplicaciones móviles.
+
+**GitHub:** [@melero95](https://github.com/melero95)
