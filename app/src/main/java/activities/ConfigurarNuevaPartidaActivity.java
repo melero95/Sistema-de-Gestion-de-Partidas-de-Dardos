@@ -101,6 +101,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     private static final int RONDAS_AROUND_CLOCK = 21;
     private static final int RONDAS_SHANGHAI = 21;
     private static final int MAX_JUGADORES = 6;
+    private static final int MAX_JUGADORES_CRIQUET = 4;
 
     private int maxRondas = RONDAS_ESTANDAR;
     private boolean cargandoConfiguracion = false;
@@ -214,7 +215,8 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     }
 
     private int limiteJugadores() {
-        return Math.min(MAX_JUGADORES, jugadoresActivos.size());
+        return Math.min(esModoCricket(obtenerModoJuegoSeleccionado())
+                ? MAX_JUGADORES_CRIQUET : MAX_JUGADORES, jugadoresActivos.size());
     }
 
     private void refrescarJugadoresActivosConservandoSeleccion() {
@@ -412,8 +414,18 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
             desbloquearRondas();
         } else desbloquearRondas();
 
+        if (filasJugadores.size() > limiteJugadores()) {
+            int retirados = filasJugadores.size() - limiteJugadores();
+            while (filasJugadores.size() > limiteJugadores()) quitarUltimaFila();
+            if (!cargandoConfiguracion) {
+                Toast.makeText(this, "Este modo permite un máximo de "
+                        + MAX_JUGADORES_CRIQUET + " jugadores. Se han retirado "
+                        + retirados + " de la selección.", Toast.LENGTH_LONG).show();
+            }
+        }
         if (esModoCricket(modo)) asegurarMinimoDosJugadores();
         actualizarVisibilidadBotonesEliminar();
+        actualizarDisponibilidadJugadores();
     }
 
     private boolean esModoCricket(String modo) {
@@ -743,7 +755,8 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         conservarOrdenHistorico = false;
         String modo = spUltimaPartida.getString(EXTRA_MODO_JUEGO, MODO_501);
         int rondas = spUltimaPartida.getInt(EXTRA_MAX_RONDAS, RONDAS_ESTANDAR);
-        int numero = Math.min(limiteJugadores(), Math.max(1,
+        int numero = Math.min(Math.min(esModoCricket(modo)
+                ? MAX_JUGADORES_CRIQUET : MAX_JUGADORES, jugadoresActivos.size()), Math.max(1,
                 spUltimaPartida.getInt(EXTRA_NUMERO_JUGADORES, 1)));
         int dardos = Math.max(1, Math.min(4,
                 spUltimaPartida.getInt(EXTRA_NUMERO_DARDOS, 3)));
@@ -822,8 +835,11 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
             Toast.makeText(this, "Debes registrar al menos un jugador activo", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (filasJugadores.size() > MAX_JUGADORES) {
-            Toast.makeText(this, "Máximo 6 jugadores por partida", Toast.LENGTH_SHORT).show();
+        int maximoModo = esModoCricket(obtenerModoJuegoSeleccionado())
+                ? MAX_JUGADORES_CRIQUET : MAX_JUGADORES;
+        if (filasJugadores.size() > maximoModo) {
+            Toast.makeText(this, "Máximo " + maximoModo + " jugadores por partida",
+                    Toast.LENGTH_SHORT).show();
             return false;
         }
         if (esModoCricket(obtenerModoJuegoSeleccionado()) && filasJugadores.size() < 2) {
@@ -989,7 +1005,8 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
             Set<Long> ocupados = new HashSet<>();
             List<ConfiguracionPartida.Participante> originales =
                     configuracion.getParticipantes();
-            int cantidadVisible = Math.min(originales.size(), limiteJugadores());
+            int cantidadVisible = Math.min(originales.size(), Math.min(jugadoresActivos.size(),
+                    esModoCricket(configuracion.getModo()) ? MAX_JUGADORES_CRIQUET : MAX_JUGADORES));
 
             for (int i = 0; i < cantidadVisible; i++) {
                 ConfiguracionPartida.Participante original = originales.get(i);

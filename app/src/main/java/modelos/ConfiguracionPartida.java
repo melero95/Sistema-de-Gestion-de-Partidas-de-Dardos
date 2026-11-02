@@ -54,8 +54,8 @@ public final class ConfiguracionPartida {
             throw new IllegalArgumentException("Se requieren de 1 a 6 participantes");
         }
         if ((MODO_CRICKET.equals(modo) || MODO_CUT_THROAT.equals(modo))
-                && participantes.size() < 2) {
-            throw new IllegalArgumentException("Cricket requiere al menos dos participantes");
+                && (participantes.size() < 2 || participantes.size() > 4)) {
+            throw new IllegalArgumentException("Cricket y Cut Throat requieren de 2 a 4 participantes");
         }
 
         Set<Long> ids = new HashSet<>();

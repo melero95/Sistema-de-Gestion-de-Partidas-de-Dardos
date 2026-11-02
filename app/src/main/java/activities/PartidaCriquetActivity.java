@@ -40,7 +40,7 @@ import java.util.Locale;
  * Partida de Criquet y Cut Throat Criquet.
  *
  * Características:
- * - De 2 a 6 jugadores.
+ * - De 2 a 4 jugadores.
  * - Objetivos siempre situados en el centro del marcador.
  * - Con dos jugadores se muestra uno a cada lado.
  * - Cambio automático después del tercer dardo.
@@ -74,7 +74,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
     // Constantes ---------------------------------------------------------------
 
     private static final int MIN_JUGADORES = 2;
-    private static final int MAX_JUGADORES = 6;
+    private static final int MAX_JUGADORES = 4;
 
     private static final int CAPACIDAD_MAX_DARDOS = 4;
     private static final String PREF_CONFIG_PARTIDA = "configuracion_dardos_partida";
@@ -1265,8 +1265,6 @@ public class PartidaCriquetActivity extends AppCompatActivity {
          * 2 jugadores -> 1 izquierda y 1 derecha.
          * 3 jugadores -> 2 izquierda y 1 derecha.
          * 4 jugadores -> 2 y 2.
-         * 5 jugadores -> 3 y 2.
-         * 6 jugadores -> 3 y 3.
          */
         int jugadoresIzquierda =
                 (nombresJugadores.length + 1) / 2;
