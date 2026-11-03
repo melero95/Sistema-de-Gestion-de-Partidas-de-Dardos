@@ -1,0 +1,2116 @@
+[
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 21,
+    "attribute": "android:text",
+    "old_text": "Acerca de",
+    "new_ref": "@string/comun_acerca_de"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 54,
+    "attribute": "android:contentDescription",
+    "old_text": "Logo de la aplicación",
+    "new_ref": "@string/acerca_de_logo_de_la_aplicacion"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 64,
+    "attribute": "android:text",
+    "old_text": "Gestor de Partidas y Estadísticas de Dardos",
+    "new_ref": "@string/acerca_de_gestor_de_partidas_y_estadisticas_de_dardos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 75,
+    "attribute": "android:text",
+    "old_text": "Versión 1.0",
+    "new_ref": "@string/acerca_de_version_1_0"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 102,
+    "attribute": "android:text",
+    "old_text": "Sobre la aplicación",
+    "new_ref": "@string/acerca_de_sobre_la_aplicacion"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 113,
+    "attribute": "android:text",
+    "old_text": "Aplicación Android diseñada para gestionar partidas de dardos, jugadores, resultados, historial y estadísticas de diferentes modalidades de juego.",
+    "new_ref": "@string/texto_activity_acerca_de_b253242"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 127,
+    "attribute": "android:text",
+    "old_text": "Proyecto",
+    "new_ref": "@string/acerca_de_proyecto"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 137,
+    "attribute": "android:text",
+    "old_text": "Proyecto desarrollado como aplicación de fin de ciclo del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma.",
+    "new_ref": "@string/texto_activity_acerca_de_f2e0bb6"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 151,
+    "attribute": "android:text",
+    "old_text": "Tecnologías",
+    "new_ref": "@string/acerca_de_tecnologias"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 161,
+    "attribute": "android:text",
+    "old_text": "• Android Studio\n• Java\n• XML\n• SQLite\n• SharedPreferences",
+    "new_ref": "@string/acerca_de_android_studio_java_xml_sqlite_sharedpreferences"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_acerca_de.xml",
+    "line": 180,
+    "attribute": "android:text",
+    "old_text": "Volver al menú principal",
+    "new_ref": "@string/comun_volver_al_menu_principal"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 10,
+    "attribute": "android:text",
+    "old_text": "Ajustes",
+    "new_ref": "@string/ajustes"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 21,
+    "attribute": "android:text",
+    "old_text": "PARTIDA PREDETERMINADA",
+    "new_ref": "@string/ajustes_partida_predeterminada"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 22,
+    "attribute": "android:text",
+    "old_text": "Jugador predeterminado",
+    "new_ref": "@string/ajustes_jugador_predeterminado"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 26,
+    "attribute": "android:text",
+    "old_text": "No hay jugadores activos. Puedes registrarlos o activarlos desde Gestionar jugadores.",
+    "new_ref": "@string/texto_activity_ajustes_0a5be14"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 28,
+    "attribute": "android:text",
+    "old_text": "Modo de juego preferido",
+    "new_ref": "@string/ajustes_modo_de_juego_preferido"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 30,
+    "attribute": "android:text",
+    "old_text": "Dardos por turno",
+    "new_ref": "@string/comun_dardos_por_turno"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 32,
+    "attribute": "android:text",
+    "old_text": "Cerrar 301/501 con un doble",
+    "new_ref": "@string/ajustes_cerrar_301_501_con_un_doble"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 33,
+    "attribute": "android:text",
+    "old_text": "Orden de jugadores aleatorio",
+    "new_ref": "@string/comun_orden_de_jugadores_aleatorio"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 34,
+    "attribute": "android:text",
+    "old_text": "COMPORTAMIENTO",
+    "new_ref": "@string/ajustes_comportamiento"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 35,
+    "attribute": "android:text",
+    "old_text": "Mantener seleccionado el multiplicador",
+    "new_ref": "@string/ajustes_mantener_seleccionado_el_multiplicador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 36,
+    "attribute": "android:text",
+    "old_text": "Confirmar antes de abandonar una partida",
+    "new_ref": "@string/ajustes_confirmar_antes_de_abandonar_una_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 37,
+    "attribute": "android:text",
+    "old_text": "Vibrar al registrar una tirada",
+    "new_ref": "@string/ajustes_vibrar_al_registrar_una_tirada"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 39,
+    "attribute": "android:text",
+    "old_text": "El jugador predeterminado se aplicará al configurar nuevas partidas. Las demás preferencias se conservarán para su aplicación progresiva.",
+    "new_ref": "@string/texto_activity_ajustes_3bdb9ac"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 43,
+    "attribute": "android:text",
+    "old_text": "DATOS DE PRUEBA · DEBUG",
+    "new_ref": "@string/ajustes_datos_de_prueba_debug"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 45,
+    "attribute": "android:text",
+    "old_text": "Crea 6 jugadores y 70 partidas de ejemplo. Solo se puede ejecutar una vez y sobre una base de datos vacía.",
+    "new_ref": "@string/texto_activity_ajustes_eb2802f"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 49,
+    "attribute": "android:text",
+    "old_text": "GENERAR DATOS DE PRUEBA",
+    "new_ref": "@string/ajustes_generar_datos_de_prueba"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 61,
+    "attribute": "android:text",
+    "old_text": "Guardar",
+    "new_ref": "@string/ajustes_guardar"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 64,
+    "attribute": "android:text",
+    "old_text": "Restablecer",
+    "new_ref": "@string/ajustes_restablecer"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ajustes.xml",
+    "line": 68,
+    "attribute": "android:text",
+    "old_text": "Volver",
+    "new_ref": "@string/ajustes_volver"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 21,
+    "attribute": "android:text",
+    "old_text": "Ayuda",
+    "new_ref": "@string/comun_ayuda"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 36,
+    "attribute": "android:text",
+    "old_text": "Guía básica para utilizar la aplicación",
+    "new_ref": "@string/ayuda_guia_basica_para_utilizar_la_aplicacion"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 81,
+    "attribute": "android:text",
+    "old_text": "Nueva partida",
+    "new_ref": "@string/nueva_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 91,
+    "attribute": "android:text",
+    "old_text": "Desde el menú principal puedes crear una nueva partida. Selecciona el modo de juego, los jugadores y las opciones disponibles antes de comenzar.",
+    "new_ref": "@string/texto_activity_ayuda_7c39d79"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 119,
+    "attribute": "android:text",
+    "old_text": "Jugadores",
+    "new_ref": "@string/comun_jugadores"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 129,
+    "attribute": "android:text",
+    "old_text": "Puedes seleccionar los jugadores que participarán en cada partida, asignarles un color identificativo y modificar el número de participantes según el modo de juego.",
+    "new_ref": "@string/texto_activity_ayuda_e41d1e8"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 157,
+    "attribute": "android:text",
+    "old_text": "Durante la partida",
+    "new_ref": "@string/ayuda_durante_la_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 167,
+    "attribute": "android:text",
+    "old_text": "Selecciona el multiplicador correspondiente y después pulsa sobre el número alcanzado con el dardo. La aplicación actualizará automáticamente las puntuaciones y el turno.",
+    "new_ref": "@string/texto_activity_ayuda_f07501c"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 195,
+    "attribute": "android:text",
+    "old_text": "Deshacer una tirada",
+    "new_ref": "@string/ayuda_deshacer_una_tirada"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 205,
+    "attribute": "android:text",
+    "old_text": "Si introduces una tirada incorrectamente puedes utilizar el botón Deshacer tirada para recuperar el estado anterior.",
+    "new_ref": "@string/texto_activity_ayuda_54fc6fd"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 233,
+    "attribute": "android:text",
+    "old_text": "Continuar una partida",
+    "new_ref": "@string/ayuda_continuar_una_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 243,
+    "attribute": "android:text",
+    "old_text": "Si abandonas una partida antes de finalizarla, podrás recuperarla posteriormente desde la opción Continuar del menú principal.",
+    "new_ref": "@string/texto_activity_ayuda_ae9b5eb"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 271,
+    "attribute": "android:text",
+    "old_text": "Historial y estadísticas",
+    "new_ref": "@string/ayuda_historial_y_estadisticas"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 281,
+    "attribute": "android:text",
+    "old_text": "Las partidas finalizadas se almacenan para poder consultar posteriormente los resultados, el historial y las estadísticas de los jugadores.",
+    "new_ref": "@string/texto_activity_ayuda_6e6552e"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 309,
+    "attribute": "android:text",
+    "old_text": "Reglas de juego",
+    "new_ref": "@string/comun_reglas_de_juego"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 319,
+    "attribute": "android:text",
+    "old_text": "Para consultar las reglas específicas de 301, 501, Cricket, Cut Throat Cricket, Double Down, Around the Clock o Shanghai utiliza la opción Reglas de juego del menú lateral.",
+    "new_ref": "@string/texto_activity_ayuda_8d3ed14"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_ayuda.xml",
+    "line": 338,
+    "attribute": "android:text",
+    "old_text": "Volver al menú principal",
+    "new_ref": "@string/comun_volver_al_menu_principal"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_detalle_partida.xml",
+    "line": 8,
+    "attribute": "android:text",
+    "old_text": "Detalle de partida",
+    "new_ref": "@string/detalle_partida_detalle_de_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_detalle_partida.xml",
+    "line": 39,
+    "attribute": "android:text",
+    "old_text": "Repetir partida",
+    "new_ref": "@string/comun_repetir_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_detalle_partida.xml",
+    "line": 45,
+    "attribute": "android:text",
+    "old_text": "Reutilizar configuración",
+    "new_ref": "@string/detalle_partida_reutilizar_configuracion"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_detalle_partida.xml",
+    "line": 54,
+    "attribute": "android:text",
+    "old_text": "Volver al historial",
+    "new_ref": "@string/detalle_partida_volver_al_historial"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_estadisticas.xml",
+    "line": 20,
+    "attribute": "android:text",
+    "old_text": "ESTADÍSTICAS",
+    "new_ref": "@string/estadisticas_estadisticas"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_estadisticas.xml",
+    "line": 40,
+    "attribute": "android:text",
+    "old_text": "GENERAL",
+    "new_ref": "@string/estadisticas_general"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_estadisticas.xml",
+    "line": 52,
+    "attribute": "android:text",
+    "old_text": "JUGADORES",
+    "new_ref": "@string/estadisticas_jugadores"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_estadisticas.xml",
+    "line": 64,
+    "attribute": "android:text",
+    "old_text": "RÉCORDS",
+    "new_ref": "@string/estadisticas_records"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_estadisticas.xml",
+    "line": 93,
+    "attribute": "android:text",
+    "old_text": "VOLVER",
+    "new_ref": "@string/estadisticas_volver"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_historial_partidas.xml",
+    "line": 18,
+    "attribute": "android:text",
+    "old_text": "Historial de partidas",
+    "new_ref": "@string/historial_partidas"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_historial_partidas.xml",
+    "line": 35,
+    "attribute": "android:contentDescription",
+    "old_text": "Filtrar por modo de juego",
+    "new_ref": "@string/historial_partidas_filtrar_por_modo_de_juego"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_historial_partidas.xml",
+    "line": 51,
+    "attribute": "android:contentDescription",
+    "old_text": "Filtrar por jugador",
+    "new_ref": "@string/historial_partidas_filtrar_por_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_historial_partidas.xml",
+    "line": 66,
+    "attribute": "android:contentDescription",
+    "old_text": "Ordenar historial",
+    "new_ref": "@string/historial_partidas_ordenar_historial"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_historial_partidas.xml",
+    "line": 104,
+    "attribute": "android:text",
+    "old_text": "No hay partidas visibles",
+    "new_ref": "@string/historial_partidas_no_hay_partidas_visibles"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_historial_partidas.xml",
+    "line": 117,
+    "attribute": "android:text",
+    "old_text": "Restaurar todas las partidas ocultas",
+    "new_ref": "@string/historial_partidas_restaurar_todas_las_partidas_ocultas"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_historial_partidas.xml",
+    "line": 133,
+    "attribute": "android:text",
+    "old_text": "Volver al menú principal",
+    "new_ref": "@string/comun_volver_al_menu_principal"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_jugadores.xml",
+    "line": 18,
+    "attribute": "android:text",
+    "old_text": "Gestión de jugadores",
+    "new_ref": "@string/jugadores_gestion_de_jugadores"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_jugadores.xml",
+    "line": 32,
+    "attribute": "android:text",
+    "old_text": "Añade, edita y activa o desactiva participantes",
+    "new_ref": "@string/jugadores_anade_edita_y_activa_o_desactiva_participantes"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_jugadores.xml",
+    "line": 45,
+    "attribute": "android:text",
+    "old_text": "0 activos · 0 inactivos",
+    "new_ref": "@string/jugadores_0_activos_0_inactivos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_jugadores.xml",
+    "line": 89,
+    "attribute": "android:text",
+    "old_text": "No hay jugadores registrados.\\nPulsa «Añadir jugador» para empezar.",
+    "new_ref": "@string/jugadores_no_hay_jugadores_registrados_npulsa_anadir_jugador_p"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_jugadores.xml",
+    "line": 102,
+    "attribute": "android:text",
+    "old_text": "Añadir jugador",
+    "new_ref": "@string/jugadores_anadir_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_jugadores.xml",
+    "line": 117,
+    "attribute": "android:text",
+    "old_text": "Volver al menú principal",
+    "new_ref": "@string/comun_volver_al_menu_principal"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 19,
+    "attribute": "android:text",
+    "old_text": "Nueva partida",
+    "new_ref": "@string/nueva_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 33,
+    "attribute": "android:text",
+    "old_text": "Elige el modo, los jugadores y las opciones de la partida",
+    "new_ref": "@string/nueva_partida_elige_el_modo_los_jugadores_y_las_opciones_de_la_par"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 81,
+    "attribute": "android:text",
+    "old_text": "Configuración de partida",
+    "new_ref": "@string/nueva_partida_configuracion_de_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 89,
+    "attribute": "android:text",
+    "old_text": "Modo de juego",
+    "new_ref": "@string/nueva_partida_modo_de_juego"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 101,
+    "attribute": "android:text",
+    "old_text": "Máximo de rondas",
+    "new_ref": "@string/nueva_partida_maximo_de_rondas"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 119,
+    "attribute": "android:text",
+    "old_text": "−",
+    "new_ref": "@string/simbolo_menos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 130,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 143,
+    "attribute": "android:text",
+    "old_text": "+",
+    "new_ref": "@string/simbolo_mas"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 173,
+    "attribute": "android:text",
+    "old_text": "Jugadores",
+    "new_ref": "@string/comun_jugadores"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 182,
+    "attribute": "android:text",
+    "old_text": "Pulsa el nombre para elegir un jugador activo.",
+    "new_ref": "@string/nueva_partida_pulsa_el_nombre_para_elegir_un_jugador_activo"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 191,
+    "attribute": "android:text",
+    "old_text": "No hay jugadores activos. Pulsa Gestionar jugadores para registrar o reactivar uno.",
+    "new_ref": "@string/texto_activity_nueva_partida_6f1bb6c"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 209,
+    "attribute": "android:text",
+    "old_text": "+ Añadir participante",
+    "new_ref": "@string/nueva_partida_anadir_participante"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 219,
+    "attribute": "android:text",
+    "old_text": "Gestionar jugadores",
+    "new_ref": "@string/nueva_partida_gestionar_jugadores"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 246,
+    "attribute": "android:text",
+    "old_text": "Opciones adicionales",
+    "new_ref": "@string/nueva_partida_opciones_adicionales"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 257,
+    "attribute": "android:text",
+    "old_text": "Usar última configuración",
+    "new_ref": "@string/nueva_partida_usar_ultima_configuracion"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 267,
+    "attribute": "android:text",
+    "old_text": "Más ajustes ▼",
+    "new_ref": "@string/nueva_partida_mas_ajustes"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 286,
+    "attribute": "android:text",
+    "old_text": "Cerrar la partida con un doble",
+    "new_ref": "@string/nueva_partida_cerrar_la_partida_con_un_doble"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 295,
+    "attribute": "android:text",
+    "old_text": "Mantener multiplicador tras cada dardo",
+    "new_ref": "@string/nueva_partida_mantener_multiplicador_tras_cada_dardo"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 302,
+    "attribute": "android:text",
+    "old_text": "Dardos por turno",
+    "new_ref": "@string/comun_dardos_por_turno"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 316,
+    "attribute": "android:text",
+    "old_text": "Orden de jugadores aleatorio",
+    "new_ref": "@string/comun_orden_de_jugadores_aleatorio"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 331,
+    "attribute": "android:text",
+    "old_text": "Crear partida",
+    "new_ref": "@string/nueva_partida_crear_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_nueva_partida.xml",
+    "line": 346,
+    "attribute": "android:text",
+    "old_text": "Cancelar",
+    "new_ref": "@string/nueva_partida_cancelar"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 39,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo izquierdo",
+    "new_ref": "@string/comun_dardo_izquierdo"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 52,
+    "attribute": "android:text",
+    "old_text": "CRIQUET",
+    "new_ref": "@string/partida_criquet_criquet"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 60,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo derecho",
+    "new_ref": "@string/comun_dardo_derecho"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 95,
+    "attribute": "android:text",
+    "old_text": "TURNO DE:",
+    "new_ref": "@string/comun_turno_de"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 107,
+    "attribute": "android:text",
+    "old_text": "JUGADOR 1",
+    "new_ref": "@string/partida_criquet_jugador_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 146,
+    "attribute": "android:text",
+    "old_text": "MARCADOR",
+    "new_ref": "@string/partida_criquet_marcador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 180,
+    "attribute": "android:text",
+    "old_text": "OBJ.",
+    "new_ref": "@string/partida_criquet_obj"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 192,
+    "attribute": "android:text",
+    "old_text": "20",
+    "new_ref": "@string/valor_20"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 202,
+    "attribute": "android:text",
+    "old_text": "19",
+    "new_ref": "@string/valor_19"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 212,
+    "attribute": "android:text",
+    "old_text": "18",
+    "new_ref": "@string/valor_18"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 222,
+    "attribute": "android:text",
+    "old_text": "17",
+    "new_ref": "@string/valor_17"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 232,
+    "attribute": "android:text",
+    "old_text": "16",
+    "new_ref": "@string/valor_16"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 242,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 252,
+    "attribute": "android:text",
+    "old_text": "D",
+    "new_ref": "@string/partida_criquet_d"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 264,
+    "attribute": "android:text",
+    "old_text": "PTS",
+    "new_ref": "@string/partida_criquet_pts"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 326,
+    "attribute": "android:text",
+    "old_text": "RONDA",
+    "new_ref": "@string/comun_ronda"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 341,
+    "attribute": "android:text",
+    "old_text": "1",
+    "new_ref": "@string/valor_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 351,
+    "attribute": "android:text",
+    "old_text": "/15",
+    "new_ref": "@string/rondas_ejemplo_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 378,
+    "attribute": "android:text",
+    "old_text": "DARDOS",
+    "new_ref": "@string/comun_dardos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 394,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 1",
+    "new_ref": "@string/comun_dardo_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 405,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 2",
+    "new_ref": "@string/comun_dardo_2"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 416,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 3",
+    "new_ref": "@string/comun_dardo_3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 427,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 4",
+    "new_ref": "@string/comun_dardo_4"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 441,
+    "attribute": "android:text",
+    "old_text": "1 / 4",
+    "new_ref": "@string/comun_1_4"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 466,
+    "attribute": "android:text",
+    "old_text": "TIRADA ACTUAL",
+    "new_ref": "@string/comun_tirada_actual"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 517,
+    "attribute": "android:text",
+    "old_text": "DESHACER TIRADA",
+    "new_ref": "@string/comun_deshacer_tirada"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 579,
+    "attribute": "android:text",
+    "old_text": "X1",
+    "new_ref": "@string/multiplicador_mayus_x1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 595,
+    "attribute": "android:text",
+    "old_text": "X2",
+    "new_ref": "@string/multiplicador_mayus_x2"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 612,
+    "attribute": "android:text",
+    "old_text": "X3",
+    "new_ref": "@string/multiplicador_mayus_x3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 637,
+    "attribute": "android:text",
+    "old_text": "DIANA",
+    "new_ref": "@string/comun_diana"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 659,
+    "attribute": "android:text",
+    "old_text": "20",
+    "new_ref": "@string/valor_20"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 670,
+    "attribute": "android:text",
+    "old_text": "19",
+    "new_ref": "@string/valor_19"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 681,
+    "attribute": "android:text",
+    "old_text": "18",
+    "new_ref": "@string/valor_18"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 702,
+    "attribute": "android:text",
+    "old_text": "17",
+    "new_ref": "@string/valor_17"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 713,
+    "attribute": "android:text",
+    "old_text": "16",
+    "new_ref": "@string/valor_16"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 724,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 744,
+    "attribute": "android:text",
+    "old_text": "FUERA",
+    "new_ref": "@string/partida_criquet_fuera"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 786,
+    "attribute": "android:text",
+    "old_text": "VER MARCADOR",
+    "new_ref": "@string/comun_ver_marcador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 798,
+    "attribute": "android:text",
+    "old_text": "SIGUIENTE TURNO",
+    "new_ref": "@string/comun_siguiente_turno"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_criquet.xml",
+    "line": 810,
+    "attribute": "android:text",
+    "old_text": "SALIR PARTIDA",
+    "new_ref": "@string/comun_salir_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 63,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo izquierdo",
+    "new_ref": "@string/comun_dardo_izquierdo"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 79,
+    "attribute": "android:text",
+    "old_text": "DOUBLE DOWN",
+    "new_ref": "@string/comun_double_down"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 88,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo derecho",
+    "new_ref": "@string/comun_dardo_derecho"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 126,
+    "attribute": "android:text",
+    "old_text": "TURNO DE:",
+    "new_ref": "@string/comun_turno_de"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 139,
+    "attribute": "android:text",
+    "old_text": "LUIS",
+    "new_ref": "@string/comun_luis"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 223,
+    "attribute": "android:text",
+    "old_text": "Marcos",
+    "new_ref": "@string/comun_marcos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 232,
+    "attribute": "android:text",
+    "old_text": "441",
+    "new_ref": "@string/valor_441"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 256,
+    "attribute": "android:text",
+    "old_text": "Javier",
+    "new_ref": "@string/comun_javier"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 265,
+    "attribute": "android:text",
+    "old_text": "501",
+    "new_ref": "@string/valor_501"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 290,
+    "attribute": "android:text",
+    "old_text": "Jugador 5",
+    "new_ref": "@string/comun_jugador_5"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 299,
+    "attribute": "android:text",
+    "old_text": "501",
+    "new_ref": "@string/valor_501"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 326,
+    "attribute": "android:text",
+    "old_text": "Luis",
+    "new_ref": "@string/partida_puntos_luis"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 336,
+    "attribute": "android:text",
+    "old_text": "501",
+    "new_ref": "@string/valor_501"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 369,
+    "attribute": "android:text",
+    "old_text": "Ana",
+    "new_ref": "@string/comun_ana"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 378,
+    "attribute": "android:text",
+    "old_text": "501",
+    "new_ref": "@string/valor_501"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 402,
+    "attribute": "android:text",
+    "old_text": "Sofía",
+    "new_ref": "@string/comun_sofia"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 411,
+    "attribute": "android:text",
+    "old_text": "501",
+    "new_ref": "@string/valor_501"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 436,
+    "attribute": "android:text",
+    "old_text": "Jugador 6",
+    "new_ref": "@string/comun_jugador_6"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 445,
+    "attribute": "android:text",
+    "old_text": "501",
+    "new_ref": "@string/valor_501"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 507,
+    "attribute": "android:text",
+    "old_text": "RONDA",
+    "new_ref": "@string/comun_ronda"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 523,
+    "attribute": "android:text",
+    "old_text": "1",
+    "new_ref": "@string/valor_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 533,
+    "attribute": "android:text",
+    "old_text": "/15",
+    "new_ref": "@string/rondas_ejemplo_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 567,
+    "attribute": "android:text",
+    "old_text": "DARDOS",
+    "new_ref": "@string/comun_dardos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 584,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 1",
+    "new_ref": "@string/comun_dardo_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 596,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 2",
+    "new_ref": "@string/comun_dardo_2"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 608,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 3",
+    "new_ref": "@string/comun_dardo_3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 620,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 4",
+    "new_ref": "@string/comun_dardo_4"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 634,
+    "attribute": "android:text",
+    "old_text": "1 / 3",
+    "new_ref": "@string/partida_puntos_1_3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 666,
+    "attribute": "android:text",
+    "old_text": "TIRADA ACTUAL",
+    "new_ref": "@string/comun_tirada_actual"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 686,
+    "attribute": "android:text",
+    "old_text": "T20",
+    "new_ref": "@string/comun_t20"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 699,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 733,
+    "attribute": "android:text",
+    "old_text": "DESHACER TIRADA",
+    "new_ref": "@string/comun_deshacer_tirada"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 811,
+    "attribute": "android:text",
+    "old_text": "x1",
+    "new_ref": "@string/multiplicador_x1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 824,
+    "attribute": "android:text",
+    "old_text": "x2",
+    "new_ref": "@string/multiplicador_x2"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 837,
+    "attribute": "android:text",
+    "old_text": "x3",
+    "new_ref": "@string/multiplicador_x3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 858,
+    "attribute": "android:text",
+    "old_text": "DIANA",
+    "new_ref": "@string/comun_diana"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 867,
+    "attribute": "android:text",
+    "old_text": "20",
+    "new_ref": "@string/valor_20"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 876,
+    "attribute": "android:text",
+    "old_text": "19",
+    "new_ref": "@string/valor_19"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 885,
+    "attribute": "android:text",
+    "old_text": "18",
+    "new_ref": "@string/valor_18"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 894,
+    "attribute": "android:text",
+    "old_text": "17",
+    "new_ref": "@string/valor_17"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 903,
+    "attribute": "android:text",
+    "old_text": "16",
+    "new_ref": "@string/valor_16"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 912,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 931,
+    "attribute": "android:text",
+    "old_text": "14",
+    "new_ref": "@string/valor_14"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 940,
+    "attribute": "android:text",
+    "old_text": "13",
+    "new_ref": "@string/valor_13"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 949,
+    "attribute": "android:text",
+    "old_text": "12",
+    "new_ref": "@string/valor_12"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 958,
+    "attribute": "android:text",
+    "old_text": "11",
+    "new_ref": "@string/valor_11"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 967,
+    "attribute": "android:text",
+    "old_text": "10",
+    "new_ref": "@string/valor_10"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 976,
+    "attribute": "android:text",
+    "old_text": "9",
+    "new_ref": "@string/valor_9"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 985,
+    "attribute": "android:text",
+    "old_text": "8",
+    "new_ref": "@string/valor_8"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1004,
+    "attribute": "android:text",
+    "old_text": "7",
+    "new_ref": "@string/valor_7"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1013,
+    "attribute": "android:text",
+    "old_text": "6",
+    "new_ref": "@string/valor_6"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1022,
+    "attribute": "android:text",
+    "old_text": "5",
+    "new_ref": "@string/valor_5"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1031,
+    "attribute": "android:text",
+    "old_text": "4",
+    "new_ref": "@string/valor_4"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1040,
+    "attribute": "android:text",
+    "old_text": "3",
+    "new_ref": "@string/valor_3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1049,
+    "attribute": "android:text",
+    "old_text": "2",
+    "new_ref": "@string/valor_2"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1058,
+    "attribute": "android:text",
+    "old_text": "1",
+    "new_ref": "@string/valor_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1077,
+    "attribute": "android:text",
+    "old_text": "OUT / 0",
+    "new_ref": "@string/partida_puntos_out_0"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1124,
+    "attribute": "android:text",
+    "old_text": "VER MARCADOR",
+    "new_ref": "@string/comun_ver_marcador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1136,
+    "attribute": "android:text",
+    "old_text": "SIGUIENTE TURNO",
+    "new_ref": "@string/comun_siguiente_turno"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_puntos.xml",
+    "line": 1148,
+    "attribute": "android:text",
+    "old_text": "SALIR PARTIDA",
+    "new_ref": "@string/comun_salir_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 64,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo izquierdo",
+    "new_ref": "@string/comun_dardo_izquierdo"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 80,
+    "attribute": "android:text",
+    "old_text": "DOUBLE DOWN",
+    "new_ref": "@string/comun_double_down"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 89,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo derecho",
+    "new_ref": "@string/comun_dardo_derecho"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 127,
+    "attribute": "android:text",
+    "old_text": "TURNO DE:",
+    "new_ref": "@string/comun_turno_de"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 140,
+    "attribute": "android:text",
+    "old_text": "LUIS",
+    "new_ref": "@string/comun_luis"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 222,
+    "attribute": "android:text",
+    "old_text": "Marcos",
+    "new_ref": "@string/comun_marcos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 231,
+    "attribute": "android:text",
+    "old_text": "120",
+    "new_ref": "@string/valor_120"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 255,
+    "attribute": "android:text",
+    "old_text": "Javier",
+    "new_ref": "@string/comun_javier"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 264,
+    "attribute": "android:text",
+    "old_text": "95",
+    "new_ref": "@string/valor_95"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 291,
+    "attribute": "android:text",
+    "old_text": "Jugador 5",
+    "new_ref": "@string/comun_jugador_5"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 300,
+    "attribute": "android:text",
+    "old_text": "0",
+    "new_ref": "@string/valor_0"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 327,
+    "attribute": "android:text",
+    "old_text": "Jugador actual",
+    "new_ref": "@string/partida_rondas_jugador_actual"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 337,
+    "attribute": "android:text",
+    "old_text": "120",
+    "new_ref": "@string/valor_120"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 370,
+    "attribute": "android:text",
+    "old_text": "Ana",
+    "new_ref": "@string/comun_ana"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 379,
+    "attribute": "android:text",
+    "old_text": "80",
+    "new_ref": "@string/valor_80"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 403,
+    "attribute": "android:text",
+    "old_text": "Sofía",
+    "new_ref": "@string/comun_sofia"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 412,
+    "attribute": "android:text",
+    "old_text": "60",
+    "new_ref": "@string/valor_60"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 439,
+    "attribute": "android:text",
+    "old_text": "Jugador 6",
+    "new_ref": "@string/comun_jugador_6"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 448,
+    "attribute": "android:text",
+    "old_text": "0",
+    "new_ref": "@string/valor_0"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 510,
+    "attribute": "android:text",
+    "old_text": "RONDA",
+    "new_ref": "@string/comun_ronda"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 526,
+    "attribute": "android:text",
+    "old_text": "1",
+    "new_ref": "@string/valor_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 536,
+    "attribute": "android:text",
+    "old_text": "/15",
+    "new_ref": "@string/rondas_ejemplo_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 570,
+    "attribute": "android:text",
+    "old_text": "DARDOS",
+    "new_ref": "@string/comun_dardos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 587,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 1",
+    "new_ref": "@string/comun_dardo_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 599,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 2",
+    "new_ref": "@string/comun_dardo_2"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 611,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 3",
+    "new_ref": "@string/comun_dardo_3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 623,
+    "attribute": "android:contentDescription",
+    "old_text": "Dardo 4",
+    "new_ref": "@string/comun_dardo_4"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 637,
+    "attribute": "android:text",
+    "old_text": "1 / 4",
+    "new_ref": "@string/comun_1_4"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 669,
+    "attribute": "android:text",
+    "old_text": "TIRADA ACTUAL",
+    "new_ref": "@string/comun_tirada_actual"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 689,
+    "attribute": "android:text",
+    "old_text": "T20",
+    "new_ref": "@string/comun_t20"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 702,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 750,
+    "attribute": "android:text",
+    "old_text": "DESHACER TIRADA",
+    "new_ref": "@string/comun_deshacer_tirada"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 805,
+    "attribute": "android:text",
+    "old_text": "OBJETIVO DE LA RONDA",
+    "new_ref": "@string/partida_rondas_objetivo_de_la_ronda"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 821,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 896,
+    "attribute": "android:text",
+    "old_text": "TRIPLE",
+    "new_ref": "@string/partida_rondas_triple"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 910,
+    "attribute": "android:text",
+    "old_text": "DOBLE",
+    "new_ref": "@string/partida_rondas_doble"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 934,
+    "attribute": "android:text",
+    "old_text": "SIMPLE",
+    "new_ref": "@string/partida_rondas_simple"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 945,
+    "attribute": "android:text",
+    "old_text": "FUERA / 0",
+    "new_ref": "@string/comun_fuera_0"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 971,
+    "attribute": "android:text",
+    "old_text": "FUERA / 0",
+    "new_ref": "@string/comun_fuera_0"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 988,
+    "attribute": "android:text",
+    "old_text": "BULL",
+    "new_ref": "@string/partida_rondas_bull"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 997,
+    "attribute": "android:text",
+    "old_text": "20",
+    "new_ref": "@string/valor_20"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1006,
+    "attribute": "android:text",
+    "old_text": "19",
+    "new_ref": "@string/valor_19"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1015,
+    "attribute": "android:text",
+    "old_text": "18",
+    "new_ref": "@string/valor_18"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1024,
+    "attribute": "android:text",
+    "old_text": "17",
+    "new_ref": "@string/valor_17"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1033,
+    "attribute": "android:text",
+    "old_text": "16",
+    "new_ref": "@string/valor_16"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1042,
+    "attribute": "android:text",
+    "old_text": "15",
+    "new_ref": "@string/valor_15"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1061,
+    "attribute": "android:text",
+    "old_text": "14",
+    "new_ref": "@string/valor_14"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1070,
+    "attribute": "android:text",
+    "old_text": "13",
+    "new_ref": "@string/valor_13"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1079,
+    "attribute": "android:text",
+    "old_text": "12",
+    "new_ref": "@string/valor_12"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1088,
+    "attribute": "android:text",
+    "old_text": "11",
+    "new_ref": "@string/valor_11"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1097,
+    "attribute": "android:text",
+    "old_text": "10",
+    "new_ref": "@string/valor_10"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1106,
+    "attribute": "android:text",
+    "old_text": "9",
+    "new_ref": "@string/valor_9"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1115,
+    "attribute": "android:text",
+    "old_text": "8",
+    "new_ref": "@string/valor_8"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1134,
+    "attribute": "android:text",
+    "old_text": "7",
+    "new_ref": "@string/valor_7"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1143,
+    "attribute": "android:text",
+    "old_text": "6",
+    "new_ref": "@string/valor_6"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1152,
+    "attribute": "android:text",
+    "old_text": "5",
+    "new_ref": "@string/valor_5"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1161,
+    "attribute": "android:text",
+    "old_text": "4",
+    "new_ref": "@string/valor_4"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1170,
+    "attribute": "android:text",
+    "old_text": "3",
+    "new_ref": "@string/valor_3"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1179,
+    "attribute": "android:text",
+    "old_text": "2",
+    "new_ref": "@string/valor_2"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1188,
+    "attribute": "android:text",
+    "old_text": "1",
+    "new_ref": "@string/valor_1"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1233,
+    "attribute": "android:text",
+    "old_text": "VER MARCADOR",
+    "new_ref": "@string/comun_ver_marcador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1245,
+    "attribute": "android:text",
+    "old_text": "SIGUIENTE TURNO",
+    "new_ref": "@string/comun_siguiente_turno"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_partida_rondas.xml",
+    "line": 1257,
+    "attribute": "android:text",
+    "old_text": "SALIR PARTIDA",
+    "new_ref": "@string/comun_salir_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_reglas.xml",
+    "line": 25,
+    "attribute": "android:text",
+    "old_text": "Reglas de juego",
+    "new_ref": "@string/comun_reglas_de_juego"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_reglas.xml",
+    "line": 44,
+    "attribute": "android:text",
+    "old_text": "Selecciona un modo de juego",
+    "new_ref": "@string/reglas_selecciona_un_modo_de_juego"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_reglas.xml",
+    "line": 140,
+    "attribute": "android:text",
+    "old_text": "Volver al menú principal",
+    "new_ref": "@string/comun_volver_al_menu_principal"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 27,
+    "attribute": "android:contentDescription",
+    "old_text": "Trofeo del ganador",
+    "new_ref": "@string/resultado_trofeo_del_ganador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 36,
+    "attribute": "android:text",
+    "old_text": "RESULTADO DE LA PARTIDA",
+    "new_ref": "@string/resultado_resultado_de_la_partida"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 56,
+    "attribute": "android:text",
+    "old_text": "GANADOR",
+    "new_ref": "@string/resultado_ganador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 75,
+    "attribute": "android:text",
+    "old_text": "Nombre del jugador",
+    "new_ref": "@string/comun_nombre_del_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 87,
+    "attribute": "android:text",
+    "old_text": "0 puntos",
+    "new_ref": "@string/comun_0_puntos"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 113,
+    "attribute": "android:text",
+    "old_text": "CLASIFICACIÓN",
+    "new_ref": "@string/resultado_clasificacion"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 148,
+    "attribute": "android:text",
+    "old_text": "VER ESTADÍSTICAS",
+    "new_ref": "@string/resultado_ver_estadisticas"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 156,
+    "attribute": "android:text",
+    "old_text": "REVANCHA",
+    "new_ref": "@string/resultado_revancha"
+  },
+  {
+    "file": "app/src/main/res/layout/activity_resultado.xml",
+    "line": 164,
+    "attribute": "android:text",
+    "old_text": "VOLVER AL MENÚ PRINCIPAL",
+    "new_ref": "@string/resultado_volver_al_menu_principal"
+  },
+  {
+    "file": "app/src/main/res/layout/dialogo_jugador.xml",
+    "line": 14,
+    "attribute": "android:text",
+    "old_text": "Nombre del jugador",
+    "new_ref": "@string/comun_nombre_del_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/dialogo_jugador.xml",
+    "line": 23,
+    "attribute": "android:hint",
+    "old_text": "Ej. ANA",
+    "new_ref": "@string/dialogo_jugador_ej_ana"
+  },
+  {
+    "file": "app/src/main/res/layout/dialogo_jugador.xml",
+    "line": 35,
+    "attribute": "android:text",
+    "old_text": "Color del jugador",
+    "new_ref": "@string/comun_color_del_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/header_menu_lateral.xml",
+    "line": 33,
+    "attribute": "android:text",
+    "old_text": "v1.0",
+    "new_ref": "@string/header_lateral_v1_0"
+  },
+  {
+    "file": "app/src/main/res/layout/item_clasificacion_resultado.xml",
+    "line": 19,
+    "attribute": "android:contentDescription",
+    "old_text": "Medalla de clasificación",
+    "new_ref": "@string/clasificacion_resultado_medalla_de_clasificacion"
+  },
+  {
+    "file": "app/src/main/res/layout/item_clasificacion_resultado.xml",
+    "line": 31,
+    "attribute": "android:text",
+    "old_text": "2.º",
+    "new_ref": "@string/clasificacion_resultado_2_o"
+  },
+  {
+    "file": "app/src/main/res/layout/item_clasificacion_resultado.xml",
+    "line": 45,
+    "attribute": "android:text",
+    "old_text": "Nombre del jugador",
+    "new_ref": "@string/comun_nombre_del_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/item_clasificacion_resultado.xml",
+    "line": 58,
+    "attribute": "android:text",
+    "old_text": "0 puntos",
+    "new_ref": "@string/comun_0_puntos"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_gestion.xml",
+    "line": 32,
+    "attribute": "android:contentDescription",
+    "old_text": "Color del jugador",
+    "new_ref": "@string/comun_color_del_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_gestion.xml",
+    "line": 69,
+    "attribute": "android:text",
+    "old_text": "Editar",
+    "new_ref": "@string/jugador_gestion_editar"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_gestion.xml",
+    "line": 82,
+    "attribute": "android:text",
+    "old_text": "Desactivar",
+    "new_ref": "@string/jugador_gestion_desactivar"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_partida.xml",
+    "line": 17,
+    "attribute": "android:contentDescription",
+    "old_text": "Cambiar color del participante",
+    "new_ref": "@string/jugador_partida_cambiar_color_del_participante"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_partida.xml",
+    "line": 25,
+    "attribute": "android:text",
+    "old_text": "Jugador 1:",
+    "new_ref": "@string/jugador_partida_jugador_1"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_partida.xml",
+    "line": 38,
+    "attribute": "android:contentDescription",
+    "old_text": "Seleccionar jugador",
+    "new_ref": "@string/jugador_partida_seleccionar_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_partida.xml",
+    "line": 45,
+    "attribute": "android:text",
+    "old_text": "✕",
+    "new_ref": "@string/simbolo_quitar"
+  },
+  {
+    "file": "app/src/main/res/layout/item_jugador_partida.xml",
+    "line": 46,
+    "attribute": "android:contentDescription",
+    "old_text": "Quitar participante",
+    "new_ref": "@string/jugador_partida_quitar_participante"
+  },
+  {
+    "file": "app/src/main/res/layout/item_partida_historial.xml",
+    "line": 12,
+    "attribute": "android:text",
+    "old_text": "501",
+    "new_ref": "@string/valor_501"
+  },
+  {
+    "file": "app/src/main/res/layout/item_partida_historial.xml",
+    "line": 16,
+    "attribute": "android:text",
+    "old_text": "Ganador",
+    "new_ref": "@string/partida_historial_ganador"
+  },
+  {
+    "file": "app/src/main/res/layout/item_partida_historial.xml",
+    "line": 19,
+    "attribute": "android:text",
+    "old_text": "2 participantes",
+    "new_ref": "@string/partida_historial_2_participantes"
+  },
+  {
+    "file": "app/src/main/res/layout/item_resultado_historico.xml",
+    "line": 7,
+    "attribute": "android:text",
+    "old_text": "1º",
+    "new_ref": "@string/resultado_historico_1o"
+  },
+  {
+    "file": "app/src/main/res/layout/item_resultado_historico.xml",
+    "line": 10,
+    "attribute": "android:text",
+    "old_text": "JUGADOR",
+    "new_ref": "@string/resultado_historico_jugador"
+  },
+  {
+    "file": "app/src/main/res/layout/item_resultado_historico.xml",
+    "line": 13,
+    "attribute": "android:text",
+    "old_text": "0",
+    "new_ref": "@string/valor_0"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_lateral.xml",
+    "line": 3,
+    "attribute": "android:title",
+    "old_text": "Jugadores",
+    "new_ref": "@string/comun_jugadores"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_lateral.xml",
+    "line": 4,
+    "attribute": "android:title",
+    "old_text": "Estadísticas",
+    "new_ref": "@string/comun_estadisticas"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_lateral.xml",
+    "line": 5,
+    "attribute": "android:title",
+    "old_text": "Historial",
+    "new_ref": "@string/lateral_historial"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_lateral.xml",
+    "line": 6,
+    "attribute": "android:title",
+    "old_text": "Reglas de juego",
+    "new_ref": "@string/comun_reglas_de_juego"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_lateral.xml",
+    "line": 7,
+    "attribute": "android:title",
+    "old_text": "Ayuda",
+    "new_ref": "@string/comun_ayuda"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_lateral.xml",
+    "line": 8,
+    "attribute": "android:title",
+    "old_text": "Acerca de",
+    "new_ref": "@string/comun_acerca_de"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_main.xml",
+    "line": 7,
+    "attribute": "android:title",
+    "old_text": "Estadísticas",
+    "new_ref": "@string/comun_estadisticas"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_main.xml",
+    "line": 12,
+    "attribute": "android:title",
+    "old_text": "Ayuda",
+    "new_ref": "@string/comun_ayuda"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_main.xml",
+    "line": 17,
+    "attribute": "android:title",
+    "old_text": "Acerca de",
+    "new_ref": "@string/comun_acerca_de"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_partida_historial.xml",
+    "line": 3,
+    "attribute": "android:title",
+    "old_text": "Ver detalle",
+    "new_ref": "@string/partida_historial_ver_detalle"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_partida_historial.xml",
+    "line": 4,
+    "attribute": "android:title",
+    "old_text": "Repetir partida",
+    "new_ref": "@string/comun_repetir_partida"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_partida_historial.xml",
+    "line": 5,
+    "attribute": "android:title",
+    "old_text": "Recuperar configuración",
+    "new_ref": "@string/partida_historial_recuperar_configuracion"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_partida_historial.xml",
+    "line": 6,
+    "attribute": "android:title",
+    "old_text": "Ocultar partida",
+    "new_ref": "@string/partida_historial_ocultar_partida"
+  },
+  {
+    "file": "app/src/main/res/menu/menu_partida_historial.xml",
+    "line": 7,
+    "attribute": "android:title",
+    "old_text": "Volver a mostrar",
+    "new_ref": "@string/partida_historial_volver_a_mostrar"
+  }
+]

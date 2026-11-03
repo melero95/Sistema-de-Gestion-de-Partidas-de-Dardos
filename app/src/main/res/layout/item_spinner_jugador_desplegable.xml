@@ -12,5 +12,5 @@
     android:background="@drawable/fondo_item_spinner_jugador"
     android:ellipsize="end"
     android:singleLine="true"
-    android:textColor="@android:color/white"
+    android:textColor="@color/gold"
     android:textSize="15sp" />

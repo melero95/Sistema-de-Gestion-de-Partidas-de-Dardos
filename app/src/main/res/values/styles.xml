@@ -178,7 +178,14 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">44dp</item>
         <item name="android:layout_marginTop">3dp</item>
-        <item name="android:backgroundTint">@color/gold</item>
+        <item name="android:background">@drawable/fondo_spinner_jugador</item>
+        <item name="android:backgroundTint">@null</item>
+    </style>
+
+    <!-- Borde y fondo comunes para selectores de todas las pantallas -->
+    <style name="SpinnerDardos">
+        <item name="android:background">@drawable/fondo_spinner_jugador</item>
+        <item name="android:backgroundTint">@null</item>
     </style>
 
     <style name="CheckAjustes">

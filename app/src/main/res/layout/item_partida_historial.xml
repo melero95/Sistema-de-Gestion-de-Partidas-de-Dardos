@@ -9,13 +9,13 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="vertical" android:padding="12dp">
         <TextView android:id="@+id/txtModoItemHistorial" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="501" android:textColor="@color/gold"
+            android:layout_height="wrap_content" android:text="@string/valor_501" android:textColor="@color/gold"
             android:textStyle="bold" android:textSize="18sp" />
         <TextView android:id="@+id/txtGanadorItemHistorial" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_marginTop="4dp"
-            android:text="Ganador" android:textColor="@android:color/white" android:textSize="14sp" />
+            android:text="@string/partida_historial_ganador" android:textColor="@android:color/white" android:textSize="14sp" />
         <TextView android:id="@+id/txtParticipantesItemHistorial" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_marginTop="2dp"
-            android:text="2 participantes" android:textColor="@android:color/white" android:textSize="13sp" />
+            android:text="@string/partida_historial_2_participantes" android:textColor="@android:color/white" android:textSize="13sp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -5,7 +5,7 @@
     android:background="@drawable/fondo" android:paddingStart="16dp" android:paddingEnd="16dp">
     <TextView android:id="@+id/txtTituloDetalle" android:layout_width="0dp" android:layout_height="wrap_content"
         android:layout_marginTop="28dp" android:gravity="center"
-        android:text="Detalle de partida" android:textColor="@color/gold"
+        android:text="@string/detalle_partida_detalle_de_partida" android:textColor="@color/gold"
         android:textSize="26sp" android:textStyle="bold" app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
     <com.google.android.material.card.MaterialCardView android:id="@+id/cardDetalleCabecera"
@@ -36,13 +36,13 @@
             android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" />
     </com.google.android.material.card.MaterialCardView>
     <Button android:id="@+id/btnRepetirDetalle" android:layout_width="0dp" android:layout_height="46dp"
-        android:text="Repetir partida" android:textAllCaps="false" android:backgroundTint="@color/gold"
+        android:text="@string/comun_repetir_partida" android:textAllCaps="false" android:backgroundTint="@color/gold"
         android:textColor="@color/blue" app:layout_constraintBottom_toTopOf="@id/btnEditarDetalle"
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
     <Button android:id="@+id/btnEditarDetalle" android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginTop="5dp"
-        android:text="Reutilizar configuración"
+        android:text="@string/detalle_partida_reutilizar_configuracion"
         android:textAllCaps="false"
         android:backgroundTint="@color/gold"
         android:textColor="@color/blue"
@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
     <Button android:id="@+id/btnVolverDetalle" android:layout_width="0dp" android:layout_height="46dp"
         android:layout_marginTop="5dp" android:layout_marginBottom="28dp"
-        android:text="Volver al historial" android:textAllCaps="false"
+        android:text="@string/detalle_partida_volver_al_historial" android:textAllCaps="false"
         android:backgroundTint="@color/gold" android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />

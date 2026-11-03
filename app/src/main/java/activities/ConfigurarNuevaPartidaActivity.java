@@ -270,15 +270,22 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         actualizarDisponibilidadJugadores();
     }
 
+
     private void cargarSpinnerModoJuego() {
         ArrayList<String> modos = new ArrayList<>();
         Collections.addAll(modos, MODO_301, MODO_501, MODO_CRICKET,
-                MODO_CUT_THROAT, MODO_DOUBLE_DOWN, MODO_AROUND_CLOCK, MODO_SHANGHAI);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, modos);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                MODO_CUT_THROAT, MODO_DOUBLE_DOWN,
+                MODO_AROUND_CLOCK, MODO_SHANGHAI);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, R.layout.item_spinner_modo, modos);
+
+        adapter.setDropDownViewResource(
+                R.layout.item_spinner_jugador_desplegable);
+
         spnModoJuego.setAdapter(adapter);
     }
+
 
     private void configurarCambioModoJuego() {
         spnModoJuego.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -342,8 +349,8 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
 
     private void configurarAjustesAvanzados() {
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, new Integer[]{1, 2, 3, 4});
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.layout.item_spinner_modo, new Integer[]{1, 2, 3, 4});
+        adapter.setDropDownViewResource(R.layout.item_spinner_jugador_desplegable);
         spnNumeroDardos.setAdapter(adapter);
         switchOrdenAleatorio.setOnCheckedChangeListener((buttonView, checked) -> {
             if (!cargandoConfiguracion) conservarOrdenHistorico = false;
@@ -532,7 +539,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
 
     private ArrayAdapter<Jugador> crearAdaptadorJugadores(List<Jugador> opciones) {
         ArrayAdapter<Jugador> adaptador = new ArrayAdapter<>(this,
-                R.layout.item_spinner_jugador, new ArrayList<>(opciones));
+                R.layout.item_spinner_modo, new ArrayList<>(opciones));
         adaptador.setDropDownViewResource(R.layout.item_spinner_jugador_desplegable);
         return adaptador;
     }

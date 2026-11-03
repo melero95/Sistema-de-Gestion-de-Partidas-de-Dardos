@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Historial de partidas"
+        android:text="@string/historial_partidas"
         android:textColor="@color/gold"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -25,14 +25,14 @@
 
     <!-- Filtro por modo -->
     <Spinner
+            style="@style/SpinnerDardos"
         android:id="@+id/spnModoHistorial"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="14dp"
-        android:backgroundTint="@color/gold"
         android:paddingStart="6dp"
         android:paddingEnd="4dp"
-        android:contentDescription="Filtrar por modo de juego"
+        android:contentDescription="@string/historial_partidas_filtrar_por_modo_de_juego"
         app:layout_constraintTop_toBottomOf="@id/txtTituloHistorial"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/spnJugadorHistorial"
@@ -40,15 +40,15 @@
 
     <!-- Filtro por jugador -->
     <Spinner
+            style="@style/SpinnerDardos"
         android:id="@+id/spnJugadorHistorial"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="14dp"
         android:layout_marginStart="8dp"
-        android:backgroundTint="@color/gold"
         android:paddingStart="6dp"
         android:paddingEnd="4dp"
-        android:contentDescription="Filtrar por jugador"
+        android:contentDescription="@string/historial_partidas_filtrar_por_jugador"
         app:layout_constraintTop_toBottomOf="@id/txtTituloHistorial"
         app:layout_constraintStart_toEndOf="@id/spnModoHistorial"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,14 +56,14 @@
 
     <!-- Ordenación -->
     <Spinner
+            style="@style/SpinnerDardos"
         android:id="@+id/spnOrdenHistorial"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="4dp"
-        android:backgroundTint="@color/gold"
         android:paddingStart="6dp"
         android:paddingEnd="4dp"
-        android:contentDescription="Ordenar historial"
+        android:contentDescription="@string/historial_partidas_ordenar_historial"
         app:layout_constraintTop_toBottomOf="@id/spnModoHistorial"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -101,7 +101,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:padding="20dp"
-                android:text="No hay partidas visibles"
+                android:text="@string/historial_partidas_no_hay_partidas_visibles"
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />
 
@@ -114,7 +114,7 @@
         android:id="@+id/btnRestaurarTodas"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:text="Restaurar todas las partidas ocultas"
+        android:text="@string/historial_partidas_restaurar_todas_las_partidas_ocultas"
         android:textAllCaps="false"
         android:backgroundTint="@color/gold"
         android:textColor="@color/blue"
@@ -130,7 +130,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="28dp"
-        android:text="Volver al menú principal"
+        android:text="@string/comun_volver_al_menu_principal"
         android:textAllCaps="false"
         android:backgroundTint="@color/gold"
         android:textColor="@color/blue"

@@ -187,12 +187,12 @@ public class HistorialPartidasActivity
         ArrayAdapter<String> spinnerAdapter =
                 new ArrayAdapter<>(
                         this,
-                        android.R.layout.simple_spinner_item,
+                        R.layout.item_spinner_modo,
                         modos
                 );
 
         spinnerAdapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item
+                R.layout.item_spinner_jugador_desplegable
         );
 
         spinner.setAdapter(spinnerAdapter);
@@ -223,12 +223,12 @@ public class HistorialPartidasActivity
         ArrayAdapter<String> ordenAdapter =
                 new ArrayAdapter<>(
                         this,
-                        android.R.layout.simple_spinner_item,
+                        R.layout.item_spinner_modo,
                         ORDENES
                 );
 
         ordenAdapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item
+                R.layout.item_spinner_jugador_desplegable
         );
 
         spinnerOrden.setAdapter(ordenAdapter);
@@ -314,12 +314,12 @@ public class HistorialPartidasActivity
         ArrayAdapter<String> adaptadorJugadores =
                 new ArrayAdapter<>(
                         this,
-                        android.R.layout.simple_spinner_item,
+                        R.layout.item_spinner_modo,
                         nombres
                 );
 
         adaptadorJugadores.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item
+                R.layout.item_spinner_jugador_desplegable
         );
 
         spinnerJugador.setAdapter(

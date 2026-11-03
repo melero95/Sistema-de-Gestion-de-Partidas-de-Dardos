@@ -134,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
 
         drawerMain.addDrawerListener(toggle);
         toggle.syncState();
+        toggle.getDrawerArrowDrawable().setColor(
+                ContextCompat.getColor(this, R.color.gold)
+        );
 
         navigationMain.setNavigationItemSelectedListener(item -> {
 

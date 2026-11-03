@@ -60,7 +60,7 @@
                     android:id="@+id/imgDardoCabeceraIzquierda"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:contentDescription="Dardo izquierdo"
+                    android:contentDescription="@string/comun_dardo_izquierdo"
                     android:padding="2dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/icono_dardo" />
@@ -76,7 +76,7 @@
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:maxLines="1"
-                    android:text="DOUBLE DOWN"
+                    android:text="@string/comun_double_down"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -85,7 +85,7 @@
                     android:id="@+id/imgDardoCabeceraDerecha"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:contentDescription="Dardo derecho"
+                    android:contentDescription="@string/comun_dardo_derecho"
                     android:padding="2dp"
                     android:rotation="180"
                     android:scaleType="centerInside"
@@ -123,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:text="TURNO DE:"
+                    android:text="@string/comun_turno_de"
                     android:textColor="@android:color/white"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -136,7 +136,7 @@
                     android:ellipsize="end"
                     android:includeFontPadding="false"
                     android:maxLines="1"
-                    android:text="LUIS"
+                    android:text="@string/comun_luis"
                     android:textColor="#168BFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -220,7 +220,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:text="Marcos"
+                                android:text="@string/comun_marcos"
                                 android:textColor="#FFFFFF"
                                 android:textSize="12sp" />
 
@@ -229,7 +229,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
-                                android:text="441"
+                                android:text="@string/valor_441"
                                 android:textColor="#FFFFFF"
                                 android:textSize="21sp"
                                 android:textStyle="bold" />
@@ -253,7 +253,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:text="Javier"
+                                android:text="@string/comun_javier"
                                 android:textColor="#FFFFFF"
                                 android:textSize="12sp" />
 
@@ -262,7 +262,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
-                                android:text="501"
+                                android:text="@string/valor_501"
                                 android:textColor="#FFFFFF"
                                 android:textSize="21sp"
                                 android:textStyle="bold" />
@@ -287,7 +287,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:text="Jugador 5"
+                                android:text="@string/comun_jugador_5"
                                 android:textColor="#FFFFFF"
                                 android:textSize="12sp" />
 
@@ -296,7 +296,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
-                                android:text="501"
+                                android:text="@string/valor_501"
                                 android:textColor="#FFFFFF"
                                 android:textSize="21sp"
                                 android:textStyle="bold" />
@@ -323,7 +323,7 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="Luis"
+                            android:text="@string/partida_puntos_luis"
                             android:textColor="#168BFF"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -333,7 +333,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:includeFontPadding="false"
-                            android:text="501"
+                            android:text="@string/valor_501"
                             android:textColor="#FFFFFF"
                             android:textSize="48sp"
                             android:textStyle="bold" />
@@ -366,7 +366,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:text="Ana"
+                                android:text="@string/comun_ana"
                                 android:textColor="#FFFFFF"
                                 android:textSize="12sp" />
 
@@ -375,7 +375,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
-                                android:text="501"
+                                android:text="@string/valor_501"
                                 android:textColor="#FFFFFF"
                                 android:textSize="21sp"
                                 android:textStyle="bold" />
@@ -399,7 +399,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:text="Sofía"
+                                android:text="@string/comun_sofia"
                                 android:textColor="#FFFFFF"
                                 android:textSize="12sp" />
 
@@ -408,7 +408,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
-                                android:text="501"
+                                android:text="@string/valor_501"
                                 android:textColor="#FFFFFF"
                                 android:textSize="21sp"
                                 android:textStyle="bold" />
@@ -433,7 +433,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:text="Jugador 6"
+                                android:text="@string/comun_jugador_6"
                                 android:textColor="#FFFFFF"
                                 android:textSize="12sp" />
 
@@ -442,7 +442,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
-                                android:text="501"
+                                android:text="@string/valor_501"
                                 android:textColor="#FFFFFF"
                                 android:textSize="21sp"
                                 android:textStyle="bold" />
@@ -504,7 +504,7 @@
                                 android:gravity="center"
                                 android:includeFontPadding="false"
                                 android:paddingHorizontal="3dp"
-                                android:text="RONDA"
+                                android:text="@string/comun_ronda"
                                 android:textColor="#FF5FA8FF"
                                 android:textSize="8sp"
                                 android:textStyle="bold" />
@@ -520,7 +520,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:includeFontPadding="false"
-                                    android:text="1"
+                                    android:text="@string/valor_1"
                                     android:textColor="@android:color/white"
                                     android:textSize="23sp"
                                     android:textStyle="bold" />
@@ -530,7 +530,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:includeFontPadding="false"
-                                    android:text="/15"
+                                    android:text="@string/rondas_ejemplo_15"
                                     android:textColor="@android:color/white"
                                     android:textSize="11sp" />
 
@@ -564,7 +564,7 @@
                                 android:gravity="center"
                                 android:includeFontPadding="false"
                                 android:paddingHorizontal="3dp"
-                                android:text="DARDOS"
+                                android:text="@string/comun_dardos"
                                 android:textColor="#FF5FA8FF"
                                 android:textSize="8sp"
                                 android:textStyle="bold" />
@@ -581,7 +581,7 @@
                                     android:layout_width="26dp"
                                     android:layout_height="26dp"
                                     android:background="#CC101820"
-                                    android:contentDescription="Dardo 1"
+                                    android:contentDescription="@string/comun_dardo_1"
                                     android:padding="4dp"
                                     android:scaleType="centerInside"
                                     android:src="@drawable/icono_dardo" />
@@ -593,7 +593,7 @@
                                     android:layout_marginStart="2dp"
                                     android:alpha="0.35"
                                     android:background="#CC101820"
-                                    android:contentDescription="Dardo 2"
+                                    android:contentDescription="@string/comun_dardo_2"
                                     android:padding="4dp"
                                     android:scaleType="centerInside"
                                     android:src="@drawable/icono_dardo" />
@@ -605,7 +605,7 @@
                                     android:layout_marginStart="2dp"
                                     android:alpha="0.35"
                                     android:background="#CC101820"
-                                    android:contentDescription="Dardo 3"
+                                    android:contentDescription="@string/comun_dardo_3"
                                     android:padding="4dp"
                                     android:scaleType="centerInside"
                                     android:src="@drawable/icono_dardo" />
@@ -617,7 +617,7 @@
                                     android:layout_marginStart="2dp"
                                     android:alpha="0.35"
                                     android:background="#CC101820"
-                                    android:contentDescription="Dardo 4"
+                                    android:contentDescription="@string/comun_dardo_4"
                                     android:padding="4dp"
                                     android:scaleType="centerInside"
                                     android:src="@drawable/icono_dardo"
@@ -631,7 +631,7 @@
                                 android:layout_height="14dp"
                                 android:gravity="center"
                                 android:includeFontPadding="false"
-                                android:text="1 / 3"
+                                android:text="@string/partida_puntos_1_3"
                                 android:textColor="@android:color/white"
                                 android:textSize="10sp" />
 
@@ -663,7 +663,7 @@
                                 android:gravity="center"
                                 android:includeFontPadding="false"
                                 android:paddingHorizontal="3dp"
-                                android:text="TIRADA ACTUAL"
+                                android:text="@string/comun_tirada_actual"
                                 android:textColor="#FF5FA8FF"
                                 android:textSize="8sp"
                                 android:textStyle="bold" />
@@ -683,7 +683,7 @@
                                     android:background="@drawable/fondo_casilla_tirada"
                                     android:gravity="center"
                                     android:includeFontPadding="false"
-                                    android:text="T20"
+                                    android:text="@string/comun_t20"
                                     android:textColor="@android:color/white"
                                     android:textSize="11sp"
                                     android:textStyle="bold" />
@@ -696,7 +696,7 @@
                                     android:background="@drawable/fondo_casilla_tirada"
                                     android:gravity="center"
                                     android:includeFontPadding="false"
-                                    android:text="15"
+                                    android:text="@string/valor_15"
                                     android:textColor="@android:color/white"
                                     android:textSize="11sp"
                                     android:textStyle="bold" />
@@ -730,7 +730,7 @@
                         android:gravity="center"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:text="DESHACER TIRADA"
+                        android:text="@string/comun_deshacer_tirada"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
@@ -808,7 +808,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:checked="true"
-                        android:text="x1" />
+                        android:text="@string/multiplicador_x1" />
 
                     <RadioButton
                         android:id="@+id/radioX2"
@@ -821,7 +821,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
-                        android:text="x2" />
+                        android:text="@string/multiplicador_x2" />
 
                     <RadioButton
                         android:id="@+id/radioX3"
@@ -834,7 +834,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
-                        android:text="x3" />
+                        android:text="@string/multiplicador_x3" />
 
                 </RadioGroup>
 
@@ -855,7 +855,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1.15"
-                    android:text="DIANA" />
+                    android:text="@string/comun_diana" />
 
                 <Button
                     android:id="@+id/btn20"
@@ -864,7 +864,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="20" />
+                    android:text="@string/valor_20" />
 
                 <Button
                     android:id="@+id/btn19"
@@ -873,7 +873,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="19" />
+                    android:text="@string/valor_19" />
 
                 <Button
                     android:id="@+id/btn18"
@@ -882,7 +882,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="18" />
+                    android:text="@string/valor_18" />
 
                 <Button
                     android:id="@+id/btn17"
@@ -891,7 +891,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="17" />
+                    android:text="@string/valor_17" />
 
                 <Button
                     android:id="@+id/btn16"
@@ -900,7 +900,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="16" />
+                    android:text="@string/valor_16" />
 
                 <Button
                     android:id="@+id/btn15"
@@ -909,7 +909,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="15" />
+                    android:text="@string/valor_15" />
 
             </LinearLayout>
 
@@ -928,7 +928,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="14" />
+                    android:text="@string/valor_14" />
 
                 <Button
                     android:id="@+id/btn13"
@@ -937,7 +937,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="13" />
+                    android:text="@string/valor_13" />
 
                 <Button
                     android:id="@+id/btn12"
@@ -946,7 +946,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="12" />
+                    android:text="@string/valor_12" />
 
                 <Button
                     android:id="@+id/btn11"
@@ -955,7 +955,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="11" />
+                    android:text="@string/valor_11" />
 
                 <Button
                     android:id="@+id/btn10"
@@ -964,7 +964,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="10" />
+                    android:text="@string/valor_10" />
 
                 <Button
                     android:id="@+id/btn9"
@@ -973,7 +973,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="9" />
+                    android:text="@string/valor_9" />
 
                 <Button
                     android:id="@+id/btn8"
@@ -982,7 +982,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="8" />
+                    android:text="@string/valor_8" />
 
             </LinearLayout>
 
@@ -1001,7 +1001,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="7" />
+                    android:text="@string/valor_7" />
 
                 <Button
                     android:id="@+id/btn6"
@@ -1010,7 +1010,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="6" />
+                    android:text="@string/valor_6" />
 
                 <Button
                     android:id="@+id/btn5"
@@ -1019,7 +1019,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="5" />
+                    android:text="@string/valor_5" />
 
                 <Button
                     android:id="@+id/btn4"
@@ -1028,7 +1028,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="4" />
+                    android:text="@string/valor_4" />
 
                 <Button
                     android:id="@+id/btn3"
@@ -1037,7 +1037,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="@string/valor_3" />
 
                 <Button
                     android:id="@+id/btn2"
@@ -1046,7 +1046,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="@string/valor_2" />
 
                 <Button
                     android:id="@+id/btn1"
@@ -1055,7 +1055,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="@string/valor_1" />
 
             </LinearLayout>
 
@@ -1074,7 +1074,7 @@
                     android:layout_marginHorizontal="2dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="OUT / 0" />
+                    android:text="@string/partida_puntos_out_0" />
 
             </LinearLayout>
 
@@ -1121,7 +1121,7 @@
                 android:layout_weight="1.15"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:text="VER MARCADOR"
+                android:text="@string/comun_ver_marcador"
                 android:textSize="11sp" />
 
             <Button
@@ -1133,7 +1133,7 @@
                 android:layout_weight="1.25"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:text="SIGUIENTE TURNO"
+                android:text="@string/comun_siguiente_turno"
                 android:textSize="11sp" />
 
             <Button
@@ -1145,7 +1145,7 @@
                 android:layout_weight="1.15"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:text="SALIR PARTIDA"
+                android:text="@string/comun_salir_partida"
                 android:textSize="11sp" />
 
         </LinearLayout>

@@ -29,7 +29,7 @@
                 android:id="@+id/indicadorColorJugador"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:contentDescription="Color del jugador" />
+                android:contentDescription="@string/comun_color_del_jugador" />
 
             <TextView
                 android:id="@+id/txtNombreJugadorGestion"
@@ -66,7 +66,7 @@
                 android:layout_marginEnd="5dp"
                 android:backgroundTint="@color/gold"
                 android:minWidth="0dp"
-                android:text="Editar"
+                android:text="@string/jugador_gestion_editar"
                 android:textAllCaps="false"
                 android:textColor="@color/blue"
                 android:textSize="13sp" />
@@ -79,7 +79,7 @@
                 android:layout_marginStart="5dp"
                 android:backgroundTint="@color/gold"
                 android:minWidth="0dp"
-                android:text="Desactivar"
+                android:text="@string/jugador_gestion_desactivar"
                 android:textAllCaps="false"
                 android:textColor="@color/blue"
                 android:textSize="13sp" />

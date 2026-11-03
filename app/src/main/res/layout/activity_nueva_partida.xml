@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Nueva partida"
+        android:text="@string/nueva_partida"
         android:textColor="@color/gold"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="Elige el modo, los jugadores y las opciones de la partida"
+        android:text="@string/nueva_partida_elige_el_modo_los_jugadores_y_las_opciones_de_la_par"
         android:textColor="@android:color/white"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Configuración de partida"
+                        android:text="@string/nueva_partida_configuracion_de_partida"
                         android:textColor="@color/gold"
                         android:textSize="19sp"
                         android:textStyle="bold" />
@@ -86,19 +86,19 @@
                     <TextView
                         style="@style/TituloSeccionAjustes"
                         android:layout_marginTop="9dp"
-                        android:text="Modo de juego" />
+                        android:text="@string/nueva_partida_modo_de_juego" />
 
                     <Spinner
+            style="@style/SpinnerDardos"
                         android:id="@+id/spnModoJuego"
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
-                        android:layout_marginTop="3dp"
-                        android:backgroundTint="@color/gold" />
+                        android:layout_marginTop="3dp" />
 
                     <TextView
                         style="@style/TituloSeccionAjustes"
                         android:layout_marginTop="5dp"
-                        android:text="Máximo de rondas" />
+                        android:text="@string/nueva_partida_maximo_de_rondas" />
 
                     <LinearLayout
                         android:id="@+id/contenedorRondas"
@@ -116,7 +116,7 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:gravity="center"
-                            android:text="−"
+                            android:text="@string/simbolo_menos"
                             android:textColor="@color/gold"
                             android:textSize="26sp"
                             android:textStyle="bold" />
@@ -127,7 +127,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="15"
+                            android:text="@string/valor_15"
                             android:textColor="@android:color/white"
                             android:textSize="22sp"
                             android:textStyle="bold" />
@@ -140,7 +140,7 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:gravity="center"
-                            android:text="+"
+                            android:text="@string/simbolo_mas"
                             android:textColor="@color/gold"
                             android:textSize="24sp"
                             android:textStyle="bold" />
@@ -170,7 +170,7 @@
                         android:id="@+id/txtTituloJugadores"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Jugadores"
+                        android:text="@string/comun_jugadores"
                         android:textColor="@color/gold"
                         android:textSize="19sp"
                         android:textStyle="bold" />
@@ -179,7 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Pulsa el nombre para elegir un jugador activo."
+                        android:text="@string/nueva_partida_pulsa_el_nombre_para_elegir_un_jugador_activo"
                         android:textColor="@android:color/white"
                         android:textSize="13sp" />
 
@@ -188,7 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="No hay jugadores activos. Pulsa Gestionar jugadores para registrar o reactivar uno."
+                        android:text="@string/texto_activity_nueva_partida_6f1bb6c"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
                         android:visibility="gone" />
@@ -206,7 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
                         android:layout_marginTop="5dp"
-                        android:text="+ Añadir participante"
+                        android:text="@string/nueva_partida_anadir_participante"
                         android:textAllCaps="false"
                         android:textSize="16sp" />
 
@@ -216,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
                         android:layout_marginTop="6dp"
-                        android:text="Gestionar jugadores"
+                        android:text="@string/nueva_partida_gestionar_jugadores"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -243,7 +243,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Opciones adicionales"
+                        android:text="@string/nueva_partida_opciones_adicionales"
                         android:textColor="@color/gold"
                         android:textSize="19sp"
                         android:textStyle="bold" />
@@ -254,7 +254,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
                         android:layout_marginTop="5dp"
-                        android:text="Usar última configuración"
+                        android:text="@string/nueva_partida_usar_ultima_configuracion"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
 
@@ -264,7 +264,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
                         android:layout_marginTop="6dp"
-                        android:text="Más ajustes ▼"
+                        android:text="@string/nueva_partida_mas_ajustes"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
 
@@ -282,8 +282,9 @@
                             android:id="@+id/switchCierreDoble"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/gold"
-                            android:text="Cerrar la partida con un doble"
+                            app:thumbTint="@color/switch_thumb_color"
+                            app:trackTint="@color/switch_track_color"
+                            android:text="@string/nueva_partida_cerrar_la_partida_con_un_doble"
                             android:textColor="@android:color/white" />
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -291,29 +292,31 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:buttonTint="@color/gold"
-                            android:text="Mantener multiplicador tras cada dardo"
+                            app:thumbTint="@color/switch_thumb_color"
+                            app:trackTint="@color/switch_track_color"
+                            android:text="@string/nueva_partida_mantener_multiplicador_tras_cada_dardo"
                             android:textColor="@android:color/white" />
 
                         <TextView
                             android:id="@+id/txtTituloNumeroDardos"
                             style="@style/TituloSeccionAjustes"
                             android:layout_marginTop="5dp"
-                            android:text="Dardos por turno" />
+                            android:text="@string/comun_dardos_por_turno" />
 
                         <Spinner
+            style="@style/SpinnerDardos"
                             android:id="@+id/spnNumeroDardos"
                             android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:backgroundTint="@color/gold" />
+                            android:layout_height="44dp" />
 
                         <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switchOrdenAleatorio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:buttonTint="@color/gold"
-                            android:text="Orden de jugadores aleatorio"
+                            app:thumbTint="@color/switch_thumb_color"
+                            app:trackTint="@color/switch_track_color"
+                            android:text="@string/comun_orden_de_jugadores_aleatorio"
                             android:textColor="@android:color/white" />
                     </LinearLayout>
                 </LinearLayout>
@@ -328,7 +331,7 @@
         android:layout_height="48dp"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="28dp"
-        android:text="Crear partida"
+        android:text="@string/nueva_partida_crear_partida"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -343,7 +346,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="6dp"
         android:layout_marginBottom="28dp"
-        android:text="Cancelar"
+        android:text="@string/nueva_partida_cancelar"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"

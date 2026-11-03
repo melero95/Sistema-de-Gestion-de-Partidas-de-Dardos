@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="ESTADÍSTICAS"
+        android:text="@string/estadisticas_estadisticas"
         android:textColor="@color/gold"
         android:textStyle="bold"
         android:textSize="25sp"
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/fondo_pestana_estadisticas_activa"
-            android:text="GENERAL"
+            android:text="@string/estadisticas_general"
             android:textStyle="bold"
             android:textSize="12sp"
             android:textColor="@color/blue" />
@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/fondo_pestana_estadisticas_inactiva"
-            android:text="JUGADORES"
+            android:text="@string/estadisticas_jugadores"
             android:textStyle="bold"
             android:textSize="12sp"
             android:textColor="@color/gold" />
@@ -61,7 +61,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/fondo_pestana_estadisticas_inactiva"
-            android:text="RÉCORDS"
+            android:text="@string/estadisticas_records"
             android:textStyle="bold"
             android:textSize="12sp"
             android:textColor="@color/gold" />
@@ -90,6 +90,6 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="6dp"
-        android:text="VOLVER"
+        android:text="@string/estadisticas_volver"
         android:textSize="14sp" />
 </LinearLayout>

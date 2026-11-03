@@ -67,14 +67,16 @@ public class ReglasActivity extends AppCompatActivity {
         modosJuego.add("Around the Clock");
         modosJuego.add("Shanghai");
 
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.item_spinner_modo,
                 modosJuego
         );
 
+
         adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item
+                R.layout.item_spinner_jugador_desplegable
         );
 
         spinnerModoReglas.setAdapter(adapter);

@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/menu_estadisticas"
-        android:title="Estadísticas"
+        android:title="@string/comun_estadisticas"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_ayuda"
-        android:title="Ayuda"
+        android:title="@string/comun_ayuda"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_acerca_de"
-        android:title="Acerca de"
+        android:title="@string/comun_acerca_de"
         app:showAsAction="never" />
 
 </menu>

@@ -3,8 +3,8 @@
 
     <!--  Layout main -->
     <string name="continuar_partida">Continuar partida</string>
-    <string name="nueva_partida">Nueva partida</string>">
-    <string name="historial_partidas">Historial de partidas</string>">
+    <string name="nueva_partida">Nueva partida</string>
+    <string name="historial_partidas">Historial de partidas</string>
     <string name="ajustes">Ajustes</string>
     <string name="titulo_toolbar">Juegos de Dardos</string>
 
@@ -17,7 +17,195 @@
     <!--  Layout main -->
     <!--  Layout main -->
     <!--  Layout main -->
-    <!--  Layout main -->
 
-
+    <!-- Textos XML extraídos para corregir Android Lint / HardcodedText -->
+    <!-- Se mantienen los textos en español. -->
+    <string name="acerca_de_android_studio_java_xml_sqlite_sharedpreferences">• Android Studio\n• Java\n• XML\n• SQLite\n• SharedPreferences</string>
+    <string name="acerca_de_gestor_de_partidas_y_estadisticas_de_dardos">Gestor de Partidas y Estadísticas de Dardos</string>
+    <string name="acerca_de_logo_de_la_aplicacion">Logo de la aplicación</string>
+    <string name="acerca_de_proyecto">Proyecto</string>
+    <string name="acerca_de_sobre_la_aplicacion">Sobre la aplicación</string>
+    <string name="acerca_de_tecnologias">Tecnologías</string>
+    <string name="acerca_de_version_1_0">Versión 1.0</string>
+    <string name="ajustes_cerrar_301_501_con_un_doble">Cerrar 301/501 con un doble</string>
+    <string name="ajustes_comportamiento">COMPORTAMIENTO</string>
+    <string name="ajustes_confirmar_antes_de_abandonar_una_partida">Confirmar antes de abandonar una partida</string>
+    <string name="ajustes_datos_de_prueba_debug">DATOS DE PRUEBA · DEBUG</string>
+    <string name="ajustes_generar_datos_de_prueba">GENERAR DATOS DE PRUEBA</string>
+    <string name="ajustes_guardar">Guardar</string>
+    <string name="ajustes_jugador_predeterminado">Jugador predeterminado</string>
+    <string name="ajustes_mantener_seleccionado_el_multiplicador">Mantener seleccionado el multiplicador</string>
+    <string name="ajustes_modo_de_juego_preferido">Modo de juego preferido</string>
+    <string name="ajustes_partida_predeterminada">PARTIDA PREDETERMINADA</string>
+    <string name="ajustes_restablecer">Restablecer</string>
+    <string name="ajustes_vibrar_al_registrar_una_tirada">Vibrar al registrar una tirada</string>
+    <string name="ajustes_volver">Volver</string>
+    <string name="ayuda_continuar_una_partida">Continuar una partida</string>
+    <string name="ayuda_deshacer_una_tirada">Deshacer una tirada</string>
+    <string name="ayuda_durante_la_partida">Durante la partida</string>
+    <string name="ayuda_guia_basica_para_utilizar_la_aplicacion">Guía básica para utilizar la aplicación</string>
+    <string name="ayuda_historial_y_estadisticas">Historial y estadísticas</string>
+    <string name="clasificacion_resultado_2_o">2.º</string>
+    <string name="clasificacion_resultado_medalla_de_clasificacion">Medalla de clasificación</string>
+    <string name="comun_0_puntos">0 puntos</string>
+    <string name="comun_1_4" translatable="false">1 / 4</string>
+    <string name="comun_acerca_de">Acerca de</string>
+    <string name="comun_ana">Ana</string>
+    <string name="comun_ayuda">Ayuda</string>
+    <string name="comun_color_del_jugador">Color del jugador</string>
+    <string name="comun_dardo_1">Dardo 1</string>
+    <string name="comun_dardo_2">Dardo 2</string>
+    <string name="comun_dardo_3">Dardo 3</string>
+    <string name="comun_dardo_4">Dardo 4</string>
+    <string name="comun_dardo_derecho">Dardo derecho</string>
+    <string name="comun_dardo_izquierdo">Dardo izquierdo</string>
+    <string name="comun_dardos">DARDOS</string>
+    <string name="comun_dardos_por_turno">Dardos por turno</string>
+    <string name="comun_deshacer_tirada">DESHACER TIRADA</string>
+    <string name="comun_diana">DIANA</string>
+    <string name="comun_double_down">DOUBLE DOWN</string>
+    <string name="comun_estadisticas">Estadísticas</string>
+    <string name="comun_fuera_0">FUERA / 0</string>
+    <string name="comun_javier">Javier</string>
+    <string name="comun_jugador_5">Jugador 5</string>
+    <string name="comun_jugador_6">Jugador 6</string>
+    <string name="comun_jugadores">Jugadores</string>
+    <string name="comun_luis">LUIS</string>
+    <string name="comun_marcos">Marcos</string>
+    <string name="comun_nombre_del_jugador">Nombre del jugador</string>
+    <string name="comun_orden_de_jugadores_aleatorio">Orden de jugadores aleatorio</string>
+    <string name="comun_reglas_de_juego">Reglas de juego</string>
+    <string name="comun_repetir_partida">Repetir partida</string>
+    <string name="comun_ronda">RONDA</string>
+    <string name="comun_salir_partida">SALIR PARTIDA</string>
+    <string name="comun_siguiente_turno">SIGUIENTE TURNO</string>
+    <string name="comun_sofia">Sofía</string>
+    <string name="comun_t20">T20</string>
+    <string name="comun_tirada_actual">TIRADA ACTUAL</string>
+    <string name="comun_turno_de">TURNO DE:</string>
+    <string name="comun_ver_marcador">VER MARCADOR</string>
+    <string name="comun_volver_al_menu_principal">Volver al menú principal</string>
+    <string name="detalle_partida_detalle_de_partida">Detalle de partida</string>
+    <string name="detalle_partida_reutilizar_configuracion">Reutilizar configuración</string>
+    <string name="detalle_partida_volver_al_historial">Volver al historial</string>
+    <string name="dialogo_jugador_ej_ana">Ej. ANA</string>
+    <string name="estadisticas_estadisticas">ESTADÍSTICAS</string>
+    <string name="estadisticas_general">GENERAL</string>
+    <string name="estadisticas_jugadores">JUGADORES</string>
+    <string name="estadisticas_records">RÉCORDS</string>
+    <string name="estadisticas_volver">VOLVER</string>
+    <string name="header_lateral_v1_0">v1.0</string>
+    <string name="historial_partidas_filtrar_por_jugador">Filtrar por jugador</string>
+    <string name="historial_partidas_filtrar_por_modo_de_juego">Filtrar por modo de juego</string>
+    <string name="historial_partidas_no_hay_partidas_visibles">No hay partidas visibles</string>
+    <string name="historial_partidas_ordenar_historial">Ordenar historial</string>
+    <string name="historial_partidas_restaurar_todas_las_partidas_ocultas">Restaurar todas las partidas ocultas</string>
+    <string name="jugador_gestion_desactivar">Desactivar</string>
+    <string name="jugador_gestion_editar">Editar</string>
+    <string name="jugador_partida_cambiar_color_del_participante">Cambiar color del participante</string>
+    <string name="jugador_partida_jugador_1">Jugador 1:</string>
+    <string name="jugador_partida_quitar_participante">Quitar participante</string>
+    <string name="jugador_partida_seleccionar_jugador">Seleccionar jugador</string>
+    <string name="jugadores_0_activos_0_inactivos">0 activos · 0 inactivos</string>
+    <string name="jugadores_anade_edita_y_activa_o_desactiva_participantes">Añade, edita y activa o desactiva participantes</string>
+    <string name="jugadores_anadir_jugador">Añadir jugador</string>
+    <string name="jugadores_gestion_de_jugadores">Gestión de jugadores</string>
+    <string name="jugadores_no_hay_jugadores_registrados_npulsa_anadir_jugador_p">No hay jugadores registrados.\nPulsa «Añadir jugador» para empezar.</string>
+    <string name="lateral_historial">Historial</string>
+    <string name="multiplicador_mayus_x1" translatable="false">X1</string>
+    <string name="multiplicador_mayus_x2" translatable="false">X2</string>
+    <string name="multiplicador_mayus_x3" translatable="false">X3</string>
+    <string name="multiplicador_x1" translatable="false">x1</string>
+    <string name="multiplicador_x2" translatable="false">x2</string>
+    <string name="multiplicador_x3" translatable="false">x3</string>
+    <string name="nueva_partida_anadir_participante">+ Añadir participante</string>
+    <string name="nueva_partida_cancelar">Cancelar</string>
+    <string name="nueva_partida_cerrar_la_partida_con_un_doble">Cerrar la partida con un doble</string>
+    <string name="nueva_partida_configuracion_de_partida">Configuración de partida</string>
+    <string name="nueva_partida_crear_partida">Crear partida</string>
+    <string name="nueva_partida_elige_el_modo_los_jugadores_y_las_opciones_de_la_par">Elige el modo, los jugadores y las opciones de la partida</string>
+    <string name="nueva_partida_gestionar_jugadores">Gestionar jugadores</string>
+    <string name="nueva_partida_mantener_multiplicador_tras_cada_dardo">Mantener multiplicador tras cada dardo</string>
+    <string name="nueva_partida_mas_ajustes">Más ajustes ▼</string>
+    <string name="nueva_partida_maximo_de_rondas">Máximo de rondas</string>
+    <string name="nueva_partida_modo_de_juego">Modo de juego</string>
+    <string name="nueva_partida_opciones_adicionales">Opciones adicionales</string>
+    <string name="nueva_partida_pulsa_el_nombre_para_elegir_un_jugador_activo">Pulsa el nombre para elegir un jugador activo.</string>
+    <string name="nueva_partida_usar_ultima_configuracion">Usar última configuración</string>
+    <string name="partida_criquet_criquet">CRIQUET</string>
+    <string name="partida_criquet_d">D</string>
+    <string name="partida_criquet_fuera">FUERA</string>
+    <string name="partida_criquet_jugador_1">JUGADOR 1</string>
+    <string name="partida_criquet_marcador">MARCADOR</string>
+    <string name="partida_criquet_obj">OBJ.</string>
+    <string name="partida_criquet_pts">PTS</string>
+    <string name="partida_historial_2_participantes">2 participantes</string>
+    <string name="partida_historial_ganador">Ganador</string>
+    <string name="partida_historial_ocultar_partida">Ocultar partida</string>
+    <string name="partida_historial_recuperar_configuracion">Recuperar configuración</string>
+    <string name="partida_historial_ver_detalle">Ver detalle</string>
+    <string name="partida_historial_volver_a_mostrar">Volver a mostrar</string>
+    <string name="partida_puntos_1_3" translatable="false">1 / 3</string>
+    <string name="partida_puntos_luis">Luis</string>
+    <string name="partida_puntos_out_0">OUT / 0</string>
+    <string name="partida_rondas_bull">BULL</string>
+    <string name="partida_rondas_doble">DOBLE</string>
+    <string name="partida_rondas_jugador_actual">Jugador actual</string>
+    <string name="partida_rondas_objetivo_de_la_ronda">OBJETIVO DE LA RONDA</string>
+    <string name="partida_rondas_simple">SIMPLE</string>
+    <string name="partida_rondas_triple">TRIPLE</string>
+    <string name="reglas_selecciona_un_modo_de_juego">Selecciona un modo de juego</string>
+    <string name="resultado_clasificacion">CLASIFICACIÓN</string>
+    <string name="resultado_ganador">GANADOR</string>
+    <string name="resultado_historico_1o">1º</string>
+    <string name="resultado_historico_jugador">JUGADOR</string>
+    <string name="resultado_resultado_de_la_partida">RESULTADO DE LA PARTIDA</string>
+    <string name="resultado_revancha">REVANCHA</string>
+    <string name="resultado_trofeo_del_ganador">Trofeo del ganador</string>
+    <string name="resultado_ver_estadisticas">VER ESTADÍSTICAS</string>
+    <string name="resultado_volver_al_menu_principal">VOLVER AL MENÚ PRINCIPAL</string>
+    <string name="rondas_ejemplo_15" translatable="false">/15</string>
+    <string name="simbolo_mas" translatable="false">+</string>
+    <string name="simbolo_menos" translatable="false">−</string>
+    <string name="simbolo_quitar" translatable="false">✕</string>
+    <string name="texto_activity_acerca_de_b253242">Aplicación Android diseñada para gestionar partidas de dardos, jugadores, resultados, historial y estadísticas de diferentes modalidades de juego.</string>
+    <string name="texto_activity_acerca_de_f2e0bb6">Proyecto desarrollado como aplicación de fin de ciclo del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma.</string>
+    <string name="texto_activity_ajustes_0a5be14">No hay jugadores activos. Puedes registrarlos o activarlos desde Gestionar jugadores.</string>
+    <string name="texto_activity_ajustes_3bdb9ac">El jugador predeterminado se aplicará al configurar nuevas partidas. Las demás preferencias se conservarán para su aplicación progresiva.</string>
+    <string name="texto_activity_ajustes_eb2802f">Crea 6 jugadores y 70 partidas de ejemplo. Solo se puede ejecutar una vez y sobre una base de datos vacía.</string>
+    <string name="texto_activity_ayuda_54fc6fd">Si introduces una tirada incorrectamente puedes utilizar el botón Deshacer tirada para recuperar el estado anterior.</string>
+    <string name="texto_activity_ayuda_6e6552e">Las partidas finalizadas se almacenan para poder consultar posteriormente los resultados, el historial y las estadísticas de los jugadores.</string>
+    <string name="texto_activity_ayuda_7c39d79">Desde el menú principal puedes crear una nueva partida. Selecciona el modo de juego, los jugadores y las opciones disponibles antes de comenzar.</string>
+    <string name="texto_activity_ayuda_8d3ed14">Para consultar las reglas específicas de 301, 501, Cricket, Cut Throat Cricket, Double Down, Around the Clock o Shanghai utiliza la opción Reglas de juego del menú lateral.</string>
+    <string name="texto_activity_ayuda_ae9b5eb">Si abandonas una partida antes de finalizarla, podrás recuperarla posteriormente desde la opción Continuar del menú principal.</string>
+    <string name="texto_activity_ayuda_e41d1e8">Puedes seleccionar los jugadores que participarán en cada partida, asignarles un color identificativo y modificar el número de participantes según el modo de juego.</string>
+    <string name="texto_activity_ayuda_f07501c">Selecciona el multiplicador correspondiente y después pulsa sobre el número alcanzado con el dardo. La aplicación actualizará automáticamente las puntuaciones y el turno.</string>
+    <string name="texto_activity_nueva_partida_6f1bb6c">No hay jugadores activos. Pulsa Gestionar jugadores para registrar o reactivar uno.</string>
+    <string name="valor_0" translatable="false">0</string>
+    <string name="valor_1" translatable="false">1</string>
+    <string name="valor_10" translatable="false">10</string>
+    <string name="valor_11" translatable="false">11</string>
+    <string name="valor_12" translatable="false">12</string>
+    <string name="valor_120" translatable="false">120</string>
+    <string name="valor_13" translatable="false">13</string>
+    <string name="valor_14" translatable="false">14</string>
+    <string name="valor_15" translatable="false">15</string>
+    <string name="valor_16" translatable="false">16</string>
+    <string name="valor_17" translatable="false">17</string>
+    <string name="valor_18" translatable="false">18</string>
+    <string name="valor_19" translatable="false">19</string>
+    <string name="valor_2" translatable="false">2</string>
+    <string name="valor_20" translatable="false">20</string>
+    <string name="valor_3" translatable="false">3</string>
+    <string name="valor_4" translatable="false">4</string>
+    <string name="valor_441" translatable="false">441</string>
+    <string name="valor_5" translatable="false">5</string>
+    <string name="valor_501" translatable="false">501</string>
+    <string name="valor_6" translatable="false">6</string>
+    <string name="valor_60" translatable="false">60</string>
+    <string name="valor_7" translatable="false">7</string>
+    <string name="valor_8" translatable="false">8</string>
+    <string name="valor_80" translatable="false">80</string>
+    <string name="valor_9" translatable="false">9</string>
+    <string name="valor_95" translatable="false">95</string>
 </resources>

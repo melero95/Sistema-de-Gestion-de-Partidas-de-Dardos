@@ -7,7 +7,7 @@
     android:background="@drawable/fondo" tools:context="activities.AjustesActivity">
     <TextView android:id="@+id/txtTituloAjustes" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:layout_marginTop="42dp"
-        android:text="Ajustes" android:textColor="@color/gold" android:textSize="28sp" android:textStyle="bold"
+        android:text="@string/ajustes" android:textColor="@color/gold" android:textSize="28sp" android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <ScrollView android:id="@+id/scrollAjustes" android:layout_width="0dp" android:layout_height="0dp"
@@ -18,35 +18,35 @@
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:background="@drawable/fondo_panel_resultado" android:orientation="vertical" android:padding="20dp">
-            <TextView style="@style/TituloSeccionAjustes" android:text="PARTIDA PREDETERMINADA" />
-            <TextView style="@style/EtiquetaAjustes" android:text="Jugador predeterminado" />
+            <TextView style="@style/TituloSeccionAjustes" android:text="@string/ajustes_partida_predeterminada" />
+            <TextView style="@style/EtiquetaAjustes" android:text="@string/ajustes_jugador_predeterminado" />
             <Spinner android:id="@+id/spnJugadorPredeterminado" style="@style/SpinnerAjustes" />
             <TextView android:id="@+id/txtAvisoJugadoresAjustes" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:layout_marginTop="5dp"
-                android:text="No hay jugadores activos. Puedes registrarlos o activarlos desde Gestionar jugadores."
+                android:text="@string/texto_activity_ajustes_0a5be14"
                 android:textColor="@color/gold" android:textSize="12sp" android:visibility="gone" />
-            <TextView style="@style/EtiquetaAjustes" android:text="Modo de juego preferido" />
+            <TextView style="@style/EtiquetaAjustes" android:text="@string/ajustes_modo_de_juego_preferido" />
             <Spinner android:id="@+id/spnModoPredeterminado" style="@style/SpinnerAjustes" />
-            <TextView style="@style/EtiquetaAjustes" android:text="Dardos por turno" />
+            <TextView style="@style/EtiquetaAjustes" android:text="@string/comun_dardos_por_turno" />
             <Spinner android:id="@+id/spnDardosPredeterminados" style="@style/SpinnerAjustes" />
-            <CheckBox android:id="@+id/chkCierreDoblePredeterminado" style="@style/CheckAjustes" android:text="Cerrar 301/501 con un doble" />
-            <CheckBox android:id="@+id/chkOrdenAleatorioPredeterminado" style="@style/CheckAjustes" android:text="Orden de jugadores aleatorio" />
-            <TextView style="@style/TituloSeccionAjustes" android:layout_marginTop="22dp" android:text="COMPORTAMIENTO" />
-            <CheckBox android:id="@+id/chkMantenerMultiplicador" style="@style/CheckAjustes" android:text="Mantener seleccionado el multiplicador" />
-            <CheckBox android:id="@+id/chkConfirmarSalida" style="@style/CheckAjustes" android:text="Confirmar antes de abandonar una partida" />
-            <CheckBox android:id="@+id/chkVibracion" style="@style/CheckAjustes" android:text="Vibrar al registrar una tirada" />
+            <CheckBox android:id="@+id/chkCierreDoblePredeterminado" style="@style/CheckAjustes" android:text="@string/ajustes_cerrar_301_501_con_un_doble" />
+            <CheckBox android:id="@+id/chkOrdenAleatorioPredeterminado" style="@style/CheckAjustes" android:text="@string/comun_orden_de_jugadores_aleatorio" />
+            <TextView style="@style/TituloSeccionAjustes" android:layout_marginTop="22dp" android:text="@string/ajustes_comportamiento" />
+            <CheckBox android:id="@+id/chkMantenerMultiplicador" style="@style/CheckAjustes" android:text="@string/ajustes_mantener_seleccionado_el_multiplicador" />
+            <CheckBox android:id="@+id/chkConfirmarSalida" style="@style/CheckAjustes" android:text="@string/ajustes_confirmar_antes_de_abandonar_una_partida" />
+            <CheckBox android:id="@+id/chkVibracion" style="@style/CheckAjustes" android:text="@string/ajustes_vibrar_al_registrar_una_tirada" />
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"
-                android:text="El jugador predeterminado se aplicará al configurar nuevas partidas. Las demás preferencias se conservarán para su aplicación progresiva."
+                android:text="@string/texto_activity_ajustes_3bdb9ac"
                 android:textColor="#B3FFFFFF" android:textSize="12sp" />
             <LinearLayout android:id="@+id/zonaDatosPrueba" android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:layout_marginTop="22dp" android:orientation="vertical" android:visibility="gone">
-                <TextView style="@style/TituloSeccionAjustes" android:text="DATOS DE PRUEBA · DEBUG" />
+                <TextView style="@style/TituloSeccionAjustes" android:text="@string/ajustes_datos_de_prueba_debug" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" android:text="Crea 6 jugadores y 70 partidas de ejemplo. Solo se puede ejecutar una vez y sobre una base de datos vacía."
+                    android:layout_marginTop="8dp" android:text="@string/texto_activity_ajustes_eb2802f"
                     android:textSize="12sp" android:textColor="@android:color/white" />
                 <Button android:id="@+id/btnPoblarDatosPrueba" style="@style/BotonAccionOscuro"
                     android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="12dp"
-                    android:text="GENERAR DATOS DE PRUEBA" />
+                    android:text="@string/ajustes_generar_datos_de_prueba" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -58,13 +58,13 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
             <Button android:id="@+id/btnGuardarAjustes" style="@style/BotonPrincipal"
                 android:layout_width="0dp" android:layout_height="50dp" android:layout_weight="1"
-                android:layout_marginEnd="6dp" android:text="Guardar" android:textSize="14sp" />
+                android:layout_marginEnd="6dp" android:text="@string/ajustes_guardar" android:textSize="14sp" />
             <Button android:id="@+id/btnRestablecerAjustes" style="@style/BotonPrincipal"
                 android:layout_width="0dp" android:layout_height="50dp" android:layout_weight="1"
-                android:layout_marginStart="6dp" android:text="Restablecer" android:textSize="13sp" />
+                android:layout_marginStart="6dp" android:text="@string/ajustes_restablecer" android:textSize="13sp" />
         </LinearLayout>
         <Button android:id="@+id/btnVolverAjustes" style="@style/BotonPrincipal"
             android:layout_width="match_parent" android:layout_height="48dp"
-            android:layout_marginTop="8dp" android:text="Volver" android:textSize="14sp" />
+            android:layout_marginTop="8dp" android:text="@string/ajustes_volver" android:textSize="14sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

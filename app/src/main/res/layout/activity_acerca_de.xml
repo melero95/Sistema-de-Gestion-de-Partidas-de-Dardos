@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Acerca de"
+        android:text="@string/comun_acerca_de"
         android:textColor="@color/gold"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -51,7 +51,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="10dp"
-                android:contentDescription="Logo de la aplicación"
+                android:contentDescription="@string/acerca_de_logo_de_la_aplicacion"
                 android:src="@drawable/icono_diana" />
 
             <!-- NOMBRE APP -->
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Gestor de Partidas y Estadísticas de Dardos"
+                android:text="@string/acerca_de_gestor_de_partidas_y_estadisticas_de_dardos"
                 android:textColor="@android:color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Versión 1.0"
+                android:text="@string/acerca_de_version_1_0"
                 android:textColor="@color/gold"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -99,7 +99,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sobre la aplicación"
+                        android:text="@string/acerca_de_sobre_la_aplicacion"
                         android:textColor="@color/gold"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:lineSpacingExtra="3dp"
-                        android:text="Aplicación Android diseñada para gestionar partidas de dardos, jugadores, resultados, historial y estadísticas de diferentes modalidades de juego."
+                        android:text="@string/texto_activity_acerca_de_b253242"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
 
@@ -124,7 +124,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Proyecto"
+                        android:text="@string/acerca_de_proyecto"
                         android:textColor="@color/gold"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:lineSpacingExtra="3dp"
-                        android:text="Proyecto desarrollado como aplicación de fin de ciclo del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma."
+                        android:text="@string/texto_activity_acerca_de_f2e0bb6"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
 
@@ -148,7 +148,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tecnologías"
+                        android:text="@string/acerca_de_tecnologias"
                         android:textColor="@color/gold"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -158,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:lineSpacingExtra="3dp"
-                        android:text="• Android Studio&#10;• Java&#10;• XML&#10;• SQLite&#10;• SharedPreferences"
+                        android:text="@string/acerca_de_android_studio_java_xml_sqlite_sharedpreferences"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
 
@@ -177,7 +177,7 @@
         android:layout_height="52dp"
         android:layout_marginBottom="45dp"
         android:backgroundTint="@color/gold"
-        android:text="Volver al menú principal"
+        android:text="@string/comun_volver_al_menu_principal"
         android:textAllCaps="false"
         android:textColor="@color/blue"
         android:textSize="17sp"

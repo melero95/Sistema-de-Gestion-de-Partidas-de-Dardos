@@ -4,12 +4,12 @@
     android:orientation="horizontal" android:gravity="center_vertical" android:padding="10dp"
     android:layout_marginBottom="4dp" android:background="#552B41C5">
     <TextView android:id="@+id/txtPosicionHistorico" android:layout_width="40dp"
-        android:layout_height="wrap_content" android:text="1º" android:textColor="@color/gold"
+        android:layout_height="wrap_content" android:text="@string/resultado_historico_1o" android:textColor="@color/gold"
         android:textSize="17sp" android:textStyle="bold" />
     <TextView android:id="@+id/txtJugadorHistorico" android:layout_width="0dp"
-        android:layout_weight="1" android:layout_height="wrap_content" android:text="JUGADOR"
+        android:layout_weight="1" android:layout_height="wrap_content" android:text="@string/resultado_historico_jugador"
         android:textColor="@android:color/white" android:textStyle="bold" android:textSize="15sp" />
     <TextView android:id="@+id/txtPuntuacionHistorico" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:text="0" android:textColor="@color/gold"
+        android:layout_height="wrap_content" android:text="@string/valor_0" android:textColor="@color/gold"
         android:textSize="15sp" />
 </LinearLayout>

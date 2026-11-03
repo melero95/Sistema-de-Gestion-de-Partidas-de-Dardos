@@ -71,13 +71,13 @@ public class AjustesActivity extends AppCompatActivity {
     }
     private void prepararSpinners(){configurarSpinner(spnModoPredeterminado,MODOS);configurarSpinner(spnDardosPredeterminados,DARDOS);}
     private <T> void configurarSpinner(Spinner s,T[] valores){
-        ArrayAdapter<T> a=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,valores);
-        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);s.setAdapter(a);
+        ArrayAdapter<T> a=new ArrayAdapter<>(this,R.layout.item_spinner_modo,valores);
+        a.setDropDownViewResource(R.layout.item_spinner_jugador_desplegable);s.setAdapter(a);
     }
     private void actualizarListaJugadores(){
         jugadoresActivos.clear();jugadoresActivos.addAll(jugadorDao.listarActivos());
-        ArrayAdapter<Jugador> a=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,jugadoresActivos);
-        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<Jugador> a=new ArrayAdapter<>(this,R.layout.item_spinner_modo,jugadoresActivos);
+        a.setDropDownViewResource(R.layout.item_spinner_jugador_desplegable);
         spnJugadorPredeterminado.setAdapter(a);
         boolean hay=!jugadoresActivos.isEmpty();spnJugadorPredeterminado.setEnabled(hay);
         txtAvisoJugadoresAjustes.setVisibility(hay?View.GONE:View.VISIBLE);

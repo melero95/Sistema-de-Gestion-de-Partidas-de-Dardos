@@ -1,0 +1,1189 @@
+diff --git a/app/src/main/res/layout/activity_acerca_de.xml b/app/src/main/res/layout/activity_acerca_de.xml
+--- a/app/src/main/res/layout/activity_acerca_de.xml
++++ b/app/src/main/res/layout/activity_acerca_de.xml
+@@ -21,1 +21,1 @@
+-        android:text="Acerca de"
++        android:text="@string/comun_acerca_de"
+@@ -54,1 +54,1 @@
+-                android:contentDescription="Logo de la aplicación"
++                android:contentDescription="@string/acerca_de_logo_de_la_aplicacion"
+@@ -64,1 +64,1 @@
+-                android:text="Gestor de Partidas y Estadísticas de Dardos"
++                android:text="@string/acerca_de_gestor_de_partidas_y_estadisticas_de_dardos"
+@@ -75,1 +75,1 @@
+-                android:text="Versión 1.0"
++                android:text="@string/acerca_de_version_1_0"
+@@ -102,1 +102,1 @@
+-                        android:text="Sobre la aplicación"
++                        android:text="@string/acerca_de_sobre_la_aplicacion"
+@@ -113,1 +113,1 @@
+-                        android:text="Aplicación Android diseñada para gestionar partidas de dardos, jugadores, resultados, historial y estadísticas de diferentes modalidades de juego."
++                        android:text="@string/texto_activity_acerca_de_b253242"
+@@ -127,1 +127,1 @@
+-                        android:text="Proyecto"
++                        android:text="@string/acerca_de_proyecto"
+@@ -137,1 +137,1 @@
+-                        android:text="Proyecto desarrollado como aplicación de fin de ciclo del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma."
++                        android:text="@string/texto_activity_acerca_de_f2e0bb6"
+@@ -151,1 +151,1 @@
+-                        android:text="Tecnologías"
++                        android:text="@string/acerca_de_tecnologias"
+@@ -161,1 +161,1 @@
+-                        android:text="• Android Studio&#10;• Java&#10;• XML&#10;• SQLite&#10;• SharedPreferences"
++                        android:text="@string/acerca_de_android_studio_java_xml_sqlite_sharedpreferences"
+@@ -180,1 +180,1 @@
+-        android:text="Volver al menú principal"
++        android:text="@string/comun_volver_al_menu_principal"
+diff --git a/app/src/main/res/layout/activity_ajustes.xml b/app/src/main/res/layout/activity_ajustes.xml
+--- a/app/src/main/res/layout/activity_ajustes.xml
++++ b/app/src/main/res/layout/activity_ajustes.xml
+@@ -10,1 +10,1 @@
+-        android:text="Ajustes" android:textColor="@color/gold" android:textSize="28sp" android:textStyle="bold"
++        android:text="@string/ajustes" android:textColor="@color/gold" android:textSize="28sp" android:textStyle="bold"
+@@ -21,1 +21,1 @@
+-            <TextView style="@style/TituloSeccionAjustes" android:text="PARTIDA PREDETERMINADA" />
++            <TextView style="@style/TituloSeccionAjustes" android:text="@string/ajustes_partida_predeterminada" />
+@@ -22,1 +22,1 @@
+-            <TextView style="@style/EtiquetaAjustes" android:text="Jugador predeterminado" />
++            <TextView style="@style/EtiquetaAjustes" android:text="@string/ajustes_jugador_predeterminado" />
+@@ -26,1 +26,1 @@
+-                android:text="No hay jugadores activos. Puedes registrarlos o activarlos desde Gestionar jugadores."
++                android:text="@string/texto_activity_ajustes_0a5be14"
+@@ -28,1 +28,1 @@
+-            <TextView style="@style/EtiquetaAjustes" android:text="Modo de juego preferido" />
++            <TextView style="@style/EtiquetaAjustes" android:text="@string/ajustes_modo_de_juego_preferido" />
+@@ -30,1 +30,1 @@
+-            <TextView style="@style/EtiquetaAjustes" android:text="Dardos por turno" />
++            <TextView style="@style/EtiquetaAjustes" android:text="@string/comun_dardos_por_turno" />
+@@ -32,1 +32,1 @@
+-            <CheckBox android:id="@+id/chkCierreDoblePredeterminado" style="@style/CheckAjustes" android:text="Cerrar 301/501 con un doble" />
++            <CheckBox android:id="@+id/chkCierreDoblePredeterminado" style="@style/CheckAjustes" android:text="@string/ajustes_cerrar_301_501_con_un_doble" />
+@@ -33,1 +33,1 @@
+-            <CheckBox android:id="@+id/chkOrdenAleatorioPredeterminado" style="@style/CheckAjustes" android:text="Orden de jugadores aleatorio" />
++            <CheckBox android:id="@+id/chkOrdenAleatorioPredeterminado" style="@style/CheckAjustes" android:text="@string/comun_orden_de_jugadores_aleatorio" />
+@@ -34,1 +34,1 @@
+-            <TextView style="@style/TituloSeccionAjustes" android:layout_marginTop="22dp" android:text="COMPORTAMIENTO" />
++            <TextView style="@style/TituloSeccionAjustes" android:layout_marginTop="22dp" android:text="@string/ajustes_comportamiento" />
+@@ -35,1 +35,1 @@
+-            <CheckBox android:id="@+id/chkMantenerMultiplicador" style="@style/CheckAjustes" android:text="Mantener seleccionado el multiplicador" />
++            <CheckBox android:id="@+id/chkMantenerMultiplicador" style="@style/CheckAjustes" android:text="@string/ajustes_mantener_seleccionado_el_multiplicador" />
+@@ -36,1 +36,1 @@
+-            <CheckBox android:id="@+id/chkConfirmarSalida" style="@style/CheckAjustes" android:text="Confirmar antes de abandonar una partida" />
++            <CheckBox android:id="@+id/chkConfirmarSalida" style="@style/CheckAjustes" android:text="@string/ajustes_confirmar_antes_de_abandonar_una_partida" />
+@@ -37,1 +37,1 @@
+-            <CheckBox android:id="@+id/chkVibracion" style="@style/CheckAjustes" android:text="Vibrar al registrar una tirada" />
++            <CheckBox android:id="@+id/chkVibracion" style="@style/CheckAjustes" android:text="@string/ajustes_vibrar_al_registrar_una_tirada" />
+@@ -39,1 +39,1 @@
+-                android:text="El jugador predeterminado se aplicará al configurar nuevas partidas. Las demás preferencias se conservarán para su aplicación progresiva."
++                android:text="@string/texto_activity_ajustes_3bdb9ac"
+@@ -43,1 +43,1 @@
+-                <TextView style="@style/TituloSeccionAjustes" android:text="DATOS DE PRUEBA · DEBUG" />
++                <TextView style="@style/TituloSeccionAjustes" android:text="@string/ajustes_datos_de_prueba_debug" />
+@@ -45,1 +45,1 @@
+-                    android:layout_marginTop="8dp" android:text="Crea 6 jugadores y 70 partidas de ejemplo. Solo se puede ejecutar una vez y sobre una base de datos vacía."
++                    android:layout_marginTop="8dp" android:text="@string/texto_activity_ajustes_eb2802f"
+@@ -49,1 +49,1 @@
+-                    android:text="GENERAR DATOS DE PRUEBA" />
++                    android:text="@string/ajustes_generar_datos_de_prueba" />
+@@ -61,1 +61,1 @@
+-                android:layout_marginEnd="6dp" android:text="Guardar" android:textSize="14sp" />
++                android:layout_marginEnd="6dp" android:text="@string/ajustes_guardar" android:textSize="14sp" />
+@@ -64,1 +64,1 @@
+-                android:layout_marginStart="6dp" android:text="Restablecer" android:textSize="13sp" />
++                android:layout_marginStart="6dp" android:text="@string/ajustes_restablecer" android:textSize="13sp" />
+@@ -68,1 +68,1 @@
+-            android:layout_marginTop="8dp" android:text="Volver" android:textSize="14sp" />
++            android:layout_marginTop="8dp" android:text="@string/ajustes_volver" android:textSize="14sp" />
+diff --git a/app/src/main/res/layout/activity_ayuda.xml b/app/src/main/res/layout/activity_ayuda.xml
+--- a/app/src/main/res/layout/activity_ayuda.xml
++++ b/app/src/main/res/layout/activity_ayuda.xml
+@@ -21,1 +21,1 @@
+-        android:text="Ayuda"
++        android:text="@string/comun_ayuda"
+@@ -36,1 +36,1 @@
+-        android:text="Guía básica para utilizar la aplicación"
++        android:text="@string/ayuda_guia_basica_para_utilizar_la_aplicacion"
+@@ -81,1 +81,1 @@
+-                        android:text="Nueva partida"
++                        android:text="@string/nueva_partida"
+@@ -91,1 +91,1 @@
+-                        android:text="Desde el menú principal puedes crear una nueva partida. Selecciona el modo de juego, los jugadores y las opciones disponibles antes de comenzar."
++                        android:text="@string/texto_activity_ayuda_7c39d79"
+@@ -119,1 +119,1 @@
+-                        android:text="Jugadores"
++                        android:text="@string/comun_jugadores"
+@@ -129,1 +129,1 @@
+-                        android:text="Puedes seleccionar los jugadores que participarán en cada partida, asignarles un color identificativo y modificar el número de participantes según el modo de juego."
++                        android:text="@string/texto_activity_ayuda_e41d1e8"
+@@ -157,1 +157,1 @@
+-                        android:text="Durante la partida"
++                        android:text="@string/ayuda_durante_la_partida"
+@@ -167,1 +167,1 @@
+-                        android:text="Selecciona el multiplicador correspondiente y después pulsa sobre el número alcanzado con el dardo. La aplicación actualizará automáticamente las puntuaciones y el turno."
++                        android:text="@string/texto_activity_ayuda_f07501c"
+@@ -195,1 +195,1 @@
+-                        android:text="Deshacer una tirada"
++                        android:text="@string/ayuda_deshacer_una_tirada"
+@@ -205,1 +205,1 @@
+-                        android:text="Si introduces una tirada incorrectamente puedes utilizar el botón Deshacer tirada para recuperar el estado anterior."
++                        android:text="@string/texto_activity_ayuda_54fc6fd"
+@@ -233,1 +233,1 @@
+-                        android:text="Continuar una partida"
++                        android:text="@string/ayuda_continuar_una_partida"
+@@ -243,1 +243,1 @@
+-                        android:text="Si abandonas una partida antes de finalizarla, podrás recuperarla posteriormente desde la opción Continuar del menú principal."
++                        android:text="@string/texto_activity_ayuda_ae9b5eb"
+@@ -271,1 +271,1 @@
+-                        android:text="Historial y estadísticas"
++                        android:text="@string/ayuda_historial_y_estadisticas"
+@@ -281,1 +281,1 @@
+-                        android:text="Las partidas finalizadas se almacenan para poder consultar posteriormente los resultados, el historial y las estadísticas de los jugadores."
++                        android:text="@string/texto_activity_ayuda_6e6552e"
+@@ -309,1 +309,1 @@
+-                        android:text="Reglas de juego"
++                        android:text="@string/comun_reglas_de_juego"
+@@ -319,1 +319,1 @@
+-                        android:text="Para consultar las reglas específicas de 301, 501, Cricket, Cut Throat Cricket, Double Down, Around the Clock o Shanghai utiliza la opción Reglas de juego del menú lateral."
++                        android:text="@string/texto_activity_ayuda_8d3ed14"
+@@ -338,1 +338,1 @@
+-        android:text="Volver al menú principal"
++        android:text="@string/comun_volver_al_menu_principal"
+diff --git a/app/src/main/res/layout/activity_detalle_partida.xml b/app/src/main/res/layout/activity_detalle_partida.xml
+--- a/app/src/main/res/layout/activity_detalle_partida.xml
++++ b/app/src/main/res/layout/activity_detalle_partida.xml
+@@ -8,1 +8,1 @@
+-        android:text="Detalle de partida" android:textColor="@color/gold"
++        android:text="@string/detalle_partida_detalle_de_partida" android:textColor="@color/gold"
+@@ -39,1 +39,1 @@
+-        android:text="Repetir partida" android:textAllCaps="false" android:backgroundTint="@color/gold"
++        android:text="@string/comun_repetir_partida" android:textAllCaps="false" android:backgroundTint="@color/gold"
+@@ -45,1 +45,1 @@
+-        android:text="Reutilizar configuración"
++        android:text="@string/detalle_partida_reutilizar_configuracion"
+@@ -54,1 +54,1 @@
+-        android:text="Volver al historial" android:textAllCaps="false"
++        android:text="@string/detalle_partida_volver_al_historial" android:textAllCaps="false"
+diff --git a/app/src/main/res/layout/activity_estadisticas.xml b/app/src/main/res/layout/activity_estadisticas.xml
+--- a/app/src/main/res/layout/activity_estadisticas.xml
++++ b/app/src/main/res/layout/activity_estadisticas.xml
+@@ -20,1 +20,1 @@
+-        android:text="ESTADÍSTICAS"
++        android:text="@string/estadisticas_estadisticas"
+@@ -40,1 +40,1 @@
+-            android:text="GENERAL"
++            android:text="@string/estadisticas_general"
+@@ -52,1 +52,1 @@
+-            android:text="JUGADORES"
++            android:text="@string/estadisticas_jugadores"
+@@ -64,1 +64,1 @@
+-            android:text="RÉCORDS"
++            android:text="@string/estadisticas_records"
+@@ -93,1 +93,1 @@
+-        android:text="VOLVER"
++        android:text="@string/estadisticas_volver"
+diff --git a/app/src/main/res/layout/activity_historial_partidas.xml b/app/src/main/res/layout/activity_historial_partidas.xml
+--- a/app/src/main/res/layout/activity_historial_partidas.xml
++++ b/app/src/main/res/layout/activity_historial_partidas.xml
+@@ -18,1 +18,1 @@
+-        android:text="Historial de partidas"
++        android:text="@string/historial_partidas"
+@@ -35,1 +35,1 @@
+-        android:contentDescription="Filtrar por modo de juego"
++        android:contentDescription="@string/historial_partidas_filtrar_por_modo_de_juego"
+@@ -51,1 +51,1 @@
+-        android:contentDescription="Filtrar por jugador"
++        android:contentDescription="@string/historial_partidas_filtrar_por_jugador"
+@@ -66,1 +66,1 @@
+-        android:contentDescription="Ordenar historial"
++        android:contentDescription="@string/historial_partidas_ordenar_historial"
+@@ -104,1 +104,1 @@
+-                android:text="No hay partidas visibles"
++                android:text="@string/historial_partidas_no_hay_partidas_visibles"
+@@ -117,1 +117,1 @@
+-        android:text="Restaurar todas las partidas ocultas"
++        android:text="@string/historial_partidas_restaurar_todas_las_partidas_ocultas"
+@@ -133,1 +133,1 @@
+-        android:text="Volver al menú principal"
++        android:text="@string/comun_volver_al_menu_principal"
+diff --git a/app/src/main/res/layout/activity_jugadores.xml b/app/src/main/res/layout/activity_jugadores.xml
+--- a/app/src/main/res/layout/activity_jugadores.xml
++++ b/app/src/main/res/layout/activity_jugadores.xml
+@@ -18,1 +18,1 @@
+-        android:text="Gestión de jugadores"
++        android:text="@string/jugadores_gestion_de_jugadores"
+@@ -32,1 +32,1 @@
+-        android:text="Añade, edita y activa o desactiva participantes"
++        android:text="@string/jugadores_anade_edita_y_activa_o_desactiva_participantes"
+@@ -45,1 +45,1 @@
+-        android:text="0 activos · 0 inactivos"
++        android:text="@string/jugadores_0_activos_0_inactivos"
+@@ -89,1 +89,1 @@
+-                android:text="No hay jugadores registrados.\nPulsa «Añadir jugador» para empezar."
++                android:text="@string/jugadores_no_hay_jugadores_registrados_npulsa_anadir_jugador_p"
+@@ -102,1 +102,1 @@
+-        android:text="Añadir jugador"
++        android:text="@string/jugadores_anadir_jugador"
+@@ -117,1 +117,1 @@
+-        android:text="Volver al menú principal"
++        android:text="@string/comun_volver_al_menu_principal"
+diff --git a/app/src/main/res/layout/activity_nueva_partida.xml b/app/src/main/res/layout/activity_nueva_partida.xml
+--- a/app/src/main/res/layout/activity_nueva_partida.xml
++++ b/app/src/main/res/layout/activity_nueva_partida.xml
+@@ -19,1 +19,1 @@
+-        android:text="Nueva partida"
++        android:text="@string/nueva_partida"
+@@ -33,1 +33,1 @@
+-        android:text="Elige el modo, los jugadores y las opciones de la partida"
++        android:text="@string/nueva_partida_elige_el_modo_los_jugadores_y_las_opciones_de_la_par"
+@@ -81,1 +81,1 @@
+-                        android:text="Configuración de partida"
++                        android:text="@string/nueva_partida_configuracion_de_partida"
+@@ -89,1 +89,1 @@
+-                        android:text="Modo de juego" />
++                        android:text="@string/nueva_partida_modo_de_juego" />
+@@ -101,1 +101,1 @@
+-                        android:text="Máximo de rondas" />
++                        android:text="@string/nueva_partida_maximo_de_rondas" />
+@@ -119,1 +119,1 @@
+-                            android:text="−"
++                            android:text="@string/simbolo_menos"
+@@ -130,1 +130,1 @@
+-                            android:text="15"
++                            android:text="@string/valor_15"
+@@ -143,1 +143,1 @@
+-                            android:text="+"
++                            android:text="@string/simbolo_mas"
+@@ -173,1 +173,1 @@
+-                        android:text="Jugadores"
++                        android:text="@string/comun_jugadores"
+@@ -182,1 +182,1 @@
+-                        android:text="Pulsa el nombre para elegir un jugador activo."
++                        android:text="@string/nueva_partida_pulsa_el_nombre_para_elegir_un_jugador_activo"
+@@ -191,1 +191,1 @@
+-                        android:text="No hay jugadores activos. Pulsa Gestionar jugadores para registrar o reactivar uno."
++                        android:text="@string/texto_activity_nueva_partida_6f1bb6c"
+@@ -209,1 +209,1 @@
+-                        android:text="+ Añadir participante"
++                        android:text="@string/nueva_partida_anadir_participante"
+@@ -219,1 +219,1 @@
+-                        android:text="Gestionar jugadores"
++                        android:text="@string/nueva_partida_gestionar_jugadores"
+@@ -246,1 +246,1 @@
+-                        android:text="Opciones adicionales"
++                        android:text="@string/nueva_partida_opciones_adicionales"
+@@ -257,1 +257,1 @@
+-                        android:text="Usar última configuración"
++                        android:text="@string/nueva_partida_usar_ultima_configuracion"
+@@ -267,1 +267,1 @@
+-                        android:text="Más ajustes ▼"
++                        android:text="@string/nueva_partida_mas_ajustes"
+@@ -286,1 +286,1 @@
+-                            android:text="Cerrar la partida con un doble"
++                            android:text="@string/nueva_partida_cerrar_la_partida_con_un_doble"
+@@ -295,1 +295,1 @@
+-                            android:text="Mantener multiplicador tras cada dardo"
++                            android:text="@string/nueva_partida_mantener_multiplicador_tras_cada_dardo"
+@@ -302,1 +302,1 @@
+-                            android:text="Dardos por turno" />
++                            android:text="@string/comun_dardos_por_turno" />
+@@ -316,1 +316,1 @@
+-                            android:text="Orden de jugadores aleatorio"
++                            android:text="@string/comun_orden_de_jugadores_aleatorio"
+@@ -331,1 +331,1 @@
+-        android:text="Crear partida"
++        android:text="@string/nueva_partida_crear_partida"
+@@ -346,1 +346,1 @@
+-        android:text="Cancelar"
++        android:text="@string/nueva_partida_cancelar"
+diff --git a/app/src/main/res/layout/activity_partida_criquet.xml b/app/src/main/res/layout/activity_partida_criquet.xml
+--- a/app/src/main/res/layout/activity_partida_criquet.xml
++++ b/app/src/main/res/layout/activity_partida_criquet.xml
+@@ -39,1 +39,1 @@
+-                android:contentDescription="Dardo izquierdo"
++                android:contentDescription="@string/comun_dardo_izquierdo"
+@@ -52,1 +52,1 @@
+-                android:text="CRIQUET"
++                android:text="@string/partida_criquet_criquet"
+@@ -60,1 +60,1 @@
+-                android:contentDescription="Dardo derecho"
++                android:contentDescription="@string/comun_dardo_derecho"
+@@ -95,1 +95,1 @@
+-                android:text="TURNO DE:"
++                android:text="@string/comun_turno_de"
+@@ -107,1 +107,1 @@
+-                android:text="JUGADOR 1"
++                android:text="@string/partida_criquet_jugador_1"
+@@ -146,1 +146,1 @@
+-                android:text="MARCADOR"
++                android:text="@string/partida_criquet_marcador"
+@@ -180,1 +180,1 @@
+-                        android:text="OBJ."
++                        android:text="@string/partida_criquet_obj"
+@@ -192,1 +192,1 @@
+-                        android:text="20"
++                        android:text="@string/valor_20"
+@@ -202,1 +202,1 @@
+-                        android:text="19"
++                        android:text="@string/valor_19"
+@@ -212,1 +212,1 @@
+-                        android:text="18"
++                        android:text="@string/valor_18"
+@@ -222,1 +222,1 @@
+-                        android:text="17"
++                        android:text="@string/valor_17"
+@@ -232,1 +232,1 @@
+-                        android:text="16"
++                        android:text="@string/valor_16"
+@@ -242,1 +242,1 @@
+-                        android:text="15"
++                        android:text="@string/valor_15"
+@@ -252,1 +252,1 @@
+-                        android:text="D"
++                        android:text="@string/partida_criquet_d"
+@@ -264,1 +264,1 @@
+-                        android:text="PTS"
++                        android:text="@string/partida_criquet_pts"
+@@ -326,1 +326,1 @@
+-                        android:text="RONDA"
++                        android:text="@string/comun_ronda"
+@@ -341,1 +341,1 @@
+-                            android:text="1"
++                            android:text="@string/valor_1"
+@@ -351,1 +351,1 @@
+-                            android:text="/15"
++                            android:text="@string/rondas_ejemplo_15"
+@@ -378,1 +378,1 @@
+-                        android:text="DARDOS"
++                        android:text="@string/comun_dardos"
+@@ -394,1 +394,1 @@
+-                            android:contentDescription="Dardo 1"
++                            android:contentDescription="@string/comun_dardo_1"
+@@ -405,1 +405,1 @@
+-                            android:contentDescription="Dardo 2"
++                            android:contentDescription="@string/comun_dardo_2"
+@@ -416,1 +416,1 @@
+-                            android:contentDescription="Dardo 3"
++                            android:contentDescription="@string/comun_dardo_3"
+@@ -427,1 +427,1 @@
+-                            android:contentDescription="Dardo 4"
++                            android:contentDescription="@string/comun_dardo_4"
+@@ -441,1 +441,1 @@
+-                        android:text="1 / 4"
++                        android:text="@string/comun_1_4"
+@@ -466,1 +466,1 @@
+-                        android:text="TIRADA ACTUAL"
++                        android:text="@string/comun_tirada_actual"
+@@ -517,1 +517,1 @@
+-                android:text="DESHACER TIRADA"
++                android:text="@string/comun_deshacer_tirada"
+@@ -579,1 +579,1 @@
+-                    android:text="X1"
++                    android:text="@string/multiplicador_mayus_x1"
+@@ -595,1 +595,1 @@
+-                    android:text="X2"
++                    android:text="@string/multiplicador_mayus_x2"
+@@ -612,1 +612,1 @@
+-                    android:text="X3"
++                    android:text="@string/multiplicador_mayus_x3"
+@@ -637,1 +637,1 @@
+-                    android:text="DIANA"
++                    android:text="@string/comun_diana"
+@@ -659,1 +659,1 @@
+-                    android:text="20"/>
++                    android:text="@string/valor_20"/>
+@@ -670,1 +670,1 @@
+-                    android:text="19"/>
++                    android:text="@string/valor_19"/>
+@@ -681,1 +681,1 @@
+-                    android:text="18"/>
++                    android:text="@string/valor_18"/>
+@@ -702,1 +702,1 @@
+-                    android:text="17"/>
++                    android:text="@string/valor_17"/>
+@@ -713,1 +713,1 @@
+-                    android:text="16"/>
++                    android:text="@string/valor_16"/>
+@@ -724,1 +724,1 @@
+-                    android:text="15"/>
++                    android:text="@string/valor_15"/>
+@@ -744,1 +744,1 @@
+-                    android:text="FUERA"
++                    android:text="@string/partida_criquet_fuera"
+@@ -786,1 +786,1 @@
+-                android:text="VER MARCADOR"
++                android:text="@string/comun_ver_marcador"
+@@ -798,1 +798,1 @@
+-                android:text="SIGUIENTE TURNO"
++                android:text="@string/comun_siguiente_turno"
+@@ -810,1 +810,1 @@
+-                android:text="SALIR PARTIDA"
++                android:text="@string/comun_salir_partida"
+diff --git a/app/src/main/res/layout/activity_partida_puntos.xml b/app/src/main/res/layout/activity_partida_puntos.xml
+--- a/app/src/main/res/layout/activity_partida_puntos.xml
++++ b/app/src/main/res/layout/activity_partida_puntos.xml
+@@ -63,1 +63,1 @@
+-                    android:contentDescription="Dardo izquierdo"
++                    android:contentDescription="@string/comun_dardo_izquierdo"
+@@ -79,1 +79,1 @@
+-                    android:text="DOUBLE DOWN"
++                    android:text="@string/comun_double_down"
+@@ -88,1 +88,1 @@
+-                    android:contentDescription="Dardo derecho"
++                    android:contentDescription="@string/comun_dardo_derecho"
+@@ -126,1 +126,1 @@
+-                    android:text="TURNO DE:"
++                    android:text="@string/comun_turno_de"
+@@ -139,1 +139,1 @@
+-                    android:text="LUIS"
++                    android:text="@string/comun_luis"
+@@ -223,1 +223,1 @@
+-                                android:text="Marcos"
++                                android:text="@string/comun_marcos"
+@@ -232,1 +232,1 @@
+-                                android:text="441"
++                                android:text="@string/valor_441"
+@@ -256,1 +256,1 @@
+-                                android:text="Javier"
++                                android:text="@string/comun_javier"
+@@ -265,1 +265,1 @@
+-                                android:text="501"
++                                android:text="@string/valor_501"
+@@ -290,1 +290,1 @@
+-                                android:text="Jugador 5"
++                                android:text="@string/comun_jugador_5"
+@@ -299,1 +299,1 @@
+-                                android:text="501"
++                                android:text="@string/valor_501"
+@@ -326,1 +326,1 @@
+-                            android:text="Luis"
++                            android:text="@string/partida_puntos_luis"
+@@ -336,1 +336,1 @@
+-                            android:text="501"
++                            android:text="@string/valor_501"
+@@ -369,1 +369,1 @@
+-                                android:text="Ana"
++                                android:text="@string/comun_ana"
+@@ -378,1 +378,1 @@
+-                                android:text="501"
++                                android:text="@string/valor_501"
+@@ -402,1 +402,1 @@
+-                                android:text="Sofía"
++                                android:text="@string/comun_sofia"
+@@ -411,1 +411,1 @@
+-                                android:text="501"
++                                android:text="@string/valor_501"
+@@ -436,1 +436,1 @@
+-                                android:text="Jugador 6"
++                                android:text="@string/comun_jugador_6"
+@@ -445,1 +445,1 @@
+-                                android:text="501"
++                                android:text="@string/valor_501"
+@@ -507,1 +507,1 @@
+-                                android:text="RONDA"
++                                android:text="@string/comun_ronda"
+@@ -523,1 +523,1 @@
+-                                    android:text="1"
++                                    android:text="@string/valor_1"
+@@ -533,1 +533,1 @@
+-                                    android:text="/15"
++                                    android:text="@string/rondas_ejemplo_15"
+@@ -567,1 +567,1 @@
+-                                android:text="DARDOS"
++                                android:text="@string/comun_dardos"
+@@ -584,1 +584,1 @@
+-                                    android:contentDescription="Dardo 1"
++                                    android:contentDescription="@string/comun_dardo_1"
+@@ -596,1 +596,1 @@
+-                                    android:contentDescription="Dardo 2"
++                                    android:contentDescription="@string/comun_dardo_2"
+@@ -608,1 +608,1 @@
+-                                    android:contentDescription="Dardo 3"
++                                    android:contentDescription="@string/comun_dardo_3"
+@@ -620,1 +620,1 @@
+-                                    android:contentDescription="Dardo 4"
++                                    android:contentDescription="@string/comun_dardo_4"
+@@ -634,1 +634,1 @@
+-                                android:text="1 / 3"
++                                android:text="@string/partida_puntos_1_3"
+@@ -666,1 +666,1 @@
+-                                android:text="TIRADA ACTUAL"
++                                android:text="@string/comun_tirada_actual"
+@@ -686,1 +686,1 @@
+-                                    android:text="T20"
++                                    android:text="@string/comun_t20"
+@@ -699,1 +699,1 @@
+-                                    android:text="15"
++                                    android:text="@string/valor_15"
+@@ -733,1 +733,1 @@
+-                        android:text="DESHACER TIRADA"
++                        android:text="@string/comun_deshacer_tirada"
+@@ -811,1 +811,1 @@
+-                        android:text="x1" />
++                        android:text="@string/multiplicador_x1" />
+@@ -824,1 +824,1 @@
+-                        android:text="x2" />
++                        android:text="@string/multiplicador_x2" />
+@@ -837,1 +837,1 @@
+-                        android:text="x3" />
++                        android:text="@string/multiplicador_x3" />
+@@ -858,1 +858,1 @@
+-                    android:text="DIANA" />
++                    android:text="@string/comun_diana" />
+@@ -867,1 +867,1 @@
+-                    android:text="20" />
++                    android:text="@string/valor_20" />
+@@ -876,1 +876,1 @@
+-                    android:text="19" />
++                    android:text="@string/valor_19" />
+@@ -885,1 +885,1 @@
+-                    android:text="18" />
++                    android:text="@string/valor_18" />
+@@ -894,1 +894,1 @@
+-                    android:text="17" />
++                    android:text="@string/valor_17" />
+@@ -903,1 +903,1 @@
+-                    android:text="16" />
++                    android:text="@string/valor_16" />
+@@ -912,1 +912,1 @@
+-                    android:text="15" />
++                    android:text="@string/valor_15" />
+@@ -931,1 +931,1 @@
+-                    android:text="14" />
++                    android:text="@string/valor_14" />
+@@ -940,1 +940,1 @@
+-                    android:text="13" />
++                    android:text="@string/valor_13" />
+@@ -949,1 +949,1 @@
+-                    android:text="12" />
++                    android:text="@string/valor_12" />
+@@ -958,1 +958,1 @@
+-                    android:text="11" />
++                    android:text="@string/valor_11" />
+@@ -967,1 +967,1 @@
+-                    android:text="10" />
++                    android:text="@string/valor_10" />
+@@ -976,1 +976,1 @@
+-                    android:text="9" />
++                    android:text="@string/valor_9" />
+@@ -985,1 +985,1 @@
+-                    android:text="8" />
++                    android:text="@string/valor_8" />
+@@ -1004,1 +1004,1 @@
+-                    android:text="7" />
++                    android:text="@string/valor_7" />
+@@ -1013,1 +1013,1 @@
+-                    android:text="6" />
++                    android:text="@string/valor_6" />
+@@ -1022,1 +1022,1 @@
+-                    android:text="5" />
++                    android:text="@string/valor_5" />
+@@ -1031,1 +1031,1 @@
+-                    android:text="4" />
++                    android:text="@string/valor_4" />
+@@ -1040,1 +1040,1 @@
+-                    android:text="3" />
++                    android:text="@string/valor_3" />
+@@ -1049,1 +1049,1 @@
+-                    android:text="2" />
++                    android:text="@string/valor_2" />
+@@ -1058,1 +1058,1 @@
+-                    android:text="1" />
++                    android:text="@string/valor_1" />
+@@ -1077,1 +1077,1 @@
+-                    android:text="OUT / 0" />
++                    android:text="@string/partida_puntos_out_0" />
+@@ -1124,1 +1124,1 @@
+-                android:text="VER MARCADOR"
++                android:text="@string/comun_ver_marcador"
+@@ -1136,1 +1136,1 @@
+-                android:text="SIGUIENTE TURNO"
++                android:text="@string/comun_siguiente_turno"
+@@ -1148,1 +1148,1 @@
+-                android:text="SALIR PARTIDA"
++                android:text="@string/comun_salir_partida"
+diff --git a/app/src/main/res/layout/activity_partida_rondas.xml b/app/src/main/res/layout/activity_partida_rondas.xml
+--- a/app/src/main/res/layout/activity_partida_rondas.xml
++++ b/app/src/main/res/layout/activity_partida_rondas.xml
+@@ -64,1 +64,1 @@
+-                    android:contentDescription="Dardo izquierdo"
++                    android:contentDescription="@string/comun_dardo_izquierdo"
+@@ -80,1 +80,1 @@
+-                    android:text="DOUBLE DOWN"
++                    android:text="@string/comun_double_down"
+@@ -89,1 +89,1 @@
+-                    android:contentDescription="Dardo derecho"
++                    android:contentDescription="@string/comun_dardo_derecho"
+@@ -127,1 +127,1 @@
+-                    android:text="TURNO DE:"
++                    android:text="@string/comun_turno_de"
+@@ -140,1 +140,1 @@
+-                    android:text="LUIS"
++                    android:text="@string/comun_luis"
+@@ -222,1 +222,1 @@
+-                                android:text="Marcos"
++                                android:text="@string/comun_marcos"
+@@ -231,1 +231,1 @@
+-                                android:text="120"
++                                android:text="@string/valor_120"
+@@ -255,1 +255,1 @@
+-                                android:text="Javier"
++                                android:text="@string/comun_javier"
+@@ -264,1 +264,1 @@
+-                                android:text="95"
++                                android:text="@string/valor_95"
+@@ -291,1 +291,1 @@
+-                                android:text="Jugador 5"
++                                android:text="@string/comun_jugador_5"
+@@ -300,1 +300,1 @@
+-                                android:text="0"
++                                android:text="@string/valor_0"
+@@ -327,1 +327,1 @@
+-                            android:text="Jugador actual"
++                            android:text="@string/partida_rondas_jugador_actual"
+@@ -337,1 +337,1 @@
+-                            android:text="120"
++                            android:text="@string/valor_120"
+@@ -370,1 +370,1 @@
+-                                android:text="Ana"
++                                android:text="@string/comun_ana"
+@@ -379,1 +379,1 @@
+-                                android:text="80"
++                                android:text="@string/valor_80"
+@@ -403,1 +403,1 @@
+-                                android:text="Sofía"
++                                android:text="@string/comun_sofia"
+@@ -412,1 +412,1 @@
+-                                android:text="60"
++                                android:text="@string/valor_60"
+@@ -439,1 +439,1 @@
+-                                android:text="Jugador 6"
++                                android:text="@string/comun_jugador_6"
+@@ -448,1 +448,1 @@
+-                                android:text="0"
++                                android:text="@string/valor_0"
+@@ -510,1 +510,1 @@
+-                                android:text="RONDA"
++                                android:text="@string/comun_ronda"
+@@ -526,1 +526,1 @@
+-                                    android:text="1"
++                                    android:text="@string/valor_1"
+@@ -536,1 +536,1 @@
+-                                    android:text="/15"
++                                    android:text="@string/rondas_ejemplo_15"
+@@ -570,1 +570,1 @@
+-                                android:text="DARDOS"
++                                android:text="@string/comun_dardos"
+@@ -587,1 +587,1 @@
+-                                    android:contentDescription="Dardo 1"
++                                    android:contentDescription="@string/comun_dardo_1"
+@@ -599,1 +599,1 @@
+-                                    android:contentDescription="Dardo 2"
++                                    android:contentDescription="@string/comun_dardo_2"
+@@ -611,1 +611,1 @@
+-                                    android:contentDescription="Dardo 3"
++                                    android:contentDescription="@string/comun_dardo_3"
+@@ -623,1 +623,1 @@
+-                                    android:contentDescription="Dardo 4"
++                                    android:contentDescription="@string/comun_dardo_4"
+@@ -637,1 +637,1 @@
+-                                android:text="1 / 4"
++                                android:text="@string/comun_1_4"
+@@ -669,1 +669,1 @@
+-                                android:text="TIRADA ACTUAL"
++                                android:text="@string/comun_tirada_actual"
+@@ -689,1 +689,1 @@
+-                                    android:text="T20"
++                                    android:text="@string/comun_t20"
+@@ -702,1 +702,1 @@
+-                                    android:text="15"
++                                    android:text="@string/valor_15"
+@@ -750,1 +750,1 @@
+-                        android:text="DESHACER TIRADA"
++                        android:text="@string/comun_deshacer_tirada"
+@@ -805,1 +805,1 @@
+-                        android:text="OBJETIVO DE LA RONDA"
++                        android:text="@string/partida_rondas_objetivo_de_la_ronda"
+@@ -821,1 +821,1 @@
+-                        android:text="15"
++                        android:text="@string/valor_15"
+@@ -896,1 +896,1 @@
+-                        android:text="TRIPLE"
++                        android:text="@string/partida_rondas_triple"
+@@ -910,1 +910,1 @@
+-                        android:text="DOBLE"
++                        android:text="@string/partida_rondas_doble"
+@@ -934,1 +934,1 @@
+-                        android:text="SIMPLE"
++                        android:text="@string/partida_rondas_simple"
+@@ -945,1 +945,1 @@
+-                        android:text="FUERA / 0" />
++                        android:text="@string/comun_fuera_0" />
+@@ -971,1 +971,1 @@
+-                    android:text="FUERA / 0" />
++                    android:text="@string/comun_fuera_0" />
+@@ -988,1 +988,1 @@
+-                        android:text="BULL" />
++                        android:text="@string/partida_rondas_bull" />
+@@ -997,1 +997,1 @@
+-                        android:text="20" />
++                        android:text="@string/valor_20" />
+@@ -1006,1 +1006,1 @@
+-                        android:text="19" />
++                        android:text="@string/valor_19" />
+@@ -1015,1 +1015,1 @@
+-                        android:text="18" />
++                        android:text="@string/valor_18" />
+@@ -1024,1 +1024,1 @@
+-                        android:text="17" />
++                        android:text="@string/valor_17" />
+@@ -1033,1 +1033,1 @@
+-                        android:text="16" />
++                        android:text="@string/valor_16" />
+@@ -1042,1 +1042,1 @@
+-                        android:text="15" />
++                        android:text="@string/valor_15" />
+@@ -1061,1 +1061,1 @@
+-                        android:text="14" />
++                        android:text="@string/valor_14" />
+@@ -1070,1 +1070,1 @@
+-                        android:text="13" />
++                        android:text="@string/valor_13" />
+@@ -1079,1 +1079,1 @@
+-                        android:text="12" />
++                        android:text="@string/valor_12" />
+@@ -1088,1 +1088,1 @@
+-                        android:text="11" />
++                        android:text="@string/valor_11" />
+@@ -1097,1 +1097,1 @@
+-                        android:text="10" />
++                        android:text="@string/valor_10" />
+@@ -1106,1 +1106,1 @@
+-                        android:text="9" />
++                        android:text="@string/valor_9" />
+@@ -1115,1 +1115,1 @@
+-                        android:text="8" />
++                        android:text="@string/valor_8" />
+@@ -1134,1 +1134,1 @@
+-                        android:text="7" />
++                        android:text="@string/valor_7" />
+@@ -1143,1 +1143,1 @@
+-                        android:text="6" />
++                        android:text="@string/valor_6" />
+@@ -1152,1 +1152,1 @@
+-                        android:text="5" />
++                        android:text="@string/valor_5" />
+@@ -1161,1 +1161,1 @@
+-                        android:text="4" />
++                        android:text="@string/valor_4" />
+@@ -1170,1 +1170,1 @@
+-                        android:text="3" />
++                        android:text="@string/valor_3" />
+@@ -1179,1 +1179,1 @@
+-                        android:text="2" />
++                        android:text="@string/valor_2" />
+@@ -1188,1 +1188,1 @@
+-                        android:text="1" />
++                        android:text="@string/valor_1" />
+@@ -1233,1 +1233,1 @@
+-                android:text="VER MARCADOR"
++                android:text="@string/comun_ver_marcador"
+@@ -1245,1 +1245,1 @@
+-                android:text="SIGUIENTE TURNO"
++                android:text="@string/comun_siguiente_turno"
+@@ -1257,1 +1257,1 @@
+-                android:text="SALIR PARTIDA"
++                android:text="@string/comun_salir_partida"
+diff --git a/app/src/main/res/layout/activity_reglas.xml b/app/src/main/res/layout/activity_reglas.xml
+--- a/app/src/main/res/layout/activity_reglas.xml
++++ b/app/src/main/res/layout/activity_reglas.xml
+@@ -25,1 +25,1 @@
+-        android:text="Reglas de juego"
++        android:text="@string/comun_reglas_de_juego"
+@@ -44,1 +44,1 @@
+-        android:text="Selecciona un modo de juego"
++        android:text="@string/reglas_selecciona_un_modo_de_juego"
+@@ -140,1 +140,1 @@
+-        android:text="Volver al menú principal"
++        android:text="@string/comun_volver_al_menu_principal"
+diff --git a/app/src/main/res/layout/activity_resultado.xml b/app/src/main/res/layout/activity_resultado.xml
+--- a/app/src/main/res/layout/activity_resultado.xml
++++ b/app/src/main/res/layout/activity_resultado.xml
+@@ -27,1 +27,1 @@
+-            android:contentDescription="Trofeo del ganador"
++            android:contentDescription="@string/resultado_trofeo_del_ganador"
+@@ -36,1 +36,1 @@
+-            android:text="RESULTADO DE LA PARTIDA"
++            android:text="@string/resultado_resultado_de_la_partida"
+@@ -56,1 +56,1 @@
+-                android:text="GANADOR"
++                android:text="@string/resultado_ganador"
+@@ -75,1 +75,1 @@
+-                    android:text="Nombre del jugador"
++                    android:text="@string/comun_nombre_del_jugador"
+@@ -87,1 +87,1 @@
+-                    android:text="0 puntos"
++                    android:text="@string/comun_0_puntos"
+@@ -113,1 +113,1 @@
+-                android:text="CLASIFICACIÓN"
++                android:text="@string/resultado_clasificacion"
+@@ -148,1 +148,1 @@
+-                android:text="VER ESTADÍSTICAS"
++                android:text="@string/resultado_ver_estadisticas"
+@@ -156,1 +156,1 @@
+-                android:text="REVANCHA"
++                android:text="@string/resultado_revancha"
+@@ -164,1 +164,1 @@
+-                android:text="VOLVER AL MENÚ PRINCIPAL"
++                android:text="@string/resultado_volver_al_menu_principal"
+diff --git a/app/src/main/res/layout/dialogo_jugador.xml b/app/src/main/res/layout/dialogo_jugador.xml
+--- a/app/src/main/res/layout/dialogo_jugador.xml
++++ b/app/src/main/res/layout/dialogo_jugador.xml
+@@ -14,1 +14,1 @@
+-        android:text="Nombre del jugador"
++        android:text="@string/comun_nombre_del_jugador"
+@@ -23,1 +23,1 @@
+-        android:hint="Ej. ANA"
++        android:hint="@string/dialogo_jugador_ej_ana"
+@@ -35,1 +35,1 @@
+-        android:text="Color del jugador"
++        android:text="@string/comun_color_del_jugador"
+diff --git a/app/src/main/res/layout/header_menu_lateral.xml b/app/src/main/res/layout/header_menu_lateral.xml
+--- a/app/src/main/res/layout/header_menu_lateral.xml
++++ b/app/src/main/res/layout/header_menu_lateral.xml
+@@ -33,1 +33,1 @@
+-        android:text="v1.0"
++        android:text="@string/header_lateral_v1_0"
+diff --git a/app/src/main/res/layout/item_clasificacion_resultado.xml b/app/src/main/res/layout/item_clasificacion_resultado.xml
+--- a/app/src/main/res/layout/item_clasificacion_resultado.xml
++++ b/app/src/main/res/layout/item_clasificacion_resultado.xml
+@@ -19,1 +19,1 @@
+-        android:contentDescription="Medalla de clasificación"
++        android:contentDescription="@string/clasificacion_resultado_medalla_de_clasificacion"
+@@ -31,1 +31,1 @@
+-        android:text="2.º"
++        android:text="@string/clasificacion_resultado_2_o"
+@@ -45,1 +45,1 @@
+-        android:text="Nombre del jugador"
++        android:text="@string/comun_nombre_del_jugador"
+@@ -58,1 +58,1 @@
+-        android:text="0 puntos"
++        android:text="@string/comun_0_puntos"
+diff --git a/app/src/main/res/layout/item_jugador_gestion.xml b/app/src/main/res/layout/item_jugador_gestion.xml
+--- a/app/src/main/res/layout/item_jugador_gestion.xml
++++ b/app/src/main/res/layout/item_jugador_gestion.xml
+@@ -32,1 +32,1 @@
+-                android:contentDescription="Color del jugador" />
++                android:contentDescription="@string/comun_color_del_jugador" />
+@@ -69,1 +69,1 @@
+-                android:text="Editar"
++                android:text="@string/jugador_gestion_editar"
+@@ -82,1 +82,1 @@
+-                android:text="Desactivar"
++                android:text="@string/jugador_gestion_desactivar"
+diff --git a/app/src/main/res/layout/item_jugador_partida.xml b/app/src/main/res/layout/item_jugador_partida.xml
+--- a/app/src/main/res/layout/item_jugador_partida.xml
++++ b/app/src/main/res/layout/item_jugador_partida.xml
+@@ -17,1 +17,1 @@
+-        android:contentDescription="Cambiar color del participante"
++        android:contentDescription="@string/jugador_partida_cambiar_color_del_participante"
+@@ -25,1 +25,1 @@
+-        android:text="Jugador 1:"
++        android:text="@string/jugador_partida_jugador_1"
+@@ -38,1 +38,1 @@
+-        android:contentDescription="Seleccionar jugador" />
++        android:contentDescription="@string/jugador_partida_seleccionar_jugador" />
+@@ -45,1 +45,1 @@
+-        android:text="✕"
++        android:text="@string/simbolo_quitar"
+@@ -46,1 +46,1 @@
+-        android:contentDescription="Quitar participante"
++        android:contentDescription="@string/jugador_partida_quitar_participante"
+diff --git a/app/src/main/res/layout/item_partida_historial.xml b/app/src/main/res/layout/item_partida_historial.xml
+--- a/app/src/main/res/layout/item_partida_historial.xml
++++ b/app/src/main/res/layout/item_partida_historial.xml
+@@ -12,1 +12,1 @@
+-            android:layout_height="wrap_content" android:text="501" android:textColor="@color/gold"
++            android:layout_height="wrap_content" android:text="@string/valor_501" android:textColor="@color/gold"
+@@ -16,1 +16,1 @@
+-            android:text="Ganador" android:textColor="@android:color/white" android:textSize="14sp" />
++            android:text="@string/partida_historial_ganador" android:textColor="@android:color/white" android:textSize="14sp" />
+@@ -19,1 +19,1 @@
+-            android:text="2 participantes" android:textColor="@android:color/white" android:textSize="13sp" />
++            android:text="@string/partida_historial_2_participantes" android:textColor="@android:color/white" android:textSize="13sp" />
+diff --git a/app/src/main/res/layout/item_resultado_historico.xml b/app/src/main/res/layout/item_resultado_historico.xml
+--- a/app/src/main/res/layout/item_resultado_historico.xml
++++ b/app/src/main/res/layout/item_resultado_historico.xml
+@@ -7,1 +7,1 @@
+-        android:layout_height="wrap_content" android:text="1º" android:textColor="@color/gold"
++        android:layout_height="wrap_content" android:text="@string/resultado_historico_1o" android:textColor="@color/gold"
+@@ -10,1 +10,1 @@
+-        android:layout_weight="1" android:layout_height="wrap_content" android:text="JUGADOR"
++        android:layout_weight="1" android:layout_height="wrap_content" android:text="@string/resultado_historico_jugador"
+@@ -13,1 +13,1 @@
+-        android:layout_height="wrap_content" android:text="0" android:textColor="@color/gold"
++        android:layout_height="wrap_content" android:text="@string/valor_0" android:textColor="@color/gold"
+diff --git a/app/src/main/res/menu/menu_lateral.xml b/app/src/main/res/menu/menu_lateral.xml
+--- a/app/src/main/res/menu/menu_lateral.xml
++++ b/app/src/main/res/menu/menu_lateral.xml
+@@ -3,1 +3,1 @@
+-    <item android:id="@+id/menuJugadores" android:icon="@drawable/icono_jugadores" android:title="Jugadores" />
++    <item android:id="@+id/menuJugadores" android:icon="@drawable/icono_jugadores" android:title="@string/comun_jugadores" />
+@@ -4,1 +4,1 @@
+-    <item android:id="@+id/menuEstadisticas" android:icon="@drawable/icono_estadisticas" android:title="Estadísticas" />
++    <item android:id="@+id/menuEstadisticas" android:icon="@drawable/icono_estadisticas" android:title="@string/comun_estadisticas" />
+@@ -5,1 +5,1 @@
+-    <item android:id="@+id/menuHistorial" android:icon="@drawable/icono_historial" android:title="Historial" />
++    <item android:id="@+id/menuHistorial" android:icon="@drawable/icono_historial" android:title="@string/lateral_historial" />
+@@ -6,1 +6,1 @@
+-    <item android:id="@+id/menuReglas" android:icon="@drawable/icono_reglas" android:title="Reglas de juego" />
++    <item android:id="@+id/menuReglas" android:icon="@drawable/icono_reglas" android:title="@string/comun_reglas_de_juego" />
+@@ -7,1 +7,1 @@
+-    <item android:id="@+id/menuAyuda" android:icon="@drawable/icono_ayuda" android:title="Ayuda" />
++    <item android:id="@+id/menuAyuda" android:icon="@drawable/icono_ayuda" android:title="@string/comun_ayuda" />
+@@ -8,1 +8,1 @@
+-    <item android:id="@+id/menuAcercaDe" android:icon="@drawable/icono_informacion" android:title="Acerca de" />
++    <item android:id="@+id/menuAcercaDe" android:icon="@drawable/icono_informacion" android:title="@string/comun_acerca_de" />
+diff --git a/app/src/main/res/menu/menu_main.xml b/app/src/main/res/menu/menu_main.xml
+--- a/app/src/main/res/menu/menu_main.xml
++++ b/app/src/main/res/menu/menu_main.xml
+@@ -7,1 +7,1 @@
+-        android:title="Estadísticas"
++        android:title="@string/comun_estadisticas"
+@@ -12,1 +12,1 @@
+-        android:title="Ayuda"
++        android:title="@string/comun_ayuda"
+@@ -17,1 +17,1 @@
+-        android:title="Acerca de"
++        android:title="@string/comun_acerca_de"
+diff --git a/app/src/main/res/menu/menu_partida_historial.xml b/app/src/main/res/menu/menu_partida_historial.xml
+--- a/app/src/main/res/menu/menu_partida_historial.xml
++++ b/app/src/main/res/menu/menu_partida_historial.xml
+@@ -3,1 +3,1 @@
+-    <item android:id="@+id/accionDetalle" android:title="Ver detalle" />
++    <item android:id="@+id/accionDetalle" android:title="@string/partida_historial_ver_detalle" />
+@@ -4,1 +4,1 @@
+-    <item android:id="@+id/accionRepetir" android:title="Repetir partida" />
++    <item android:id="@+id/accionRepetir" android:title="@string/comun_repetir_partida" />
+@@ -5,1 +5,1 @@
+-    <item android:id="@+id/accionEditar" android:title="Recuperar configuración" />
++    <item android:id="@+id/accionEditar" android:title="@string/partida_historial_recuperar_configuracion" />
+@@ -6,1 +6,1 @@
+-    <item android:id="@+id/accionOcultar" android:title="Ocultar partida" />
++    <item android:id="@+id/accionOcultar" android:title="@string/partida_historial_ocultar_partida" />
+@@ -7,1 +7,1 @@
+-    <item android:id="@+id/accionMostrar" android:title="Volver a mostrar" />
++    <item android:id="@+id/accionMostrar" android:title="@string/partida_historial_volver_a_mostrar" />
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml
++++ b/app/src/main/res/values/strings.xml
+@@ -3,8 +3,8 @@
+ 
+     <!--  Layout main -->
+     <string name="continuar_partida">Continuar partida</string>
+-    <string name="nueva_partida">Nueva partida</string>">
+-    <string name="historial_partidas">Historial de partidas</string>">
++    <string name="nueva_partida">Nueva partida</string>
++    <string name="historial_partidas">Historial de partidas</string>
+     <string name="ajustes">Ajustes</string>
+     <string name="titulo_toolbar">Juegos de Dardos</string>
+ 
+@@ -17,7 +17,195 @@
+     <!--  Layout main -->
+     <!--  Layout main -->
+     <!--  Layout main -->
+-    <!--  Layout main -->
+-
+ 
+-</resources>
+\ No newline at end of file
++    <!-- Textos XML extraídos para corregir Android Lint / HardcodedText -->
++    <!-- Se mantienen los textos en español. -->
++    <string name="acerca_de_android_studio_java_xml_sqlite_sharedpreferences">• Android Studio\n• Java\n• XML\n• SQLite\n• SharedPreferences</string>
++    <string name="acerca_de_gestor_de_partidas_y_estadisticas_de_dardos">Gestor de Partidas y Estadísticas de Dardos</string>
++    <string name="acerca_de_logo_de_la_aplicacion">Logo de la aplicación</string>
++    <string name="acerca_de_proyecto">Proyecto</string>
++    <string name="acerca_de_sobre_la_aplicacion">Sobre la aplicación</string>
++    <string name="acerca_de_tecnologias">Tecnologías</string>
++    <string name="acerca_de_version_1_0">Versión 1.0</string>
++    <string name="ajustes_cerrar_301_501_con_un_doble">Cerrar 301/501 con un doble</string>
++    <string name="ajustes_comportamiento">COMPORTAMIENTO</string>
++    <string name="ajustes_confirmar_antes_de_abandonar_una_partida">Confirmar antes de abandonar una partida</string>
++    <string name="ajustes_datos_de_prueba_debug">DATOS DE PRUEBA · DEBUG</string>
++    <string name="ajustes_generar_datos_de_prueba">GENERAR DATOS DE PRUEBA</string>
++    <string name="ajustes_guardar">Guardar</string>
++    <string name="ajustes_jugador_predeterminado">Jugador predeterminado</string>
++    <string name="ajustes_mantener_seleccionado_el_multiplicador">Mantener seleccionado el multiplicador</string>
++    <string name="ajustes_modo_de_juego_preferido">Modo de juego preferido</string>
++    <string name="ajustes_partida_predeterminada">PARTIDA PREDETERMINADA</string>
++    <string name="ajustes_restablecer">Restablecer</string>
++    <string name="ajustes_vibrar_al_registrar_una_tirada">Vibrar al registrar una tirada</string>
++    <string name="ajustes_volver">Volver</string>
++    <string name="ayuda_continuar_una_partida">Continuar una partida</string>
++    <string name="ayuda_deshacer_una_tirada">Deshacer una tirada</string>
++    <string name="ayuda_durante_la_partida">Durante la partida</string>
++    <string name="ayuda_guia_basica_para_utilizar_la_aplicacion">Guía básica para utilizar la aplicación</string>
++    <string name="ayuda_historial_y_estadisticas">Historial y estadísticas</string>
++    <string name="clasificacion_resultado_2_o">2.º</string>
++    <string name="clasificacion_resultado_medalla_de_clasificacion">Medalla de clasificación</string>
++    <string name="comun_0_puntos">0 puntos</string>
++    <string name="comun_1_4" translatable="false">1 / 4</string>
++    <string name="comun_acerca_de">Acerca de</string>
++    <string name="comun_ana">Ana</string>
++    <string name="comun_ayuda">Ayuda</string>
++    <string name="comun_color_del_jugador">Color del jugador</string>
++    <string name="comun_dardo_1">Dardo 1</string>
++    <string name="comun_dardo_2">Dardo 2</string>
++    <string name="comun_dardo_3">Dardo 3</string>
++    <string name="comun_dardo_4">Dardo 4</string>
++    <string name="comun_dardo_derecho">Dardo derecho</string>
++    <string name="comun_dardo_izquierdo">Dardo izquierdo</string>
++    <string name="comun_dardos">DARDOS</string>
++    <string name="comun_dardos_por_turno">Dardos por turno</string>
++    <string name="comun_deshacer_tirada">DESHACER TIRADA</string>
++    <string name="comun_diana">DIANA</string>
++    <string name="comun_double_down">DOUBLE DOWN</string>
++    <string name="comun_estadisticas">Estadísticas</string>
++    <string name="comun_fuera_0">FUERA / 0</string>
++    <string name="comun_javier">Javier</string>
++    <string name="comun_jugador_5">Jugador 5</string>
++    <string name="comun_jugador_6">Jugador 6</string>
++    <string name="comun_jugadores">Jugadores</string>
++    <string name="comun_luis">LUIS</string>
++    <string name="comun_marcos">Marcos</string>
++    <string name="comun_nombre_del_jugador">Nombre del jugador</string>
++    <string name="comun_orden_de_jugadores_aleatorio">Orden de jugadores aleatorio</string>
++    <string name="comun_reglas_de_juego">Reglas de juego</string>
++    <string name="comun_repetir_partida">Repetir partida</string>
++    <string name="comun_ronda">RONDA</string>
++    <string name="comun_salir_partida">SALIR PARTIDA</string>
++    <string name="comun_siguiente_turno">SIGUIENTE TURNO</string>
++    <string name="comun_sofia">Sofía</string>
++    <string name="comun_t20">T20</string>
++    <string name="comun_tirada_actual">TIRADA ACTUAL</string>
++    <string name="comun_turno_de">TURNO DE:</string>
++    <string name="comun_ver_marcador">VER MARCADOR</string>
++    <string name="comun_volver_al_menu_principal">Volver al menú principal</string>
++    <string name="detalle_partida_detalle_de_partida">Detalle de partida</string>
++    <string name="detalle_partida_reutilizar_configuracion">Reutilizar configuración</string>
++    <string name="detalle_partida_volver_al_historial">Volver al historial</string>
++    <string name="dialogo_jugador_ej_ana">Ej. ANA</string>
++    <string name="estadisticas_estadisticas">ESTADÍSTICAS</string>
++    <string name="estadisticas_general">GENERAL</string>
++    <string name="estadisticas_jugadores">JUGADORES</string>
++    <string name="estadisticas_records">RÉCORDS</string>
++    <string name="estadisticas_volver">VOLVER</string>
++    <string name="header_lateral_v1_0">v1.0</string>
++    <string name="historial_partidas_filtrar_por_jugador">Filtrar por jugador</string>
++    <string name="historial_partidas_filtrar_por_modo_de_juego">Filtrar por modo de juego</string>
++    <string name="historial_partidas_no_hay_partidas_visibles">No hay partidas visibles</string>
++    <string name="historial_partidas_ordenar_historial">Ordenar historial</string>
++    <string name="historial_partidas_restaurar_todas_las_partidas_ocultas">Restaurar todas las partidas ocultas</string>
++    <string name="jugador_gestion_desactivar">Desactivar</string>
++    <string name="jugador_gestion_editar">Editar</string>
++    <string name="jugador_partida_cambiar_color_del_participante">Cambiar color del participante</string>
++    <string name="jugador_partida_jugador_1">Jugador 1:</string>
++    <string name="jugador_partida_quitar_participante">Quitar participante</string>
++    <string name="jugador_partida_seleccionar_jugador">Seleccionar jugador</string>
++    <string name="jugadores_0_activos_0_inactivos">0 activos · 0 inactivos</string>
++    <string name="jugadores_anade_edita_y_activa_o_desactiva_participantes">Añade, edita y activa o desactiva participantes</string>
++    <string name="jugadores_anadir_jugador">Añadir jugador</string>
++    <string name="jugadores_gestion_de_jugadores">Gestión de jugadores</string>
++    <string name="jugadores_no_hay_jugadores_registrados_npulsa_anadir_jugador_p">No hay jugadores registrados.\nPulsa «Añadir jugador» para empezar.</string>
++    <string name="lateral_historial">Historial</string>
++    <string name="multiplicador_mayus_x1" translatable="false">X1</string>
++    <string name="multiplicador_mayus_x2" translatable="false">X2</string>
++    <string name="multiplicador_mayus_x3" translatable="false">X3</string>
++    <string name="multiplicador_x1" translatable="false">x1</string>
++    <string name="multiplicador_x2" translatable="false">x2</string>
++    <string name="multiplicador_x3" translatable="false">x3</string>
++    <string name="nueva_partida_anadir_participante">+ Añadir participante</string>
++    <string name="nueva_partida_cancelar">Cancelar</string>
++    <string name="nueva_partida_cerrar_la_partida_con_un_doble">Cerrar la partida con un doble</string>
++    <string name="nueva_partida_configuracion_de_partida">Configuración de partida</string>
++    <string name="nueva_partida_crear_partida">Crear partida</string>
++    <string name="nueva_partida_elige_el_modo_los_jugadores_y_las_opciones_de_la_par">Elige el modo, los jugadores y las opciones de la partida</string>
++    <string name="nueva_partida_gestionar_jugadores">Gestionar jugadores</string>
++    <string name="nueva_partida_mantener_multiplicador_tras_cada_dardo">Mantener multiplicador tras cada dardo</string>
++    <string name="nueva_partida_mas_ajustes">Más ajustes ▼</string>
++    <string name="nueva_partida_maximo_de_rondas">Máximo de rondas</string>
++    <string name="nueva_partida_modo_de_juego">Modo de juego</string>
++    <string name="nueva_partida_opciones_adicionales">Opciones adicionales</string>
++    <string name="nueva_partida_pulsa_el_nombre_para_elegir_un_jugador_activo">Pulsa el nombre para elegir un jugador activo.</string>
++    <string name="nueva_partida_usar_ultima_configuracion">Usar última configuración</string>
++    <string name="partida_criquet_criquet">CRIQUET</string>
++    <string name="partida_criquet_d">D</string>
++    <string name="partida_criquet_fuera">FUERA</string>
++    <string name="partida_criquet_jugador_1">JUGADOR 1</string>
++    <string name="partida_criquet_marcador">MARCADOR</string>
++    <string name="partida_criquet_obj">OBJ.</string>
++    <string name="partida_criquet_pts">PTS</string>
++    <string name="partida_historial_2_participantes">2 participantes</string>
++    <string name="partida_historial_ganador">Ganador</string>
++    <string name="partida_historial_ocultar_partida">Ocultar partida</string>
++    <string name="partida_historial_recuperar_configuracion">Recuperar configuración</string>
++    <string name="partida_historial_ver_detalle">Ver detalle</string>
++    <string name="partida_historial_volver_a_mostrar">Volver a mostrar</string>
++    <string name="partida_puntos_1_3" translatable="false">1 / 3</string>
++    <string name="partida_puntos_luis">Luis</string>
++    <string name="partida_puntos_out_0">OUT / 0</string>
++    <string name="partida_rondas_bull">BULL</string>
++    <string name="partida_rondas_doble">DOBLE</string>
++    <string name="partida_rondas_jugador_actual">Jugador actual</string>
++    <string name="partida_rondas_objetivo_de_la_ronda">OBJETIVO DE LA RONDA</string>
++    <string name="partida_rondas_simple">SIMPLE</string>
++    <string name="partida_rondas_triple">TRIPLE</string>
++    <string name="reglas_selecciona_un_modo_de_juego">Selecciona un modo de juego</string>
++    <string name="resultado_clasificacion">CLASIFICACIÓN</string>
++    <string name="resultado_ganador">GANADOR</string>
++    <string name="resultado_historico_1o">1º</string>
++    <string name="resultado_historico_jugador">JUGADOR</string>
++    <string name="resultado_resultado_de_la_partida">RESULTADO DE LA PARTIDA</string>
++    <string name="resultado_revancha">REVANCHA</string>
++    <string name="resultado_trofeo_del_ganador">Trofeo del ganador</string>
++    <string name="resultado_ver_estadisticas">VER ESTADÍSTICAS</string>
++    <string name="resultado_volver_al_menu_principal">VOLVER AL MENÚ PRINCIPAL</string>
++    <string name="rondas_ejemplo_15" translatable="false">/15</string>
++    <string name="simbolo_mas" translatable="false">+</string>
++    <string name="simbolo_menos" translatable="false">−</string>
++    <string name="simbolo_quitar" translatable="false">✕</string>
++    <string name="texto_activity_acerca_de_b253242">Aplicación Android diseñada para gestionar partidas de dardos, jugadores, resultados, historial y estadísticas de diferentes modalidades de juego.</string>
++    <string name="texto_activity_acerca_de_f2e0bb6">Proyecto desarrollado como aplicación de fin de ciclo del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma.</string>
++    <string name="texto_activity_ajustes_0a5be14">No hay jugadores activos. Puedes registrarlos o activarlos desde Gestionar jugadores.</string>
++    <string name="texto_activity_ajustes_3bdb9ac">El jugador predeterminado se aplicará al configurar nuevas partidas. Las demás preferencias se conservarán para su aplicación progresiva.</string>
++    <string name="texto_activity_ajustes_eb2802f">Crea 6 jugadores y 70 partidas de ejemplo. Solo se puede ejecutar una vez y sobre una base de datos vacía.</string>
++    <string name="texto_activity_ayuda_54fc6fd">Si introduces una tirada incorrectamente puedes utilizar el botón Deshacer tirada para recuperar el estado anterior.</string>
++    <string name="texto_activity_ayuda_6e6552e">Las partidas finalizadas se almacenan para poder consultar posteriormente los resultados, el historial y las estadísticas de los jugadores.</string>
++    <string name="texto_activity_ayuda_7c39d79">Desde el menú principal puedes crear una nueva partida. Selecciona el modo de juego, los jugadores y las opciones disponibles antes de comenzar.</string>
++    <string name="texto_activity_ayuda_8d3ed14">Para consultar las reglas específicas de 301, 501, Cricket, Cut Throat Cricket, Double Down, Around the Clock o Shanghai utiliza la opción Reglas de juego del menú lateral.</string>
++    <string name="texto_activity_ayuda_ae9b5eb">Si abandonas una partida antes de finalizarla, podrás recuperarla posteriormente desde la opción Continuar del menú principal.</string>
++    <string name="texto_activity_ayuda_e41d1e8">Puedes seleccionar los jugadores que participarán en cada partida, asignarles un color identificativo y modificar el número de participantes según el modo de juego.</string>
++    <string name="texto_activity_ayuda_f07501c">Selecciona el multiplicador correspondiente y después pulsa sobre el número alcanzado con el dardo. La aplicación actualizará automáticamente las puntuaciones y el turno.</string>
++    <string name="texto_activity_nueva_partida_6f1bb6c">No hay jugadores activos. Pulsa Gestionar jugadores para registrar o reactivar uno.</string>
++    <string name="valor_0" translatable="false">0</string>
++    <string name="valor_1" translatable="false">1</string>
++    <string name="valor_10" translatable="false">10</string>
++    <string name="valor_11" translatable="false">11</string>
++    <string name="valor_12" translatable="false">12</string>
++    <string name="valor_120" translatable="false">120</string>
++    <string name="valor_13" translatable="false">13</string>
++    <string name="valor_14" translatable="false">14</string>
++    <string name="valor_15" translatable="false">15</string>
++    <string name="valor_16" translatable="false">16</string>
++    <string name="valor_17" translatable="false">17</string>
++    <string name="valor_18" translatable="false">18</string>
++    <string name="valor_19" translatable="false">19</string>
++    <string name="valor_2" translatable="false">2</string>
++    <string name="valor_20" translatable="false">20</string>
++    <string name="valor_3" translatable="false">3</string>
++    <string name="valor_4" translatable="false">4</string>
++    <string name="valor_441" translatable="false">441</string>
++    <string name="valor_5" translatable="false">5</string>
++    <string name="valor_501" translatable="false">501</string>
++    <string name="valor_6" translatable="false">6</string>
++    <string name="valor_60" translatable="false">60</string>
++    <string name="valor_7" translatable="false">7</string>
++    <string name="valor_8" translatable="false">8</string>
++    <string name="valor_80" translatable="false">80</string>
++    <string name="valor_9" translatable="false">9</string>
++    <string name="valor_95" translatable="false">95</string>
++</resources>

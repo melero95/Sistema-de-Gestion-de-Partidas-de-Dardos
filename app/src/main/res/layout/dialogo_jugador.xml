@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre del jugador"
+        android:text="@string/comun_nombre_del_jugador"
         android:textColor="@android:color/white"
         android:textSize="15sp" />
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:hint="Ej. ANA"
+        android:hint="@string/dialogo_jugador_ej_ana"
         android:inputType="textCapWords|textPersonName"
         android:importantForAutofill="no"
         android:singleLine="true"
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Color del jugador"
+        android:text="@string/comun_color_del_jugador"
         android:textColor="@android:color/white"
         android:textSize="15sp" />
 
