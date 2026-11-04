@@ -28,8 +28,10 @@ public class PartidaHistorialAdapter extends RecyclerView.Adapter<PartidaHistori
     @Override public void onBindViewHolder(@NonNull Vista v, int posicion) {
         PartidaResumenDTO item = items.get(posicion);
         v.modo.setText(item.getPartida().getModo());
-        v.ganador.setText("Ganador: " + item.getGanador());
-        v.jugadores.setText(item.getPartida().getNumeroJugadores() + " participante(s)");
+        v.ganador.setText(v.itemView.getContext().getString(R.string.historial_item_ganador, item.getGanador()));
+        int participantes = item.getPartida().getNumeroJugadores();
+        v.jugadores.setText(v.itemView.getResources().getQuantityString(
+                R.plurals.lint06_historial_participantes, participantes, participantes));
         v.itemView.setOnClickListener(view -> eventos.abrir(item));
         v.itemView.setOnLongClickListener(view -> { eventos.menu(view, item); return true; });
     }

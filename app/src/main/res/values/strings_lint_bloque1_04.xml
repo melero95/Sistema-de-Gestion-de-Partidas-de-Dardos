@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bloque 1, paso 04: etiquetas y mensajes dinamicos. -->
+    <string name="configurar_etiqueta_jugador">Jugador %1$d:</string>
+    <string name="historial_sin_partidas_filtros">No hay partidas visibles para los filtros seleccionados</string>
+    <string name="resultado_titulo_simple">RESULTADO</string>
+    <string name="resultado_titulo_modo">RESULTADO - %1$s</string>
+</resources>

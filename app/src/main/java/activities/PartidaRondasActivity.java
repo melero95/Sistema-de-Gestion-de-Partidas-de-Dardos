@@ -2467,7 +2467,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
         } else {
 
             txtMaxRondas.setText(
-                    "/" + maxRondas
+                    getString(R.string.lint_partida_max_rondas, maxRondas)
             );
         }
     }
@@ -2486,9 +2486,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 );
 
         txtNumeroDardos.setText(
-                numeroDardoMostrado
-                        + " / "
-                        + numeroDardosTurno
+                getString(R.string.lint_partida_indicador_dardo,
+                        numeroDardoMostrado, numeroDardosTurno)
         );
 
         actualizarVisibilidadDardos();

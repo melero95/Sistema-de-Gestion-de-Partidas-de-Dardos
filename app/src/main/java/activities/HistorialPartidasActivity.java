@@ -465,7 +465,7 @@ public class HistorialPartidasActivity
         );
 
         txtVacio.setText(
-                "No hay partidas visibles para los filtros seleccionados"
+                R.string.historial_sin_partidas_filtros
         );
 
         btnRestaurar.setVisibility(

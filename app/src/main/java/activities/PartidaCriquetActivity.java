@@ -1397,7 +1397,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 android.graphics.Typeface.BOLD
         );
 
-        txtPuntos.setText("0 PTS");
+        txtPuntos.setText(getString(R.string.lint_partida_puntos_pts, 0));
         txtPuntos.setTextColor(Color.WHITE);
 
         columna.addView(txtPuntos);
@@ -2026,7 +2026,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         if (maxRondas > 0) {
 
             txtMaxRondas.setVisibility(View.VISIBLE);
-            txtMaxRondas.setText("/" + maxRondas);
+            txtMaxRondas.setText(getString(R.string.lint_partida_max_rondas, maxRondas));
 
         } else {
 
@@ -2034,7 +2034,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         }
 
         txtNumeroDardo.setText(
-                numeroDardo + " / " + numeroDardosTurno
+                getString(R.string.lint_partida_indicador_dardo, numeroDardo, numeroDardosTurno)
         );
 
         txtTirada1.setText(tiradasTurno[0]);
@@ -2147,7 +2147,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
             // PUNTUACIÓN
             txtPuntosJugadores[jugador].setText(
-                    puntuacionesJugadores[jugador] + " PTS"
+                    getString(R.string.lint_partida_puntos_pts, puntuacionesJugadores[jugador])
             );
 
             txtPuntosJugadores[jugador].setTextColor(

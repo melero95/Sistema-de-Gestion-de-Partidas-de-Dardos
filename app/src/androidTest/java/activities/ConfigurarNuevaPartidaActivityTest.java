@@ -88,7 +88,7 @@ public class ConfigurarNuevaPartidaActivityTest {
                 assertNotNull(selector.getBackground());
                 TextView vistaSeleccionada = (TextView) selector.getAdapter().getView(
                         0, null, selector);
-                assertEquals(Color.WHITE, vistaSeleccionada.getCurrentTextColor());
+                assertEquals(activity.getColor(R.color.gold), vistaSeleccionada.getCurrentTextColor());
                 assertNotNull(vistaSeleccionada.getCompoundDrawablesRelative()[2]);
 
                 if (selector.getCount() >= 2) {

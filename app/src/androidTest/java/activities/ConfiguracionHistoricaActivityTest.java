@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -70,9 +70,9 @@ public class ConfiguracionHistoricaActivityTest {
                 assertEquals("18", rondas.getText().toString());
                 Spinner dardos = activity.findViewById(R.id.spnNumeroDardos);
                 assertEquals(4, ((Integer) dardos.getSelectedItem()).intValue());
-                assertTrue(((Switch) activity.findViewById(R.id.switchCierreDoble)).isChecked());
-                assertTrue(((Switch) activity.findViewById(R.id.switchMantenerMultiplicador)).isChecked());
-                assertTrue(((Switch) activity.findViewById(R.id.switchOrdenAleatorio)).isChecked());
+                assertTrue(((CompoundButton) activity.findViewById(R.id.switchCierreDoble)).isChecked());
+                assertTrue(((CompoundButton) activity.findViewById(R.id.switchMantenerMultiplicador)).isChecked());
+                assertTrue(((CompoundButton) activity.findViewById(R.id.switchOrdenAleatorio)).isChecked());
                 LinearLayout filas = activity.findViewById(R.id.contenedorJugadores);
                 assertEquals(2, filas.getChildCount());
                 Spinner selector1 = filas.getChildAt(0).findViewById(R.id.spnJugador);

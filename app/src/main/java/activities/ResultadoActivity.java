@@ -535,14 +535,14 @@ public class ResultadoActivity extends AppCompatActivity {
         if (modoJuego.trim().isEmpty()) {
 
             txtTituloResultado.setText(
-                    "RESULTADO"
+                    R.string.resultado_titulo_simple
             );
 
         } else {
 
             txtTituloResultado.setText(
-                    "RESULTADO - "
-                            + modoJuego.toUpperCase(java.util.Locale.ROOT)
+                    getString(R.string.resultado_titulo_modo,
+                            modoJuego.toUpperCase(java.util.Locale.ROOT))
             );
         }
     }
@@ -575,8 +575,10 @@ public class ResultadoActivity extends AppCompatActivity {
             );
 
             txtPuntuacionGanador.setText(
-                    jugadorGanador.getPuntuacion()
-                            + " puntos"
+                    getResources().getQuantityString(
+                            R.plurals.lint06_puntos_ganador,
+                            jugadorGanador.getPuntuacion(),
+                            jugadorGanador.getPuntuacion())
             );
 
         } else {

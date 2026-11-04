@@ -47,7 +47,7 @@ public class ClasificacionResultadoAdapter
 
         int posicionJugador = jugador.getPosicion();
 
-        holder.txtPosicion.setText(posicionJugador + ".º");
+        holder.txtPosicion.setText(holder.itemView.getContext().getString(R.string.lint06_clasificacion_posicion, posicionJugador));
         holder.txtNombre.setText(jugador.getNombre());
 
         configurarMedalla(holder, posicionJugador);
@@ -63,13 +63,13 @@ public class ClasificacionResultadoAdapter
 
             holder.imgMedalla.setVisibility(View.VISIBLE);
             holder.imgMedalla.setImageResource(R.drawable.icono_plata);
-            holder.imgMedalla.setContentDescription("Medalla de plata");
+            holder.imgMedalla.setContentDescription(holder.itemView.getContext().getString(R.string.lint06_medalla_plata));
 
         } else if (posicionJugador == 3) {
 
             holder.imgMedalla.setVisibility(View.VISIBLE);
             holder.imgMedalla.setImageResource(R.drawable.icono_bronce);
-            holder.imgMedalla.setContentDescription("Medalla de bronce");
+            holder.imgMedalla.setContentDescription(holder.itemView.getContext().getString(R.string.lint06_medalla_bronce));
 
         } else {
 
@@ -87,7 +87,13 @@ public class ClasificacionResultadoAdapter
         if (jugador.isMostrarPuntuacion()) {
 
             holder.txtPuntos.setVisibility(View.VISIBLE);
-            holder.txtPuntos.setText(jugador.getPuntuacion() + " puntos");
+            holder.txtPuntos.setText(
+                    holder.itemView.getResources().getQuantityString(
+                            R.plurals.lint06_clasificacion_puntuacion,
+                            jugador.getPuntuacion(),
+                            jugador.getPuntuacion()
+                    )
+            );
 
         } else {
 

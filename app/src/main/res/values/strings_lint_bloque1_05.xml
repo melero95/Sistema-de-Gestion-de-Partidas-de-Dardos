@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Formatos compartidos de las pantallas de juego: 301/501, Cricket y Rondas. -->
+    <string name="lint_partida_max_rondas">/%1$d</string>
+    <string name="lint_partida_indicador_dardo">%1$d / %2$d</string>
+    <string name="lint_partida_puntos_pts">%1$d PTS</string>
+</resources>

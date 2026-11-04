@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Recursos dinamicos extraidos por Lint, lote 02. -->
+    <string name="ajustes_datos_prueba_no_disponibles">Datos de prueba no disponibles</string>
+    <string name="detalle_partida_resumen">%1$s · %2$s</string>
+    <string name="detalle_partida_motivo_finalizacion">Finalización: %1$s</string>
+</resources>

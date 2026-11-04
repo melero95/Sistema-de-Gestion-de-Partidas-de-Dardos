@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Remate del Bloque 1: cadenas y plurales. -->
+    <string name="lint06_clasificacion_posicion">%1$d.º</string>
+    <string name="lint06_medalla_plata">Medalla de plata</string>
+    <string name="lint06_medalla_bronce">Medalla de bronce</string>
+
+    <plurals name="lint06_clasificacion_puntuacion">
+        <item quantity="one">%d punto</item>
+        <item quantity="other">%d puntos</item>
+    </plurals>
+    <plurals name="lint06_detalle_participantes">
+        <item quantity="one">%d participante</item>
+        <item quantity="other">%d participantes</item>
+    </plurals>
+    <plurals name="lint06_detalle_rondas">
+        <item quantity="one">%1$d de %2$d ronda</item>
+        <item quantity="other">%1$d de %2$d rondas</item>
+    </plurals>
+    <plurals name="lint06_activos">
+        <item quantity="one">%d activo</item>
+        <item quantity="other">%d activos</item>
+    </plurals>
+    <plurals name="lint06_inactivos">
+        <item quantity="one">%d inactivo</item>
+        <item quantity="other">%d inactivos</item>
+    </plurals>
+    <plurals name="lint06_historial_participantes">
+        <item quantity="one">%d participante</item>
+        <item quantity="other">%d participantes</item>
+    </plurals>
+    <plurals name="lint06_puntos_ganador">
+        <item quantity="one">%d punto</item>
+        <item quantity="other">%d puntos</item>
+    </plurals>
+</resources>

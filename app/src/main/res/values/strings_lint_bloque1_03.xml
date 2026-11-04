@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bloque 1, paso 03. Cadenas independientes para no sobrescribir strings.xml existente. -->
+    <string name="jugadores_resumen_estado">%1$s · %2$s</string>
+    <string name="historial_item_ganador">Ganador: %1$s</string>
+    <string name="resultado_historico_posicion">%1$dº</string>
+</resources>

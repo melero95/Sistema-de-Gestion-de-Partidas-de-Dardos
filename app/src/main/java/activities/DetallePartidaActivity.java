@@ -35,11 +35,20 @@ public class DetallePartidaActivity extends AppCompatActivity {
         if (partida == null) { Toast.makeText(this, "Partida no encontrada", Toast.LENGTH_SHORT).show(); finish(); return; }
         ((TextView) findViewById(R.id.txtModoDetalle)).setText(partida.getModo());
         ((TextView) findViewById(R.id.txtResumenDetalle)).setText(
-                partida.getNumeroJugadores() + " participantes · " + partida.getRondasJugadas() +
-                " de " + partida.getRondasConfiguradas() + " rondas");
+                getString(R.string.detalle_partida_resumen,
+                        getResources().getQuantityString(
+                                R.plurals.lint06_detalle_participantes,
+                                partida.getNumeroJugadores(),
+                                partida.getNumeroJugadores()),
+                        getResources().getQuantityString(
+                                R.plurals.lint06_detalle_rondas,
+                                partida.getRondasConfiguradas(),
+                                partida.getRondasJugadas(),
+                                partida.getRondasConfiguradas())));
         ((TextView) findViewById(R.id.txtFechaDetalle)).setText(DateFormat.getDateTimeInstance().format(new Date(partida.getFecha())));
         ((TextView) findViewById(R.id.txtMotivoDetalle)).setText(
-                "Finalización: " + partida.getMotivoFinalizacion());
+                getString(R.string.detalle_partida_motivo_finalizacion,
+                        partida.getMotivoFinalizacion()));
         RecyclerView recycler = findViewById(R.id.recyclerResultadosHistoricos);
         recycler.setLayoutManager(new LinearLayoutManager(this));
         ResultadoHistoricoAdapter adapter = new ResultadoHistoricoAdapter();

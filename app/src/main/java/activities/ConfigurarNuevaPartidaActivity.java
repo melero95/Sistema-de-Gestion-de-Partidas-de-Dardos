@@ -689,7 +689,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     private void actualizarTextoJugadores() {
         for (int i = 0; i < filasJugadores.size(); i++) {
             TextView etiqueta = filasJugadores.get(i).findViewById(R.id.txtNombreJugador);
-            etiqueta.setText("Jugador " + (i + 1) + ":");
+            etiqueta.setText(getString(R.string.configurar_etiqueta_jugador, i + 1));
         }
     }
 

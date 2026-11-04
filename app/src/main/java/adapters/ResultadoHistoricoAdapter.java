@@ -29,7 +29,7 @@ public class ResultadoHistoricoAdapter extends RecyclerView.Adapter<ResultadoHis
     }
     @Override public void onBindViewHolder(@NonNull Vista holder, int position) {
         Fila fila = filas.get(position);
-        holder.posicion.setText(fila.resultado.getPosicion() + "º");
+        holder.posicion.setText(holder.itemView.getContext().getString(R.string.resultado_historico_posicion, fila.resultado.getPosicion()));
         holder.nombre.setText(fila.nombre);
         Integer puntos = fila.resultado.getPuntuacionFinal();
         holder.puntuacion.setText(puntos == null ? "—" : String.valueOf(puntos));

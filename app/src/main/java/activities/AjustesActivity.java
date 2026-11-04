@@ -126,7 +126,7 @@ public class AjustesActivity extends AppCompatActivity {
     private void actualizarEstadoPoblador(Button boton){
         boolean permitido=!PobladorDatosPrueba.yaEjecutado(this) && PobladorDatosPrueba.estaVacia(this);
         boton.setEnabled(permitido);
-        if(!permitido)boton.setText("Datos de prueba no disponibles");
+        if(!permitido)boton.setText(R.string.ajustes_datos_prueba_no_disponibles);
     }
     private void confirmarDatosPrueba(){
         new AlertDialog.Builder(this)

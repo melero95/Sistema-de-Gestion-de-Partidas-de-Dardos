@@ -100,9 +100,12 @@ public class JugadoresActivity extends AppCompatActivity {
                     activos++;
                 }
             }
-            txtResumenJugadores.setText(
-                    activos + " activos · " + (jugadores.size() - activos) + " inactivos"
-            );
+            int inactivos = jugadores.size() - activos;
+            txtResumenJugadores.setText(getString(
+                    R.string.jugadores_resumen_estado,
+                    getResources().getQuantityString(R.plurals.lint06_activos, activos, activos),
+                    getResources().getQuantityString(R.plurals.lint06_inactivos, inactivos, inactivos)
+            ));
         } catch (SQLiteException e) {
             mostrarError("No se ha podido cargar la lista de jugadores");
         }
