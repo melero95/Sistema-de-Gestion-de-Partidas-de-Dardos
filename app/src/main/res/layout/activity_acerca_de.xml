@@ -166,6 +166,16 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- ACCESO A LA POLÍTICA DE PRIVACIDAD -->
+            <Button
+                android:id="@+id/btnPoliticaPrivacidad"
+                style="@style/BotonPrincipal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/privacidad_ver_politica"
+                android:textSize="15sp" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
