@@ -1,7 +1,7 @@
 plugins { alias(libs.plugins.android.application) }
 android {
     namespace = "com.productos.juegosdedardos"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         applicationId = "com.productos.juegosdedardos"
         minSdk = 28

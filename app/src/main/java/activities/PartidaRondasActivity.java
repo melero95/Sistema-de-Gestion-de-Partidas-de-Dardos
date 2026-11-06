@@ -2657,7 +2657,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
             );
 
             cambiarAlturaVista(
-                    contenedorMarcadores,
+                    findViewById(R.id.marcoMarcadoresRondas),
                     dpToPx(112)
             );
 
@@ -2667,17 +2667,17 @@ public class PartidaRondasActivity extends AppCompatActivity {
             );
 
             cambiarAlturaVista(
-                    contenedorObjetivoRonda,
+                    findViewById(R.id.marcoObjetivoRonda),
                     dpToPx(86)
             );
 
             cambiarMargenSuperior(
-                    contenedorObjetivoRonda,
+                    findViewById(R.id.marcoObjetivoRonda),
                     dpToPx(5)
             );
 
             cambiarMargenInferior(
-                    contenedorObjetivoRonda,
+                    findViewById(R.id.marcoObjetivoRonda),
                     dpToPx(2)
             );
 
@@ -2704,7 +2704,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
             );
 
             cambiarAlturaVista(
-                    contenedorMarcadores,
+                    findViewById(R.id.marcoMarcadoresRondas),
                     dpToPx(145)
             );
 
@@ -2714,17 +2714,17 @@ public class PartidaRondasActivity extends AppCompatActivity {
             );
 
             cambiarAlturaVista(
-                    contenedorObjetivoRonda,
+                    findViewById(R.id.marcoObjetivoRonda),
                     dpToPx(90)
             );
 
             cambiarMargenSuperior(
-                    contenedorObjetivoRonda,
+                    findViewById(R.id.marcoObjetivoRonda),
                     dpToPx(12)
             );
 
             cambiarMargenInferior(
-                    contenedorObjetivoRonda,
+                    findViewById(R.id.marcoObjetivoRonda),
                     dpToPx(2)
             );
         }
