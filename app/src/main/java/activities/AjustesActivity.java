@@ -10,6 +10,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
 import com.productos.juegosdedardos.R;
@@ -46,10 +49,33 @@ public class AjustesActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.blue));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.blue));
         setContentView(R.layout.activity_ajustes);
+        aplicarInsetsSistema();
         preferencias=getSharedPreferences(SP_AJUSTES,MODE_PRIVATE);
         jugadorDao=new JugadorDao(this);
         inicializarVistas();prepararSpinners();cargarPreferencias();configurarBotones();
     }
+    /** Mantiene los controles fuera de las barras del sistema (Android 15/16). */
+    private void aplicarInsetsSistema() {
+        View raiz = findViewById(R.id.main);
+        final int paddingIzquierda = raiz.getPaddingLeft();
+        final int paddingSuperior = raiz.getPaddingTop();
+        final int paddingDerecha = raiz.getPaddingRight();
+        final int paddingInferior = raiz.getPaddingBottom();
+
+        ViewCompat.setOnApplyWindowInsetsListener(raiz, (vista, windowInsets) -> {
+            Insets barras = windowInsets.getInsets(
+                    WindowInsetsCompat.Type.systemBars()
+                            | WindowInsetsCompat.Type.displayCutout());
+            vista.setPadding(
+                    paddingIzquierda + barras.left,
+                    paddingSuperior + barras.top,
+                    paddingDerecha + barras.right,
+                    paddingInferior + barras.bottom);
+            return windowInsets;
+        });
+        ViewCompat.requestApplyInsets(raiz);
+    }
+
     @Override protected void onResume() {
         super.onResume();
         if (!primerResumeCompletado) {primerResumeCompletado=true;return;}
