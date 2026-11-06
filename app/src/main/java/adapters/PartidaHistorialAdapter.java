@@ -6,9 +6,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.DiffUtil;
 import com.productos.juegosdedardos.R;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import modelos.PartidaResumenDTO;
 
 public class PartidaHistorialAdapter extends RecyclerView.Adapter<PartidaHistorialAdapter.Vista> {
@@ -20,7 +22,38 @@ public class PartidaHistorialAdapter extends RecyclerView.Adapter<PartidaHistori
     private final Eventos eventos;
     public PartidaHistorialAdapter(Eventos eventos) { this.eventos = eventos; }
     public void actualizar(List<PartidaResumenDTO> nuevos) {
-        items.clear(); items.addAll(nuevos); notifyDataSetChanged();
+        List<PartidaResumenDTO> anteriores = new ArrayList<>(items);
+        List<PartidaResumenDTO> siguientes = new ArrayList<>(nuevos);
+
+        DiffUtil.DiffResult cambios = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+            @Override public int getOldListSize() { return anteriores.size(); }
+            @Override public int getNewListSize() { return siguientes.size(); }
+
+            @Override public boolean areItemsTheSame(int anterior, int siguiente) {
+                return anteriores.get(anterior).getId() == siguientes.get(siguiente).getId();
+            }
+
+            @Override public boolean areContentsTheSame(int anterior, int siguiente) {
+                PartidaResumenDTO a = anteriores.get(anterior);
+                PartidaResumenDTO b = siguientes.get(siguiente);
+                modelos.Partida pa = a.getPartida();
+                modelos.Partida pb = b.getPartida();
+                // Incluye los datos empleados al abrir y repetir la partida.
+                return Objects.equals(a.getGanador(), b.getGanador())
+                        && Objects.equals(pa.getModo(), pb.getModo())
+                        && pa.getNumeroJugadores() == pb.getNumeroJugadores()
+                        && pa.getFecha() == pb.getFecha()
+                        && pa.getRondasConfiguradas() == pb.getRondasConfiguradas()
+                        && pa.getRondasJugadas() == pb.getRondasJugadas()
+                        && Objects.equals(pa.getIdGanador(), pb.getIdGanador())
+                        && Objects.equals(pa.getMotivoFinalizacion(), pb.getMotivoFinalizacion())
+                        && Objects.equals(pa.getConfiguracionJson(), pb.getConfiguracionJson());
+            }
+        });
+
+        items.clear();
+        items.addAll(siguientes);
+        cambios.dispatchUpdatesTo(this);
     }
     @NonNull @Override public Vista onCreateViewHolder(@NonNull ViewGroup padre, int tipo) {
         return new Vista(LayoutInflater.from(padre.getContext()).inflate(R.layout.item_partida_historial, padre, false));

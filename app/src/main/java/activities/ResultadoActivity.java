@@ -606,7 +606,7 @@ public class ResultadoActivity extends AppCompatActivity {
                 View.VISIBLE
         );
 
-        clasificacionAdapter.notifyDataSetChanged();
+        clasificacionAdapter.actualizarLista(jugadoresClasificacion);
     }
 
     //Actualizar botones ------------------------------------------------------------

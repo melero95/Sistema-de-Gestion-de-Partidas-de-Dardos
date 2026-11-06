@@ -8,8 +8,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.DiffUtil;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import modelos.ResultadoJugador;
 import com.productos.juegosdedardos.R;
@@ -21,7 +23,7 @@ public class ClasificacionResultadoAdapter
 
     //Constructor --------------------
     public ClasificacionResultadoAdapter(ArrayList<ResultadoJugador> listaJugadores) {
-        this.listaJugadores = listaJugadores;
+        this.listaJugadores = new ArrayList<>(listaJugadores);
     }
 
     //Crear fila --------------------
@@ -112,13 +114,33 @@ public class ClasificacionResultadoAdapter
             ArrayList<ResultadoJugador> nuevaLista
     ) {
 
-        ArrayList<ResultadoJugador> copiaLista =
-                new ArrayList<>(nuevaLista);
+        ArrayList<ResultadoJugador> anteriores = new ArrayList<>(listaJugadores);
+        ArrayList<ResultadoJugador> siguientes = new ArrayList<>(nuevaLista);
+
+        DiffUtil.DiffResult cambios = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+            @Override public int getOldListSize() { return anteriores.size(); }
+            @Override public int getNewListSize() { return siguientes.size(); }
+
+            @Override public boolean areItemsTheSame(int anterior, int siguiente) {
+                // Los nombres de jugador son únicos en la aplicación.
+                return Objects.equals(anteriores.get(anterior).getNombre(),
+                        siguientes.get(siguiente).getNombre());
+            }
+
+            @Override public boolean areContentsTheSame(int anterior, int siguiente) {
+                ResultadoJugador a = anteriores.get(anterior);
+                ResultadoJugador b = siguientes.get(siguiente);
+                return Objects.equals(a.getNombre(), b.getNombre())
+                        && a.getPosicion() == b.getPosicion()
+                        && a.getPuntuacion() == b.getPuntuacion()
+                        && a.isGanador() == b.isGanador()
+                        && a.isMostrarPuntuacion() == b.isMostrarPuntuacion();
+            }
+        });
 
         listaJugadores.clear();
-        listaJugadores.addAll(copiaLista);
-
-        notifyDataSetChanged();
+        listaJugadores.addAll(siguientes);
+        cambios.dispatchUpdatesTo(this);
     }
 
     //ViewHolder --------------------

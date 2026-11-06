@@ -6,9 +6,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.DiffUtil;
 import com.productos.juegosdedardos.R;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 import modelos.ResultadoPartida;
 import modelos.Jugador;
 import sqlite.JugadorDao;
@@ -22,7 +24,34 @@ public class ResultadoHistoricoAdapter extends RecyclerView.Adapter<ResultadoHis
     }
     private final List<Fila> filas = new ArrayList<>();
     public void actualizar(List<Fila> nuevas) {
-        filas.clear(); filas.addAll(nuevas); notifyDataSetChanged();
+        List<Fila> anteriores = new ArrayList<>(filas);
+        List<Fila> siguientes = new ArrayList<>(nuevas);
+
+        DiffUtil.DiffResult cambios = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+            @Override public int getOldListSize() { return anteriores.size(); }
+            @Override public int getNewListSize() { return siguientes.size(); }
+
+            @Override public boolean areItemsTheSame(int anterior, int siguiente) {
+                ResultadoPartida a = anteriores.get(anterior).resultado;
+                ResultadoPartida b = siguientes.get(siguiente).resultado;
+                // Una partida tiene una única fila de resultado por jugador.
+                return a.getIdPartida() == b.getIdPartida()
+                        && a.getIdJugador() == b.getIdJugador();
+            }
+
+            @Override public boolean areContentsTheSame(int anterior, int siguiente) {
+                Fila a = anteriores.get(anterior);
+                Fila b = siguientes.get(siguiente);
+                return Objects.equals(a.nombre, b.nombre)
+                        && a.resultado.getPosicion() == b.resultado.getPosicion()
+                        && Objects.equals(a.resultado.getPuntuacionFinal(),
+                                b.resultado.getPuntuacionFinal());
+            }
+        });
+
+        filas.clear();
+        filas.addAll(siguientes);
+        cambios.dispatchUpdatesTo(this);
     }
     @NonNull @Override public Vista onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new Vista(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_resultado_historico, parent, false));
