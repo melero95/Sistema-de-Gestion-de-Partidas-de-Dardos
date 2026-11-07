@@ -22,6 +22,7 @@ import com.productos.juegosdedardos.R;
 import modelos.EstadoPartidaPuntos;
 import modelos.EstadisticasJugadorEnCurso;
 import utilidades.DatosFinalizacionPartida;
+import utilidades.VibracionHelper;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -107,6 +108,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
     private boolean[] jugadoresFinalizados;
 
     private boolean partidaFinalizada;
+    // Evita que un Bust de última ronda sea interpretado como un 180 válido.
+    private boolean ultimoTurnoFueBust;
     private boolean partidaCargadaCorrectamente;
 
     //Orden de finalización de los jugadores --------------------
@@ -1525,6 +1528,13 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         int puntuacionProvisional =
                 puntuacionAntes - puntosTurnoActual;
 
+        // 180 clásico: tres triples al 20 y puntuación válida (sin Bust).
+        if (esTurno180()
+                && puntuacionProvisional >= 0
+                && (!cierreDoble || puntuacionProvisional > 1)) {
+            VibracionHelper.vibrar180(this);
+        }
+
         if (puntuacionProvisional == 0) {
 
             if (cierreDoble && !esUltimoDardoDoble()) {
@@ -1602,6 +1612,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
             return;
         }
 
+        ultimoTurnoFueBust = false;
         EstadoPartida estadoAnterior =
                 historialEstados.pop();
         estadisticasJugadores = EstadisticasJugadorEnCurso.copiarLista(
@@ -1660,6 +1671,26 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         actualizarInterfazCompleta();
         guardarPartidaEnCurso();
+    }
+
+    /** Un turno fallido solo si se registraron dardos y TODOS fueron Fuera. */
+    private boolean esTurnoCompletamenteFuera() {
+        if (dardoActual <= 0) return false;
+        for (int i = 0; i < dardoActual; i++) {
+            if (!"OUT".equals(textosDardos[i])
+                    && !"0".equals(textosDardos[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /** Reconocimiento de 180 con exactamente tres triples al veinte. */
+    private boolean esTurno180() {
+        return dardoActual == 3
+                && "T20".equals(textosDardos[0])
+                && "T20".equals(textosDardos[1])
+                && "T20".equals(textosDardos[2]);
     }
 
     //Finalización manual del turno ----------------------------------------------
@@ -1738,6 +1769,10 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                 puntuacionDespues;
         registrarEstadisticasTurno(puntosTurnoActual, false, false);
 
+        if (esTurnoCompletamenteFuera()) {
+            VibracionHelper.vibrarError(this);
+        }
+
         guardarTiradaTemporal(
                 puntuacionAntes,
                 puntuacionDespues,
@@ -1752,6 +1787,8 @@ public class PartidaPuntosActivity extends AppCompatActivity {
     private void finalizarTurnoPasado(
             int puntuacionAntes
     ) {
+        ultimoTurnoFueBust = true;
+        VibracionHelper.vibrarError(this);
         registrarEstadisticasTurno(0, true, false);
 
         guardarTiradaTemporal(
@@ -1873,6 +1910,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
     private void prepararNuevoTurno() {
 
+        ultimoTurnoFueBust = false;
         dardoActual = 0;
         puntosTurnoActual = 0;
 
@@ -1910,6 +1948,16 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         }
 
         partidaFinalizada = true;
+
+        // Al acabar inmediatamente después de un aviso, emitir un solo patrón
+        // combinado en lugar de interrumpir el anterior.
+        if (ultimoTurnoFueBust || esTurnoCompletamenteFuera()) {
+            VibracionHelper.vibrarPenalizacionYVictoria(this);
+        } else if (esTurno180()) {
+            VibracionHelper.vibrar180YVictoria(this);
+        } else {
+            VibracionHelper.vibrarVictoria(this);
+        }
 
         bloquearBotonesPartida();
 

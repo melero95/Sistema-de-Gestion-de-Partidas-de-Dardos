@@ -22,6 +22,7 @@ import com.productos.juegosdedardos.R;
 import modelos.EstadoPartidaRondas;
 import modelos.EstadisticasJugadorEnCurso;
 import utilidades.DatosFinalizacionPartida;
+import utilidades.VibracionHelper;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -176,6 +177,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
     private boolean haAcertadoObjetivoTurno;
 
     private boolean partidaFinalizada;
+    // Solo se usa durante el cierre del turno actual de Double Down.
+    private boolean penalizacionEnUltimoTurno;
     private boolean partidaCargadaCorrectamente;
     private boolean animacionCambioTurnoActiva;
 
@@ -1807,6 +1810,23 @@ public class PartidaRondasActivity extends AppCompatActivity {
         }
     }
 
+    /** Un turno sin dardos no se considera fallido: debe haberse marcado Fuera. */
+    private boolean esTurnoCompletamenteFuera() {
+        if (dardoActual <= 0) return false;
+        for (int i = 0; i < dardoActual; i++) {
+            if (!"0".equals(textosDardos[i])) return false;
+        }
+        return true;
+    }
+
+    /** Tres triples al 20, solo cuando la modalidad permite registrar esos hits. */
+    private boolean esTurno180() {
+        return dardoActual == 3
+                && "T20".equals(textosDardos[0])
+                && "T20".equals(textosDardos[1])
+                && "T20".equals(textosDardos[2]);
+    }
+
     // Finalización del turno ---------------------------------------------------
 
     private void finalizarTurnoManual() {
@@ -1847,6 +1867,8 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 .setDuration(230)
                 .withEndAction(() -> {
 
+                    boolean turnoCompletamenteFuera = esTurnoCompletamenteFuera();
+                    boolean turno180 = esTurno180();
                     aplicarResultadoTurno();
 
                     boolean ultimaRondaCompletada =
@@ -1859,8 +1881,15 @@ public class PartidaRondasActivity extends AppCompatActivity {
                         txtNombreJugadorActual.setAlpha(1f);
                         txtPuntuacionJugadorActual.setAlpha(1f);
 
-                        finalizarPartida();
+                        finalizarPartida(turnoCompletamenteFuera, turno180);
                         return;
+                    }
+
+                    // Solo un aviso por turno: penalización/fallo o 180.
+                    if (penalizacionEnUltimoTurno || turnoCompletamenteFuera) {
+                        VibracionHelper.vibrarError(this);
+                    } else if (turno180) {
+                        VibracionHelper.vibrar180(this);
                     }
 
                     prepararNuevoTurno();
@@ -1889,6 +1918,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
     }
 
     private void aplicarResultadoTurno() {
+        penalizacionEnUltimoTurno = false;
         EstadisticasJugadorEnCurso actual = estadisticasJugadores.get(jugadorActual);
         actual.registrarTurno();
         if (modoRondas == ModoRondas.DOUBLE_DOWN) {
@@ -1930,6 +1960,10 @@ public class PartidaRondasActivity extends AppCompatActivity {
              */
             puntuacionesJugadores[jugadorActual] =
                     (puntuacionAnterior + 1) / 2;
+
+            // Vibrar únicamente cuando la penalización reduce realmente puntos.
+            penalizacionEnUltimoTurno =
+                    puntuacionesJugadores[jugadorActual] < puntuacionAnterior;
         }
     }
 
@@ -3055,13 +3089,21 @@ public class PartidaRondasActivity extends AppCompatActivity {
     }
     // Finalización y ResultadoActivity ----------------------------------------
 
-    private void finalizarPartida() {
+    private void finalizarPartida(boolean ultimoTurnoFallido, boolean turno180) {
 
         if (partidaFinalizada) {
             return;
         }
 
         partidaFinalizada = true;
+
+        if (penalizacionEnUltimoTurno || ultimoTurnoFallido) {
+            VibracionHelper.vibrarPenalizacionYVictoria(this);
+        } else if (turno180) {
+            VibracionHelper.vibrar180YVictoria(this);
+        } else {
+            VibracionHelper.vibrarVictoria(this);
+        }
 
         bloquearBotonesPartida();
 

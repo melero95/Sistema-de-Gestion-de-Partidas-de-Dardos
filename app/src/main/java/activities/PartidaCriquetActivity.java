@@ -25,6 +25,7 @@ import com.productos.juegosdedardos.R;
 import modelos.EstadoPartidaCriquet;
 import modelos.EstadisticasJugadorEnCurso;
 import utilidades.DatosFinalizacionPartida;
+import utilidades.VibracionHelper;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
 
@@ -1568,11 +1569,15 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             partidaFinalizada = true;
 
             actualizarInterfazCompleta();
-            abrirResultadoActivity(indiceGanador);
+            abrirResultadoActivity(indiceGanador, false, esTurno180());
 
             return;
         }
 
+        // El tercer triple al 20 anuncia un 180 nominal, incluso en Cricket.
+        if (esTurno180()) {
+            VibracionHelper.vibrar180(this);
+        }
         finalizarRegistroDardo();
     }
 
@@ -1727,6 +1732,25 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         return false;
     }
 
+    /** Detecta un turno con al menos un dardo y todos marcados como Fuera. */
+    private boolean esTurnoCompletamenteFuera() {
+        int lanzados = 0;
+        for (String tirada : tiradasTurno) {
+            if (tirada == null || tirada.isEmpty()) continue;
+            lanzados++;
+            if (!"0".equals(tirada)) return false;
+        }
+        return lanzados > 0;
+    }
+
+    /** En Cricket, un triple al 20 aparece como «X3 20». */
+    private boolean esTurno180() {
+        return numeroDardo == 3
+                && "X3 20".equals(tiradasTurno[0])
+                && "X3 20".equals(tiradasTurno[1])
+                && "X3 20".equals(tiradasTurno[2]);
+    }
+
     // Cambio de turno ----------------------------------------------------------
 
     private void pasarSiguienteTurnoAutomatico() {
@@ -1751,6 +1775,9 @@ public class PartidaCriquetActivity extends AppCompatActivity {
     }
 
     private void pasarAlSiguienteJugador() {
+        // Comprobar antes de limpiar los textos del turno.
+        boolean todosFuera = esTurnoCompletamenteFuera();
+        boolean hubo180 = esTurno180();
         estadisticasJugadores.get(jugadorActual).registrarTurno();
 
         jugadorActual++;
@@ -1773,9 +1800,13 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
             partidaFinalizada = true;
 
-            abrirResultadoActivity(indiceGanador);
+            abrirResultadoActivity(indiceGanador, todosFuera, hubo180);
 
             return;
+        }
+
+        if (todosFuera) {
+            VibracionHelper.vibrarError(this);
         }
 
         actualizarInterfazCompleta();
@@ -2560,7 +2591,17 @@ public class PartidaCriquetActivity extends AppCompatActivity {
     // ResultadoActivity --------------------------------------------------------
 
     private void abrirResultadoActivity(
-            int indiceGanador) {
+            int indiceGanador, boolean ultimoTurnoFallido, boolean hubo180) {
+
+        // Tanto el cierre de objetivos como el límite de rondas llegan aquí.
+        // Se combinan los patrones cuando coinciden eventos del último turno.
+        if (ultimoTurnoFallido) {
+            VibracionHelper.vibrarPenalizacionYVictoria(this);
+        } else if (hubo180) {
+            VibracionHelper.vibrar180YVictoria(this);
+        } else {
+            VibracionHelper.vibrarVictoria(this);
+        }
 
         /*
          * Construimos la clasificación final usando el mismo formato
