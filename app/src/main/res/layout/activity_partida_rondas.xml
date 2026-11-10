@@ -953,7 +953,8 @@
             <!-- BOTONERA COMPLETA -->
             <!-- Rondas de cualquier doble o cualquier triple -->
             <!-- ================================================= -->
-    
+
+
             <LinearLayout
                 android:id="@+id/contenedorBotoneraCompleta"
                 android:layout_width="match_parent"
@@ -961,23 +962,14 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 tools:visibility="gone">
-    
-                <!-- Botón para registrar un fallo -->
-                <Button
-                    android:id="@+id/btnFueraNumerico"
-                    style="@style/BotonFuera"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="@string/comun_fuera_0" />
-    
+
                 <!-- Bull, 20, 19, 18, 17, 16, 15 -->
                 <LinearLayout
                     android:id="@+id/filaPuntuaciones1"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="4dp"
                     android:orientation="horizontal">
-    
+
                     <Button
                         android:id="@+id/btnBull"
                         style="@style/BotonPuntuacionBull"
@@ -986,7 +978,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1.15"
                         android:text="@string/partida_rondas_bull" />
-    
+
                     <Button
                         android:id="@+id/btn20"
                         style="@style/BotonPuntuacion"
@@ -995,7 +987,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_20" />
-    
+
                     <Button
                         android:id="@+id/btn19"
                         style="@style/BotonPuntuacion"
@@ -1004,7 +996,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_19" />
-    
+
                     <Button
                         android:id="@+id/btn18"
                         style="@style/BotonPuntuacion"
@@ -1013,7 +1005,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_18" />
-    
+
                     <Button
                         android:id="@+id/btn17"
                         style="@style/BotonPuntuacion"
@@ -1022,7 +1014,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_17" />
-    
+
                     <Button
                         android:id="@+id/btn16"
                         style="@style/BotonPuntuacion"
@@ -1031,7 +1023,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_16" />
-    
+
                     <Button
                         android:id="@+id/btn15"
                         style="@style/BotonPuntuacion"
@@ -1040,9 +1032,9 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_15" />
-    
+
                 </LinearLayout>
-    
+
                 <!-- 14, 13, 12, 11, 10, 9, 8 -->
                 <LinearLayout
                     android:id="@+id/filaPuntuaciones2"
@@ -1050,7 +1042,7 @@
                     android:layout_height="46dp"
                     android:layout_marginTop="4dp"
                     android:orientation="horizontal">
-    
+
                     <Button
                         android:id="@+id/btn14"
                         style="@style/BotonPuntuacion"
@@ -1059,7 +1051,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_14" />
-    
+
                     <Button
                         android:id="@+id/btn13"
                         style="@style/BotonPuntuacion"
@@ -1068,7 +1060,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_13" />
-    
+
                     <Button
                         android:id="@+id/btn12"
                         style="@style/BotonPuntuacion"
@@ -1077,7 +1069,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_12" />
-    
+
                     <Button
                         android:id="@+id/btn11"
                         style="@style/BotonPuntuacion"
@@ -1086,7 +1078,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_11" />
-    
+
                     <Button
                         android:id="@+id/btn10"
                         style="@style/BotonPuntuacion"
@@ -1095,7 +1087,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_10" />
-    
+
                     <Button
                         android:id="@+id/btn9"
                         style="@style/BotonPuntuacion"
@@ -1104,7 +1096,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_9" />
-    
+
                     <Button
                         android:id="@+id/btn8"
                         style="@style/BotonPuntuacion"
@@ -1113,9 +1105,9 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_8" />
-    
+
                 </LinearLayout>
-    
+
                 <!-- 7, 6, 5, 4, 3, 2, 1 -->
                 <LinearLayout
                     android:id="@+id/filaPuntuaciones3"
@@ -1123,7 +1115,7 @@
                     android:layout_height="46dp"
                     android:layout_marginTop="4dp"
                     android:orientation="horizontal">
-    
+
                     <Button
                         android:id="@+id/btn7"
                         style="@style/BotonPuntuacion"
@@ -1132,7 +1124,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_7" />
-    
+
                     <Button
                         android:id="@+id/btn6"
                         style="@style/BotonPuntuacion"
@@ -1141,7 +1133,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_6" />
-    
+
                     <Button
                         android:id="@+id/btn5"
                         style="@style/BotonPuntuacion"
@@ -1150,7 +1142,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_5" />
-    
+
                     <Button
                         android:id="@+id/btn4"
                         style="@style/BotonPuntuacion"
@@ -1159,7 +1151,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_4" />
-    
+
                     <Button
                         android:id="@+id/btn3"
                         style="@style/BotonPuntuacion"
@@ -1168,7 +1160,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_3" />
-    
+
                     <Button
                         android:id="@+id/btn2"
                         style="@style/BotonPuntuacion"
@@ -1177,7 +1169,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_2" />
-    
+
                     <Button
                         android:id="@+id/btn1"
                         style="@style/BotonPuntuacion"
@@ -1186,11 +1178,21 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_weight="1"
                         android:text="@string/valor_1" />
-    
+
                 </LinearLayout>
-    
+
+                <!-- FUERA / 0: debajo de todas las puntuaciones -->
+                <Button
+                    android:id="@+id/btnFueraNumerico"
+                    style="@style/BotonFuera"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/comun_fuera_0" />
+
             </LinearLayout>
-    
+
+
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
 
