@@ -38,7 +38,7 @@
     <string name="ajustes_modo_de_juego_preferido">Modo de juego preferido</string>
     <string name="ajustes_partida_predeterminada">PARTIDA PREDETERMINADA</string>
     <string name="ajustes_restablecer">Restablecer</string>
-    <string name="ajustes_vibrar_al_registrar_una_tirada">Vibrar al registrar una tirada</string>
+    <string name="ajustes_vibrar_al_registrar_una_tirada">Permitir vivraciones</string>
     <string name="ajustes_volver">Volver</string>
     <string name="ayuda_continuar_una_partida">Continuar una partida</string>
     <string name="ayuda_deshacer_una_tirada">Deshacer una tirada</string>
