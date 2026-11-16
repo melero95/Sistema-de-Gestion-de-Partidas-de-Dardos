@@ -5,7 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contenedorItemClasificacion"
     android:layout_width="match_parent"
-    android:layout_height="46dp"
+    android:layout_height="wrap_content"
+    android:minHeight="52dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingStart="6dp"
@@ -48,18 +51,36 @@
         android:textStyle="bold"
         tools:text="Jugador 2" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:gravity="end"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/txtPuntosJugadorClasificacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="0dp"
         android:gravity="end"
         android:minWidth="78dp"
+        android:maxLines="1"
         android:text="@string/comun_0_puntos"
         android:textColor="#D9E2EC"
         android:textSize="15sp"
         android:visibility="visible"
         tools:text="120 puntos"
         tools:visibility="visible" />
+    <TextView
+        android:id="@+id/txtDetalleJugadorClasificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textColor="#D9E2EC"
+        android:textSize="12sp"
+        android:visibility="gone"
+        tools:text="11 rondas"
+        tools:visibility="visible" />
+    </LinearLayout>
 
 </LinearLayout>

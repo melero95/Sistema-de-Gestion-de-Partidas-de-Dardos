@@ -9,6 +9,9 @@ public class ResultadoJugador implements Serializable {
     private int posicion;
     private boolean ganador;
     private boolean mostrarPuntuacion;
+    // Textos adicionales para la pantalla final; no alteran la puntuación persistida.
+    private String textoResultadoPrincipal;
+    private String textoResultadoSecundario;
 
     //Constructor --------------------
     public ResultadoJugador(String nombre, int puntuacion, int posicion,
@@ -20,6 +23,14 @@ public class ResultadoJugador implements Serializable {
         this.ganador = ganador;
         this.mostrarPuntuacion = mostrarPuntuacion;
     }
+
+    public void setTextosResultado(String principal, String secundario) {
+        this.textoResultadoPrincipal = principal;
+        this.textoResultadoSecundario = secundario;
+    }
+
+    public String getTextoResultadoPrincipal() { return textoResultadoPrincipal; }
+    public String getTextoResultadoSecundario() { return textoResultadoSecundario; }
 
     //Getters --------------------
     public String getNombre() {

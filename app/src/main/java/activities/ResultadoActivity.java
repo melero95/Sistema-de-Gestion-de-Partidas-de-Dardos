@@ -21,6 +21,7 @@ import java.util.Collections;
 
 import adapters.ClasificacionResultadoAdapter;
 import modelos.ResultadoJugador;
+import modelos.EstadisticasJugadorEnCurso;
 import sqlite.ServicioFinalizacionPartida;
 import modelos.ConfiguracionPartida;
 import utilidades.SerializadorConfiguracionPartida;
@@ -123,6 +124,7 @@ public class ResultadoActivity extends AppCompatActivity {
     private TextView txtTituloResultado;
     private TextView txtNombreGanador;
     private TextView txtPuntuacionGanador;
+    private TextView txtDetalleGanador;
     private TextView txtTituloClasificacion;
 
     private LinearLayout contenedorGanador;
@@ -191,6 +193,8 @@ public class ResultadoActivity extends AppCompatActivity {
         txtPuntuacionGanador = findViewById(
                 R.id.txtPuntuacionGanador
         );
+
+        txtDetalleGanador = findViewById(R.id.txtDetalleGanador);
 
         txtTituloClasificacion = findViewById(
                 R.id.txtTituloClasificacion
@@ -502,6 +506,8 @@ public class ResultadoActivity extends AppCompatActivity {
                             true
                     );
 
+            configurarTextosResultado(resultadoJugador, i);
+
             jugadoresResultado.add(
                     resultadoJugador
             );
@@ -537,6 +543,61 @@ public class ResultadoActivity extends AppCompatActivity {
                 );
             }
         }
+    }
+
+    /**
+     * La lista de estadísticas del Intent está en orden ORIGINAL de jugadores.
+     * Las puntuaciones y posiciones ya están en orden de CLASIFICACIÓN.
+     */
+    private void configurarTextosResultado(ResultadoJugador jugador, int indiceClasificado) {
+        String modo = modoJuego.trim().toLowerCase(java.util.Locale.ROOT);
+        int puntos = jugador.getPuntuacion();
+        String principal = getResources().getQuantityString(
+                R.plurals.lint06_puntos_ganador, puntos, puntos);
+        String secundario = null;
+
+        DatosFinalizacionPartida datos = DatosFinalizacionPartida.desdeIntent(getIntent());
+        EstadisticasJugadorEnCurso estadistica = null;
+        int indiceOriginal = obtenerIndiceOriginalSeguro(indiceClasificado);
+        if (datos != null && datos.estadisticas != null
+                && indiceOriginal >= 0 && indiceOriginal < datos.estadisticas.size()) {
+            estadistica = datos.estadisticas.get(indiceOriginal);
+        }
+
+        if (modo.equals("301") || modo.equals("501")) {
+            // Un jugador cerrado en cero deja de participar; sus turnos no aumentan
+            // aunque los demás sigan lanzando.
+            if (estadistica != null) {
+                secundario = textoRondas(estadistica.getTurnosJugados());
+            }
+        } else if (modo.equals("around the clock") || modo.equals("round the clock")) {
+            // 1..21 representa el SIGUIENTE objetivo pendiente; 22 = completado.
+            if (puntos >= 22 || (estadistica != null && estadistica.isPartidaCompletada())) {
+                principal = "Completado";
+            } else if (puntos == 21) {
+                principal = "Pendiente: Diana";
+            } else if (puntos >= 1 && puntos <= 20) {
+                principal = "Pendiente: " + puntos;
+            } else {
+                principal = "Progreso no disponible";
+            }
+            if (estadistica != null) {
+                secundario = textoRondas(estadistica.getTurnosJugados()) + " · "
+                        + textoDardos(estadistica.getDardosLanzados());
+            }
+        } else if (modo.equals("shanghai")) {
+            secundario = textoRondas(rondasJugadas);
+        }
+        // Cricket, Cut Throat y Double Down conservan la puntuación actual.
+        jugador.setTextosResultado(principal, secundario);
+    }
+
+    private String textoRondas(int cantidad) {
+        return cantidad + (cantidad == 1 ? " ronda" : " rondas");
+    }
+
+    private String textoDardos(int cantidad) {
+        return cantidad + (cantidad == 1 ? " dardo" : " dardos");
     }
 
     //Preparar RecyclerView ---------------------------------------------------------
@@ -623,18 +684,19 @@ public class ResultadoActivity extends AppCompatActivity {
                     View.VISIBLE
             );
 
-            txtPuntuacionGanador.setText(
-                    getResources().getQuantityString(
-                            R.plurals.lint06_puntos_ganador,
-                            jugadorGanador.getPuntuacion(),
-                            jugadorGanador.getPuntuacion())
-            );
+            txtPuntuacionGanador.setText(jugadorGanador.getTextoResultadoPrincipal());
 
         } else {
 
-            txtPuntuacionGanador.setVisibility(
-                    View.GONE
-            );
+            txtPuntuacionGanador.setVisibility(View.GONE);
+        }
+
+        String detalle = jugadorGanador.getTextoResultadoSecundario();
+        if (detalle == null || detalle.isEmpty()) {
+            txtDetalleGanador.setVisibility(View.GONE);
+        } else {
+            txtDetalleGanador.setText(detalle);
+            txtDetalleGanador.setVisibility(View.VISIBLE);
         }
     }
 

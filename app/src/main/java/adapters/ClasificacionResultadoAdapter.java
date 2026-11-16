@@ -89,17 +89,25 @@ public class ClasificacionResultadoAdapter
         if (jugador.isMostrarPuntuacion()) {
 
             holder.txtPuntos.setVisibility(View.VISIBLE);
-            holder.txtPuntos.setText(
-                    holder.itemView.getResources().getQuantityString(
-                            R.plurals.lint06_clasificacion_puntuacion,
-                            jugador.getPuntuacion(),
-                            jugador.getPuntuacion()
-                    )
-            );
+            String principal = jugador.getTextoResultadoPrincipal();
+            if (principal == null) {
+                principal = holder.itemView.getResources().getQuantityString(
+                        R.plurals.lint06_clasificacion_puntuacion,
+                        jugador.getPuntuacion(), jugador.getPuntuacion());
+            }
+            holder.txtPuntos.setText(principal);
 
         } else {
 
             holder.txtPuntos.setVisibility(View.GONE);
+        }
+
+        String detalle = jugador.getTextoResultadoSecundario();
+        if (detalle == null || detalle.isEmpty()) {
+            holder.txtDetalle.setVisibility(View.GONE);
+        } else {
+            holder.txtDetalle.setText(detalle);
+            holder.txtDetalle.setVisibility(View.VISIBLE);
         }
     }
 
@@ -134,7 +142,9 @@ public class ClasificacionResultadoAdapter
                         && a.getPosicion() == b.getPosicion()
                         && a.getPuntuacion() == b.getPuntuacion()
                         && a.isGanador() == b.isGanador()
-                        && a.isMostrarPuntuacion() == b.isMostrarPuntuacion();
+                        && a.isMostrarPuntuacion() == b.isMostrarPuntuacion()
+                        && Objects.equals(a.getTextoResultadoPrincipal(), b.getTextoResultadoPrincipal())
+                        && Objects.equals(a.getTextoResultadoSecundario(), b.getTextoResultadoSecundario());
             }
         });
 
@@ -150,6 +160,7 @@ public class ClasificacionResultadoAdapter
         private final TextView txtPosicion;
         private final TextView txtNombre;
         private final TextView txtPuntos;
+        private final TextView txtDetalle;
 
         public ResultadoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -169,6 +180,7 @@ public class ClasificacionResultadoAdapter
             txtPuntos = itemView.findViewById(
                     R.id.txtPuntosJugadorClasificacion
             );
+            txtDetalle = itemView.findViewById(R.id.txtDetalleJugadorClasificacion);
         }
     }
 }

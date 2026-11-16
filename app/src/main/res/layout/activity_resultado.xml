@@ -92,6 +92,17 @@
                     tools:text="45 puntos"
                     tools:visibility="visible" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/txtDetalleGanador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="end"
+                android:textColor="#D9E2EC"
+                android:textSize="14sp"
+                android:visibility="gone"
+                tools:text="8 rondas"
+                tools:visibility="visible" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/contenedorClasificacion"
