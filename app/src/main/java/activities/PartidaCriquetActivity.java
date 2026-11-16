@@ -1563,6 +1563,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         int indiceGanador = buscarGanador();
 
         if (indiceGanador != -1) {
+            // -2 indica empate: todos han cerrado todos los objetivos y tienen los mismos puntos.
             // La partida termina antes del cambio de turno habitual.
             estadisticasJugadores.get(jugadorActual).registrarTurno();
 
@@ -1839,12 +1840,25 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             }
         }
 
+        // Por límite de rondas, dos o más líderes con la misma puntuación empatan.
+        int puntuacionLider = puntuacionesJugadores[indiceGanador];
+        for (int i = 0; i < puntuacionesJugadores.length; i++) {
+            if (i != indiceGanador && puntuacionesJugadores[i] == puntuacionLider) {
+                return -2;
+            }
+        }
         return indiceGanador;
     }
 
     // Condición de victoria ----------------------------------------------------
 
     private int buscarGanador() {
+
+        // El empate solo finaliza anticipadamente si TODOS los participantes
+        // han cerrado todos los objetivos y tienen exactamente los mismos puntos.
+        if (todosHanCerradoYEmpatado()) {
+            return -2;
+        }
 
         for (int jugador = 0;
              jugador < nombresJugadores.length;
@@ -1858,6 +1872,20 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         return -1;
     }
 
+    private boolean todosHanCerradoYEmpatado() {
+        if (puntuacionesJugadores == null || puntuacionesJugadores.length < 2) {
+            return false;
+        }
+        int puntuacionComun = puntuacionesJugadores[0];
+        for (int i = 0; i < puntuacionesJugadores.length; i++) {
+            if (!haCerradoTodosLosObjetivos(i)
+                    || puntuacionesJugadores[i] != puntuacionComun) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private boolean comprobarGanador(int indiceJugador) {
 
         if (!haCerradoTodosLosObjetivos(indiceJugador)) {
@@ -1866,12 +1894,12 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         if (modoCriquet == ModoCriquet.CRIQUET) {
 
-            return tienePuntuacionMayorOIgual(
+            return tienePuntuacionEstrictamenteMayor(
                     indiceJugador
             );
         }
 
-        return tienePuntuacionMenorOIgual(
+        return tienePuntuacionEstrictamenteMenor(
                 indiceJugador
         );
     }
@@ -1890,7 +1918,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean tienePuntuacionMayorOIgual(
+    private boolean tienePuntuacionEstrictamenteMayor(
             int indiceJugador) {
 
         int puntuacion =
@@ -1902,7 +1930,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
             if (i != indiceJugador
                     && puntuacion
-                    < puntuacionesJugadores[i]) {
+                    <= puntuacionesJugadores[i]) {
 
                 return false;
             }
@@ -1911,7 +1939,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean tienePuntuacionMenorOIgual(
+    private boolean tienePuntuacionEstrictamenteMenor(
             int indiceJugador) {
 
         int puntuacion =
@@ -1923,7 +1951,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
             if (i != indiceJugador
                     && puntuacion
-                    > puntuacionesJugadores[i]) {
+                    >= puntuacionesJugadores[i]) {
 
                 return false;
             }
@@ -2607,6 +2635,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
          * Construimos la clasificación final usando el mismo formato
          * que PartidaPuntosActivity y ResultadoActivity.
          */
+        boolean esEmpate = indiceGanador == -2;
         ArrayList<Integer> clasificacion =
                 construirClasificacionFinal(indiceGanador);
 
@@ -2644,19 +2673,22 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                     coloresJugadores[indiceJugador]
             );
 
-            posiciones.add(
-                    posicion + 1
-            );
+            // Empates por puntuación comparten puesto (1, 1, 3...).
+            int posicionReal = posicion + 1;
+            if (esEmpate && posicion > 0
+                    && puntuacionesJugadores[indiceJugador] ==
+                    puntuacionesJugadores[clasificacion.get(posicion - 1)]) {
+                posicionReal = posiciones.get(posicion - 1);
+            }
+            posiciones.add(posicionReal);
 
             indicesOriginales.add(
                     indiceJugador
             );
         }
 
-        String nombreGanador =
-                nombresOrdenados.isEmpty()
-                        ? ""
-                        : nombresOrdenados.get(0);
+        String nombreGanador = esEmpate || nombresOrdenados.isEmpty()
+                ? "" : nombresOrdenados.get(0);
 
         /*
          * Guardamos también la tabla de marcas en el mismo orden
@@ -2667,10 +2699,10 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                         clasificacion
                 );
 
-        String motivoFinalizacion =
-                maxRondas > 0 && rondaActual > maxRondas
-                        ? "LIMITE_RONDAS"
-                        : "VICTORIA";
+        String motivoFinalizacion = esEmpate
+                ? "EMPATE"
+                : (maxRondas > 0 && rondaActual > maxRondas
+                        ? "LIMITE_RONDAS" : "VICTORIA");
 
         Intent intent = new Intent(
                 PartidaCriquetActivity.this,
@@ -2844,14 +2876,11 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             );
         }
 
-        clasificacion.remove(
-                Integer.valueOf(indiceGanador)
-        );
-
-        clasificacion.add(
-                0,
-                indiceGanador
-        );
+        // Un empate no tiene un ganador al que dar prioridad artificialmente.
+        if (indiceGanador >= 0) {
+            clasificacion.remove(Integer.valueOf(indiceGanador));
+            clasificacion.add(0, indiceGanador);
+        }
 
         return clasificacion;
     }

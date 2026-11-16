@@ -14,22 +14,20 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 import com.productos.juegosdedardos.R;
 
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
+import preferencias.GestorResultadoPendiente;
 
 public class MainActivity extends AppCompatActivity {
-
-    //Elementos de la pantalla principal -----------------------------------------
 
     private Button btnContinuar;
     private Button btnNuevaPartida;
     private Button btnHistorialPartidas;
     private Button btnAjustes;
-
-    //Toolbar y menú lateral ------------------------------------------------------
 
     private Toolbar toolbarMain;
     private DrawerLayout drawerMain;
@@ -39,25 +37,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Configuro que la parte superior sea del mismo color
-        getWindow().setStatusBarColor(
-                ContextCompat.getColor(
-                        this,
-                        R.color.blue
-                )
-        );
-
-        getWindow().setNavigationBarColor(
-                ContextCompat.getColor(
-                        this,
-                        R.color.blue
-                )
-        );
-
-        //No uso EdgeToEdge para evitar que el Toolbar se meta en la barra superior
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.blue));
         setContentView(R.layout.activity_main);
-
         iniciarComponentes();
         configurarToolbar();
         configurarMenuLateral();
@@ -69,297 +51,169 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        /*
-         * Se vuelve a comprobar siempre que MainActivity recupera el foco.
-         * Así el botón desaparece si la partida terminó o fue abandonada,
-         * y aparece después de guardar una partida y volver al menú.
-         */
         comprobarPartidaGuardada();
     }
 
-    //Inicialización de componentes ----------------------------------------------
-
     private void iniciarComponentes() {
-
-        toolbarMain =
-                findViewById(R.id.toolbarMain);
-
-        drawerMain =
-                findViewById(R.id.drawerMain);
-
-        navigationMain =
-                findViewById(R.id.navigationMain);
-
-        btnContinuar =
-                findViewById(R.id.btnContinuar);
-
-        btnNuevaPartida =
-                findViewById(R.id.btnNuevaPartida);
-
-        btnHistorialPartidas =
-                findViewById(R.id.btnHistorialPartidas);
-
-        btnAjustes =
-                findViewById(R.id.btnAjustes);
+        toolbarMain = findViewById(R.id.toolbarMain);
+        drawerMain = findViewById(R.id.drawerMain);
+        navigationMain = findViewById(R.id.navigationMain);
+        btnContinuar = findViewById(R.id.btnContinuar);
+        btnNuevaPartida = findViewById(R.id.btnNuevaPartida);
+        btnHistorialPartidas = findViewById(R.id.btnHistorialPartidas);
+        btnAjustes = findViewById(R.id.btnAjustes);
     }
 
-    //Configuración del Toolbar ---------------------------------------------------
-
     private void configurarToolbar() {
-
         setSupportActionBar(toolbarMain);
-
         if (getSupportActionBar() != null) {
-
-            getSupportActionBar()
-                    .setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
     }
 
-    //Configuración del menú lateral ---------------------------------------------
-
     private void configurarMenuLateral() {
-
-        //Mantiene los colores originales de los iconos del menú lateral
         navigationMain.setItemIconTintList(null);
-
-        toggle = new ActionBarDrawerToggle(
-                this,
-                drawerMain,
-                toolbarMain,
-                R.string.abrir_menu,
-                R.string.cerrar_menu
-        );
-
+        toggle = new ActionBarDrawerToggle(this, drawerMain, toolbarMain,
+                R.string.abrir_menu, R.string.cerrar_menu);
         drawerMain.addDrawerListener(toggle);
         toggle.syncState();
-        toggle.getDrawerArrowDrawable().setColor(
-                ContextCompat.getColor(this, R.color.gold)
-        );
+        toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.gold));
 
         navigationMain.setNavigationItemSelectedListener(item -> {
-
             int id = item.getItemId();
-
+            Intent intent = null;
             if (id == R.id.menuJugadores) {
-
-                Intent intent = new Intent(
-                        MainActivity.this,
-                        JugadoresActivity.class
-                );
-                startActivity(intent);
-
+                intent = new Intent(this, JugadoresActivity.class);
             } else if (id == R.id.menuEstadisticas) {
-
-                Intent intent = new Intent(
-                        MainActivity.this,
-                        EstadisticasActivity.class
-                );
-                startActivity(intent);
-
+                intent = new Intent(this, EstadisticasActivity.class);
             } else if (id == R.id.menuHistorial) {
-
-                Intent intent = new Intent(
-                        MainActivity.this,
-                        HistorialPartidasActivity.class
-                );
-                startActivity(intent);
-
+                intent = new Intent(this, HistorialPartidasActivity.class);
             } else if (id == R.id.menuReglas) {
-
-                Intent intent = new Intent(
-                        MainActivity.this,
-                        ReglasActivity.class
-                );
-                startActivity(intent);
-
+                intent = new Intent(this, ReglasActivity.class);
             } else if (id == R.id.menuAyuda) {
-
-                Intent intent = new Intent(
-                        MainActivity.this,
-                        AyudaActivity.class
-                );
-
-                startActivity(intent);
-
+                intent = new Intent(this, AyudaActivity.class);
             } else if (id == R.id.menuAcercaDe) {
-
-                Intent intent = new Intent(
-                        MainActivity.this,
-                        AcercaDeActivity.class
-                );
-                startActivity(intent);
+                intent = new Intent(this, AcercaDeActivity.class);
             }
-
+            if (intent != null) startActivity(intent);
             drawerMain.closeDrawers();
             return true;
         });
     }
 
-    //Configuración de listeners --------------------------------------------------
-
     private void configurarListeners() {
-
-        btnContinuar.setOnClickListener(
-                view -> continuarPartidaGuardada()
-        );
-
-        btnNuevaPartida.setOnClickListener(view -> {
-
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    ConfigurarNuevaPartidaActivity.class
-            );
-
-            startActivity(intent);
-        });
-
-        btnHistorialPartidas.setOnClickListener(view -> {
-
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    HistorialPartidasActivity.class
-            );
-
-            startActivity(intent);
-        });
-
-        btnAjustes.setOnClickListener(view -> {
-
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    AjustesActivity.class
-            );
-
-            startActivity(intent);
-        });
+        btnContinuar.setOnClickListener(view -> continuarPartidaGuardada());
+        btnNuevaPartida.setOnClickListener(view ->
+                startActivity(new Intent(this, ConfigurarNuevaPartidaActivity.class)));
+        btnHistorialPartidas.setOnClickListener(view ->
+                startActivity(new Intent(this, HistorialPartidasActivity.class)));
+        btnAjustes.setOnClickListener(view ->
+                startActivity(new Intent(this, AjustesActivity.class)));
     }
 
-    //Continuar partida guardada --------------------------------------------------
-
+    /** Primero se recupera un resultado FINAL; nunca volver a lanzar sus dardos. */
     private void continuarPartidaGuardada() {
+        if (GestorResultadoPendiente.existe(this)) {
+            Intent resultado = GestorResultadoPendiente.crearIntentRecuperacion(this);
+            if (resultado == null) {
+                mostrarGuardadoIncompatible(true);
+            } else {
+                startActivity(resultado);
+            }
+            return;
+        }
 
-        PartidaEnCurso partida =
-                GestorPartidaEnCurso.cargarPartida(this);
-
+        PartidaEnCurso partida = GestorPartidaEnCurso.cargarPartida(this);
         if (partida == null) {
-
-            Toast.makeText(
-                    this,
-                    "No se ha encontrado una partida válida para continuar",
-                    Toast.LENGTH_SHORT
-            ).show();
-
-            comprobarPartidaGuardada();
+            if (GestorPartidaEnCurso.existePartida(this)) {
+                mostrarGuardadoIncompatible(false);
+            } else {
+                Toast.makeText(this, "No existe ninguna partida para continuar",
+                        Toast.LENGTH_SHORT).show();
+                comprobarPartidaGuardada();
+            }
             return;
         }
 
         Intent intent;
-
         switch (partida.getTipoPartida()) {
-
             case PartidaEnCurso.TIPO_PUNTOS:
-
-                intent = new Intent(
-                        MainActivity.this,
-                        PartidaPuntosActivity.class
-                );
-
-                intent.putExtra(
-                        PartidaPuntosActivity.EXTRA_REANUDAR_PARTIDA,
-                        true
-                );
-
+                intent = new Intent(this, PartidaPuntosActivity.class);
+                intent.putExtra(PartidaPuntosActivity.EXTRA_REANUDAR_PARTIDA, true);
                 break;
-
             case PartidaEnCurso.TIPO_CRIQUET:
-
-                intent = new Intent(
-                        MainActivity.this,
-                        PartidaCriquetActivity.class
-                );
-
-                intent.putExtra(
-                        PartidaCriquetActivity.EXTRA_REANUDAR_PARTIDA,
-                        true
-                );
-
+                intent = new Intent(this, PartidaCriquetActivity.class);
+                intent.putExtra(PartidaCriquetActivity.EXTRA_REANUDAR_PARTIDA, true);
                 break;
-
             case PartidaEnCurso.TIPO_RONDAS:
-
-                intent = new Intent(
-                        MainActivity.this,
-                        PartidaRondasActivity.class
-                );
-
-                intent.putExtra(
-                        PartidaRondasActivity.EXTRA_REANUDAR_PARTIDA,
-                        true
-                );
-
+                intent = new Intent(this, PartidaRondasActivity.class);
+                intent.putExtra(PartidaRondasActivity.EXTRA_REANUDAR_PARTIDA, true);
                 break;
-
             default:
-
-                GestorPartidaEnCurso.eliminarPartida(this);
-
-                Toast.makeText(
-                        this,
-                        "La partida guardada no es compatible",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                comprobarPartidaGuardada();
+                // Nunca eliminar un estado que desconocemos automáticamente.
+                mostrarGuardadoIncompatible(false);
                 return;
         }
-
         startActivity(intent);
     }
 
-    //Comprobación de partida guardada -------------------------------------------
+    private void mostrarGuardadoIncompatible(boolean esResultadoFinal) {
+        String titulo = esResultadoFinal
+                ? "Resultado pendiente incompatible" : "Partida guardada incompatible";
+        String mensaje = "La versión actual no ha podido interpretar "
+                + (esResultadoFinal ? "el resultado final" : "la partida temporal")
+                + ". Puedes reintentar o descartarlo expresamente. "
+                + "El historial y las estadísticas ya guardadas en SQLite NO se borrarán.";
 
-    private void comprobarPartidaGuardada() {
-
-        boolean existePartida =
-                GestorPartidaEnCurso.existePartida(this);
-
-        btnContinuar.setVisibility(
-                existePartida
-                        ? View.VISIBLE
-                        : View.GONE
-        );
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+                .setTitle(titulo)
+                .setMessage(mensaje)
+                .setCancelable(true)
+                .setPositiveButton("Reintentar", (dialog, cual) -> continuarPartidaGuardada())
+                .setNeutralButton("Descartar", (dialog, cual) ->
+                        confirmarDescarte(esResultadoFinal))
+                .setNegativeButton("Cancelar", null)
+                .show();
     }
 
-    //Control del botón Atrás -----------------------------------------------------
+    private void confirmarDescarte(boolean esResultadoFinal) {
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+                .setTitle("¿Descartar datos temporales?")
+                .setMessage("Esta acción eliminará únicamente "
+                        + (esResultadoFinal ? "el resultado pendiente" : "la partida en curso")
+                        + ". No se podrá recuperar su progreso, pero NO se borrarán "
+                        + "los jugadores, el historial ni las estadísticas guardadas.")
+                .setPositiveButton("Descartar definitivamente", (dialog, cual) -> {
+                    boolean eliminado = esResultadoFinal
+                            ? GestorResultadoPendiente.eliminar(this)
+                            : GestorPartidaEnCurso.eliminarPartida(this);
+                    if (!eliminado) {
+                        Toast.makeText(this, "No se pudieron descartar los datos",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    comprobarPartidaGuardada();
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+
+    private void comprobarPartidaGuardada() {
+        boolean existe = GestorPartidaEnCurso.existePartida(this)
+                || GestorResultadoPendiente.existe(this);
+        btnContinuar.setVisibility(existe ? View.VISIBLE : View.GONE);
+    }
 
     private void configurarBotonAtras() {
-
-        getOnBackPressedDispatcher().addCallback(
-                this,
-                new OnBackPressedCallback(true) {
-
-                    @Override
-                    public void handleOnBackPressed() {
-
-                        if (drawerMain.isDrawerOpen(
-                                GravityCompat.START
-                        )) {
-
-                            drawerMain.closeDrawer(
-                                    GravityCompat.START
-                            );
-
-                        } else {
-
-                            setEnabled(false);
-
-                            getOnBackPressedDispatcher()
-                                    .onBackPressed();
-                        }
-                    }
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (drawerMain.isDrawerOpen(GravityCompat.START)) {
+                    drawerMain.closeDrawer(GravityCompat.START);
+                } else {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
                 }
-        );
+            }
+        });
     }
 }

@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">Juegos de dardos</string>
 
@@ -38,7 +39,7 @@
     <string name="ajustes_modo_de_juego_preferido">Modo de juego preferido</string>
     <string name="ajustes_partida_predeterminada">PARTIDA PREDETERMINADA</string>
     <string name="ajustes_restablecer">Restablecer</string>
-    <string name="ajustes_vibrar_al_registrar_una_tirada">Permitir vivraciones</string>
+    <string name="ajustes_vibrar_al_registrar_una_tirada">Permitir vibraciones</string>
     <string name="ajustes_volver">Volver</string>
     <string name="ayuda_continuar_una_partida">Continuar una partida</string>
     <string name="ayuda_deshacer_una_tirada">Deshacer una tirada</string>
@@ -208,4 +209,25 @@
     <string name="valor_80" translatable="false">80</string>
     <string name="valor_9" translatable="false">9</string>
     <string name="valor_95" translatable="false">95</string>
+    <string name="resultado_empate_modo">EMPATE · %1$s</string>
+<string name="puntos_error_recuperar">No se ha podido recuperar la partida guardada.</string>
+    <string name="puntos_bull_sin_triple">La diana no admite el multiplicador x3.</string>
+    <string name="puntos_salir_titulo">Salir de la partida</string>
+    <string name="puntos_salir_mensaje">Puedes conservar la partida para continuarla más adelante o abandonarla definitivamente.</string>
+    <string name="puntos_guardar_y_salir">Guardar y salir</string>
+    <string name="puntos_abandonar_partida">Abandonar partida</string>
+    <string name="puntos_cancelar">Cancelar</string>
+    <string name="puntos_dardos_agotados">Ya se han lanzado los %1$d dardos del turno.</string>
+    <string name="puntos_cierre_doble_obligatorio">Debes cerrar con un doble.</string>
+    <string name="puntos_cierre_doble_uno">No puedes dejar la puntuación en 1 con cierre doble.</string>
+    <string name="puntos_sin_tiradas_deshacer">No hay ninguna tirada para deshacer.</string>
+    <string name="puntos_jugador_se_ha_pasado">%1$s se ha pasado. El turno termina.</string>
+    <string name="puntos_jugador_finalizado">%1$s ha finalizado.</string>
+    <string name="puntos_todos_finalizados">Todos los jugadores han finalizado.</string>
+    <string name="puntos_maximo_rondas">Se ha alcanzado el máximo de rondas.</string>
+    <string name="puntos_marcador_puntos"> puntos</string>
+    <string name="puntos_marcador_finalizado"> - FINALIZADO</string>
+    <string name="puntos_marcador_turno_actual"> - TURNO ACTUAL</string>
+    <string name="puntos_marcador_titulo">Marcador</string>
+    <string name="puntos_cerrar">CERRAR</string>
 </resources>

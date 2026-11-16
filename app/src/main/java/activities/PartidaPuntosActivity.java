@@ -236,7 +236,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
                 Toast.makeText(
                         this,
-                        "No se ha podido recuperar la partida guardada",
+                        getString(R.string.puntos_error_recuperar),
                         Toast.LENGTH_LONG
                 ).show();
 
@@ -1320,7 +1320,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
                 Toast.makeText(
                         this,
-                        "La diana no admite multiplicador x3",
+                        getString(R.string.puntos_bull_sin_triple),
                         Toast.LENGTH_SHORT
                 ).show();
             }
@@ -1351,13 +1351,12 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                 this,
                 R.style.TemaDialogoDardos
         )
-                .setTitle("Salir de la partida")
+                .setTitle(R.string.puntos_salir_titulo)
                 .setMessage(
-                        "Puedes conservar la partida para continuarla "
-                                + "más adelante o abandonarla definitivamente."
+                        getString(R.string.puntos_salir_mensaje)
                 )
                 .setPositiveButton(
-                        "Guardar y salir",
+                        R.string.puntos_guardar_y_salir,
                         (dialog, which) -> {
 
                             guardarPartidaEnCurso();
@@ -1365,7 +1364,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                         }
                 )
                 .setNeutralButton(
-                        "Abandonar partida",
+                        R.string.puntos_abandonar_partida,
                         (dialog, which) -> {
 
                             partidaFinalizada = true;
@@ -1378,7 +1377,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                         }
                 )
                 .setNegativeButton(
-                        "Cancelar",
+                        R.string.puntos_cancelar,
                         null
                 )
                 .show();
@@ -1487,7 +1486,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
             Toast.makeText(
                     this,
-                    "Ya se han lanzado los tres dardos",
+                    getString(R.string.puntos_dardos_agotados, numeroDardosTurno),
                     Toast.LENGTH_SHORT
             ).show();
 
@@ -1538,7 +1537,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         if (puntuacionProvisional == 0) {
 
             if (cierreDoble && !esUltimoDardoDoble()) {
-                Toast.makeText(this, "Debes cerrar con un doble", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.puntos_cierre_doble_obligatorio), Toast.LENGTH_SHORT).show();
                 finalizarTurnoPasado(puntuacionAntes);
                 return;
             }
@@ -1551,7 +1550,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         }
 
         if (cierreDoble && puntuacionProvisional == 1) {
-            Toast.makeText(this, "No puedes dejar la puntuación en 1 con cierre doble", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.puntos_cierre_doble_uno), Toast.LENGTH_SHORT).show();
             finalizarTurnoPasado(puntuacionAntes);
             return;
         }
@@ -1605,7 +1604,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
             Toast.makeText(
                     this,
-                    "No hay ninguna tirada para deshacer",
+                    getString(R.string.puntos_sin_tiradas_deshacer),
                     Toast.LENGTH_SHORT
             ).show();
 
@@ -1747,7 +1746,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         if (puntuacionDespues == 0) {
 
             if (cierreDoble && !esUltimoDardoDoble()) {
-                Toast.makeText(this, "Debes cerrar con un doble", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.puntos_cierre_doble_obligatorio), Toast.LENGTH_SHORT).show();
                 finalizarTurnoPasado(puntuacionAntes);
                 return;
             }
@@ -1760,7 +1759,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
         }
 
         if (cierreDoble && puntuacionDespues == 1) {
-            Toast.makeText(this, "No puedes dejar la puntuación en 1 con cierre doble", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.puntos_cierre_doble_uno), Toast.LENGTH_SHORT).show();
             finalizarTurnoPasado(puntuacionAntes);
             return;
         }
@@ -1799,8 +1798,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         Toast.makeText(
                 this,
-                nombresJugadores.get(jugadorActual)
-                        + " se ha pasado. El turno termina",
+                getString(R.string.puntos_jugador_se_ha_pasado, nombresJugadores.get(jugadorActual)),
                 Toast.LENGTH_SHORT
         ).show();
 
@@ -1836,7 +1834,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         Toast.makeText(
                 this,
-                nombreJugador + " ha finalizado",
+                getString(R.string.puntos_jugador_finalizado, nombreJugador),
                 Toast.LENGTH_SHORT
         ).show();
 
@@ -1844,7 +1842,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
             Toast.makeText(
                     this,
-                    "Todos los jugadores han finalizado",
+                    getString(R.string.puntos_todos_finalizados),
                     Toast.LENGTH_LONG
             ).show();
 
@@ -1928,7 +1926,7 @@ public class PartidaPuntosActivity extends AppCompatActivity {
 
         Toast.makeText(
                 this,
-                "Se ha alcanzado el mÃ¡ximo de rondas",
+                getString(R.string.puntos_maximo_rondas),
                 Toast.LENGTH_LONG
         ).show();
 
@@ -2547,18 +2545,18 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                     .append(nombresJugadores.get(i))
                     .append(": ")
                     .append(puntuacionMostrada)
-                    .append(" puntos");
+                    .append(getString(R.string.puntos_marcador_puntos));
 
             if (jugadoresFinalizados[i]) {
 
-                mensaje.append(" - FINALIZADO");
+                mensaje.append(getString(R.string.puntos_marcador_finalizado));
             }
 
             if (i == jugadorActual
                     && !partidaFinalizada
                     && !jugadoresFinalizados[i]) {
 
-                mensaje.append(" - TURNO ACTUAL");
+                mensaje.append(getString(R.string.puntos_marcador_turno_actual));
             }
 
             if (i < numeroJugadores - 1) {
@@ -2571,9 +2569,9 @@ public class PartidaPuntosActivity extends AppCompatActivity {
                 this,
                 R.style.TemaDialogoDardos
         )
-                .setTitle("Marcador")
+                .setTitle(R.string.puntos_marcador_titulo)
                 .setMessage(mensaje.toString())
-                .setPositiveButton("CERRAR", null)
+                .setPositiveButton(R.string.puntos_cerrar, null)
                 .show();
     }
 

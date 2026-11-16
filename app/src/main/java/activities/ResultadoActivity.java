@@ -25,7 +25,8 @@ import sqlite.ServicioFinalizacionPartida;
 import modelos.ConfiguracionPartida;
 import utilidades.SerializadorConfiguracionPartida;
 import utilidades.DatosFinalizacionPartida;
-import androidx.appcompat.app.AlertDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import preferencias.GestorResultadoPendiente;
 
 import androidx.activity.OnBackPressedCallback;
 
@@ -91,6 +92,7 @@ public class ResultadoActivity extends AppCompatActivity {
     private String modoJuego;
     private String motivoFinalizacion;
     private String nombreGanador;
+    private boolean resultadoEmpatado;
 
     private int numeroJugadores;
     private int rondasJugadas;
@@ -137,6 +139,9 @@ public class ResultadoActivity extends AppCompatActivity {
     //Adaptador --------------------------------------------------------------------
 
     private ClasificacionResultadoAdapter clasificacionAdapter;
+
+    // SQLite ha confirmado que la partida se ha guardado.
+    private boolean resultadoPersistido = false;
 
     //Crear Activity ---------------------------------------------------------------
 
@@ -291,6 +296,7 @@ public class ResultadoActivity extends AppCompatActivity {
                 );
 
         corregirDatosNulos();
+        resultadoEmpatado = "EMPATE".equalsIgnoreCase(motivoFinalizacion);
     }
 
     //Inicializar datos vacíos ------------------------------------------------------
@@ -389,7 +395,7 @@ public class ResultadoActivity extends AppCompatActivity {
 
         numeroJugadores = cantidadJugadores;
 
-        if (nombreGanador.isEmpty()) {
+        if (nombreGanador.isEmpty() && !resultadoEmpatado) {
             nombreGanador =
                     nombresJugadores.get(0);
         }
@@ -397,32 +403,69 @@ public class ResultadoActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Copia el resultado final en SharedPreferences ANTES de escribir en SQLite.
+     * Se utiliza en 301/501, Cricket, Cut Throat y los tres modos de rondas.
+     * El UUID de la foto final permite repetir la inserción sin duplicados.
+     */
     private boolean persistirResultado() {
+        boolean copiaSegura = GestorResultadoPendiente.guardar(this, getIntent());
+        if (!copiaSegura) {
+            mostrarDialogoErrorGuardado(false,
+                    new IllegalStateException("No se pudo proteger el resultado final "
+                            + "antes de escribir en SQLite"));
+            return false;
+        }
+
         try {
             ServicioFinalizacionPartida.guardar(this, getIntent(), rondasJugadas,
                     motivoFinalizacion, posicionesJugadores, puntuacionesJugadores,
                     indicesOriginales);
+            resultadoPersistido = true;
+            if (!GestorResultadoPendiente.eliminarSiCoincide(this, getIntent())) {
+                android.util.Log.w("ResultadoActivity", "El guardado final se completó, "
+                        + "pero no se pudo quitar su copia temporal");
+            }
             return true;
         } catch (Exception error) {
             android.util.Log.e("ResultadoActivity", "Error al guardar partida", error);
-            new AlertDialog.Builder(this)
-                    .setTitle("No se ha guardado la partida")
-                    .setMessage("No se pudo registrar la partida en SQLite. "
-                            + "Puedes reintentar el guardado. No se eliminará el estado temporal.")
-                    .setCancelable(false)
-                    .setPositiveButton("Reintentar", (dialog, which) -> {
-                        if (persistirResultado()) {
-                            prepararDatosResultado();
-                            prepararRecyclerView();
-                            configurarListeners();
-                            actualizarPantalla();
-                            mostrarAnimacionResultado();
-                        }
-                    })
-                    .setNegativeButton("Volver al menú", (dialog, which) -> volverMenuPrincipal())
-                    .show();
+            mostrarDialogoErrorGuardado(true, error);
             return false;
         }
+    }
+
+    private void mostrarDialogoErrorGuardado(boolean respaldoDisponible, Exception error) {
+        String detalle = error.getClass().getSimpleName();
+        if (error.getMessage() != null && !error.getMessage().trim().isEmpty()) {
+            String mensajeTecnico = error.getMessage();
+            detalle += " — " + mensajeTecnico.substring(0,
+                    Math.min(160, mensajeTecnico.length()));
+        }
+        String mensaje = respaldoDisponible
+                ? "La partida ha finalizado, pero no se ha podido guardar en SQLite. "
+                  + "El resultado está protegido y puedes reintentarlo desde «Continuar»."
+                : "No se ha podido crear una copia segura del resultado. "
+                  + "No cierres esta pantalla: reintenta el guardado para no perderlo.";
+
+        MaterialAlertDialogBuilder dialogo = new MaterialAlertDialogBuilder(
+                this, R.style.TemaDialogoDardos)
+                .setTitle("Resultado pendiente de guardar")
+                .setMessage(mensaje + "\n\nDetalle: " + detalle)
+                .setCancelable(false)
+                .setPositiveButton("Reintentar", (ventana, opcion) -> {
+                    if (persistirResultado()) {
+                        prepararDatosResultado();
+                        prepararRecyclerView();
+                        configurarListeners();
+                        actualizarPantalla();
+                        mostrarAnimacionResultado();
+                    }
+                });
+        if (respaldoDisponible) {
+            dialogo.setNegativeButton("Volver al menú", (ventana, opcion) ->
+                    volverMenuPrincipal());
+        }
+        dialogo.show();
     }
 
     //Preparar objetos ResultadoJugador --------------------------------------------
@@ -448,7 +491,7 @@ public class ResultadoActivity extends AppCompatActivity {
                     posicionesJugadores.get(i);
 
             boolean esGanador =
-                    posicion == 1;
+                    posicion == 1 && !resultadoEmpatado;
 
             ResultadoJugador resultadoJugador =
                     new ResultadoJugador(
@@ -477,7 +520,7 @@ public class ResultadoActivity extends AppCompatActivity {
         }
 
         //Seguridad por si no llegó la posición 1
-        if (jugadorGanador == null
+        if (!resultadoEmpatado && jugadorGanador == null
                 && !jugadoresResultado.isEmpty()) {
 
             jugadorGanador =
@@ -531,6 +574,12 @@ public class ResultadoActivity extends AppCompatActivity {
     //Actualizar título -------------------------------------------------------------
 
     private void actualizarTitulo() {
+
+        if (resultadoEmpatado) {
+            txtTituloResultado.setText(getString(R.string.resultado_empate_modo,
+                    modoJuego.toUpperCase(java.util.Locale.ROOT)));
+            return;
+        }
 
         if (modoJuego.trim().isEmpty()) {
 
@@ -1027,14 +1076,18 @@ public class ResultadoActivity extends AppCompatActivity {
     //Mostrar error al recibir datos ------------------------------------------------
 
     private void mostrarErrorDatos() {
-
-        Toast.makeText(
-                this,
-                "No se han podido cargar los resultados de la partida",
-                Toast.LENGTH_LONG
-        ).show();
-
-        volverMenuPrincipal();
+        // Mismo diálogo Material que el resto del proyecto. No eliminar aquí
+        // un resultado previo: puede ser recuperable tras una actualización.
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+                .setTitle("No se pudieron recuperar los resultados")
+                .setMessage("Los datos finales están incompletos o no son compatibles "
+                        + "con esta versión. Si hay una copia pendiente, puedes "
+                        + "reintentar desde «Continuar» o descartarla expresamente "
+                        + "en el menú. El historial de SQLite no se modificará.")
+                .setCancelable(false)
+                .setPositiveButton("Volver al menú", (dialogo, opcion) ->
+                        volverMenuPrincipal())
+                .show();
     }
 
     //Volver al menú principal ------------------------------------------------------
@@ -1066,7 +1119,18 @@ public class ResultadoActivity extends AppCompatActivity {
 
                     @Override
                     public void handleOnBackPressed() {
-
+                        // Si no existe una copia segura, no abandonar el resultado.
+                        if (!resultadoPersistido &&
+                                !GestorResultadoPendiente.existe(ResultadoActivity.this)) {
+                            new MaterialAlertDialogBuilder(ResultadoActivity.this,
+                                    R.style.TemaDialogoDardos)
+                                    .setTitle("Guardado sin confirmar")
+                                    .setMessage("El resultado aún no se ha guardado. "
+                                            + "Utiliza «Reintentar» para no perderlo.")
+                                    .setPositiveButton("Entendido", null)
+                                    .show();
+                            return;
+                        }
                         volverMenuPrincipal();
                     }
                 }

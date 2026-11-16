@@ -30,6 +30,10 @@ import java.util.Set;
 
 import modelos.Jugador;
 import modelos.ConfiguracionPartida;
+import modelos.PartidaEnCurso;
+import modelos.EstadoPartidaRondas;
+import preferencias.GestorPartidaEnCurso;
+import preferencias.GestorResultadoPendiente;
 import sqlite.JugadorDao;
 import utilidades.SerializadorConfiguracionPartida;
 
@@ -891,6 +895,10 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     }
 
     private void crearPartida() {
+        // Un resultado finalizado pero aún no persistido no puede sobrescribirse
+        // iniciando otra partida desde el menú/configuración.
+        if (bloquearSiResultadoPendiente()) return;
+
         String modo = obtenerModoJuegoSeleccionado();
         Intent intent;
         try {
@@ -906,6 +914,111 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         }
         guardarConfiguracionUltimaPartida();
         startActivity(intent);
+    }
+
+    /**
+     * Detecta una partida de rondas cuyo último turno ya acabó, pero cuya
+     * inserción en SQLite quedó pendiente. No borra datos ni bloquea partidas
+     * normales en curso; estas conservan el comportamiento anterior.
+     */
+    private boolean bloquearSiResultadoPendiente() {
+        // Prioridad para cualquier resultado final sin COMMIT, sea de 301/501,
+        // Cricket, Cut Throat, Double Down, Around the Clock o Shanghai.
+        if (GestorResultadoPendiente.existe(this)) {
+            Intent resultado = GestorResultadoPendiente.crearIntentRecuperacion(this);
+            MaterialAlertDialogBuilder dialogo = new MaterialAlertDialogBuilder(
+                    this, R.style.TemaDialogoDardos)
+                    .setTitle("Resultado pendiente de guardar")
+                    .setMessage(resultado == null
+                            ? "Hay un resultado temporal incompatible. No se puede "
+                              + "sobrescribir. Desde el menú, pulsa «Continuar» "
+                              + "para reintentar o descartarlo expresamente."
+                            : "Hay un resultado final sin confirmar en SQLite. "
+                              + "Guárdalo antes de comenzar otra partida.")
+                    .setNegativeButton("Cancelar", null);
+            if (resultado != null) {
+                dialogo.setPositiveButton("Reintentar guardado", (ventana, opcion) -> {
+                    startActivity(resultado);
+                    finish();
+                });
+            } else {
+                dialogo.setPositiveButton("Ir al menú", (ventana, opcion) -> {
+                    startActivity(new Intent(this, MainActivity.class));
+                    finish();
+                });
+            }
+            dialogo.show();
+            return true;
+        }
+        PartidaEnCurso guardada = GestorPartidaEnCurso.cargarPartida(this);
+        if (guardada == null && GestorPartidaEnCurso.existePartida(this)) {
+            // Conservar íntegro el JSON original: no sobrescribir un guardado
+            // posiblemente creado por una versión release anterior.
+            new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+                    .setTitle("Partida guardada incompatible")
+                    .setMessage("Existe una partida temporal que no se puede recuperar. "
+                            + "Puedes descartarla expresamente para empezar otra. "
+                            + "Los jugadores, el historial y las estadísticas de SQLite "
+                            + "se conservarán.")
+                    .setPositiveButton("Descartar temporal", (ventana, opcion) ->
+                            confirmarDescartePartidaIncompatible())
+                    .setNegativeButton("Cancelar", null)
+                    .show();
+            return true;
+        }
+        if (guardada == null || !PartidaEnCurso.TIPO_RONDAS.equals(guardada.getTipoPartida())
+                || guardada.getEstadoRondas() == null) {
+            return false;
+        }
+
+        EstadoPartidaRondas estado = guardada.getEstadoRondas();
+        int max = estado.getMaxRondas();
+        if (max < 1) max = MODO_DOUBLE_DOWN.equals(guardada.getModoJuego()) ? 9 : 21;
+        boolean pendiente = guardada.getRondaActual() > max;
+        if (!pendiente && MODO_AROUND_CLOCK.equals(guardada.getModoJuego())
+                && estado.getJugadoresFinalizados() != null
+                && !estado.getJugadoresFinalizados().isEmpty()) {
+            pendiente = true;
+            for (Object finalizado : estado.getJugadoresFinalizados()) {
+                if (!Boolean.TRUE.equals(finalizado)) {
+                    pendiente = false;
+                    break;
+                }
+            }
+        }
+        if (!pendiente) return false;
+
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+                .setTitle("Resultado pendiente de guardar")
+                .setMessage("Hay una partida finalizada que todavía no se ha podido "
+                        + "registrar en SQLite. Debes reintentar su guardado antes "
+                        + "de crear otra partida para no perder los resultados.")
+                .setPositiveButton("Reintentar guardado", (dialogo, which) -> {
+                    Intent reintento = new Intent(this, PartidaRondasActivity.class);
+                    reintento.putExtra(PartidaRondasActivity.EXTRA_REANUDAR_PARTIDA, true);
+                    startActivity(reintento);
+                    finish();
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
+        return true;
+    }
+
+    private void confirmarDescartePartidaIncompatible() {
+        new MaterialAlertDialogBuilder(this, R.style.TemaDialogoDardos)
+                .setTitle("¿Eliminar la partida temporal?")
+                .setMessage("Se perderá el progreso de esta partida incompatible. "
+                        + "No se eliminará ningún registro de SQLite.")
+                .setPositiveButton("Eliminar y crear", (ventana, opcion) -> {
+                    if (GestorPartidaEnCurso.eliminarPartida(this)) {
+                        crearPartida();
+                    } else {
+                        Toast.makeText(this, "No se pudo eliminar el guardado temporal",
+                                Toast.LENGTH_LONG).show();
+                    }
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
     }
 
     private Intent crearIntentSegunModo(String modo) {

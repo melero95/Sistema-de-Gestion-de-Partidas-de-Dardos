@@ -3,6 +3,7 @@ package activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.productos.juegosdedardos.R;
+import com.google.gson.Gson;
 
 import modelos.EstadoPartidaRondas;
 import modelos.EstadisticasJugadorEnCurso;
@@ -25,12 +27,14 @@ import utilidades.DatosFinalizacionPartida;
 import utilidades.VibracionHelper;
 import modelos.PartidaEnCurso;
 import preferencias.GestorPartidaEnCurso;
+import sqlite.ServicioFinalizacionPartida;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Gestiona los modos:
@@ -177,6 +181,10 @@ public class PartidaRondasActivity extends AppCompatActivity {
     private boolean haAcertadoObjetivoTurno;
 
     private boolean partidaFinalizada;
+    // Si hubo un error, la partida ya no es jugable: solo se reintenta su persistencia.
+    private boolean finalizacionPendienteRecuperada;
+    private boolean respaldoFinalGuardado;
+    private Exception ultimoErrorPersistencia;
     // Solo se usa durante el cierre del turno actual de Double Down.
     private boolean penalizacionEnUltimoTurno;
     private boolean partidaCargadaCorrectamente;
@@ -205,18 +213,36 @@ public class PartidaRondasActivity extends AppCompatActivity {
         return datos;
     }
 
-    // Compatibilidad con partidas anteriores, cuyos JSON no tenían estadísticas.
+    // En APK release anteriores R8 podía eliminar la información genérica de Gson:
+    // un elemento de ArrayList<EstadisticasJugadorEnCurso> podía llegar como Map.
+    // No se descartan silenciosamente estadísticas existentes si la conversión falla.
     private ArrayList<EstadisticasJugadorEnCurso> restaurarEstadisticas(
             ArrayList<EstadisticasJugadorEnCurso> datos) {
-        if (datos == null || datos.size() != nombresJugadores.length) {
+        if (datos == null) {
+            // Compatibilidad con estados anteriores a la incorporación de estadísticas.
             return crearEstadisticasVacias();
         }
-        for (EstadisticasJugadorEnCurso dato : datos) {
-            if (dato == null || !modoJuego.equals(dato.getModo())) {
-                return crearEstadisticasVacias();
-            }
+        if (datos.size() != nombresJugadores.length) {
+            throw new IllegalStateException("Número de estadísticas guardadas incorrecto");
         }
-        return EstadisticasJugadorEnCurso.copiarLista(datos);
+        Gson gson = new Gson();
+        ArrayList<EstadisticasJugadorEnCurso> restauradas = new ArrayList<>();
+        for (Object elemento : datos) {
+            EstadisticasJugadorEnCurso estadistica;
+            if (elemento instanceof EstadisticasJugadorEnCurso) {
+                estadistica = (EstadisticasJugadorEnCurso) elemento;
+            } else if (elemento instanceof Map) {
+                estadistica = gson.fromJson(
+                        gson.toJson(elemento), EstadisticasJugadorEnCurso.class);
+            } else {
+                throw new IllegalStateException("Tipo de estadística guardada incompatible");
+            }
+            if (estadistica == null || !modoJuego.equals(estadistica.getModo())) {
+                throw new IllegalStateException("Estadística guardada inválida o incompatible");
+            }
+            restauradas.add(estadistica);
+        }
+        return EstadisticasJugadorEnCurso.copiarLista(restauradas);
     }
 
     private int tipoDardoValido(String texto) {
@@ -322,8 +348,14 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         if (reanudarPartida) {
 
-            partidaCargadaCorrectamente =
-                    cargarPartidaGuardada();
+            try {
+                partidaCargadaCorrectamente = cargarPartidaGuardada();
+            } catch (RuntimeException error) {
+                // JSON antiguos pueden contener Double donde antes había Integer.
+                // No se borra el guardado ante una incompatibilidad de lectura.
+                Log.e("PartidaRondasActivity", "Error recuperando partida", error);
+                partidaCargadaCorrectamente = false;
+            }
 
             if (!partidaCargadaCorrectamente) {
 
@@ -346,6 +378,14 @@ public class PartidaRondasActivity extends AppCompatActivity {
         }
 
         actualizarInterfazCompleta();
+        if (reanudarPartida && finalizacionPendienteRecuperada) {
+            // Ya se completó la partida; está pendiente GUARDAR, no volver a jugar.
+            partidaFinalizada = true;
+            respaldoFinalGuardado = true;
+            bloquearBotonesPartida();
+            abrirResultadoActivity();
+            return;
+        }
         guardarPartidaEnCurso();
     }
 
@@ -736,14 +776,14 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
     //Guardado persistente --------------------------------------------------------
 
-    private void guardarPartidaEnCurso() {
+    private boolean guardarPartidaEnCurso() {
 
         if (!partidaCargadaCorrectamente
                 || partidaFinalizada
                 || nombresJugadores == null
                 || nombresJugadores.length == 0) {
 
-            return;
+            return false;
         }
 
         PartidaEnCurso partida =
@@ -864,7 +904,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 )
                 .apply();
 
-        GestorPartidaEnCurso.guardarPartida(
+        return GestorPartidaEnCurso.guardarPartida(
                 this,
                 partida
         );
@@ -873,6 +913,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
     //Carga persistente -----------------------------------------------------------
 
     private boolean cargarPartidaGuardada() {
+        finalizacionPendienteRecuperada = false;
 
         PartidaEnCurso partida =
                 GestorPartidaEnCurso.cargarPartida(this);
@@ -951,6 +992,10 @@ public class PartidaRondasActivity extends AppCompatActivity {
             maxRondas = OBJETIVO_DIANA_AROUND_CLOCK;
             ultimoNumeroAroundClock = OBJETIVO_DIANA_AROUND_CLOCK - 1;
         }
+
+        // El JSON puede contener ronda 22 tras completar la ronda 21.
+        // No intentamos reanudar el juego: conservamos ese cierre para reintentar SQLite.
+        finalizacionPendienteRecuperada = partida.getRondaActual() > maxRondas;
 
         jugadorActual =
                 Math.max(
@@ -1088,20 +1133,9 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         ordenFinalizacion.clear();
 
-        if (estado.getOrdenFinalizacion() != null) {
-
-            for (Integer indice :
-                    estado.getOrdenFinalizacion()) {
-
-                if (indice != null
-                        && indice >= 0
-                        && indice < numeroJugadores
-                        && !ordenFinalizacion.contains(indice)) {
-
-                    ordenFinalizacion.add(indice);
-                }
-            }
-        }
+        // Gson antiguo puede devolver Double (p. ej. 1.0) en listas numéricas.
+        ordenFinalizacion.addAll(normalizarIndices(
+                estado.getOrdenFinalizacion(), numeroJugadores));
 
         if (modoRondas == ModoRondas.AROUND_THE_CLOCK) {
 
@@ -1126,6 +1160,11 @@ public class PartidaRondasActivity extends AppCompatActivity {
                     }
                 }
             }
+        }
+
+        if (modoRondas == ModoRondas.AROUND_THE_CLOCK
+                && todosJugadoresFinalizados()) {
+            finalizacionPendienteRecuperada = true;
         }
 
         Arrays.fill(textosDardos, "");
@@ -1246,11 +1285,19 @@ public class PartidaRondasActivity extends AppCompatActivity {
             return;
         }
 
-        for (EstadoPartidaRondas.EstadoDeshacerRondas guardado :
-                estados) {
-
+        Gson gson = new Gson();
+        for (Object elemento : estados) {
+            EstadoPartidaRondas.EstadoDeshacerRondas guardado;
+            if (elemento instanceof EstadoPartidaRondas.EstadoDeshacerRondas) {
+                guardado = (EstadoPartidaRondas.EstadoDeshacerRondas) elemento;
+            } else if (elemento instanceof Map) {
+                guardado = gson.fromJson(gson.toJson(elemento),
+                        EstadoPartidaRondas.EstadoDeshacerRondas.class);
+            } else {
+                throw new IllegalStateException("Historial guardado incompatible");
+            }
             if (guardado == null) {
-                continue;
+                throw new IllegalStateException("Instantánea del historial vacía");
             }
 
             historialEstados.addLast(
@@ -1271,10 +1318,9 @@ public class PartidaRondasActivity extends AppCompatActivity {
                                     guardado.getJugadoresFinalizados(),
                                     nombresJugadores.length
                             ),
-                            guardado.getOrdenFinalizacion() == null
-                                    ? new ArrayList<>()
-                                    : new ArrayList<>(
-                                    guardado.getOrdenFinalizacion()
+                            normalizarIndices(
+                                    guardado.getOrdenFinalizacion(),
+                                    nombresJugadores.length
                             ),
                             guardado.getJugadorActual(),
                             guardado.getRondaActual(),
@@ -1337,14 +1383,28 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         for (int i = 0; i < limite; i++) {
 
-            Integer valor =
-                    valores.get(i);
-
-            if (valor != null) {
-                resultado[i] = valor;
+            // Leer como Object evita el ClassCastException Integer <- Double.
+            Object valor = valores.get(i);
+            if (valor instanceof Number) {
+                resultado[i] = ((Number) valor).intValue();
+            } else if (valor != null) {
+                throw new IllegalArgumentException("Dato numérico guardado incorrectamente");
             }
         }
 
+        return resultado;
+    }
+
+    private ArrayList<Integer> normalizarIndices(ArrayList<Integer> valores, int total) {
+        ArrayList<Integer> resultado = new ArrayList<>();
+        if (valores == null) return resultado;
+        for (Object valor : valores) {
+            if (!(valor instanceof Number)) continue;
+            int indice = ((Number) valor).intValue();
+            if (indice >= 0 && indice < total && !resultado.contains(indice)) {
+                resultado.add(indice);
+            }
+        }
         return resultado;
     }
 
@@ -3106,6 +3166,9 @@ public class PartidaRondasActivity extends AppCompatActivity {
             return;
         }
 
+        // Guardar el estado FINAL, incluido el último turno, ANTES de declararlo
+        // cerrado. Si SQLite falla, «Continuar» recuperará el resultado pendiente.
+        respaldoFinalGuardado = guardarPartidaEnCurso();
         partidaFinalizada = true;
 
         if (penalizacionEnUltimoTurno || ultimoTurnoFallido) {
@@ -3323,15 +3386,80 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 indicesOriginales
         );
 
-        datosFinalizacion.adjuntar(intent, estadisticasJugadores);
+        try {
+            datosFinalizacion.adjuntar(intent, estadisticasJugadores);
 
+            // La BD se confirma ANTES de abandonar la pantalla del juego.
+            // ResultadoActivity repetirá el guardado con el mismo UUID: es idempotente.
+            ServicioFinalizacionPartida.guardar(
+                    this, intent, Math.min(rondaActual, maxRondas),
+                    MOTIVO_MAX_RONDAS, posiciones, puntuacionesOrdenadas,
+                    indicesOriginales);
+        } catch (Exception error) {
+            ultimoErrorPersistencia = error;
+            Log.e("PartidaRondasActivity", "No se pudo persistir el resultado", error);
+            mostrarDialogoGuardadoFallido();
+            return;
+        }
+
+        ultimoErrorPersistencia = null;
         startActivity(intent);
         finish();
+    }
+
+    private void mostrarDialogoGuardadoFallido() {
+        // Si el respaldo falló, volver al menú podría perder el último turno.
+        final boolean permiteSalir = respaldoFinalGuardado;
+        String detalle = "";
+        if (ultimoErrorPersistencia != null) {
+            String mensajeTecnico = ultimoErrorPersistencia.getMessage();
+            detalle = "\n\nDetalle: "
+                    + ultimoErrorPersistencia.getClass().getSimpleName();
+            if (mensajeTecnico != null && !mensajeTecnico.trim().isEmpty()) {
+                detalle += " — " + mensajeTecnico.substring(0,
+                        Math.min(180, mensajeTecnico.length()));
+            }
+        }
+        String mensaje = "La partida ha terminado, pero no se pudo guardar en SQLite. "
+                + (permiteSalir
+                   ? "El resultado se conserva para reintentar desde «Continuar»."
+                   : "Tampoco se pudo crear el respaldo temporal. No salgas de esta pantalla.")
+                + detalle;
+
+        MaterialAlertDialogBuilder dialogo = new MaterialAlertDialogBuilder(
+                this, R.style.TemaDialogoDardos);
+        dialogo.setTitle("Resultado pendiente de guardar");
+        dialogo.setMessage(mensaje);
+        dialogo.setCancelable(false);
+        dialogo.setPositiveButton("Reintentar", (dialog, which) -> {
+            // Si no se pudo crear el respaldo, intentar restaurarlo primero.
+            if (!respaldoFinalGuardado) {
+                boolean anterior = partidaFinalizada;
+                partidaFinalizada = false;
+                respaldoFinalGuardado = guardarPartidaEnCurso();
+                partidaFinalizada = anterior;
+            }
+            abrirResultadoActivity();
+        });
+        if (permiteSalir) {
+            dialogo.setNegativeButton("Volver al menú", (dialog, which) ->
+                    volverMainActivity());
+        } else {
+            dialogo.setNegativeButton("Cerrar", (dialog, which) -> {
+                // Permanece en la pantalla finalizada: el botón Salir vuelve a
+                // abrir este diálogo sin permitir abandonar los datos en memoria.
+            });
+        }
+        dialogo.show();
     }
 
     // Salida -------------------------------------------------------------------
 
     private void mostrarDialogoSalir() {
+        if (partidaFinalizada) {
+            mostrarDialogoGuardadoFallido();
+            return;
+        }
 
         new MaterialAlertDialogBuilder(
                 this,

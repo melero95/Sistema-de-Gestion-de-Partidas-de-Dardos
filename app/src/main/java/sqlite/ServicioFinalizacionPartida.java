@@ -30,10 +30,12 @@ public final class ServicioFinalizacionPartida {
                 || n != indicesOriginales.size() || n != datos.estadisticas.size()) {
             throw new IllegalArgumentException("Clasificación incompleta");
         }
+        boolean empate = "EMPATE".equalsIgnoreCase(motivo);
         boolean[] vistos = new boolean[n];
         List<ResultadoPartida> resultados = new ArrayList<>();
         List<EstadisticaPartida> estadisticas = new ArrayList<>();
         Long ganador = null;
+        int primeros = 0;
         for (int i = 0; i < n; i++) {
             int indice = indicesOriginales.get(i);
             if (indice < 0 || indice >= n || vistos[indice])
@@ -43,10 +45,16 @@ public final class ServicioFinalizacionPartida {
             int posicion = posiciones.get(i);
             if (posicion < 1 || posicion > n)
                 throw new IllegalArgumentException("Posición de jugador inválida");
-            if (posicion == 1 && ganador == null) ganador = jugador.getIdJugador();
+            if (posicion == 1) {
+                primeros++;
+                if (!empate && ganador == null) ganador = jugador.getIdJugador();
+            }
             resultados.add(new ResultadoPartida(0, jugador.getIdJugador(), posicion,
                     puntuaciones.get(i), jugador.getOrdenTurno()));
             estadisticas.add(datos.estadisticas.get(indice).convertirEnEstadisticaFinal(0));
+        }
+        if (empate && primeros < 2) {
+            throw new IllegalArgumentException("Un empate requiere al menos dos primeros puestos");
         }
         Partida partida = new Partida(config.getModo(), config.getRondas(), rondasJugadas,
                 n, ganador, motivo, datos.configuracionJson);

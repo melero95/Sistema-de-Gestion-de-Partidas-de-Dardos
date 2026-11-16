@@ -1,21 +1,12 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# GSON + R8: conservar los tipos genéricos y los nombres de los campos
+# usados por SharedPreferences y por la transmisión de resultados JSON.
+# Sin estas reglas, release puede convertir las listas de DTO en LinkedHashMap.
+-keepattributes Signature,InnerClasses,EnclosingMethod,*Annotation*
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Mantener ESTABLE el formato JSON de los modelos propios a partir de esta versión.
+# El historial y las partidas en curso usan estos modelos tanto en Gson como
+# en otras pantallas de la aplicación.
+-keep class modelos.** { *; }
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
-
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Objeto de finalización serializado entre Activity y servicio SQLite.
+-keep class utilidades.DatosFinalizacionPartida { *; }
