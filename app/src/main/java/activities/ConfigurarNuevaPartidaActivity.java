@@ -97,6 +97,8 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     private static final String PREF_ORDEN_ALEATORIO = "orden_aleatorio_default";
 
     private static final int RONDAS_ESTANDAR = 15;
+    private static final int RONDAS_MINIMAS = 10;
+    private static final int RONDAS_MAXIMAS = 30;
     private static final int RONDAS_DOUBLE_DOWN = 9;
     private static final int RONDAS_AROUND_CLOCK = 21;
     private static final int RONDAS_SHANGHAI = 21;
@@ -305,13 +307,13 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     private void configurarBotonesRondas() {
         actualizarTextoRondas();
         btnSumarRonda.setOnClickListener(v -> {
-            if (!rondasBloqueadas()) {
+            if (!rondasBloqueadas() && maxRondas < RONDAS_MAXIMAS) {
                 maxRondas++;
                 actualizarTextoRondas();
             }
         });
         btnRestarRonda.setOnClickListener(v -> {
-            if (!rondasBloqueadas() && maxRondas > 1) {
+            if (!rondasBloqueadas() && maxRondas > RONDAS_MINIMAS) {
                 maxRondas--;
                 actualizarTextoRondas();
             }
@@ -419,7 +421,11 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
             maxRondas = RONDAS_ESTANDAR;
             actualizarTextoRondas();
             desbloquearRondas();
-        } else desbloquearRondas();
+        } else {
+            maxRondas = limitarRondasEditables(maxRondas);
+            actualizarTextoRondas();
+            desbloquearRondas();
+        }
 
         if (filasJugadores.size() > limiteJugadores()) {
             int retirados = filasJugadores.size() - limiteJugadores();
@@ -464,6 +470,10 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         btnRestarRonda.setAlpha(1f);
         btnSumarRonda.setAlpha(1f);
         txtMaxRondas.setAlpha(1f);
+    }
+
+    private int limitarRondasEditables(int rondas) {
+        return Math.max(RONDAS_MINIMAS, Math.min(RONDAS_MAXIMAS, rondas));
     }
 
     private void actualizarTextoRondas() {
@@ -816,7 +826,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         actualizarOpcionesSpinners();
         aplicarConfiguracionSegunModo(modo);
         if (rondasEditablesParaModo(modo)) {
-            maxRondas = Math.max(1, rondas);
+            maxRondas = limitarRondasEditables(rondas);
             actualizarTextoRondas();
         }
         actualizarDisponibilidadJugadores();
@@ -838,6 +848,11 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
     }
 
     private boolean validarConfiguracionPartida() {
+        if (rondasEditablesParaModo(obtenerModoJuegoSeleccionado())
+                && (maxRondas < RONDAS_MINIMAS || maxRondas > RONDAS_MAXIMAS)) {
+            Toast.makeText(this, "Selecciona entre 10 y 30 rondas", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if (filasJugadores.isEmpty()) {
             Toast.makeText(this, "Debes registrar al menos un jugador activo", Toast.LENGTH_SHORT).show();
             return false;
@@ -1047,7 +1062,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
 
             aplicarConfiguracionSegunModo(configuracion.getModo());
             if (rondasEditablesParaModo(configuracion.getModo())) {
-                maxRondas = configuracion.getRondas();
+                maxRondas = limitarRondasEditables(configuracion.getRondas());
                 actualizarTextoRondas();
             }
             // Aunque ordenAleatorio sea true, el historial tiene un orden

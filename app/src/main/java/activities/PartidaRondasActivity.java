@@ -649,6 +649,13 @@ public class PartidaRondasActivity extends AppCompatActivity {
             return;
         }
 
+        if (modoRondas == ModoRondas.AROUND_THE_CLOCK) {
+            // El modo tiene 20 objetivos numericos y Diana, y un maximo de 21 rondas.
+            ultimoNumeroAroundClock = OBJETIVO_DIANA_AROUND_CLOCK - 1;
+            maxRondas = OBJETIVO_DIANA_AROUND_CLOCK;
+            return;
+        }
+
         ultimoNumeroAroundClock =
                 intent.getIntExtra(
                         EXTRA_MAX_RONDAS,
@@ -937,6 +944,13 @@ public class PartidaRondasActivity extends AppCompatActivity {
                                 ultimoNumeroAroundClock + 1
                         )
                 );
+
+        // Al reanudar Around the Clock se respeta el nuevo tope fijo,
+        // también para partidas guardadas con reglas anteriores.
+        if (modoRondas == ModoRondas.AROUND_THE_CLOCK) {
+            maxRondas = OBJETIVO_DIANA_AROUND_CLOCK;
+            ultimoNumeroAroundClock = OBJETIVO_DIANA_AROUND_CLOCK - 1;
+        }
 
         jugadorActual =
                 Math.max(
@@ -2000,7 +2014,9 @@ public class PartidaRondasActivity extends AppCompatActivity {
         );
 
         if (modoRondas == ModoRondas.AROUND_THE_CLOCK) {
-            return todosJugadoresFinalizados();
+            // Termina al completar todos los objetivos o al agotar las 21 rondas.
+            // El cambio de ronda ocurre tras el turno del ultimo jugador activo.
+            return todosJugadoresFinalizados() || rondaActual > maxRondas;
         }
 
         return rondaActual > maxRondas;
@@ -2494,16 +2510,11 @@ public class PartidaRondasActivity extends AppCompatActivity {
                 String.valueOf(rondaActual)
         );
 
-        if (modoRondas == ModoRondas.AROUND_THE_CLOCK) {
-
-            txtMaxRondas.setText("");
-
-        } else {
-
-            txtMaxRondas.setText(
-                    getString(R.string.lint_partida_max_rondas, maxRondas)
-            );
-        }
+        // Around the Clock también tiene un máximo de rondas: mostrarlo
+        // permite conocer cuánto queda para el cierre por límite.
+        txtMaxRondas.setText(
+                getString(R.string.lint_partida_max_rondas, maxRondas)
+        );
     }
 
     private void actualizarInformacionTurno() {
@@ -3269,7 +3280,7 @@ public class PartidaRondasActivity extends AppCompatActivity {
 
         intent.putExtra(
                 ResultadoActivity.EXTRA_RONDAS_JUGADAS,
-                rondaActual
+                Math.min(rondaActual, maxRondas)
         );
 
         intent.putExtra(
