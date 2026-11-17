@@ -421,7 +421,7 @@ public class ConfigurarNuevaPartidaActivity extends AppCompatActivity {
         if (MODO_DOUBLE_DOWN.equals(modo)) bloquearRondas(RONDAS_DOUBLE_DOWN);
         else if (MODO_AROUND_CLOCK.equals(modo)) bloquearRondas(RONDAS_AROUND_CLOCK);
         else if (MODO_SHANGHAI.equals(modo)) bloquearRondas(RONDAS_SHANGHAI);
-        else if (esPuntos) {
+        else if (esPuntos || esModoCricket(modo)) {
             maxRondas = RONDAS_ESTANDAR;
             actualizarTextoRondas();
             desbloquearRondas();
