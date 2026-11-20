@@ -13,7 +13,7 @@ import modelos.Partida;
 import modelos.Jugador;
 import sqlite.JugadorDao;
 import activities.ConfigurarNuevaPartidaActivity;
-import activities.PartidaCriquetActivity;
+import activities.PartidaCricketActivity;
 import activities.PartidaPuntosActivity;
 import activities.PartidaRondasActivity;
 import com.productos.juegosdedardos.R;
@@ -65,7 +65,7 @@ public final class AccionesPartidaHistorica {
             case ConfiguracionPartida.MODO_301:
             case ConfiguracionPartida.MODO_501: intent = new Intent(actividad, PartidaPuntosActivity.class); break;
             case ConfiguracionPartida.MODO_CRICKET:
-            case ConfiguracionPartida.MODO_CUT_THROAT: intent = new Intent(actividad, PartidaCriquetActivity.class); break;
+            case ConfiguracionPartida.MODO_CUT_THROAT: intent = new Intent(actividad, PartidaCricketActivity.class); break;
             default: intent = new Intent(actividad, PartidaRondasActivity.class);
         }
         intent.putExtra("modoJuego", cfg.getModo());

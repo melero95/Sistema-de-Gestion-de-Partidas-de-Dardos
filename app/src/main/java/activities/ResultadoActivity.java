@@ -927,12 +927,12 @@ public class ResultadoActivity extends AppCompatActivity {
              i++) {
 
             intentRevancha.putExtra(
-                    PartidaCriquetActivity.EXTRA_JUGADOR + (i + 1),
+                    PartidaCricketActivity.EXTRA_JUGADOR + (i + 1),
                     nombresRevancha.get(i)
             );
 
             intentRevancha.putExtra(
-                    PartidaCriquetActivity.EXTRA_COLOR_JUGADOR + (i + 1),
+                    PartidaCricketActivity.EXTRA_COLOR_JUGADOR + (i + 1),
                     coloresRevancha.get(i)
             );
         }
@@ -997,7 +997,7 @@ public class ResultadoActivity extends AppCompatActivity {
 
             return new Intent(
                     ResultadoActivity.this,
-                    PartidaCriquetActivity.class
+                    PartidaCricketActivity.class
             );
         }
 

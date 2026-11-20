@@ -74,8 +74,8 @@ public final class GestorPartidaEnCurso {
         switch (partida.getTipoPartida()) {
             case PartidaEnCurso.TIPO_PUNTOS:
                 return partida.getEstadoPuntos() != null;
-            case PartidaEnCurso.TIPO_CRIQUET:
-                return partida.getEstadoCriquet() != null;
+            case PartidaEnCurso.TIPO_CRICKET:
+                return partida.getEstadoCricket() != null;
             case PartidaEnCurso.TIPO_RONDAS:
                 return partida.getEstadoRondas() != null;
             default:

@@ -28,14 +28,14 @@ public class EstadosEstadisticasGuardadasTest {
     }
 
     @Test public void cricketRestauraEstadisticasEnJson() {
-        EstadoPartidaCriquet estado = new EstadoPartidaCriquet();
+        EstadoPartidaCricket estado = new EstadoPartidaCricket();
         ArrayList<EstadisticasJugadorEnCurso> datos = dos("Cricket");
         datos.get(0).registrarCricket(2, 0, 0, 0);
         estado.setEstadisticasJugadores(datos);
-        EstadoPartidaCriquet.EstadoDeshacerCriquet paso = new EstadoPartidaCriquet.EstadoDeshacerCriquet();
+        EstadoPartidaCricket.EstadoDeshacerCricket paso = new EstadoPartidaCricket.EstadoDeshacerCricket();
         paso.setEstadisticasJugadores(datos);
         estado.setHistorialEstados(new ArrayList<>(Arrays.asList(paso)));
-        EstadoPartidaCriquet restaurado = gson.fromJson(gson.toJson(estado), EstadoPartidaCriquet.class);
+        EstadoPartidaCricket restaurado = gson.fromJson(gson.toJson(estado), EstadoPartidaCricket.class);
         assertEquals(Integer.valueOf(2), restaurado.getEstadisticasJugadores().get(0)
                 .convertirEnEstadisticaFinal(1).getMarcasValidas());
         assertEquals(2, restaurado.getHistorialEstados().get(0).getEstadisticasJugadores().size());

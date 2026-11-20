@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /** F09: límites en el modelo, independientemente de la interfaz. */
 public class Fase09LimitesYConfiguracionTest {
     private static final String[] GENERALES = {"301", "501", "Double Down", "Around the Clock", "Shanghai"};
-    private static final String[] CRIQUET = {"Cricket", "Cut Throat Cricket"};
+    private static final String[] CRICKET = {"Cricket", "Cut Throat Cricket"};
     private static List<ConfiguracionPartida.Participante> jugadores(int numero) {
         List<ConfiguracionPartida.Participante> lista = new ArrayList<>();
         for (int i = 1; i <= numero; i++)
@@ -34,15 +34,15 @@ public class Fase09LimitesYConfiguracionTest {
     @Test public void cincoModalidadesRechazanCeroYSiete() {
         for (String modo : GENERALES) { rechaza(modo, 0); rechaza(modo, 7); }
     }
-    @Test public void criquetYCutThroatAdmitenDosTresYCuatro() {
-        for (String modo : CRIQUET) for (int n = 2; n <= 4; n++)
+    @Test public void cricketYCutThroatAdmitenDosTresYCuatro() {
+        for (String modo : CRICKET) for (int n = 2; n <= 4; n++)
             assertEquals(n, crear(modo, n).getParticipantes().size());
     }
-    @Test public void criquetYCutThroatRechazanUnoCincoYSeis() {
-        for (String modo : CRIQUET) for (int n : new int[]{1, 5, 6}) rechaza(modo, n);
+    @Test public void cricketYCutThroatRechazanUnoCincoYSeis() {
+        for (String modo : CRICKET) for (int n : new int[]{1, 5, 6}) rechaza(modo, n);
     }
     @Test public void serializacionConservaCuatroJugadoresYOrden() {
-        for (String modo : CRIQUET) {
+        for (String modo : CRICKET) {
             ConfiguracionPartida recuperada = SerializadorConfiguracionPartida.desdeJson(
                     SerializadorConfiguracionPartida.aJson(crear(modo, 4)));
             assertEquals(4, recuperada.getParticipantes().size());
@@ -52,7 +52,7 @@ public class Fase09LimitesYConfiguracionTest {
             }
         }
     }
-    @Test public void jsonHistoricoConCincoJugadoresCriquetEsRechazado() {
+    @Test public void jsonHistoricoConCincoJugadoresCricketEsRechazado() {
         String json = SerializadorConfiguracionPartida.aJson(crear("501", 5));
         try {
             SerializadorConfiguracionPartida.desdeJson(json.replace("\"modo\":\"501\"", "\"modo\":\"Cricket\""));

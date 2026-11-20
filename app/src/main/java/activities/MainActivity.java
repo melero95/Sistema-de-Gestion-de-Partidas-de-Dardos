@@ -141,9 +141,9 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, PartidaPuntosActivity.class);
                 intent.putExtra(PartidaPuntosActivity.EXTRA_REANUDAR_PARTIDA, true);
                 break;
-            case PartidaEnCurso.TIPO_CRIQUET:
-                intent = new Intent(this, PartidaCriquetActivity.class);
-                intent.putExtra(PartidaCriquetActivity.EXTRA_REANUDAR_PARTIDA, true);
+            case PartidaEnCurso.TIPO_CRICKET:
+                intent = new Intent(this, PartidaCricketActivity.class);
+                intent.putExtra(PartidaCricketActivity.EXTRA_REANUDAR_PARTIDA, true);
                 break;
             case PartidaEnCurso.TIPO_RONDAS:
                 intent = new Intent(this, PartidaRondasActivity.class);

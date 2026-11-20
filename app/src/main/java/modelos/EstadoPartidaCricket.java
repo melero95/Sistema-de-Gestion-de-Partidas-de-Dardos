@@ -2,7 +2,7 @@ package modelos;
 
 import java.util.ArrayList;
 
-public class EstadoPartidaCriquet {
+public class EstadoPartidaCricket {
 
     //Configuración ---------------------------------------------------------------
 
@@ -28,12 +28,12 @@ public class EstadoPartidaCriquet {
 
     //Pila completa utilizada por Deshacer ---------------------------------------
 
-    private ArrayList<EstadoDeshacerCriquet> historialEstados;
+    private ArrayList<EstadoDeshacerCricket> historialEstados;
     private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores;
 
     //Constructor ----------------------------------------------------------------
 
-    public EstadoPartidaCriquet() {
+    public EstadoPartidaCricket() {
 
         coloresJugadores = new ArrayList<>();
         puntuacionesJugadores = new ArrayList<>();
@@ -113,12 +113,12 @@ public class EstadoPartidaCriquet {
         this.tiradasTurno = tiradasTurno;
     }
 
-    public ArrayList<EstadoDeshacerCriquet> getHistorialEstados() {
+    public ArrayList<EstadoDeshacerCricket> getHistorialEstados() {
         return historialEstados;
     }
 
     public void setHistorialEstados(
-            ArrayList<EstadoDeshacerCriquet> historialEstados
+            ArrayList<EstadoDeshacerCricket> historialEstados
     ) {
         this.historialEstados = historialEstados;
     }
@@ -134,7 +134,7 @@ public class EstadoPartidaCriquet {
 
     //Instantánea utilizada por el botón Deshacer --------------------------------
 
-    public static class EstadoDeshacerCriquet {
+    public static class EstadoDeshacerCricket {
         private ArrayList<EstadisticasJugadorEnCurso> estadisticasJugadores = new ArrayList<>();
 
         private ArrayList<ArrayList<Integer>> marcasJugadores;
@@ -147,7 +147,7 @@ public class EstadoPartidaCriquet {
         private int multiplicadorSeleccionado;
         private ArrayList<String> tiradasTurno;
 
-        public EstadoDeshacerCriquet() {
+        public EstadoDeshacerCricket() {
 
             marcasJugadores = new ArrayList<>();
             puntuacionesJugadores = new ArrayList<>();

@@ -1,7 +1,6 @@
 package activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -15,14 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.productos.juegosdedardos.R;
 
-import modelos.EstadoPartidaCriquet;
+import modelos.EstadoPartidaCricket;
 import modelos.EstadisticasJugadorEnCurso;
 import utilidades.DatosFinalizacionPartida;
 import utilidades.VibracionHelper;
@@ -32,13 +30,12 @@ import preferencias.GestorPartidaEnCurso;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
 import java.util.Locale;
 
 /**
- * Partida de Criquet y Cut Throat Criquet.
+ * Partida de Cricket y Cut Throat Cricket.
  *
  * Características:
  * - De 2 a 4 jugadores.
@@ -50,7 +47,7 @@ import java.util.Locale;
  * - Finalización inmediata cuando un jugador cierra todos los objetivos
  *   y cumple la condición de puntuación de su modo.
  */
-public class PartidaCriquetActivity extends AppCompatActivity {
+public class PartidaCricketActivity extends AppCompatActivity {
 
     // Extras recibidos ---------------------------------------------------------
 
@@ -66,11 +63,11 @@ public class PartidaCriquetActivity extends AppCompatActivity {
      * Datos específicos de Cricket. ResultadoActivity puede ignorarlos
      * actualmente y recuperarlos en el futuro para una pantalla de detalles.
      */
-    public static final String EXTRA_MARCAS_CRIQUET =
-            "resultado_marcas_criquet";
+    public static final String EXTRA_MARCAS_CRICKET =
+            "resultado_marcas_cricket";
 
-    public static final String EXTRA_OBJETIVOS_CRIQUET =
-            "resultado_objetivos_criquet";
+    public static final String EXTRA_OBJETIVOS_CRICKET =
+            "resultado_objetivos_cricket";
 
     // Constantes ---------------------------------------------------------------
 
@@ -79,11 +76,11 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
     private static final int CAPACIDAD_MAX_DARDOS = 4;
     private static final String PREF_CONFIG_PARTIDA = "configuracion_dardos_partida";
-    private static final String CLAVE_DARDOS_CRIQUET = "numero_dardos_criquet";
-    private static final String CLAVE_ORDEN_ALEATORIO_CRIQUET =
-            "orden_aleatorio_criquet";
-    private static final String CLAVE_MANTENER_MULTIPLICADOR_CRIQUET =
-            "mantener_multiplicador_criquet";
+    private static final String CLAVE_DARDOS_CRICKET = "numero_dardos_cricket";
+    private static final String CLAVE_ORDEN_ALEATORIO_CRICKET =
+            "orden_aleatorio_cricket";
+    private static final String CLAVE_MANTENER_MULTIPLICADOR_CRICKET =
+            "mantener_multiplicador_cricket";
     private static final int MARCAS_PARA_CERRAR = 3;
 
     /*
@@ -104,14 +101,14 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             "15", "16", "17", "18", "19", "20", "D"
     };
 
-    private enum ModoCriquet {
-        CRIQUET,
+    private enum ModoCricket {
+        CRICKET,
         CUT_THROAT
     }
 
     // Datos de la partida ------------------------------------------------------
 
-    private ModoCriquet modoCriquet;
+    private ModoCricket modoCricket;
 
     private String modoJuego;
     private int maxRondas;
@@ -242,7 +239,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getColor(R.color.blue));
         getWindow().setNavigationBarColor(getColor(R.color.blue));
 
-        setContentView(R.layout.activity_partida_criquet);
+        setContentView(R.layout.activity_partida_cricket);
 
         inicializarVistas();
         configurarListeners();
@@ -404,7 +401,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             modoJuego = "Cricket";
         }
 
-        modoCriquet =
+        modoCricket =
                 interpretarModoJuego(modoJuego);
 
         recibirNombresJugadores(intent);
@@ -611,7 +608,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         return valorRecibido;
     }
 
-    private ModoCriquet interpretarModoJuego(String modoRecibido) {
+    private ModoCricket interpretarModoJuego(String modoRecibido) {
 
         String modoNormalizado = modoRecibido
                 .trim()
@@ -620,10 +617,10 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 .replace("-", " ");
 
         if (modoNormalizado.contains("CUT")) {
-            return ModoCriquet.CUT_THROAT;
+            return ModoCricket.CUT_THROAT;
         }
 
-        return ModoCriquet.CRIQUET;
+        return ModoCricket.CRICKET;
     }
 
     private void normalizarNombresJugadores() {
@@ -694,7 +691,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         datosFinalizacion.guardarMetadatos(partida);
 
         partida.setTipoPartida(
-                PartidaEnCurso.TIPO_CRIQUET
+                PartidaEnCurso.TIPO_CRICKET
         );
 
         partida.setModoJuego(modoJuego);
@@ -726,8 +723,8 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 new ArrayList<>(colores)
         );
 
-        EstadoPartidaCriquet estado =
-                new EstadoPartidaCriquet();
+        EstadoPartidaCricket estado =
+                new EstadoPartidaCricket();
 
         estado.setMaxRondas(maxRondas);
 
@@ -768,22 +765,22 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 EstadisticasJugadorEnCurso.copiarLista(estadisticasJugadores)
         );
 
-        partida.setEstadoCriquet(estado);
+        partida.setEstadoCricket(estado);
 
         getSharedPreferences(
                 PREF_CONFIG_PARTIDA,
                 MODE_PRIVATE
         ).edit()
                 .putInt(
-                        CLAVE_DARDOS_CRIQUET,
+                        CLAVE_DARDOS_CRICKET,
                         numeroDardosTurno
                 )
                 .putBoolean(
-                        CLAVE_ORDEN_ALEATORIO_CRIQUET,
+                        CLAVE_ORDEN_ALEATORIO_CRICKET,
                         ordenAleatorio
                 )
                 .putBoolean(
-                        CLAVE_MANTENER_MULTIPLICADOR_CRIQUET,
+                        CLAVE_MANTENER_MULTIPLICADOR_CRICKET,
                         mantenerMultiplicador
                 )
                 .apply();
@@ -802,10 +799,10 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                 GestorPartidaEnCurso.cargarPartida(this);
 
         if (partida == null
-                || !PartidaEnCurso.TIPO_CRIQUET.equals(
+                || !PartidaEnCurso.TIPO_CRICKET.equals(
                 partida.getTipoPartida()
         )
-                || partida.getEstadoCriquet() == null
+                || partida.getEstadoCricket() == null
                 || partida.getNombresJugadores() == null
                 || partida.getNombresJugadores().size()
                 < MIN_JUGADORES) {
@@ -815,11 +812,11 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
         datosFinalizacion = DatosFinalizacionPartida.restaurar(partida);
 
-        EstadoPartidaCriquet estado =
-                partida.getEstadoCriquet();
+        EstadoPartidaCricket estado =
+                partida.getEstadoCricket();
 
         modoJuego = partida.getModoJuego();
-        modoCriquet = interpretarModoJuego(modoJuego);
+        modoCricket = interpretarModoJuego(modoJuego);
 
         int numeroJugadores =
                 Math.min(
@@ -862,7 +859,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                         PREF_CONFIG_PARTIDA,
                         MODE_PRIVATE
                 ).getInt(
-                        CLAVE_DARDOS_CRIQUET,
+                        CLAVE_DARDOS_CRICKET,
                         3
                 );
 
@@ -880,7 +877,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                         PREF_CONFIG_PARTIDA,
                         MODE_PRIVATE
                 ).getBoolean(
-                        CLAVE_ORDEN_ALEATORIO_CRIQUET,
+                        CLAVE_ORDEN_ALEATORIO_CRICKET,
                         false
                 );
 
@@ -889,7 +886,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                         PREF_CONFIG_PARTIDA,
                         MODE_PRIVATE
                 ).getBoolean(
-                        CLAVE_MANTENER_MULTIPLICADOR_CRIQUET,
+                        CLAVE_MANTENER_MULTIPLICADOR_CRICKET,
                         false
                 );
 
@@ -986,17 +983,17 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
     //Conversión del historial ----------------------------------------------------
 
-    private ArrayList<EstadoPartidaCriquet.EstadoDeshacerCriquet>
+    private ArrayList<EstadoPartidaCricket.EstadoDeshacerCricket>
     construirHistorialGuardado() {
 
-        ArrayList<EstadoPartidaCriquet.EstadoDeshacerCriquet> resultado =
+        ArrayList<EstadoPartidaCricket.EstadoDeshacerCricket> resultado =
                 new ArrayList<>();
 
         for (EstadoPartida estado :
                 historialEstados) {
 
-            EstadoPartidaCriquet.EstadoDeshacerCriquet guardado =
-                    new EstadoPartidaCriquet.EstadoDeshacerCriquet();
+            EstadoPartidaCricket.EstadoDeshacerCricket guardado =
+                    new EstadoPartidaCricket.EstadoDeshacerCricket();
 
             guardado.setMarcasJugadores(
                     convertirMatrizALista(
@@ -1044,14 +1041,14 @@ public class PartidaCriquetActivity extends AppCompatActivity {
     }
 
     private void restaurarHistorialEstados(
-            ArrayList<EstadoPartidaCriquet.EstadoDeshacerCriquet> estados
+            ArrayList<EstadoPartidaCricket.EstadoDeshacerCricket> estados
     ) {
 
         if (estados == null) {
             return;
         }
 
-        for (EstadoPartidaCriquet.EstadoDeshacerCriquet guardado :
+        for (EstadoPartidaCricket.EstadoDeshacerCricket guardado :
                 estados) {
 
             if (guardado == null) {
@@ -1651,9 +1648,9 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             return;
         }
 
-        if (modoCriquet == ModoCriquet.CRIQUET) {
+        if (modoCricket == ModoCricket.CRICKET) {
 
-            aplicarPuntosCriquet(
+            aplicarPuntosCricket(
                     indiceJugador,
                     indiceObjetivo,
                     impactosSobrantes
@@ -1669,7 +1666,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
         }
     }
 
-    private void aplicarPuntosCriquet(
+    private void aplicarPuntosCricket(
             int indiceJugador,
             int indiceObjetivo,
             int impactosSobrantes) {
@@ -1822,7 +1819,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
              i < puntuacionesJugadores.length;
              i++) {
 
-            if (modoCriquet == ModoCriquet.CRIQUET) {
+            if (modoCricket == ModoCricket.CRICKET) {
 
                 if (puntuacionesJugadores[i]
                         > puntuacionesJugadores[indiceGanador]) {
@@ -1892,7 +1889,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             return false;
         }
 
-        if (modoCriquet == ModoCriquet.CRIQUET) {
+        if (modoCricket == ModoCricket.CRICKET) {
 
             return tienePuntuacionEstrictamenteMayor(
                     indiceJugador
@@ -2544,7 +2541,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
                     int comparacionPuntos;
 
-                    if (modoCriquet == ModoCriquet.CRIQUET) {
+                    if (modoCricket == ModoCricket.CRICKET) {
 
                         comparacionPuntos =
                                 Integer.compare(
@@ -2609,7 +2606,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
 
     private String obtenerNombreModoMostrado() {
 
-        if (modoCriquet == ModoCriquet.CUT_THROAT) {
+        if (modoCricket == ModoCricket.CUT_THROAT) {
             return "CUT THROAT CRICKET";
         }
 
@@ -2705,7 +2702,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
                         ? "LIMITE_RONDAS" : "VICTORIA");
 
         Intent intent = new Intent(
-                PartidaCriquetActivity.this,
+                PartidaCricketActivity.this,
                 ResultadoActivity.class
         );
 
@@ -2781,12 +2778,12 @@ public class PartidaCriquetActivity extends AppCompatActivity {
          * No afectan a ResultadoActivity mientras no los lea.
          */
         intent.putExtra(
-                EXTRA_MARCAS_CRIQUET,
+                EXTRA_MARCAS_CRICKET,
                 marcasOrdenadas
         );
 
         intent.putExtra(
-                EXTRA_OBJETIVOS_CRIQUET,
+                EXTRA_OBJETIVOS_CRICKET,
                 OBJETIVOS.clone()
         );
 
@@ -2837,7 +2834,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
     }
 
     /**
-     * En Criquet normal se ordena de mayor a menor puntuación.
+     * En Cricket normal se ordena de mayor a menor puntuación.
      * En Cut Throat se ordena de menor a mayor puntuación.
      *
      * El ganador detectado se fuerza siempre a la primera posición.
@@ -2855,7 +2852,7 @@ public class PartidaCriquetActivity extends AppCompatActivity {
             clasificacion.add(i);
         }
 
-        if (modoCriquet == ModoCriquet.CRIQUET) {
+        if (modoCricket == ModoCricket.CRICKET) {
 
             clasificacion.sort(
                     (indice1, indice2) ->

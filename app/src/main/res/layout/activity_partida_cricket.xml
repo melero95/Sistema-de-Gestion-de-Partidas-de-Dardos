@@ -49,7 +49,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="@string/partida_criquet_criquet"
+                android:text="@string/partida_cricket_cricket"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -104,7 +104,7 @@
                 android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="@string/partida_criquet_jugador_1"
+                android:text="@string/partida_cricket_jugador_1"
                 android:textColor="#FF299FFF"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
@@ -143,7 +143,7 @@
                 android:layout_height="22dp"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="@string/partida_criquet_marcador"
+                android:text="@string/partida_cricket_marcador"
                 android:textColor="@android:color/white"
                 android:textSize="13sp"
                 android:textStyle="bold"/>
@@ -177,7 +177,7 @@
                         android:layout_height="22dp"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:text="@string/partida_criquet_obj"
+                        android:text="@string/partida_cricket_obj"
                         android:textColor="#FF58A9F5"
                         android:textSize="8sp"
                         android:textStyle="bold"/>
@@ -249,7 +249,7 @@
                         android:layout_height="27dp"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:text="@string/partida_criquet_d"
+                        android:text="@string/partida_cricket_d"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
@@ -261,7 +261,7 @@
                         android:layout_height="27dp"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:text="@string/partida_criquet_pts"
+                        android:text="@string/partida_cricket_pts"
                         android:textColor="#FF58A9F5"
                         android:textSize="10sp"
                         android:textStyle="bold"/>
@@ -741,7 +741,7 @@
                     android:layout_marginHorizontal="3dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="@string/partida_criquet_fuera"
+                    android:text="@string/partida_cricket_fuera"
                     android:textSize="13sp"/>
 
             </LinearLayout>

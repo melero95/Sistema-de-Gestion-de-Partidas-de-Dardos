@@ -7,7 +7,7 @@ public class PartidaEnCurso {
     //Tipos de partida ------------------------------------------------------------
 
     public static final String TIPO_PUNTOS = "PUNTOS";
-    public static final String TIPO_CRIQUET = "CRIQUET";
+    public static final String TIPO_CRICKET = "CRICKET";
     public static final String TIPO_RONDAS = "RONDAS";
 
     //Versión del formato de guardado ---------------------------------------------
@@ -37,7 +37,7 @@ public class PartidaEnCurso {
     //Estados específicos ---------------------------------------------------------
 
     private EstadoPartidaPuntos estadoPuntos;
-    private EstadoPartidaCriquet estadoCriquet;
+    private EstadoPartidaCricket estadoCricket;
     private EstadoPartidaRondas estadoRondas;
 
     //Constructor -----------------------------------------------------------------
@@ -137,12 +137,12 @@ public class PartidaEnCurso {
         this.estadoPuntos = estadoPuntos;
     }
 
-    public EstadoPartidaCriquet getEstadoCriquet() {
-        return estadoCriquet;
+    public EstadoPartidaCricket getEstadoCricket() {
+        return estadoCricket;
     }
 
-    public void setEstadoCriquet(EstadoPartidaCriquet estadoCriquet) {
-        this.estadoCriquet = estadoCriquet;
+    public void setEstadoCricket(EstadoPartidaCricket estadoCricket) {
+        this.estadoCricket = estadoCricket;
     }
 
     public EstadoPartidaRondas getEstadoRondas() {
