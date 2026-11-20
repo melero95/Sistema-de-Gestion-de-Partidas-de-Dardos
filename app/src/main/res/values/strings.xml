@@ -27,7 +27,7 @@
     <string name="acerca_de_proyecto">Proyecto</string>
     <string name="acerca_de_sobre_la_aplicacion">Sobre la aplicación</string>
     <string name="acerca_de_tecnologias">Tecnologías</string>
-    <string name="acerca_de_version_1_0">Versión 1.0</string>
+    <string name="acerca_de_version_1_0">Versión 1.0.2</string>
     <string name="ajustes_cerrar_301_501_con_un_doble">Cerrar 301/501 con un doble</string>
     <string name="ajustes_comportamiento">COMPORTAMIENTO</string>
     <string name="ajustes_confirmar_antes_de_abandonar_una_partida">Confirmar antes de abandonar una partida</string>
@@ -95,7 +95,7 @@
     <string name="estadisticas_jugadores">JUGADORES</string>
     <string name="estadisticas_records">RÉCORDS</string>
     <string name="estadisticas_volver">VOLVER</string>
-    <string name="header_lateral_v1_0">v1.0</string>
+    <string name="header_lateral_v1_0">v1.0.2</string>
     <string name="historial_partidas_filtrar_por_jugador">Filtrar por jugador</string>
     <string name="historial_partidas_filtrar_por_modo_de_juego">Filtrar por modo de juego</string>
     <string name="historial_partidas_no_hay_partidas_visibles">No hay partidas visibles</string>
